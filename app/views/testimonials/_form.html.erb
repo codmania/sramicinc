@@ -1,0 +1,54 @@
+<%= form_for @testimonial, :html => {:class => "form-horizontal testimonial"} do |f| %>
+
+    <% if @testimonial.errors.any? %>
+
+        <div class="panel-body">
+          <ul>
+            <% @testimonial.errors.full_messages.each_with_index do |msg, index| %>
+                <% if index%2 != 0 %>
+                    <li style="color:red;"><%= msg %></li>
+                <% end %>
+
+            <% end %>
+          </ul>
+        </div>
+
+    <% end %>
+
+    <div class="l-block l-block_1">
+      <label>Name<em>*</em></label><%= f.text_field :name, :required => true %>
+    </div>
+
+    <!--<div class="l-block l-block_1">-->
+    <!--<label>Email ID<em>*</em></label>-->
+    <%#= f.text_field :email,:pattern=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$",:title=>'Invalide Email ID',:required=>true %>
+    <!--</div>-->
+
+    <div class="l-block l-block_1">
+      <label>Company</label><%= f.text_field :company %>
+    </div>
+
+    <div class="l-block l-block_1">
+        <label>Description</label><%= f.text_area :description,:class => 'text_area_alignment',:maxlength=>1000 %>
+    </div>
+
+    <h6 style="margin-left:29%">Maximum 1000 characters are allowed</h6>
+
+    <div class="l-block l-block_1">
+      <label>Logo</label><%= f.file_field :logo %>
+    </div>
+
+
+
+
+
+    <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    testimonials_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<% end %>

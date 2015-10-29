@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>What:</strong>
+  <%= @talent_alert.what %>
+</p>
+
+<p>
+  <strong>Where:</strong>
+  <%= @talent_alert.where %>
+</p>
+
+<p>
+  <strong>Within:</strong>
+  <%= @talent_alert.within %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @talent_alert.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_talent_alert_path(@talent_alert) %> |
+<%= link_to 'Back', talent_alerts_path %>

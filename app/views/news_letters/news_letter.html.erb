@@ -1,0 +1,24 @@
+<style>
+    .ck_class{
+        margin-bottom: 100px;
+    }
+</style>
+
+<div class="row ck_class">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+
+        <h3>News Letter<br/></h3>
+
+        <%= form_tag({:action => 'send_news_letter'}) do  %>
+        <label>Subject<em>*</em></label>
+            <%= text_area :subject,"", :cols => 20, :required=>true %>
+            <%= cktext_area :message,"", :cols => 20 %><br>
+            <%= submit_tag 'Send Email',:class => 'btn btn-primary'%>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    news_letters_path, :class => 'btn btn-warning' %>
+        <% end %>
+
+  </div>
+  <div class="col-md-2"></div>
+</div>

@@ -1,0 +1,27 @@
+<% @saved_searched_filer.each do |filter|%>
+
+    <div class="criteria-portion">
+      <h6>  <%= filter.name %> </h6>
+      <a href="javascript:" class="show-link" >Show Criteria <img src="/assets/down-arrow.png" alt="" /></a>
+      <ul class="criteria-detail">
+        <li><span><img src="/assets/search-ic1.png" alt="" /></span> <a href="/search/jobs<%=filter.criteria%>"> View Jobs</a></li>
+        <!--<li><span><img src="/assets/search-ic2.png" alt="" /></span>  <a href="#">Modify Criteria</a></li>-->
+        <li><span><img src="/assets/search-ic3.png" alt="" /> </span> <a href="javascript:deleteSearchFilter(<%= filter.id%>)">Delete Criteria </a> </li>
+      </ul>
+    </div>
+<%end%>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.show-link').on('click',function(event ){
+
+            $(this).next().toggle(500);
+
+        });
+
+
+    });
+</script>

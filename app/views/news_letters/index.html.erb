@@ -1,0 +1,117 @@
+<!--start search-container-->
+
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+     
+      <div class="col-lg-12 no_pad ">
+        <div class="company_news_letters employers_applications">
+          <h3>NewsLetters
+            <%= link_to "Send Newsletter", news_letters_news_letter_path, :method => :post, :class => 'orange-btn pull-right align-orange-btn' %>
+
+
+            <br/>
+            <div class="pull-right">
+              <!-- <a href="#" onClick="setNewsLetter()" class="orange-btn" data-toggle="modal">
+                 Newsletter Email Template
+               </a>--></div>
+          </h3><br/>
+
+          <!--<a href="#" onClick="setNewsLetter()" class="orange-btn" data-toggle="modal">
+            Newsletter Email Template
+          </a>-->
+
+
+          <div id="no-more-tables">
+            <table class="col-sm-12  table-striped table-condensed cf">
+              <thead class="cf">
+              <tr>
+                <!-- <th width="70">
+                   <input type="checkbox" name="selectAll" id="selectAll" value=""/>
+                 </th>-->
+                <th width="150">Title</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th width="" class="table-last-th"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @news_letters.each do |news_letter| %>
+
+                  <tr>
+                    <!--<td data-title="id">
+              <input type="checkbox" class="case" value="<%= news_letter.try(:id) %>"/>
+            </td>-->
+
+                    <td data-title="Title"><%=news_letter.try(:title)%></td>
+                    <td data-title="Type"> <%= news_letter.try(:name)%></td>
+                    <td data-title="Type"><%= news_letter.try(:email)%></td>
+                    <td data-title="Type"><%= news_letter.news_letter_status%></td>
+
+                    <td data-title="Actions" class="table-last-td">
+                      <% if news_letter.active? %>
+                          <%= link_to news_letters_active_deactive_path(id: news_letter.id, :flag => !news_letter.active), :method=> :post  do %>
+                              <span class="acct_btn"><span class="icon icon_2"></span>DeActivate</span>
+                          <%end%>
+                      <%else%>
+                          <%= link_to news_letters_active_deactive_path(id: news_letter.id, :flag => !news_letter.active), :method=> :post  do %>
+                              <span class="acct_btn"><span class="icon icon_1"></span>Active</span>
+                          <%end%>
+                      <%end%>
+
+                      <ul class="actions_container">
+                        <li>
+                          <%= link_to '<span class="icon icon_1"></span>'.html_safe,
+                                      edit_news_letter_path(news_letter) %>
+
+                        </li>
+                        <li>
+                          <%= link_to '<span class="icon icon_2"></span>'.html_safe,
+                                      news_letter_path(news_letter),
+                                      :method => :delete,
+                                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+                        </li>
+                      </ul>
+
+                    </td>
+                  </tr>
+              <%end%>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<div class="paginations top-pagination">
+            <%= will_paginate @news_letters, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+          </div>
+
+</div>
+
+
+<%= render :partial => 'newsletter_popover' %>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("#selectAll").click(function () {
+            $('.case').prop('checked', this.checked);
+        });
+
+        $('.case').click(function(){
+
+            if($('.case').length == $('.case:checked').length){
+                $('#selectAll').prop('checked', true);
+            }
+            else{
+                $('#selectAll').prop('checked', false);
+            }
+        });
+    });
+</script>

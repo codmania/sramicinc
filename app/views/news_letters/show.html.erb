@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @news_letter.title %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @news_letter.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @news_letter.email %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @news_letter.active %>
+</p>
+
+<%= link_to 'Edit', edit_news_letter_path(@news_letter) %> |
+<%= link_to 'Back', news_letters_path %>

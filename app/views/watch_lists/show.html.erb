@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @watch_list.job_id %>
+</p>
+
+<p>
+  <strong>Jobseeker:</strong>
+  <%= @watch_list.jobseeker_id %>
+</p>
+
+<%= link_to 'Edit', edit_watch_list_path(@watch_list) %> |
+<%= link_to 'Back', watch_lists_path %>

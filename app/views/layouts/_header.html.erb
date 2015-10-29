@@ -1,0 +1,106 @@
+<div class="container-fluid no_pad ">
+    <div class="header-wrap">
+        <div class="container header">
+            <div class="row">
+
+                <div class="col-md-2">
+                  <a href="<%=home_index_path%>">
+                    <img src="/assets/logo-2.png"/>
+                </a>
+                </div>
+
+                <div class="col-md-5">
+                    <ul class="top_links_container">
+                            <% if current_user.role.authority=='employer'%>
+                                      <li><form action="<%= new_job_path %>"><input type="submit" value="Post a Job"></form></li>
+                                      <li><form action="/search/profiles"><input type="submit" value="Search"></form></li>
+                           <% elsif current_user.role.authority == 'jobseeker' %>
+                                      <li><form action="/search/jobs"><input type="submit" value="Search"></form></li>
+                            <% end %>
+                      <% if PaymentModule.first.active? %>
+                          <% if current_user.try(:subscription).try(:plan_id)==1 || current_user.try(:subscription).try(:plan_id)== 6%>
+                                <li><form action="<%= payments_path%>"><input type="submit" value="Upgrade Account"></form></li>
+                          <% end %>
+                      <% end%>
+                    </ul>
+                </div>
+
+                <div class="col-md-5">
+                    <!--start welcome-box-->
+                    <div class="welcome-box">
+                        <div class="wel-msg">
+                            <span>Welcome </span>
+                            <%if current_user.role.id==2%>
+                              <%if !session[:staff_user].nil?%>
+                                  <p><%= session[:staff_user_name] %></p>
+                              <% else %>
+                                  <p><%= Eprofile.find(session['eprofile']).company_name%></p>
+                              <% end %>
+
+                            <% elsif current_user.role.id==3%>
+                              <p><%= Jprofile.find(session['jprofile']).name%></p>
+                          <% elsif current_user.role.id==1%>
+                              <p><%= User.find(current_user.id).name%></p>
+                            <%end%>
+                        </div>
+
+                      <%if current_user.role.id==2%>
+                          <div class="wel-img">
+                            <%= image_tag Eprofile.find(session['eprofile']).logo.url(:medium)%>
+                          </div>
+
+                      <% elsif current_user.role.id==3%>
+
+                          <div class="wel-img">
+                            <%= image_tag Jprofile.find(session['jprofile']).logo.url(:medium)%>
+                          </div>
+
+                      <% elsif current_user.role.id==1%>
+                          <div class="wel-img">
+                            <img src="/assets/logo-2.png"/>
+                            <!--<img src="/assets/sig-g.png" alt="" />-->
+                          </div>
+                      <%end%>
+
+                        <div class="white_patch"></div>
+                        <div class="admin_menu_container">
+                            <%if current_user.role.id==2%>
+                              <a rel="nofollow" data-method="get" href="<%= eprofiles_path %>"><span class="icon icon_1"></span>My Details</a>
+                            <% elsif current_user.role.id==3%>
+                              <a rel="nofollow" data-method="get" href="<%= jprofiles_path %>"><span class="icon icon_1"></span>My Profile</a>
+                            <% end %>
+                          <%if session[:staff_user].nil?%>
+                              <a rel="nofollow" data-method="get" href="<%= edit_user_registration_path %>"><span class="icon icon_2"></span>Change Password</a>
+                        <% end %>
+
+                         <a rel="nofollow" data-method="delete" href="<%= destroy_user_session_path %>"><span class="icon icon_3"></span>Log out</a>
+                        </div>
+                    </div>
+
+                      <% if current_user.try(:role).try(:authority) != 'admin'%>
+                          <div class="bell">
+                            <a rel="nofollow" data-method="get" href="<%= notifications_path %>"><img src="/assets/bell.png" alt="" /> <span><%= Notification.where(user_id: current_user.id).count%></span></a>
+                          </div>
+                      <% end %>
+
+
+                    <!--End welcome-box-->
+                </div>
+              <% if PaymentModule.first.active? %>
+                  <% if current_user.try(:role).try(:authority) != 'admin'%>
+                        <div class="pull-right" id="flash_notice"> Your current plan is "<%= current_user.try(:subscription).try(:plan).try(:name)%>" <% if current_user.try(:subscription).try(:plan_id) !=1 && current_user.try(:subscription).try(:plan_id) !=6 %> and will expire on "<%= current_user.try(:subscription).try(:end_date)%>" <%else %>, please upgrade<%end%> </div>
+                  <% end %>
+              <% end %>
+            </div>
+
+
+          <%- flash.each do |name, msg| -%>
+              <% if  msg != 'employer' &&  msg != 'candidate' %>
+                  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+              <% end %>
+          <%- end -%>
+
+        </div>
+    </div>
+</div>
+<%# render '/layouts/banner2' %>

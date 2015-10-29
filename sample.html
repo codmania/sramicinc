@@ -1,0 +1,50 @@
+<div class="company_users ">
+    <br>
+
+    <h1>FAQs</h1><% if current_user.try(:role).try(:authority) =='admin'%><h1>
+    <%= link_to "Add", new_faq_path, :class => 'orange-btn pull-right align-orange-btn' %></h1>
+
+    <%end%>
+
+    <div class="paginations top-pagination">
+        <%= will_paginate @faqs1, :renderer=> PaginationHelper::LinkRenderer%>
+    </div><br><br><br><br><br><br>
+    <div class = "container">
+
+        <% @fc.each do |fc|%>
+
+
+        <div class = "panel panel-default">
+
+            <div class = "panel-heading">
+                <h3 class = "panel-title"> <%if  !@faqs[fc.id].nil?%>
+                    <%= fc.name%> </h3>
+            </div>
+            <% @faqs[fc.id].each do |faq|%>
+
+            <div class = "panel-body">
+                <div class = "col-xs-10">
+                    <p>
+                        <strong>Question:</strong>&nbsp;&nbsp;<%= faq.question %>
+                    </p>
+                    <p>
+
+                        <strong>Answer:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%= faq.answer %>
+                    </p>    </div><div class ="col-xs-2">
+                <ul class="actions_container table-last-th">
+                    <% if current_user.try(:role).try(:authority) =='admin'%>
+                    <li>
+                        <%= link_to '<span class="icon icon_2"></span>'.html_safe,
+                        faq_path(faq),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+
+                    </li><%end%></ul>     </div>
+            </div>
+
+
+            <%end%><%end%>
+        </div>
+        <%end%>
+    </div>
+</div>

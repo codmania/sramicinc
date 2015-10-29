@@ -1,0 +1,42 @@
+<%= form_for @banner, :html => { :class => "form-horizontal" } do |f| %>
+<% if @banner.errors.any? %>
+
+      <div class="panel-body">
+        <ul>
+          <% @banner.errors.full_messages.each_with_index  do |msg, index| %>
+              <% if index%2 != 0 %>
+                  <li style="color:red;"><%= msg %></li>
+              <% end %>
+
+          <% end %>
+        </ul>
+      </div>
+
+<% end %>
+
+  <div class="l-block l-block_1">
+      <label>Title<em>*</em></label><%= f.text_field :title, :required=>true%>
+  </div>
+
+  <div class="l-block l-block_1">
+      <label>URL<em>*</em></label><%= f.text_field :url,:pattern =>"https:\/\/.+",:title=>"Enter URL starting with, https://",:required=>true %>
+  </div>
+
+  <div class="l-block l-block_1">
+      <label>Active</label><%= f.check_box :active%>
+  </div>
+
+  <div class="l-block l-block_1">
+     <label>Banner</label><%= f.file_field :banner_image %>
+  </div>
+
+  <div class="form-group pro_form_group">
+    <div class="col-sm-offset-4 col-sm-10">
+      <%= f.submit 'Save', :class => 'btn btn-primary' %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    banners_path, :class => 'btn btn-warning' %>
+    </div>
+  </div>
+
+<%end%>

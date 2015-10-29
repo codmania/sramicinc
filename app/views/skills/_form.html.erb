@@ -1,0 +1,33 @@
+
+<%= form_for @skill, :html => { :class => "form-horizontal skill" } do |f| %>
+    <% if @skill.errors.any? %>
+        <div id="">
+          
+          <ul>
+            <% @skill.errors.full_messages.each do |message| %>
+                <li style="color:red;"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+    <div class="l-block l-block_1">
+      <label>Skill<em>*</em></label><%= f.text_field :name ,:required=>true,:maxlength=>100%>
+  </div>
+
+   <div class="l-block l-block_1">
+      <label>Years of experience<em>*</em></label><%= f.text_field :year_of_experience,:pattern => "[0-9]{1,2}(?:[\.]{1}[0-9]{1,2})?", :title => 'Years should be in xx.xx format',:required=>true,:maxlength=>5 %>
+   </div>
+
+  <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    skills_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<%end%>

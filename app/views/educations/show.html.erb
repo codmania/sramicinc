@@ -1,0 +1,29 @@
+<%- model_class = Education -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:degree) %>:</strong></dt>
+  <dd><%= @education.degree %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:field) %>:</strong></dt>
+  <dd><%= @education.field %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:institution) %>:</strong></dt>
+  <dd><%= @education.institution %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
+  <dd><%= @education.location %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:completion) %>:</strong></dt>
+  <dd><%= @education.completion %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:jprofile_id) %>:</strong></dt>
+  <dd><%= @education.jprofile_id %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              educations_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_education_path(@education), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              education_path(@education),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

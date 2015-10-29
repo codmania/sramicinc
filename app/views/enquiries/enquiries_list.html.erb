@@ -1,0 +1,64 @@
+<!--start search-container-->
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 no_pad ">
+
+    <div class="company_users">
+
+
+      <div id="no-more-tables">
+        <table class="col-sm-12 table-striped table-condensed cf">
+          <thead class="cf">
+          <tr>
+            <th > Reason for Enquiry</th>
+            <th >Name </th>
+            <th >Email</th>
+            <th >Description</th>
+                      </tr>
+          </thead>
+          <tbody>
+           <% @enquiries.try(:each) do |enquiry| %>
+          <tr>
+            <td data-title="Reason for Enquiry"><%=enquiry.try(:enquiry_category).try(:name) %></td>
+            <td data-title="Name"><%= enquiry.try(:name) %></td>
+            <td data-title="Email"><%= enquiry.try(:email) %></td>
+            <td data-title="Description"><%= enquiry.try(:description) %></td>
+
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <!--<p class="pagination_page_count">Results 1-6 out of 17</p>-->
+      <!--<div class="paginations top-pagination">-->
+        <!--<ul>-->
+          <!--<li> <a href="#"><img alt="" src="/assets/prev-2.png"> </a> </li>-->
+          <!--<li> <a href="#"><img alt="" src="/assets/prev-1.png"></a> </li>-->
+          <!--<li> <a href="#">1</a> </li>-->
+          <!--<li> <a href="#">2</a> </li>-->
+          <!--<li> <a href="#">3</a> </li>-->
+          <!--<li> <a href="#">4</a> </li>-->
+          <!--<li> <a href="#">5</a> </li>-->
+          <!--<li> <a href="#"><img alt="" src="/assets/next-1.png"></a> </li>-->
+          <!--<li> <a href="#"><img alt="" src="/assets/next-2.png"></a> </li>-->
+        <!--</ul>-->
+      <!--</div>-->
+
+      <!--add new user-->
+
+      <!--add new user over-->
+
+    </div>
+
+
+
+     </div>
+
+    </div>
+
+  </div>
+
+</div>

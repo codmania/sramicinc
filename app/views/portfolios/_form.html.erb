@@ -1,0 +1,39 @@
+
+<%= form_for @portfolio, :html => { :class => "form-horizontal portfolio" } do |f| %>
+    <% if @portfolio.errors.any? %>
+        <div id="">
+        <!--  <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this job from being saved:</h2>-->
+
+          <ul>
+            <% @portfolio.errors.full_messages.each do |message| %>
+                <li style="color:red;"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+    <div class="l-block l-block_1">
+      <label>Name<em>*</em></label><%= f.text_field :name ,:required=>true,:maxlength=>100%>
+  </div>
+
+   <div class="l-block l-block_1">
+      <label>URL</label><%= f.text_field :url,:maxlength=>256%>
+  </div>
+
+  <div class="l-block l-block_1">
+     <label>Logo</label><%= f.file_field  :logo %>
+ </div>
+
+
+  <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    portfolios_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<%end%>

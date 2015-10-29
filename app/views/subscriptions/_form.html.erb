@@ -1,0 +1,28 @@
+<%= form_for(@subscription) do |f| %>
+  <% if @subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+      <ul>
+      <% @subscription.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="l-block l-block_10">
+      <label>End Date<em>*</em></label><%= f.date_select :end_date, :required => true %>
+    </div>
+
+
+    <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    subscriptions_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<% end %>

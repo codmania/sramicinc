@@ -1,0 +1,35 @@
+<div class="profile-detail" id="profile_education_info_window">
+  <ul class="prof-details2">
+
+    <li>
+      <span class="left-det">Title</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @education.try(:title) %> </span>
+    </li>
+
+    <li>
+      <span class="left-det">Qualification</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @education.try(:qualification).try(:name) %></span>
+    </li>
+
+    <li>
+      <span class="left-det">University</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @education.try(:university).try(:name) %> </span>
+    </li>
+
+    <li>
+      <span class="left-det">Grade</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @education.try(:grade).try(:name) %></span>
+    </li>
+
+    <li>
+      <span class="left-det">Year</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @education.try(:year_attained) %></span>
+    </li>
+
+  </ul>
+</div>

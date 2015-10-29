@@ -1,0 +1,106 @@
+<div class="container-fluid search-container" >
+  <div class="container" >
+
+    <div class="row" style="background-color: #ffffff;border-top:0px;">
+      <%= form_for :subscriptions, :url => {:controller => 'subscriptions', :action => 'index'}, :method => 'get' do |s| %>
+
+          <div class="col-md-3 col-sm-6 pad-right">
+            <div class="job_input_container">
+              <label>Plan Type </label>
+              <select name="plan_type" id="user_type">
+                <option value="" <%if params[:plan_type]=='' %>selected<%end%>>Select plan type</option>
+                <option value="all" <%if params[:plan_type]=='all' %>selected<%end%>>All</option>
+                <option value="Jobseeker" <%if params[:plan_type]=='Jobseeker' %>selected<%end%>>Jobseeker</option>
+                <option value="Employer" <%if params[:plan_type]=='Employer' %>selected<%end%>>Employer</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6 pad-right">
+            <div class="job_input_container">
+              <label>Plan </label>
+              <select name="plan" id="user_type">
+                <option value="all" <%if params[:plan]=='' %>selected<%end%>>Select Plan</option>
+                <option value="all" <%if params[:plan]=='all' %>selected<%end%>>All</option>
+                <option value="FREE" <%if params[:plan]=='FREE' %>selected<%end%>>Free</option>
+                <option value="Monthly" <%if params[:plan]=='Monthly' %>selected<%end%>>Monthly</option>
+                <option value="Quarterly" <%if params[:plan]=='Quarterly' %>selected<%end%>>Quarterly</option>
+                <option value="HalfYearly" <%if params[:plan]=='HalfYearly' %>selected<%end%>>Half Yearly</option>
+                <option value="Yearly" <%if params[:plan]=='Yearly' %>selected<%end%>>Yearly</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="col-md-6 col-sm-6">
+            <div class="job_input_container">
+              <label style="visibility:hidden">dummy</label>
+              <input type="submit" class="blue-btn" value="Search"/>
+            </div>
+          </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 no_pad ">
+        <div class="company_users">
+          <h3 class="user_app">Subscribed Users</h3>
+          <div id="no-more-tables">
+            <table class="col-sm-12  table-striped table-condensed cf">
+              <thead class="cf">
+              <tr>
+                <th width="190">Name</th>
+                <th>Email</th>
+                <th>Plan</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th width="" class="table-last-th"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% if !@subscriptions.blank? %>
+                  <% @subscriptions.each do |subscription| %>
+                      <tr>
+                        <td data-title="Name"><%= subscription.try(:user).try(:profile_name) %></td>
+                        <td data-title="Email"> <%= subscription.try(:user).try(:email) %></td>
+                        <td data-title="Plan"><%= subscription.try(:plan).try(:name) %></td>
+                        <td data-title="Start Date"><%= subscription.start_date.try(:strftime,"%m/%d/%Y") %></td>
+                        <td data-title="End Date"><%= subscription.try(:end_date).try(:strftime,"%m/%d/%Y") %>
+                        </td>
+
+                        <!--<td data-title="" class="table-last-td">-->
+                        <!--<ul class="actions_container">-->
+                       <!-- <li> <%= link_to '<span class="icon icon_1"></span>'.html_safe,
+                                         '' %></li>-->
+                        <!--</ul>-->
+                        <!--</td>-->
+
+                        <td data-title="" class="table-last-td">
+
+                          <ul class="actions_container">
+                            <li>
+                              <%= link_to '<span class="icon icon_1"></span>'.html_safe,
+                                          edit_subscription_path(subscription) %>
+
+                            </li>
+
+                          </ul>
+
+                        </td>
+
+                      </tr>
+                  <% end %>
+              <% else %>
+                  <h5 style="color:red; text-align:center;"><%= "No results matched for your search!!" %></h5>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="paginations top-pagination remove_pad">
+    <%= will_paginate @subscriptions, :inner_window =>2,:outer_window =>0, :renderer => PaginationHelper::LinkRenderer %>
+  </div>
+</div>

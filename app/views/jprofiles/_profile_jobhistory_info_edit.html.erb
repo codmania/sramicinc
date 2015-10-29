@@ -1,0 +1,75 @@
+<%= form_for @jprofile, :html => { :multipart => true , :class => "form-horizontal jprofile" } do |f| %>
+
+
+    <% if @jprofile.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= pluralize(@jprofile.errors.count, "error") %> prohibited this jprofile from being saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @jprofile.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+    <% end %>
+
+
+
+
+    <div class="profile-detail" id="edit_profile_jobhistory_window">
+      <ul class="prof-details">
+        <%= f.fields_for :job_history do |ff| %>
+
+            <div class = "form-group">
+              <label class = "col-sm-3 text-muted" for = "title">Title:</label>
+              <div class = "col-sm-4">
+                <%= ff.text_field :title,:class => "form-control" %>
+              </div>
+            </div>
+
+            <div class = "form-group">
+              <label class = "col-sm-3 text-muted" for = "title">Company Name:</label>
+              <div class = "col-sm-4">
+                <%= ff.text_field :company_name,:class => "form-control" %>
+              </div>
+            </div>
+
+            <div class = "form-group">
+              <label class = "col-sm-3 text-muted" for = "title">Experience:</label>
+              <div class = "col-sm-4">
+                <%= ff.text_field :experience,:class => "form-control" %>
+              </div>
+            </div>
+
+
+            <div class = "form-group">
+              <label class = "col-sm-3 text-muted" for = "title">Salary Type:</label>
+              <div class = "col-sm-4">
+                <%= ff.select 'salary_type_id', options_from_collection_for_select(SalaryType.all, 'id', 's_type',@job_history.try(:salary_type) ? @job_history.salary_type.id: ''),:class => "form-control" %>
+              </div>
+            </div>
+
+            <div class = "form-group">
+              <label class = "col-sm-3 text-muted" for = "title">Salary:</label>
+              <div class = "col-sm-4">
+                <%= ff.text_field :salary, :class => "form-control" %>
+              </div>
+            </div>
+
+      <% end %>
+
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-10">
+            <%= f.submit "Save" ,:class => "btn btn-primary" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="cancel_edit_profile_jobhistory" value="Cancel" class = "btn btn-warning"/>
+          </div>
+        </div>
+
+      </ul>
+    </div>
+
+
+<% end %>

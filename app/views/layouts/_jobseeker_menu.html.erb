@@ -1,0 +1,176 @@
+<div class="col-lg-12 no_pad ">
+  <ul id="main-nav">
+
+    <li><a class="main-link" href="/home/index">Home</a></li>
+    <li><a class="main-link" href="#">My Account</a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="<%= activities_path %>">Summary</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= jprofiles_path %>">Profile</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= skills_path %>">Skills</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= job_histories_path %>">Job History</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= educations_path %>">Education</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= portfolios_path %>">Portfolio</a></li>
+      </ul>
+    </li>
+
+    <li><a class="main-link" href="<%= job_applications_path %>">Jobs</a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="<%= carts_path %>">My Cart</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= watch_lists_path %>">Watchlist Jobs</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= job_applications_path %>">Applied Jobs</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= job_alerts_path %>">Job Alert</a></li>
+
+      </ul>
+    </li>
+
+
+    <li><a class="main-link" href="<%= networks_path %>">Network  </a> </li>
+    <li><a class="main-link" href="<%= reviews_path %>">Review </a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="<%= reviews_path %>">To Me</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= reviews_path(:by => 'me') %>">By Me</a></li>
+
+      </ul>
+    </li>
+  <!--  <li><a class="main-link" href="#">Billing  </a> </li>-->
+    <li class="bd-none"><a class="main-link" href="#">Notification</a>
+    <ul class="sub-links">
+      <li><a rel="nofollow" data-method="get" href="<%= message_list_jobseeker_path %>">Messages</a></li>
+
+    </ul></li>
+
+  </ul>
+  <!--responsive-menu-->
+
+  <nav id="menu-wrap">
+    <ul id="menu">
+      <li><a href="/home/index">Home</a></li>
+      <li>
+        <a href="#">My Account</a>
+        <ul>
+          <li><a data-method="get" href="<%= activities_path %>">Summary</a> </li>
+          <li><a data-method="get" href="<%= jprofiles_path %>"> Profile   </a> </li>
+          <li><a data-method="get" href="<%= skills_path %>">Skills  </a> </li>
+          <li><a data-method="get" href="<%= job_histories_path %>"> Job History </a> </li>
+          <li><a data-method="get" href="<%= educations_path %>">Education </a> </li>
+          <li><a data-method="get" href="<%= portfolios_path %>">Portfolio </a> </li>
+        </ul>
+      </li>
+      <li>
+        <a  href="<%= job_applications_path %>">Jobs</a>
+        <ul>
+          <li><a data-method="get" href="<%= carts_path %>">My Cart</a> </li>
+          <li><a data-method="get" href="<%= watch_lists_path %>"> Watchlist Jobs</a> </li>
+          <li><a data-method="get" href="<%= job_applications_path %>">Applied Jobs </a> </li>
+          <li><a data-method="get" data-method="get" href="<%= job_alerts_path %>"> Job Alert</a> </li>
+        </ul>
+
+      </li>
+      <li><a href="<%= networks_path %>">Network </a></li>
+      <li><a href="<%= reviews_path %>">Review </a></li>
+      <!--<li><a href="#">Billing</a></li>=-->
+      <li>
+        <a href="#">Notification</a>
+        <ul>
+          <li><a data-method="get" href="<%= message_list_jobseeker_path %>">Messages</a> </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!--End responsive-menu-->
+</div>
+
+<script type="text/javascript" id="demo1-javascript">
+    $(document).ready(function() {
+        // Initialize navgoco with default options
+        $("#demo1").navgoco({accordion: true});
+
+    });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#main-nav li a.main-link").hover(function(){
+            $("#main-nav li a.close").fadeIn();
+            $("#main-nav li a.main-link").removeClass("active");
+            $(this).addClass("active");
+            $("#sub-link-bar").animate({
+                height: "40px"
+            });
+            $(".sub-links").hide();
+            $(this).siblings(".sub-links").fadeIn();
+        });
+        $("#main-nav li a.close").click(function(){
+            $("#main-nav li a.main-link").removeClass("active");
+            $(".sub-links").fadeOut();
+            $("#sub-link-bar").animate({
+                height: "10px"
+            });
+            $("#main-nav li a.close").fadeOut();
+        });
+
+
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        (function() {
+            /* Mobile */
+            $('#menu-wrap').prepend('<div id="menu-trigger">Menu</div>');
+            $("#menu-trigger").on("click", function() {
+                $("#menu").slideToggle();
+            });
+
+            // iPad
+            var isiPad = navigator.userAgent.match(/iPad/i) != null;
+            if (isiPad) $('#menu ul').addClass('no-transition');
+        })();
+
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".top-sc a").click(function(){
+            $('html, body').animate({ scrollTop: 0 },'slow');
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+
+        $('ul.tabs li').click(function(){
+            var tab_id = $(this).attr('data-tab');
+
+            $('ul.tabs li').removeClass('current');
+            $('.tab-content').removeClass('current');
+
+            $(this).addClass('current');
+            $("#"+tab_id).addClass('current');
+        })
+
+    });
+
+</script>
+
+<script type="">
+    $(document).ready(function(){
+
+        $('.show-link').on('click',function(event ){
+
+            $(this).next().toggle(500);
+
+        });
+
+
+    });
+</script>

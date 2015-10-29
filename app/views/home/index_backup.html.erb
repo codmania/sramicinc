@@ -1,0 +1,327 @@
+<div class="container-fluid banner">
+
+    <div class="container">
+        <div class="row">
+            <h2>What You Do Makes You, So Come And Join The Right Platform</h2>
+            <div class="col-lg-6 col-md-6 col-sm-6 pull_center">
+                <input type="submit" value="We’re Hiring" class="hire" id="hiring"/>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 pull_center">
+                <input type="submit" value="We’re Seeking" class="hire1" id="hiring2"/>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="row main_search_container">
+
+            <%= render '/layouts/search/search_job_form' %>
+        </div>
+        <div class="container">
+         <%= render '/layouts/search/advance_search_job_form' %>
+        </div>
+
+
+
+
+
+
+
+            <div class="row main_search_container2">
+              <%= render '/layouts/search/search_profile_form' %>
+
+            </div>
+            <div class="container">
+               <%= render '/layouts/search/advance_search_profile_form' %>
+            </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+<div class="container-fluid emp_contianer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 pull_center">
+                <span class="emp_logo">
+                    <img src="/assets/employer.png"/>
+                </span>
+                <h3>Employer</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+
+                <form id="new_post_job_form" action="<%= new_job_path %>">
+                </form>
+
+               <form id="new_talent_alert_form" action="<%= new_talent_alert_path %>">
+               </form>
+
+                <input id="post_a_job" type="submit" name="1" value="Post a Job" class="post"/>
+                <input id="create_a_talent_alert" type="submit" name="1" value="Create a Talent Alert" class="create"/>
+
+              <script type="text/javascript">
+                  $(document).ready(function(){
+
+                      $('#create_alert').click(function(){
+                          $('#create_alert_form').submit();
+                      });
+
+                      //post_job_form
+                  });
+              </script>
+            </div>
+            <div class="col-md-6 pull_center">
+                <span class="emp_logo">
+                    <img src="/assets/candidate.png"/>
+                </span>
+                <h3>Candidates</h3>
+
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                 <form id="jprofile_path_form" action="<%= jprofiles_path %>" method="get">
+                    <input type="hidden" value="candidate" name="t"/>
+                 </form>
+
+                  <form id="new_job_alert_form" action="<%= new_job_alert_path %>" method="get">
+                    <input type="hidden" value="candidate" name="t"/>
+                  </form>
+
+                <input id="post_a_talent" type="submit" name="1" value="Post a Talent" class="post"/>
+                <input id="create_a_job_alert" type="submit" name="1" value="Create a Job Alert" class="create"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid job_pro_container">
+    <div class="container">
+        <div class="row">
+            <ul class="tabs">
+                <li class="current"><a href="" rel="tab1">Jobs</a></li>
+                <li><a href="" rel="tab2">Profiles</a></li>
+            </ul>
+            <div class="tab-content" id="tab1" >
+
+                <!--sub tabs-->
+                <ul class="sub_tabs">
+
+                    <li class="hvr-underline-reveal current"><a href="" rel="sub_tab1">Jobs By Category  </a></li>
+                    <li class="hvr-underline-reveal"><a href="" rel="sub_tab2">Jobs By Location             </a></li>
+                    <li class="hvr-underline-reveal"><a href="" rel="sub_tab3"> Jobs By Company   </a></li>
+                    <li class="hvr-underline-reveal"><a href="" rel="sub_tab4"> Jobs By Industry</a></li>
+
+
+                </ul>
+                <div class="sub-tab-content" id="sub_tab1" >
+
+                    <div class="container">
+                        <div class="row">
+                            <ul class="list col-md-3 col-xs-12">
+                                <li><a href="#">Agriculture <span class="count">(254)</span></a></li>
+                                <li><a href="#">Accounting  <span class="count">(25)</span></a></li>
+                                <li><a href="#">Administration <span class="count">(321)</span></a></li>
+                                <li><a href="#">Airline  <span class="count">(257)</span></a></li>
+                                <li><a href="#">Apparel & Accessories  <span class="count">(147)</span></a></li>
+                                <li><a href="#">Automotive  <span class="count">(84)</span></a></li>
+                                <li><a href="#">Banking  <span class="count">(122)</span></a></li>
+                                <li><a href="#">Broadcasting  <span class="count">(74)</span></a></li>
+
+                            </ul>
+                            <ul class="list col-md-3 col-xs-12">
+                                <li><a href="#">Cosmetics  <span class="count">(114)</span></a></li>
+                                <li><a href="#">Defense   <span class="count">(254)</span></a></li>
+                                <li><a href="#">Department Stores <span class="count">(124)</span></a></li>
+                                <li><a href="#">Education  <span class="count">(44)</span></a></li>
+                                <li><a href="#">Electronics<span class="count">(25)</span></a></li>
+                                <li><a href="#">Engineering <span class="count">(214)</span></a></li>
+                                <li><a href="#">Energy  <span class="count">(144)</span></a></li>
+                                <li><a href="#">Entertainment &amp; Leisure  <span class="count">(174)</span></a></li>
+                            </ul>
+                            <ul class="list col-md-3 col-xs-12">
+                                <li><a href="#">Internet Publishing <span class="count">(125)</span></a></li>
+                                <li><a href="#">Investment Banking  <span class="count">(2)</span></a></li>
+                                <li><a href="#">Legal <span class="count">(23)</span></a></li>
+                                <li><a href="#">Logistics  <span class="count">(24)</span></a></li>
+                                <li><a href="#">Management<span class="count">(321)</span></a></li>
+                                <li><a href="#">Manufacturing  <span class="count">(147)</span></a></li>
+                                <li><a href="#">Marketing<span class="count">(121)</span></a></li>
+                                <li><a href="#">Media & Video <span class="count">(141)</span></a></li>
+
+                            </ul>
+                            <ul class="list col-md-3 col-xs-12">
+                                <li><a href="#">Real Estate  <span class="count">(74)</span></a></li>
+                                <li><a href="#">Retail & Wholesale<span class="count">(14)</span></a></li>
+                                <li><a href="#">Sales  <span class="count">(102)</span></a></li>
+                                <li><a href="#">Science <span class="count">(64)</span></a></li>
+                                <li><a href="#">Securities & Commodity Exchanges <span class="count">(55)</span></a></li>
+                                <li><a href="#">Social  <span class="count">(91)</span></a></li>
+                                <li><a href="#">Service<span class="count">(74)</span></a></li>
+                                <li><a href="#">Software <span class="count">(55)</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="more-search-btn"> <input type="submit" class="post" value="More Searches" name="1"></div>
+
+
+                </div>
+                <div class="sub-tab-content" id="sub_tab2" >
+
+                    Demo2
+
+                </div>
+                <div class="sub-tab-content" id="sub_tab3" >
+
+                    Demo3
+
+                </div>
+                <div class="sub-tab-content" id="sub_tab4" >
+
+                    Demo4
+
+                </div>
+                <!--sub tabs end-->
+
+
+            </div>
+            <div class="tab-content" id="tab2" >
+
+                Demo
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid overall_description_container">
+    <div class="container">
+        <div class="row">
+            <ul class="col-sm-3">
+                <li>
+                    <span><%=@jobs.count%><br/> jobs</span>
+                </li>
+            </ul>
+            <ul class="col-sm-3">
+                <li>
+                    <span><%=@jprofiles.count%><br/> Profiles</span>
+                </li>
+            </ul>
+            <ul class="col-sm-3">
+                <li>
+                    <span><%=@eprofiles.count%><br/> Companies</span>
+                </li>
+            </ul>
+            <ul class="col-sm-3">
+                <li>
+                    <span><%=@users.count%><br/> Members</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<%if @testimonials.count > 0 %>
+
+    <div class="container-fluid testimonial_container">
+      <div class="container">
+        <div class="row">
+          <h3>Happy Campers</h3>
+          <h4>What people thought about our service!!!</h4>
+          <!--<div class="col-md-3 col-sm-6">-->
+          <!--<div class="testimonial_box">-->
+          <!--<div class="left_quote"></div>-->
+          <!--<p>-->
+          <!--It is a long established fact that a reader will be-->
+          <!--distracted by the readable content of a page when-->
+          <!--looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters look like readable English.-->
+
+          <!--</p>-->
+          <!--<div class="right_quote"></div>-->
+          <!--<span class="arrow_bottom"></span>-->
+          <!--</div>-->
+          <!--<p class="last">-->
+          <!--<span class="client_icon"></span>-->
+          <!--<span class="name">Cris Johnson</span>-->
+          <!--<span class="place">IBM Newyork</span>-->
+          <!--</p>-->
+          <!--</div>-->
+
+
+          <% @testimonials.each do |testimonial|%>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="testimonial_box">
+                  <div class="left_quote"></div>
+                    <%= testimonial.try(:description)%>
+                  <div class="right_quote"></div>
+                  <span class="arrow_bottom"></span>
+                </div>
+                <p class="last">
+                  <span class=""> <%= image_tag testimonial.logo.url(:medium)%> </span>
+                  <span class="name"><%= testimonial.try(:name)%></span>
+                  <span class="place"><%= testimonial.try(:company)%></span>
+                </p>
+              </div>
+
+          <% end %>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+<% end %>
+
+<div class="container-fluid sign_up_container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h3>Join The Right Platform</h3>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+            </div>
+            <div class="social_container2">
+            <div class="col-lg-5">
+                <div class="social_container">
+
+
+                    <span>Sign Up With:</span>
+                    <ul>
+                        <li><a href="#" class="social social_1"></a></li>
+                        <li><a href="#" class="social social_2"></a></li>
+                        <li><a href="#" class="social social_3"></a></li>
+                        <li><a href="#" class="social social_4"></a></li>
+                    </ul>
+                </div>
+                </div>
+
+            </div>
+        </div></div>
+</div>
+
+
+<script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $('#post_a_job').click(function(){
+                $('#new_post_job_form').submit();
+            });
+
+            $('#create_a_talent_alert').click(function(){
+                $('#new_talent_alert_form').submit();
+            });
+
+            $('#post_a_talent').click(function(){
+                $('#jprofile_path_form').submit();
+            });
+
+            $('#create_a_job_alert').click(function(){
+                $('#new_job_alert_form').submit();
+            });
+
+        });
+</script>

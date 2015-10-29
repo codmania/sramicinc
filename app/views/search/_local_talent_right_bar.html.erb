@@ -1,0 +1,27 @@
+<div class="col-lg-12 local-emp">
+  <h3>Hire Local Talents</h3>
+
+  <div class="talent-grp">
+
+       <% @jprofiles.try(:each) do |jprofile| %>
+            <div class="talent-box">
+              <a href="/employer/talents?id=<%=jprofile.id%>" target="_blank">
+                  <div class="talent-img">
+                    <%= image_tag jprofile.logo.url(:thumb)%>
+                  </div>
+
+                    <div class="talent-detail">
+                    <span class="name"><%= jprofile.name%></span>
+                    <span class="dec-per"><%= jprofile.title%></span>
+                    <!--<div class="year-info">-->
+                      <!--<img alt="image" src="/assets/bag-icon.png">-->
+                      <!--<span>4 Year</span>-->
+                    <!--</div>-->
+                  </div>
+              </a>
+            </div>
+        <% end %>
+
+  </div>
+
+</div>

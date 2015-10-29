@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRAMIC</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:100,400,600,700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script>
+  jQuery(document).ready(function(){
+
+    jQuery(".multiple_form").hide();
+    // jQuery(".single_form").hide();
+    jQuery('.single').click(function(){
+      jQuery(".multiple_form").hide();
+      jQuery(".single_form").show();
+    });
+
+    jQuery('.multiple').click(function(){
+      jQuery(".single_form").hide();
+      jQuery(".multiple_form").show();
+    });
+
+
+  });
+
+   function accept(job_id,status){
+            jQuery.ajax({
+               url:'/update_job_status?id='+job_id+'&status='+status,
+               type:'GET',
+               success:function(resp){
+                   $('.acct_btn_'+job_id).hide();
+                   $('.status_'+job_id).html(status);
+               }
+            });
+
+        }
+
+
+
+        function contact(job_id,contact){
+
+
+            jQuery.ajax({
+               url:'/update_job_status?id='+job_id+'&contact='+contact,
+               type:'GET',
+               success:function(resp){
+                //alert(resp);
+                jQuery('.stat'+job_id).html('<span></span>');
+               }
+            });
+
+        }
+
+        function setJcontactData(idd){
+          jQuery('.msg').html('');
+          jQuery('#message').val('');
+          jQuery('#job_application_id').val(idd);
+        }
+
+       function highlightmenu(){
+           $("#main-nav a").removeClass('selected');
+           $("#main-nav a").removeClass('subselected');
+           ele=$('#main-nav').find("a[href='"+window.location.pathname+"']")
+           ele.addClass('selected');
+           if(ele.attr('rel')!=undefined)
+               ele.parent().parent().parent().find('a.main-link').addClass('subselected')
+           if(window.location.pathname.indexOf('/eprofiles/')==0){
+            $("a.main-link:contains('Company')").addClass('selected')
+           }
+
+       }
+  </script>
+
+</head>
+
+<body onLoad="highlightmenu()">
+
+    <% unless current_user %>
+      <%= render '/layouts/header_guest' %>
+    <% else %>
+      <%= render '/layouts/header' %>
+    <% end %>
+
+    <% unless current_user %>
+    <div>
+      <%= yield %>
+    </div>
+    <% else %>
+        <div class="container-fluid search-container-modified">
+            <div class="container">
+                <div class="row">
+                        <%if current_user.role.id==2%>
+                          <%= render '/layouts/employer_menu' %>
+                        <% elsif current_user.role.id==3%>
+                              <%= render '/layouts/jobseeker_menu' %>
+                        <% elsif current_user.role.id==1%>
+                          <%= render '/layouts/admin_menu' %>
+                        <% end %>
+                </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <%= yield %>
+              </div>
+
+            </div>
+
+        </div>
+    <% end %>
+    <%= render '/layouts/footer' %>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<h3><strong>Eprofiles</strong></h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Industry type</th>
+      <th>Website</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  	<%@eprofiles.each do |profile|%>
+	    <tr>
+	      <td><%=profile.company_name%></td>
+	      <td><%=profile.industry.name if profile.industry_id%></td>
+	      <td><%=profile.website%></td>
+	      <td><%=link_to 'Show',eprofile_path(profile)%></td>
+	      <td><%= link_to 'Destroy',profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_eprofile_path,
+            :class => 'btn btn-primary' %>

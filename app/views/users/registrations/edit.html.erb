@@ -1,0 +1,43 @@
+<div class="container-fluid bg-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="login-wrap reset_password">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+            <%= devise_error_messages! %>
+
+            <%= f.hidden_field :reset_password_token %>
+
+            <div class="login-bottom">
+              <h1 class="reset_password">Change Your Password</h1>
+
+              <div class="l-block">
+                <label>Current Password<em>*</em></label>
+                <%= f.password_field :current_password,autofocus: true, autocomplete: "off", :required=>true  %>
+              </div>
+
+              <div class="l-block">
+                <label>New Password<em>*</em></label>
+                <%= f.password_field :password, autocomplete: "off",autocomplete: "off",:required=>true %>
+              </div>
+
+              <div class="l-block">
+                <label>Confirm Password<em>*</em></label>
+                <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true%>
+              </div>
+
+
+            </div>
+
+            <div class="l-block">
+              <%= f.submit "Update", :class=>"input-login change-password-center-button" %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

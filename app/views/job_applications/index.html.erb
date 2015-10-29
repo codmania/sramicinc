@@ -1,0 +1,70 @@
+<!--start search-container-->
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 no_pad ">
+
+        <div class="company_users">
+
+          <h1>My Applied Jobs  <div class="paginations top-pagination remove_pad">
+          <%= will_paginate @job_applications,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+          </div></h1>
+            <!--<span class="orange-btn pull-right"> <%= link_to "Add", :class => '' %></span>-->
+
+
+
+          <div id="no-more-tables">
+            <table class="col-sm-12 table-bordered table-striped table-condensed cf">
+              <p id="notice"><%= flash['message']%></p>
+              <thead class="cf">
+              <tr>
+                <th style="display: none"></th>
+
+                <th width=550>Job</th>
+                <th>Company</th>
+                <th>Status</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @job_applications.each do |job_appliaction| %>
+                  <tr>
+                    <td data-title="id" style="display: none"><%= job_appliaction.id %></td>
+                    <td data-title="Job"><a href="<%= job_path(job_appliaction.job.id) %>" target="_blank"><%= job_appliaction.try(:job).try(:title) %></td>
+                    <td data-title="Company"><%= job_appliaction.try(:job).try(:employer).try(:eprofile).try(:company_name) %></td>
+                    <td data-title="Status"><%= job_appliaction.try(:status) %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <!--<p class="pagination_page_count">Results 1-6 out of 17</p>-->
+          <!--<div class="paginations top-pagination">-->
+            <!--<ul>-->
+              <!--<li> <a href="#"><img alt="" src="/assets/prev-2.png"> </a> </li>-->
+              <!--<li> <a href="#"><img alt="" src="/assets/prev-1.png"></a> </li>-->
+              <!--<li> <a href="#">1</a> </li>-->
+              <!--<li> <a href="#">2</a> </li>-->
+              <!--<li> <a href="#">3</a> </li>-->
+              <!--<li> <a href="#">4</a> </li>-->
+              <!--<li> <a href="#">5</a> </li>-->
+              <!--<li> <a href="#"><img alt="" src="/assets/next-1.png"></a> </li>-->
+              <!--<li> <a href="#"><img alt="" src="/assets/next-2.png"></a> </li>-->
+            <!--</ul>-->
+          <!--</div>-->
+
+          <!--add new user-->
+
+          <!--add new user over-->
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

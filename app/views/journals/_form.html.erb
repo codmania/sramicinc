@@ -1,0 +1,41 @@
+
+<%= form_for @journal, :html => { :class => "form-horizontal journal" } do |f| %>
+    <% if @journal.errors.any? %>
+        <div id="">
+         <!-- <h2><%= pluralize(@journal.errors.count, "error") %> prohibited this job from being saved:</h2>-->
+
+          <ul>
+            <% @journal.errors.full_messages.each do |message| %>
+                <li style="color:red;"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+    <div class="l-block l-block_1">
+      <label>Name<em>*</em></label><%= f.text_field :name,:maxlength=>1000,:required=>true %>
+    </div>
+
+
+    <div class="l-block l-block_10">
+      <label>Date:</label><%= f.date_select :date %>
+    </div>
+
+
+    <div class="l-block l-block_1">
+      <label>Reference:</label><%= f.text_field :reference,:maxlength=>1000 %>
+    </div>
+
+
+    <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    educations_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<%end%>

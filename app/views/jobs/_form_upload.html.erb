@@ -1,0 +1,23 @@
+<%= form_for @job, :html => { :multipart => true, :class => "form-horizontal education" } do |f| %>
+<div class="multiple_form"><br><br>
+  <div class="download_container">
+    <h4>Download, fill the document and Upload for Creating Multiple Jobs.
+    </h4>
+    <a class="download_csv" href="/jobs_upload.csv" target="_blank">
+      <span class="icon"></span>Download CSV File</a>
+    <div class="row">
+      <div class="col-md-6">
+        <span class="file_container">
+          <input class="download" type="file" name="file"/>
+        </span>
+        <span >
+          <%= f.submit "Save", :class=> "orange-btn pull-right" %><br>
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<%end%>

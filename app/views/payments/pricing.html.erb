@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+
+
+        <h1>We offer multiple plans that fits your company. Start with FREE offer</h1>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="panel panel-info">
+
+        <div class="panel-heading"><h3 class="text-center">PLAN </h3></div>
+        <div class="panel-body text-center">
+          <p class="lead" style="font-size:40px"><strong>Price </strong></p>
+        </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Job Posting</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Analytics
+          </li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Email Support
+          </li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Phone Support
+          </li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> User Account</li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> API
+          </li>
+          <li class="list-group-item"><i class="icon-ok text-danger"></i> Profile Alert
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <% @employerplans.each do |plan| %>
+        <div class="col-md-2">
+          <div class="panel panel-success">
+            <div class="panel-heading"><h3 class="text-center"><%= plan.name %></h3></div>
+            <div class="panel-body text-center">
+              <p class="lead" style="font-size:40px"><strong><%= number_to_currency plan.price %></strong></p>
+            </div>
+            <ul class="list-group list-group-flush text-center">
+              <li class="list-group-item"><i class="icon-ok text-danger"></i>
+                <% if plan.job_post == -1 %>Unlimited
+                    <% elsif plan.job_post == 1 %><%= plan.job_post %> Openjob
+                    <% else %><%= plan.job_post %> Open jobs
+                <% end %></li>
+              <li class="list-group-item"><i class="icon-ok text-danger"></i>
+                <% if plan.analytics==true %>Yes
+                <% else %>No
+                <% end %></li>
+              <li class="list-group-item"><i class="icon-ok text-danger"></i>
+                <% if plan.email_support==true %>Yes
+                <% else %>No
+                <% end %></li>
+              <li class="list-group-item"><i class="icon-ok text-danger"></i>
+                <% if plan.phone_support==true %>Yes
+                <% else %>No
+                <% end %></li>
+              <li class="list-group-item"><i class="icon-ok text-danger"></i>
+                <% if plan.user_account == -1 %>Unlimited
+                    <% elsif plan.user_account == 1 %><%= plan.user_account %> User
+                    <% else %><%= plan.user_account %> Users
+                <% end %> </li>
+              <li class="list-group-item"><i class="icon-ok text-danger"></i>
+                <% if plan.api==true %>Yes
+                <% else %>No
+                <% end %></li>
+              <li class="list-group-item"><i class="icon-ok text-danger"></i>
+                <% if plan.profile_alert==true %>Yes
+                <% else %>No
+                <% end %></li>
+            </ul>
+
+            <% if plan.id != 1 %>
+                <div class="panel-footer">
+                  <%= link_to 'Buy Now', checkout_payments_path(plan: "#{plan.name}"), :class => "btn btn-lg btn-block btn-success" %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+
+ 

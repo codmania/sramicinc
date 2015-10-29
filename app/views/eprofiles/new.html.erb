@@ -1,0 +1,10 @@
+<h1>Add your Profile</h1>
+
+<%= render 'form' %>
+
+
+<%if current_user.role.id==1%>
+ <%= link_to 'Back', eprofiles_path %>
+ <%else%>
+ <%= link_to 'Back', home_index_path %>
+ <%end%>

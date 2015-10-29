@@ -1,0 +1,72 @@
+<%= form_for @jprofile, :html => { :multipart => true , :class => "form-horizontal jprofile" } do |f| %>
+
+
+    <% if @jprofile.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= pluralize(@jprofile.errors.count, "error") %> prohibited this jprofile from being saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @jprofile.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+    <% end %>
+
+
+
+
+    <div class="profile-detail" id="edit_profile_education_window">
+      <div class="prof-details">
+        <%= f.fields_for :education do |ff| %>
+
+          <div class = "form-group">
+            <label class = "col-sm-3 text-muted" for = "title">Title:</label>
+            <div class = "col-sm-4">
+              <%= ff.text_field :title,:class => "form-control" %>
+          </div>
+          </div>
+
+          <div class = "form-group">
+            <label class = "col-sm-3 text-muted" for = "title">Qualification:</label>
+            <div class = "col-sm-4">
+              <%= ff.select 'qualification_id', options_from_collection_for_select(Qualification.all, 'id', 'name', @education.try(:qualification) ? @education.qualification.id: ''),:class => "form-control" %>
+          </div>
+          </div>
+
+          <div class = "form-group">
+            <label class = "col-sm-3 text-muted" for = "title">University:</label>
+            <div class = "col-sm-4">
+              <%= ff.select 'university_id', options_from_collection_for_select(University.all, 'id', 'name',@education.try(:university) ? @education.university.id: ''),:class => "form-control" %>
+          </div>
+          </div>
+
+           <div class = "form-group">
+            <label class = "col-sm-3 text-muted" for = "title">Grade:</label>
+            <div class = "col-sm-4">
+              <%=  ff.select 'grade_id', options_from_collection_for_select(Grade.all, 'id', 'name',@education.try(:grade) ? @education.grade.id: ''),:class => "form-control" %>
+          </div>
+          </div>
+
+          <div class = "form-group">
+            <label class = "col-sm-3 text-muted" for = "title">Year:</label>
+            <div class = "col-sm-4">
+              <%= ff.select :year_attained, (2000..Time.now.year).to_a,:class => "form-control" %>
+          </div>
+          </div>
+          <% end %>
+
+          <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-10">
+            <%= f.submit "Save" ,:class => "btn btn-primary" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="cancel_edit_profile_education" value="Cancel" class = "btn btn-warning"/>
+          </div>
+        </div>  
+      </div></div>
+    </div>
+
+
+<% end %>

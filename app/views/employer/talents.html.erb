@@ -1,0 +1,575 @@
+
+<!--start search-container-->
+
+
+<div class="container-fluid search-container">
+
+  <input type="hidden" id="curpage" value="<%=params[:page]%>"/>
+  <input type="hidden" id="total" value="<%=params[:total]%>"/>
+
+  <div class="container">
+
+
+    <div class="row">
+
+      <% if params['what'] %>
+          <div class="col-lg-12 heading-box2">
+            <a href="#" class="back-link"><img src="/assets/left-arrow.png"> <span>Back to search results</span></a>
+            <div class="arrow-box">
+              <a href="#" class="prev_page"> <img src="/assets/box-left-arrow.png" alt=""></a>
+              <a href="#" class="nxt_page"> <img src="/assets/box-right-arrow.png" alt=""></a>
+            </div>
+          </div>
+      <%end%>
+
+
+      <% if current_user.try(:role).try(:authority)=='employer' %>
+          <p id="notice"><%= flash['message']%></p>
+          <%= link_to "Bookmark", employer_addtobookmark_path(:id=> @jprofile.id), :class => "orange-btn org-pad  bookmark_action" %>
+          <%= link_to "Add To Network", networks_path(:id => @jprofile.try(:jobseeker).try(:user).try(:id), :jprofile_id =>@jprofile.id), :method => 'post', :class => "orange-btn org-pad network_action" %>
+          <a href="#" onClick="setReviewData(<%= @jprofile.try(:jobseeker).try(:user).try(:id)%>, <%= current_user.try(:id)%>)" class="orange-btn org-pad"  data-toggle="modal" data-target="#myModal">
+            Write Review
+          </a>
+          <!--<%= link_to "Hire", hire_path(:jprofile_id=> @jprofile.id), :method=>:post,  :class => "orange-btn org-pad hire_action" %>-->
+          <a href="#" onClick="sendmessage(<%= @jprofile.try(:jobseeker).try(:user).try(:id)%>,'<%= @jprofile.try(:jobseeker).try(:user).try(:email)%>' )" class="orange-btn org-pad"   data-toggle="modal" data-target="#contactModal">
+            contact
+          </a>
+
+      <%end %>
+
+      <!--left-side-->
+      <div class="col-lg-1 col-md-1 col-sm-1 no_pad_left left-side">
+        <!--End explore-result-->
+      </div>
+      <!--End left-side-->
+
+      <!--middle-side-->
+      <div class="col-lg-12 col-md-12 col-sm-12 no_pad middle-side">
+        <ul class="tabs tab2">
+
+          <li class="tab-link current" data-tab="tab-1">Profile </li>
+          <% if current_user.try(:role).try(:authority)=='employer' %>
+          <li class="tab-link" data-tab="tab-2">Employment </li>
+          <li class="tab-link" data-tab="tab-3">Education</li>
+          <li class="tab-link" data-tab="tab-4">Resume</li>
+          <%end%>
+          <li class="tab-link" data-tab="tab-5">Reviews </li>
+        </ul>
+
+
+        <!--start profile-seeker-->
+        <div class="col-lg-12 profile-seeker no_pad">
+
+          <!--sstart profile-part-->
+          <div class="profile-part">
+            <div id="tab-1" class="tab-content current tb-box">
+              <h4>Profile</h4>
+
+              <ul class="prof-details2">
+
+                  <li>
+                  <span class="left-det">Title</span>
+                  <span class="dot">:</span>
+                  <span class="right-det"><%= @jprofile.try(:title) %></span>
+                  </li>
+
+                  <li>
+                  <span class="left-det">Profile Name</span>
+                  <span class="dot">:</span>
+                  <span class="right-det"><%= @jprofile.try(:name) %></span>
+                  </li>
+
+                  <li>
+                  <span class="left-det">Skills</span>
+                  <span class="dot">:</span>
+                    <span class="right-det">
+                      <%= @jprofile.skills.map { |s| s.name }.join(",") %>
+                    </span>
+                  </li>
+
+                  <% if current_user.try(:role).try(:authority)=='employer' %>
+                   <li>
+                    <span class="left-det">Email</span>
+                    <span class="dot">:</span>
+                    <span class="right-det"><%= @jprofile.try(:jobseeker).try(:user).try(:email) %></span>
+                  </li>
+                 <% end %>
+
+                <li>
+                  <span class="left-det">Address</span>
+                  <span class="dot">:</span>
+                  <span class="right-det">
+                    <%= @jprofile.try(:city) %> <%if @jprofile.try(:city).present? %>,<%end%>
+                    <%= @jprofile.try(:state_list).try(:name) %><%if @jprofile.try(:state_list).try(:name).present? %>, <%end%>
+                    <%= @jprofile.try(:country_list).try(:name) %><%if @jprofile.country_list.present? %>, <%end%>
+                    <%= @jprofile.try(:zip) %>
+                  </span>
+                </li>
+
+                <li>
+                  <span class="left-det">City</span>
+                  <span class="dot">:</span>
+                  <span class="right-det"><%= @jprofile.try(:city) %></span>
+                </li>
+
+
+                  <li>
+                  <span class="left-det">State</span>
+                  <span class="dot">:</span>
+                  <span class="right-det"><%= @jprofile.try(:state_list).try(:name) %></span>
+                </li>
+
+                <li>
+                  <span class="left-det">Zip Code</span>
+                  <span class="dot">:</span>
+                  <span class="right-det"><%= @jprofile.try(:zip) %></span>
+                </li>
+
+                <% if current_user.try(:role).try(:authority)=='employer' %>
+                  <li>
+                    <span class="left-det">Phone</span>
+                    <span class="dot">:</span>
+                    <span class="right-det"><%= @jprofile.try(:phone) %></span>
+                  </li>
+                <% end %>
+              </ul>
+
+
+
+              <div class="summery-box">
+                <h4>Profile Summary</h4>
+
+                <div class="box-side">
+                  <p><%= @jprofile.try(:summary) %></p>
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+          <!--End profile-part-->
+
+
+
+<div class="review-part">
+  <div id="tab-5" class="tab-content tb-box">
+        
+
+
+     <div class="box-side">
+       <div class="company_users">
+
+
+
+         <% if params[:by]=='me' %>
+          <h1>Reviews By Me  </h1>
+          <% else %>
+          <% end %>
+
+
+
+          <div id="no-more-tables">
+            <table class="col-sm-12 table-bordered table-striped table-condensed cf">
+
+              <thead class="cf">
+              <tr>
+              
+                <th>Review Details </th>
+                <% if params[:by]!='me' %>
+                <th>Review From </th>
+                <% end %>
+                <% if params[:by]=='me' %>
+                <th>Review to </th>
+                <% end %>
+                <th>Review Date</th>
+                <th>Rating</th>
+                <th>Responses</th>
+                
+              </tr>
+              <%# if resp.response.present?%>
+              <tr>
+              </tr>
+              <%#end%>
+              </thead>
+              <tbody>
+              <% @reviews.try(:each) do |review|%>
+             <% if review.review_from_user_role == 'employer' %>
+                  <tr>
+                    <td data-title="Review Details">
+                      <div class="content">
+                        <p>
+                        
+                          <span>Pros:</span>
+                           
+                          <%= review.try(:pros) %>
+                        
+                        </p>
+                        <!--<p class="hidden_para">
+                            These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
+                        </p>
+                        <span href="#" class="button"><span>Read More...</span></span>
+                    </div>-->
+                      </div>
+                      <div class="content">
+                        <p>
+                          <span>Cons:</span>
+                          <%= review.try(:cons) %>
+                        </p>
+                        <!--  <p class="hidden_para">
+                              These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
+                          </p>
+                      <span href="#" class="button"><span>Read More...</span></span>
+                  </div>-->
+                      </div>
+                      <div class="content last">
+                        <p>
+                          <span>Recommendations:</span>
+                          <%= review.try(:recommendations) %>
+                        </p>
+                        <!-- <p class="hidden_para">
+                             These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
+                         </p>
+                         <span href="#" class="button"><span>Read More...</span></span>
+                     </div>-->
+                      </div>
+               
+
+                    </td>
+                    <% if params[:by] !='me' %>
+                        <td data-title="Review from">
+                          <% if review.review_from_user_role == 'employer' %>
+                              
+                              <%= review.review_from.company_name %>
+                          <% end %>
+                        </td>
+                    <% end %>
+
+                    
+
+                    <td data-title="Review Date"><%= review.created_at.strftime("%m/%d/%Y") %></td>
+                    <td data-title="Rating"> <div data-score="<%=review.score%>" class="stars"></div> </td>
+
+                     <td data-title="Responses">
+             <a href="/review_responses?id=<%=review.id%>"><%= review.review_responses.count %></a>
+                </td>
+
+
+                    
+                  </tr>
+                  <%end%>
+
+<%end%>
+          
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        </div>
+<script>
+    $('.stars').raty({readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        }
+    });
+</script>
+
+
+
+
+    </div>
+  </div>
+
+  <% if params[:by]=='me' %>
+           <div class="paginations top-pagination remove_pad">
+            <%= will_paginate @reviews, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+          </div>
+          
+          <% end %>
+
+<!--End search-container-->
+
+<!--start employment-part-->
+          <div class="employment-part">
+            <div id="tab-2" class="tab-content tb-box">
+             <% if current_user.try(:role).try(:authority)=='employer' %>
+              <h4>Employment</h4>
+
+              <div class="box-side">
+                <div class="company_users">
+
+                  <div id="no-more-tables">
+                    <table class="col-sm-12 table-striped table-condensed cf">
+                      <thead class="cf">
+                      <tr>
+                        <th>Title</th>
+                        <th>Organization</th>
+                        <th>From</th>
+                        <th>To</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+
+                      <% @job_histories.each do |job_history| %>
+                          <tr>
+                            <td data-title="Title"><%= job_history.title %></td>
+                            <td data-title="Organization"><%= job_history.organization %><br><% if job_history.currentcompany? %> Current Company <% end %></td>
+                            <td data-title="From"><%= job_history.from %></td>
+                            <td data-title="To"><%= job_history.to %></td>
+                          </tr>
+                      <% end %>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!--ENd employment-part-->
+
+          <!--start education-part-->
+          <div class="education-part">
+            <div id="tab-3" class="tab-content tb-box">
+              <h4>Education</h4>
+
+              <div class="box-side">
+                <div class="job_seeker_my_acc">
+
+                  <div class="company_users">
+
+                    <div id="no-more-tables">
+                      <table class="col-sm-12 table-striped table-condensed cf">
+                        <thead class="cf">
+                        <tr>
+                          <th>Degree</th>
+                          <th>Field</th>
+                          <th>Institution</th>
+                          <th>Location</th>
+                          <th>Completion</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% @educations.each do |education| %>
+
+                        <tr>
+                          <td data-title="Degree"><%= education.degree %></td>
+                          <td data-title="Field"><%= education.field %></td>
+                          <td data-title="Institution"><%= education.institution %></td>
+                          <td data-title="Location"><%= education.location %></td>
+                          <td data-title="Completion"><%= education.completion %></td>
+                        </tr>
+                        <%end%>
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <h2>Certification</h2>
+                    <div id="no-more-tables">
+                      <table class="col-sm-12 table-striped table-condensed cf">
+                        <thead class="cf">
+                        <tr>
+                          <th>Certification Name</th>
+                          <th>Institution</th>
+                          <th>Received</th>
+                          <th>Expired</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% @certifications.each do |certification| %>
+                        <tr>
+                          <td data-title="Certification Name"><%= certification.name %></td>
+                          <td data-title="Institution"><%= certification.institution %></td>
+                          <td data-title="Received"><%= certification.received %></td>
+                          <td data-title="Expired"><%= certification.expired %></td>
+                        </tr>
+                        <%end%>
+
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <h2>Papers/Journals</h2>
+                    <div id="no-more-tables">
+                      <table class="col-sm-12 table-striped table-condensed cf">
+                        <thead class="cf">
+                        <tr>
+                          <th>Name</th>
+                          <th>Date</th>
+                          <th>Reference</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <% @journals.each do |journal| %>
+
+                        <tr>
+                          <td data-title="Name"><%= journal.name %></td>
+                          <td data-title="Date"><%= journal.date.strftime("%m/%d/%Y") %></td>
+                          <td data-title="Reference"><%= journal.reference %></td>
+                        </tr>
+                        <%end%>
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+            <!--ENd Education-part-->
+          </div>
+
+          <!--start resume-part-->
+          <div class="resume-part">
+            <div id="tab-4" class="tab-content tb-box">
+              <h4>Resume</h4>
+
+              <div class="box-side">
+
+
+                <%if !@jprofile.resume_file_name.nil? %>
+                    <%= link_to "View Resume", @jprofile.resume.url(:original, false), :target => '_blank' %>
+                    <br/>
+                    <%= link_to "Download Resume", jprofiles_download_resume_path(:id => @jprofile.id), :method => 'post', :target => '_blank' %>
+                <% else %>
+                     No Resume Available for this profile
+                <% end %>
+                <%end%>
+
+              </div>
+
+            </div>
+          </div>
+          <!--ENd resume-part-->
+
+
+        </div>
+        <%= render :partial => "contact" %>
+         <%= render :partial => "review_popover" %>
+
+
+      </div>
+      <!--End middle-side-->
+
+      <!--right-side-->
+      <div class="col-lg-1 col-md-1 col-sm-1  no_pad_right right-side">
+
+      </div>
+      <!--End right-side-->
+
+    </div>
+  </div>
+
+</div>
+<!--End search-container-->
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".top-sc a").click(function(){
+            $('html, body').animate({ scrollTop: 0 },'slow');
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+
+        $('ul.tabs li').click(function(){
+            var tab_id = $(this).attr('data-tab');
+
+            $('ul.tabs li').removeClass('current');
+            $('.tab-content').removeClass('current');
+
+            $(this).addClass('current');
+            $("#"+tab_id).addClass('current');
+        })
+
+    });
+
+</script>
+
+<script type="">
+    $(document).ready(function(){
+
+        $('.show-link').on('click',function(event ){
+
+            $(this).next().toggle(500);
+
+        });
+
+
+    });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.prev_page').click(function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            console.log('prev page ');
+            prev=parseInt($('#curpage').val())-1;
+            if(prev<=0){
+                prev=1;
+                alert('No more profiles are available');
+                return;
+            }
+            a=window.location.search;
+            url=a.substring(0,a.indexOf('&page'));
+            url=url+'&page='+prev;
+            url='/search/profiles'+url;
+            window.location=url;
+        });
+        $('.nxt_page').click(function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            console.log('nxt page ');
+            nxt=parseInt($('#curpage').val())+1;
+            total=parseInt($('#total').val());
+            if(nxt>total){
+                nxt=total;
+                alert('No more profiles are available');
+                return;
+            }
+
+            a=window.location.search;
+            url=a.substring(0,a.indexOf('&page'));
+            url=url+'&page='+nxt;
+            console.log('next ** url *** :'+url);
+            url='/search/profiles'+url;
+            window.location=url;
+        });
+
+        $('.back-link').click(function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            //?id=1&what=&where=&distance=50&offset=1&page=1
+            a = window.location.search;
+            url=a.substring(a.indexOf('what'),a.indexOf('&offset'));
+            url='/search/profiles?'+url
+            window.location=url;
+        });
+
+    });
+
+    a = window.location.search;
+    url=a.substring(a.indexOf('what'),a.length);
+    // Hire
+    $('.hire_action').attr('href',$('.hire_action').attr('href')+'&'+url)
+    $('.bookmark_action').attr('href',$('.bookmark_action').attr('href')+'&'+url);
+    $('.network_action').attr('href',$('.network_action').attr('href')+'&'+url);
+
+
+
+</script>

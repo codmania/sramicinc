@@ -1,0 +1,102 @@
+<%= form_for @jprofile, :html => { :multipart => true , :class => "form-horizontal jprofile" } do |f| %>
+
+
+    <% if @jprofile.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@jprofile.errors.count, "error") %> prohibited this jprofile from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @jprofile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:title]) %>
+  </div>
+  
+  
+  <div class="control-group">
+    <%= f.label :city, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :city, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:city]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :state,'State', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :state_list_id,StateList.all,:id,:name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:state]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :country,'Country', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :country_list_id,CountryList.all,:id,:name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:country]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :zip, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :zip, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:zip]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :phone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:phone]) %>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :summary, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :summary, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:summary]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :availability, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :availability, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:availability]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :relocation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :relocation, :class => 'form-control' %>
+    </div>
+    <%= error_span(@jprofile[:relocation]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :resume, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :resume, :class => 'form-control'  %>
+    </div>
+    <%= error_span(@jprofile[:resume]) %>
+  </div>
+  <%= f.hidden_field :jobseeker_id, :value=>@jprofile[:jobseeker_id] %>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            jprofiles_path, :class => 'btn btn-default' %>
+
+
+<% end %>

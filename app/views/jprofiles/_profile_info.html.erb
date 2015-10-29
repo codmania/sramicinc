@@ -1,0 +1,83 @@
+<div class="profile-detail" id="profile_info_window">
+  <ul class="prof-details2">
+
+
+    <li>
+      <span class="left-det">Title</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @jprofile.try(:title) %> </span>
+    </li>
+
+    <li>
+      <span class="left-det">Name</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @jprofile.try(:name) %> </span>
+    </li>
+
+    <li>
+      <span class="left-det">Email</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @jprofile.try(:jobseeker).try(:user).try(:email) %></span>
+    </li>
+
+    <li>
+      <span class="left-det">Address</span>
+      <span class="dot">:</span>
+      <span class="right-det">
+         <%= @jprofile.try(:address1) %> <%if @jprofile.address1.present? %>, <%end%>
+        <%= @jprofile.try(:address2) %> <%if @jprofile.address2.present? %>, <%end%>
+        <%= @jprofile.try(:city) %> <%if @jprofile.city.present? %>, <%end%>
+        <%= @jprofile.try(:state_list).try(:name) %><%if @jprofile.state_list.present? %>, <%end%>
+        <%= @jprofile.try(:country_list).try(:name) %><%if @jprofile.country_list.present? %>. <%end%>
+      </span>
+    </li>
+
+    <li>
+      <span class="left-det">Zip Code</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @jprofile.try(:zip) %></span>
+    </li>
+    
+     <li>
+      <span class="left-det">Phone</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @jprofile.try(:phone) %></span>
+    </li>
+
+    
+
+    <li>
+      <span class="left-det">Salary Type</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @jprofile.try(:salary_type).try(:s_type) %> </span>
+      
+    </li>
+
+    <li> 
+      <span class="left-det">Salary</span>
+        <span class="dot">:</span>
+      <span class="right-det"><%= @jprofile.try(:salary) %> </span>
+    </li>
+
+    <li>
+      <span class="left-det">Summary</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @jprofile.try(:summary) %></span>
+    </li>
+
+    <li>
+      <span class="left-det">Resume</span>
+      <span class="dot">:</span>
+      <span class="right-det">
+        <%if !@jprofile.resume_file_name.nil? %>
+        <%= link_to "View Resume", @jprofile.resume.url(:original, false), :target => '_blank' %>
+            <br/>
+            <%= link_to "Download Resume", jprofiles_download_resume_path(:id => @jprofile.id), :method => 'post', :target => '_blank' %>
+        <% else %>
+            No Resume Available, Please upload
+        <% end %>
+      </span>
+    </li>
+
+  </ul>
+</div>

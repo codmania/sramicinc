@@ -1,0 +1,17 @@
+
+<div class="create_container">
+  <%if !@paymentmodule.nil?%>
+  <h1>Activate/De-Activate Payment Module</h1>
+
+  <div class="create_job_sub_container container">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-5">
+      <%= render :partial => 'form' %>
+    </div>
+
+  </div>
+  <% else %>
+  <h5 style="color:red; text-align:center;"><%= "No Payment Modules" %></h5>
+  <% end %>
+
+</div>

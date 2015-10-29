@@ -1,0 +1,46 @@
+
+<!--start search-container-->
+   <div class="container-fluid search-container">
+   <div class="container">
+   <div class="row">
+
+   <div class="col-lg-12 no_pad ">
+
+   <div class="company_users">
+   <div class="paginations top-pagination remove_pad  ">
+   <%= will_paginate @jobseeker_messages, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+   </div>
+
+
+    <div id="no-more-tables">
+    <table class="col-sm-12 table-striped table-condensed cf">
+    <thead class="cf">
+    <tr>
+    <th >From</th>
+    <th >Message</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @jobseeker_messages.try(:each) do |message| %>
+    <tr>
+    <td data-title="From"><%=message.try(:employer).try(:user).try(:name) %></td>
+    <td data-title="Message"><%= message.try(:message) %></td>
+    </tr>
+    <% end %>
+    </tbody>
+    </table>
+    </div>
+
+
+
+    </div>
+
+
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>

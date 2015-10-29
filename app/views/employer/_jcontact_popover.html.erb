@@ -1,0 +1,45 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm">
+  <form action="/contact_candidate" method="post" data-remote="true" id="jcontact_msg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Message</h4>
+      </div>
+      <div class="modal-body">
+          <textarea id="message" style="height:100px;" name="message" required="" placeholder="Enter Message here"></textarea>
+          <input type="hidden" name="job_application_id" id="job_application_id" value="" />
+      </div>
+      <div class="modal-footer">
+        <span class="msg"></span>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </form>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+$("#jcontact_msg").on("ajax:success", function(e, data, status, xhr) {
+    console.log('succ   :'+status);
+   // $('#myModal').modal('toggle');
+    jQuery('#message').val('');
+
+    return $(".msg").append(xhr.responseText);
+}).on("ajax:error", function(e, xhr, status, error) {
+    console.log('error   :'+status);
+  return $(".msg").append(xhr.responseText);
+});
+
+function setJcontactData(idd){
+  jQuery('.msg').html('');
+  jQuery('#message').val('');
+  jQuery('#job_application_id').val(idd);
+}
+
+$('#jcontact_msg').submit(function(){
+    jQuery('.msg').html('');
+});
+
+</script>

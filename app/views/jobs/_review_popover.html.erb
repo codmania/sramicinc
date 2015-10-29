@@ -1,0 +1,48 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+  <form action="/reviews" method="post" data-remote="true" id="review_form">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Write Review</h4>
+      </div>
+      <div class="modal-body">
+        <textarea id="pros" style="height:70px;" name="pros" required="true" placeholder="Enter Proc Here"></textarea><br/>
+        <textarea id="cons" style="height:70px;" name="cons" required="true" placeholder="Enter Cons Here here"></textarea><br/>
+        <textarea id="recommendations" style="height:70px;" name="recommendations" required="true" placeholder="Enter Recommendations here"></textarea>
+            <div class="stars"></div>
+          <input type="hidden" name="from" id="from" value="" />
+          <input type="hidden" name="to" id="to" value="" />
+      </div>
+      <div class="modal-footer">
+        <span class="msg"></span>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </form>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+$("#review_form").on("ajax:success", function(e, data, status, xhr) {
+    $('#myModal').modal('toggle');
+    return $(".buttons #notice").html(xhr.responseText);
+}).on("ajax:error", function(e, xhr, status, error) {
+  return $(".msg").html(xhr.responseText);
+});
+
+$('.stars').raty({score:3});
+
+function setReviewData(to, from){
+    console.log('to  :'+to+'   from    :'+from);
+
+    jQuery('#pros').val('');
+    jQuery('#cons').val('');
+    jQuery('#recommendations').val('');
+    jQuery('#to').val(to);
+    jQuery('#from').val(from);
+
+}
+
+</script>

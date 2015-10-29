@@ -1,0 +1,173 @@
+<form action = "search">
+<div class="row main_search_container2">
+  <div class="col-sm-4">
+    <div class="input-container ">
+      <label>What</label>
+      <input type="text" name="what" class="search" placeholder="Skill, Job Title, Company or Keywords"/>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="input-container">
+      <label>Where</label>
+      <input type="text" name="where" class="search" placeholder="Skills, Job Title, Company or Keywords"/>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div class="input-container">
+      <label>Within</label>
+      <select class="select" name = "distance">
+        <option>Miles</option>
+        <option>Kms</option>
+      </select>
+
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div class="select-container">
+      <input type="submit" name="" class="search" value="Search"/>
+    </div>
+  </div>
+  <a class="advance_search js-open-modal" href="#" data-modal-id="popup2">Advance Search</a>
+</div>
+</form>
+
+<%= form_for :search ,:url=>{:controller=>'search',:action=>'search_jobs'} ,:method=>'get' do |s|%>
+<!--start advance search popup-->
+<div id="popup2" class="modal-box">
+  <header>
+    <a href="#" class="js-modal-close close">×</a>
+    <h3>Advanced Job Search</h3>
+  </header>
+ 
+  <div class="modal-body">
+
+    <div class="advance-job-container">
+      <div class="advance-job">
+        <label>Skills</label>
+        <input type="text" name="keywords" class="ad1-text" placeholder="Keywords" />
+      </div>
+
+      <div class="advance-job">
+        <label>Job Title</label>
+        <input type="text" name="what" class="ad1-text" placeholder="Designation" />
+      </div>
+
+      <div class="advance-job">
+        <label>Company</label>
+        <input type="text" name="companyname" class="ad1-text" placeholder="Name" />
+      </div>
+
+    </div>
+    <!--End advance-job-container-->
+
+    <div class="advance-job-container">
+      <div class="advance-job">
+        <label>Location</label>
+        <input type="text" name="where" class="ad1-text" placeholder="City, State or Zip Code" />
+      </div>
+
+      <div class="advance-job">
+        <label class="lbl-center">Within</label>
+        <div class="radius">
+          <span>Radius</span>
+          <select class="small-drp" name = "distance">
+        <option value = "5">5 Miles</option>
+        <option value = "40">40 Miles</option>
+        <option value = "400">400 Miles</option>
+        <option value = "4000">4000 Miles</option>
+        <option>Kms</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="advance-job" >
+        <label>Posting Date</label>
+    <div style="color:#0000FF"> <%= select_tag "created_at", options_from_collection_for_select(Job.all, "created_at", "created_at")%></div>
+      </div>
+    </div>
+    <!--End advance-job-container-->
+
+    <div class="advance-job-container">
+
+      <div class="advance-job">
+        <label>Job Type</label>
+        <select class="large-drp" name="">
+          <option>All</option>
+          <option>12 miles</option>
+          <option>14 miles</option>
+        </select>
+      </div>
+
+      <div class="advance-job" >
+        <label>Job Category</label>
+    <div style="color:#0000FF"><%= select_tag "categoryname", options_from_collection_for_select(Category.all, "name", "name")%></div>
+        
+       
+      </div>
+
+      <div class="advance-job">
+        <label>Sort By</label>
+
+        <div class="sort-by">
+          <a href="#" class="active">Date</a>
+          <a href="#">Relevance</a>
+          <a href="#">Comments</a>
+        </div>
+
+      </div>
+
+    </div>
+    <!--End advance-job-container-->
+
+    <div class="advance-job-container">
+      <div class="advance-job2">
+        <label>Salary Type</label>
+        <div class=" salary-box">
+
+          <div class="check-side">
+            <input type="checkbox" class="chk-b" />
+            <label>Any</label>
+          </div>
+
+          <div class="check-side">
+            <input type="checkbox" class="chk-b" />
+            <label>Annual</label>
+          </div>
+
+          <div class="check-side">
+            <input type="checkbox" class="chk-b" />
+            <label>Monthly</label>
+          </div>
+
+          <div class="check-side">
+            <input type="checkbox" class="chk-b" />
+            <label>Weekly</label>
+          </div>
+
+          <div class="check-side">
+            <input type="checkbox" class="chk-b" />
+            <label>Daily</label>
+          </div>
+
+          <div class="check-side">
+            <input type="checkbox" class="chk-b" />
+            <label>Hourly </label>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="search-button">
+      <input type="submit" name="" class="search-btn" value="Search" />
+    </div>
+
+  </div>
+
+</div>
+<!--End advance search popup-->
+
+<% end %>
+

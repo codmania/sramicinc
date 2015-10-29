@@ -1,0 +1,216 @@
+<div class="col-lg-12 no_pad ">
+  <ul id="main-nav">
+
+    <li><a class="main-link" href="/home/index">Home</a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="/home/index">Home</a></li>
+        <!--<li><a rel="nofollow" data-method="get" href="<%= banners_path %>">Banners</a></li>-->
+        <li><a rel="nofollow" data-method="get" href="<%= news_letters_path %>">Newsletters</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= admin_cms_pages_path %>">CMS</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%=careers_path%>">Post Career</a></li>
+      </ul>
+   </li>
+    <li><a class="main-link" href="<%= app_users_path %>">Users</a></li>
+    <li><a class="main-link" href="<%= jobs_path %>">Jobs</a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="<%= jobs_path %>">Jobs</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= categories_path %>">Job Category</a></li>
+
+        <li><a rel="nofollow" data-method="get" href="<%= industries_path %>">Industry</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= job_types_path %>">Job Type</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= salary_types_path %>">Salary Type</a></li>
+      </ul>
+    </li>
+
+    <li class="bd-none"><a class="main-link" href="<%= state_lists_path %>">Location</a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="<%= state_lists_path %>">State</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= country_lists_path%>">Country</a></li>
+
+      </ul></li>
+
+    <li><a class="main-link" href="<%= subscriptions_path %>">Billing  </a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="<%= subscriptions_path%>">Subscribed</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= plans_path%>">Plans</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%= payment_modules_edit_path%>">Payment Module</a></li>
+      </ul>
+    </li>
+
+    <li><a class="main-link" data-method="get" href="<%=testimonials_path%>"> Testimonials </a> </li>
+    <li><a class="main-link" data-method="get" href="<%=faqs_path%>"> FAQs </a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="<%=faqs_path%>">FAQ's</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%=faq_categories_path%>">FAQ Categories</a></li>
+        </ul>
+    </li>
+      <li><a class="main-link" data-method="get" href="<%=enquiries_path%>"> Enquiries</a>
+      <ul class="sub-links">
+        <li><a rel="nofollow" data-method="get" href="<%=enquiries_path%>">Enquiries</a></li>
+        <li><a rel="nofollow" data-method="get" href="<%=enquiry_categories_path%>">Enquiry Categories</a></li>
+        </ul></li>
+
+  </ul>
+
+    <!--responsive-menu-->
+  <nav id="menu-wrap">
+    <ul id="menu">
+
+      <li>
+        <a href="/home/index"> Home </a>
+        <ul>
+          <li><a data-method="get" href="/home/index">Home</a> </li>
+          <li><a data-method="get" href="<%= banners_path %>">Banners</a> </li>
+          <li><a data-method="get" href="<%= news_letters_path %>">Newsletters</a> </li>
+          <li><a data-method="get" href="<%= admin_cms_pages_path %>">CMS</a> </li>
+
+        </ul>
+      </li>
+
+      <li><a href="<%= app_users_path%>">Users</a></li>
+      <li>
+        <a href="<%= jobs_path%>">Jobs</a>
+        <ul>
+          <li><a data-method="get" href="<%= jobs_path  %>">Jobs</a> </li>
+          <li><a data-method="get" href="<%= categories_path %>">Job Category</a> </li>
+          <li><a data-method="get" href="<%= industries_path %>">Industry</a> </li>
+          <li><a data-method="get" href="<%= job_types_path %>">Job Type</a> </li>
+          <li><a data-method="get" href="<%= salary_types_path %>">Salary Type</a> </li>
+
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="<%= state_lists_path %>"> Location </a>
+        <ul>
+          <li><a data-method="get" href="<%= state_lists_path  %>">State</a> </li>
+          <li><a data-method="get" href="<%= country_lists_path  %>">Country</a> </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="<%= subscriptions_path %>">Billing  </a>
+        <ul>
+          <li><a data-method="get" href="<%= subscriptions_path%>">Subscribed</a></li>
+          <li><a data-method="get" href="<%= plans_path%>">Plans</a></li>
+          <li><a data-method="get" href="<%= payment_modules_edit_path%>">Payment Module</a></li>
+        </ul>
+      </li>
+
+      <li><a href="<%=testimonials_path%>">Testimonials</a></li>
+      <li>
+        <a href="<%=faqs_path %>"> FAQs </a>
+        <ul>
+          <li><a data-method="get" href="<%= faqs_path %>">FAQs</a> </li>
+          <li><a data-method="get" href="<%= faq_categories_path %>">FAQs Categories</a> </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="<%= enquiries_path%>">Enquiries</a>
+        <ul>
+          <li><a data-method="get" href="<%= enquiries_path %>">Enquiries</a> </li>
+          <li><a data-method="get" href="<%= enquiry_categories_path %>">Enquiries Categories</a> </li>
+
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+    <!--End responsive-menu-->
+</div>
+
+<script type="text/javascript" id="demo1-javascript">
+    $(document).ready(function() {
+        // Initialize navgoco with default options
+        $("#demo1").navgoco({accordion: true});
+
+    });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#main-nav li a.main-link").hover(function(){
+            $("#main-nav li a.close").fadeIn();
+            $("#main-nav li a.main-link").removeClass("active");
+            $(this).addClass("active");
+            $("#sub-link-bar").animate({
+                height: "40px"
+            });
+            $(".sub-links").hide();
+            $(this).siblings(".sub-links").fadeIn();
+        });
+        $("#main-nav li a.close").click(function(){
+            $("#main-nav li a.main-link").removeClass("active");
+            $(".sub-links").fadeOut();
+            $("#sub-link-bar").animate({
+                height: "10px"
+            });
+            $("#main-nav li a.close").fadeOut();
+        });
+
+
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        (function() {
+            /* Mobile */
+            $('#menu-wrap').prepend('<div id="menu-trigger">Menu</div>');
+            $("#menu-trigger").on("click", function() {
+                $("#menu").slideToggle();
+            });
+
+            // iPad
+            var isiPad = navigator.userAgent.match(/iPad/i) != null;
+            if (isiPad) $('#menu ul').addClass('no-transition');
+        })();
+
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".top-sc a").click(function(){
+            $('html, body').animate({ scrollTop: 0 },'slow');
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+
+        $('ul.tabs li').click(function(){
+            var tab_id = $(this).attr('data-tab');
+
+            $('ul.tabs li').removeClass('current');
+            $('.tab-content').removeClass('current');
+
+            $(this).addClass('current');
+            $("#"+tab_id).addClass('current');
+        })
+
+    });
+
+</script>
+
+<script type="">
+    $(document).ready(function(){
+
+        $('.show-link').on('click',function(event ){
+
+            $(this).next().toggle(500);
+
+        });
+
+
+    });
+</script>

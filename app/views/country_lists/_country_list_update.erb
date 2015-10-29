@@ -1,0 +1,4 @@
+<option value="">Select State </option>
+  <% @states.each do |state| %>
+  <option value="<%= state.id%>"><%= state.name%></option>
+  <% end %>

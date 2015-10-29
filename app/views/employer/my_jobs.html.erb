@@ -1,0 +1,81 @@
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 no_pad ">
+        <div class="company_users">
+              <h3>My Jobs</h3><br>
+
+          <div id="no-more-tables">
+            <table class="col-sm-12 table-striped table-condensed cf">
+                  <thead class="cf">
+                      <tr>
+                          <th>Title</th>
+                          <th>Location</th>
+                          <th>Posted Date</th>
+                          <th>Resume Submitted</th>
+                          <th>Comments</th>
+                          <!--<th>Views</th>-->
+                          <th>Status</th>
+                          <th width="100" class="table-last-th"></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% @jobs.each do |job| %>
+                      <tr>
+                          <td data-title="Title"><a href="<%= job_path(job.id) %>" target="_blank"><%= job.title%></td>
+                          <td data-title="Location"><%=job.try(:city)%>  <%=job.try(:state_list).try(:name)%>   <%=job.try(:zip)%></td>
+                           <td data-title="Posted Date"><%=job.created_at.strftime("%m/%d/%Y")%></td>
+                          <td data-title="Resume Submitted"><a href="/applications?id=<%=job.id%>"><%=job.try(:job_applications).try(:count)%></a></td>
+                          <td data-title="Comments"><%=job.try(:comments).try(:count) %></td>
+                          <!--<td data-title="Views">10</td>-->
+                          <td data-title="Status">
+                            <span class="stat">
+                                  <%if job.status %>
+                                     Opened
+                                  <% else %>
+                                      Closed
+                                  <%end%>
+                            </span>
+                          </td>
+
+                          <td data-title="" class="table-last-td">
+                           <ul class="actions_container">
+                              <li> <%= link_to '<span class="icon icon_1"></span>'.html_safe,
+                                               edit_job_path(job) %></li>
+
+                              <li>
+                    <%= link_to '<span class="icon icon_2"></span>'.html_safe,
+                                 job_path(job),
+                                :method => :delete,
+                                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+                  </li>
+                            </ul>
+                          </td>
+                      </tr>
+                     <%end%>
+                  </tbody>
+                </table>
+               </div>
+             </div>
+           </div>
+        </div>
+     </div>
+  <div class="paginations top-pagination">
+      <%= will_paginate @jobs,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+    </div>
+
+    <!--<p class="pagination_page_count">Results 1-6 out of 17</p>-->
+    <!--<div class="paginations top-pagination">-->
+                        	<!--<ul>-->
+                            	<!--<li> <a href="#"><img alt="" src="/assets/prev-2.png"> </a> </li>-->
+                                <!--<li> <a href="#"><img alt="" src="/assets/prev-1.png"></a> </li>-->
+                                <!--<li> <a href="#">1</a> </li>-->
+                                <!--<li> <a href="#">2</a> </li>-->
+                                <!--<li> <a href="#">3</a> </li>-->
+                                <!--<li> <a href="#">4</a> </li>-->
+                                <!--<li> <a href="#">5</a> </li>-->
+                                <!--<li> <a href="#"><img alt="" src="/assets/next-1.png"></a> </li>-->
+                                <!--<li> <a href="#"><img alt="" src="/assets/next-2.png"></a> </li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+</div>

@@ -1,0 +1,18 @@
+<%= form_for :payment_module, :url=>'/payment_modules/update',:method=>'get',:html => {:class => "form-horizontal payment_module"} do |f| %>
+
+      <div class="l-block l-block_1">
+      <label>Activate?</label>
+         <%= f.radio_button :active, true %><label>Yes</label>
+         <%= f.radio_button :active, false %><label>No</label>
+    </div>
+
+    <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                     a_home_path , :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<% end %>

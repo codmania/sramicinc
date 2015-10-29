@@ -1,0 +1,365 @@
+<% if current_user%>
+<%if current_user.try(:id) !=  @eprofile.try(:employer).try(:user).try(:id)%>
+<div class="container">
+    <div class="col-lg-12 no_pad heads-btns">
+        <p id="notice"><%= flash['message']%></p>
+        <%= link_to "Add To Network", networks_path(:id => @eprofile.try(:employer).try(:user).try(:id), :eprofile_id =>@eprofile.id), :method => 'post', :class => "orange-btn org-pad" %>
+        <%# if !@hired_me_employer.nil? %>
+        <a href="#" onClick="setReviewData(<%= @eprofile.try(:employer).try(:user).try(:id)%>, <%= current_user.try(:id)%>)" class="orange-btn org-pad" data-toggle="modal" data-target="#myModal">
+              Write Review
+        </a>
+        <%# end %>
+    </div>
+</div>
+<%end%>
+<%end%>
+
+
+
+<%= render :partial => 'review_popover' %>
+
+
+<div class="container-fluid search-container">
+
+ 
+
+    
+
+
+<!--start search-container-->
+
+<div class="container">
+    
+
+    <div class="row"><br><br><br><br>
+      <!--left-side-->
+      <div class="col-lg-1 col-md-1 col-sm-1 no_pad_left left-side">
+        <!--End explore-result-->
+      </div>
+      <!--End left-side-->
+
+      <!--middle-side-->
+      <div class="col-lg-12 col-md-12 col-sm-12 no_pad middle-side">
+        <ul class="tabs tab2">
+
+          <li class="tab-link current" data-tab="tab-1">Company Profile </li>
+         
+          <li class="tab-link" data-tab="tab-5">Reviews </li>
+        </ul>
+
+
+        <!--start profile-seeker-->
+        <div class="col-lg-12 profile-seeker no_pad">
+
+          <!--sstart profile-part-->
+          <div class="profile-part">
+            <div id="tab-1" class="tab-content current tb-box">
+              <h4>Company Information</h4>
+
+              <ul class="prof-details2">
+           <li>
+            <span class="left-det">Company Name</span>
+            <span class="dot">:</span>
+            <span class="right-det"><%= @eprofile.try(:company_name) %></span>
+          </li>
+
+            <li>
+              <span class="left-det">Industry</span>
+                  <span class="dot">:</span>
+                <span class="right-det"><%= @eprofile.try(:industry).try(:name) %></span>
+            </li>
+
+          <li>
+              <span class="left-det">Services</span>
+                  <span class="dot">:</span>
+                <span class="right-det"><%= @eprofile.services %></span>
+            </li>
+
+            <li>
+              <span class="left-det">Products</span>
+                  <span class="dot">:</span>
+                <span class="right-det"><%= @eprofile.products %></span>
+            </li>
+
+            <li>
+              <span class="left-det">Location</span>
+              <span class="dot">:</span>
+              <span class="right-det"><%= @eprofile.address1 %><%if @eprofile.address1.present? %>, <%end%><%= @eprofile.address2 %><%if @eprofile.address2.present? %>, <%end%><%= @eprofile.try(:city) %><%if @eprofile.city.present? %>, <%end%><%= @eprofile.try(:state_list).try(:name) %><%if @eprofile.country_list.present? %>, <%end%><%= @eprofile.try(:country_list).try(:name) %></span>
+            </li>
+
+            <% if current_user.try(:role).try(:authority)=='employer' ||  current_user.try(:role).try(:authority)=='jobseeker' ||  current_user.try(:role).try(:authority)=='jobseeker'%>
+             <li>
+              <span class="left-det">Phone</span>
+                  <span class="dot">:</span>
+                <span class="right-det"><%= @eprofile.phone %></span>
+                <% end%>
+            </li>
+
+            <li>
+              <span class="left-det">Fax</span>
+                  <span class="dot">:</span>
+                <span class="right-det"><%= @eprofile.fax %></span>
+            </li>
+
+           <% if current_user.try(:role).try(:authority)=='employer' ||  current_user.try(:role).try(:authority)=='jobseeker' ||  current_user.try(:role).try(:authority)=='jobseeker'%>
+             <li>
+              <span class="left-det">Email</span>
+                  <span class="dot">:</span>
+                <span class="right-det"><a href="#"><%= @eprofile.email %></a></span>
+                  <%end%>
+            </li>
+
+             <li>
+              <span class="left-det">Website</span>
+                  <span class="dot">:</span>
+                <span class="right-det"><a href="<%=@eprofile.website%>" target="_blank"><%= @eprofile.website %></a></span>
+            </li>
+
+            <li>
+              <span class="left-det">Social Networks URL</span>
+                <span class="dot">:</span>
+                <span class="right-det">
+                   <ul class="prof-details">
+
+                        <li>
+                            <span class="left-det">Facebook</span>
+                                <span class="dot">:</span>
+                            <span class="right-det"><a href="<%= @eprofile.fb_url %>" target="_blank"><%= @eprofile.fb_url %></a></span>
+                        </li>
+
+                        <li>
+                            <span class="left-det">Twitter</span>
+                                <span class="dot">:</span>
+                            <span class="right-det"><a href="<%= @eprofile.twitter_url %>" target="_blank"><%= @eprofile.twitter_url %></a></span>
+                        </li>
+
+                        <li>
+                            <span class="left-det">Google Plus</span>
+                                <span class="dot">:</span>
+                            <span class="right-det"><a href="<%= @eprofile.gplus_url %>" target="_blank"><%= @eprofile.gplus_url %></a></span>
+                        </li>
+
+                        <li>
+                            <span class="left-det">Linkedin</span>
+                                <span class="dot">:</span>
+                            <span class="right-det"><a href="<%= @eprofile.linkedin_url %>" target="_blank"><%= @eprofile.linkedin_url %></a></span>
+                        </li>
+
+
+                    </ul>
+
+                </span>
+            </li>
+
+            </div>
+
+
+          </div>
+          <!--End profile-part-->
+
+
+
+<div class="review-part">
+  <div id="tab-5" class="tab-content tb-box">
+        
+      <div class="box-side">
+       <div class="company_users">
+
+
+
+         <% if params[:by]=='me' %>
+          <h1>Reviews By Me  </h1>
+          <% else %>
+          <% end %>
+
+
+
+          <div id="no-more-tables">
+            <table class="col-sm-12 table-bordered table-striped table-condensed cf">
+
+              <thead class="cf">
+              <tr>
+              
+                <th>Review Details </th>
+                <% if params[:by]!='me' %>
+                <th>Review From </th>
+                <% end %>
+                <% if params[:by]=='me' %>
+                <th>Review to </th>
+                <% end %>
+                <th>Review Date</th>
+                <th>Rating</th>
+                <th>Responses</th>
+                
+              </tr>
+              <%# if resp.response.present?%>
+              <tr>
+              </tr>
+              <%#end%>
+              </thead>
+              <tbody>
+              <% @reviews.try(:each) do |review|%>
+             <% if review.review_from_user_role == 'jobseeker' %>
+                  <tr>
+                    <td data-title="Review Details">
+                      <div class="content">
+                        <p>
+                        
+                          <span>Pros:</span>
+                           
+                          <%= review.try(:pros) %>
+                        
+                        </p>
+                        <!--<p class="hidden_para">
+                            These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
+                        </p>
+                        <span href="#" class="button"><span>Read More...</span></span>
+                    </div>-->
+                      </div>
+                      <div class="content">
+                        <p>
+                          <span>Cons:</span>
+                          <%= review.try(:cons) %>
+                        </p>
+                        <!--  <p class="hidden_para">
+                              These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
+                          </p>
+                      <span href="#" class="button"><span>Read More...</span></span>
+                  </div>-->
+                      </div>
+                      <div class="content last">
+                        <p>
+                          <span>Recommendations:</span>
+                          <%= review.try(:recommendations) %>
+                        </p>
+                        <!-- <p class="hidden_para">
+                             These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
+                         </p>
+                         <span href="#" class="button"><span>Read More...</span></span>
+                     </div>-->
+                      </div>
+               
+
+                    </td>
+                    <% if params[:by] !='me' %>
+                        <td data-title="Review from">
+                          <% if review.review_from_user_role == 'jobseeker' %>
+                            <%= review.review_from.name %>
+                          <% end %>
+                        </td>
+                    <% end %>
+
+                    
+
+                    <td data-title="Review Date"><%= review.created_at.strftime("%m/%d/%Y") %></td>
+                    <td data-title="Rating"> <div data-score="<%=review.score%>" class="stars"></div> </td>
+
+                     <td data-title="Responses">
+             <a href="/review_responses?id=<%=review.id%>"><%= review.review_responses.count %></a>
+                </td>
+
+
+                    
+                  </tr>
+                  <%end%>
+
+<%end%>
+          
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        </div>
+<script>
+    $('.stars').raty({readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        }
+    });
+</script>
+
+
+
+
+    </div>
+  </div>
+
+  <% if params[:by]=='me' %>
+      <div class="paginations top-pagination remove_pad">
+            <%= will_paginate @reviews, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+          </div>
+          
+          <% end %>
+
+<!--End search-container-->
+
+<!--start employment-part-->
+          
+
+
+        </div>
+        
+
+      </div>
+      <!--End middle-side-->
+
+      <!--right-side-->
+      <div class="col-lg-1 col-md-1 col-sm-1  no_pad_right right-side">
+
+      </div>
+      <!--End right-side-->
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<!--End search-container-->
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".top-sc a").click(function(){
+            $('html, body').animate({ scrollTop: 0 },'slow');
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function(){
+
+        $('ul.tabs li').click(function(){
+            var tab_id = $(this).attr('data-tab');
+
+            $('ul.tabs li').removeClass('current');
+            $('.tab-content').removeClass('current');
+
+            $(this).addClass('current');
+            $("#"+tab_id).addClass('current');
+        })
+
+    });
+
+</script>
+
+<script type="">
+    $(document).ready(function(){
+
+        $('.show-link').on('click',function(event ){
+
+            $(this).next().toggle(500);
+
+        });
+
+
+    });
+</script>
+
+
+

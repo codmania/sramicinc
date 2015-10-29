@@ -1,0 +1,2 @@
+module EnquiryCategoriesHelper
+end

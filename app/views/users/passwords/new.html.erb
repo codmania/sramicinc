@@ -1,0 +1,26 @@
+<div class="container-fluid bg-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="login-wrap reset_password">
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="error"><%= flash['message'] %></div>
+
+            <div class="login-bottom">
+                  <h1 class="reset_password">Forgot your password?</h1>
+                  <div class="l-block">
+                    <label>Email<em>*</em></label>
+                    <%= f.text_field :email, autofocus: true,:required=>true %>
+                  </div>
+            </div>
+
+            <div class="l-block">
+              <%= f.submit "Send me reset password link", :class=> " input-login forgot-center-button"%>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End-->

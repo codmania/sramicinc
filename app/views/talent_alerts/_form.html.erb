@@ -1,0 +1,32 @@
+<%= form_for @talent_alert, :html => { :class => "form-horizontal talent_alert" } do |f| %>
+    <% if @talent_alert.errors.any? %>
+        <div id="">
+          <ul>
+            <% @talent_alert.errors.full_messages.each do |message| %>
+                <li style="color:red;"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="l-block l-block_1">
+      <label>What<em>*</em></label><%= f.text_field :what,:required=>true, :maxlength=>150,:placeholder => 'Keywords, Job title' %>
+    </div>
+
+    <div class="l-block l-block_1">
+      <label>Where<em>*</em></label><%= f.text_field :where,:required=>true, :maxlength=>150,:placeholder => 'City, State, Zip Code'  %>
+    </div>
+
+    <div class="l-block l-block_1">
+      <label>Within<em>*</em></label>
+      <%= f.select :within, [['Any Where', 500], ['5 Miles', 5], ['10 Miles', 10], ['20 Miles', 20], ['30 Miles', 30], ['50 Miles', 50]] %>
+    </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    talent_alerts_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+<%end%>

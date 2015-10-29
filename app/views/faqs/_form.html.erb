@@ -1,0 +1,43 @@
+<%=form_for @faq, :html => { :class => "form-horizontal skill", :method=>'post'} do |f| %>
+    <% if @faq.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@faq.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+          <ul>
+            <% @faq.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+    <div class="l-block l-block_1">
+      <label>Category<em>*</em></label>
+      <%= f.collection_select :faq_category_id,FaqCategory.all,:id,:name,:required=>true%>
+       <%#= f.collection_select :faq_category_id,FaqCategory.all.map{|c| [c.name, c.id] }, {include_blank: true}%>
+  </div>
+
+    <div class="l-block l-block_1">
+      <label>Question<em>*</em></label><%= f.text_area :question,:required=>true, :class => 'text_area_alignment' %>
+  </div>
+
+    <div class="l-block l-block_1">
+      <label>Answer<em>*</em></label><%= f.text_area :answer,:required=>true,:class => 'text_area_alignment' %>
+  </div>
+
+  <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10"><br>
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  faqs_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<%end%>
+
+<style>
+
+</style>

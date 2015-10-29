@@ -1,0 +1,27 @@
+<style>
+    .ck_class{
+        margin-bottom: 100px;
+    }
+</style>
+
+<div class="row ck_class" >
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <% if !@page.nil? %>
+        <h3><%=@page.name %>  Page<br/></h3>
+              <% if @page.name == 'Home Banner' %>
+                  <p id="notice">
+                    Note: Please upload image (width: 1366 pixel, height: 499 pixel) for best fit
+                  </p>
+              <% end %>
+            
+          <%= form_for @page do |form| %>
+            <%= form.cktext_area :content ,:cols => 20%><br>
+            <input type="hidden" name="p" value="<%= params[:p] %>" />
+            <%= form.submit :class => 'btn btn-primary' %>
+            <%= link_to "Cancel", :back, {:class=>"btn btn-warning"} %>
+          <% end %>
+        <%end%>
+    </div>
+    <div class="col-md-2"></div>
+</div>

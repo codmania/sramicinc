@@ -1,0 +1,123 @@
+<!--start search-container-->
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 no_pad ">
+
+        <!--End responsive-menu-->
+
+        <div class="employee_bookmarked_profle">
+
+          <h1>Bookmarked Profiles </h1>
+
+        <div id="no-more-tables">
+            <table class="col-sm-12 table-striped table-condensed cf">
+              <thead class="cf">
+              <tr>
+              <th>Profile ID</th>
+                <th>Profile Info</th>
+                <th>Account Type</th>
+                <th>View Date</th>
+                <th>Action</th>
+                <th width="100" class="table-last-th"></th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <% @bookmarks.each do |bm| %>
+
+              <tr>
+               <td data-title="Profile ID"><!--<input type="checkbox" name="" value=""/>--> <label><%= bm.try(:jobseeker).try(:jprofile).try(:id) %></label>
+                <td data-title="Profile Info">
+                  <div class="profile_container">
+
+                    <div class="logo">
+                      <img src="assets/profile_logo.png"/>
+                    </div>
+                    <div class="content">
+
+                      <h2 class="header"><a href="employer/talents?id=<%=bm.try(:jobseeker).try(:jprofile).id%>" target="_blank"><%= bm.try(:jobseeker).try(:jprofile).try(:title) %></a></h2>
+
+                      <div class="profile_row">
+                        <h3 class="name"><%= bm.try(:jobseeker).try(:jprofile).try(:name) %></h3>
+                                                    <span class="review">
+                                                    	<span class="icon icon_1"></span>
+                                                    	<span><%=Review.where(to: bm.try(:jobseeker).user.id).count%> Reviews</span>
+                                                    </span>
+                      </div>
+                      <div class="profile_row border">
+                        <span class="exp"><span class="icon icon_2"></span>5 Year</span>
+                                                    <span class="review">
+                                                    	<span class="icon icon_3"></span>
+                                                    	<span>
+                                                       <%= bm.try(:jobseeker).try(:jprofile).try(:address1) %>
+                      <%= bm.try(:jobseeker).try(:jprofile).try(:address2) %>
+                      <%= bm.try(:jobseeker).try(:jprofile).try(:city) %>
+                      <%= bm.try(:jobseeker).try(:jprofile).try(:state_list).try(:name) %>
+                                                      </span>
+                                                    </span>
+                      </div>
+                      <div class="profile_row last">
+                        <span class="exp"><span class="icon icon_4"></span><%=distance_of_time_in_words(Time.now, bm.jobseeker.jprofile.updated_at.to_time) %></span>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </td>
+                <td data-title="Account Type"><span class="green_button button">Premium</span></td>
+                <td data-title="View Date"><%= bm.created_at.strftime("%m/%d/%Y") %></td>
+                <td data-title="Action">
+                  <div class="last_tble_row">
+                    <span class="icon phone"></span>
+                    <span><%= bm.try(:jobseeker).try(:jprofile).try(:phone) %></span>
+                  </div>
+                  <div class="last_tble_row">
+                    <span class="icon mail"></span>
+                    <span><%= bm.try(:jobseeker).try(:user).try(:email) %></span>
+                  </div>
+                </td>
+
+                <td data-title="" class="table-last-td">
+
+                      <ul class="actions_container">
+                         <li>
+                    <%= link_to '<span class="icon icon_2"></span>'.html_safe,
+                                 bookmark_path(bm),
+                                :method => :delete,
+                                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+                  </li>
+
+                      </ul>
+
+                    </td>
+              </tr>
+
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+
+<div class="paginations top-pagination">
+
+   <%= will_paginate @bookmarks,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+
+      </div>
+
+</div>
+
+  

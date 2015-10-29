@@ -1,0 +1,18 @@
+<h2>Forgot your password?</h2>
+ <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg,:class=>"err" ,:id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%> 
+<%= form_for(@user, url: forgot_password_email_check_path, html: { method: :post }) do |f| %>
+  <%#= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions", :class => 'forgot-center-button' %>
+  </div>
+<% end %>
+
+<%#= render "users/shared/links" %>

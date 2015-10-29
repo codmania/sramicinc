@@ -1,0 +1,32 @@
+
+<%= form_for @city_list, :html => { :class => "form-horizontal city_list" } do |f| %>
+    <% if @city_list.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@city_list.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+          <ul>
+            <% @city_list.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+    <div class="l-block l-block_1">
+      <label>City-Name<em>*</em></label><%= f.text_field :name ,:required=>true%>
+    </div>
+
+    <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    city_lists_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<%end%>
+
+

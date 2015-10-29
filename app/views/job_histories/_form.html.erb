@@ -1,0 +1,75 @@
+<script>
+    $(document).ready(function() {
+        $(".datehide").show();
+        $("#job_history_currentcompany_true,#job_history_currentcompany_false").click(function(){
+            if ( $('#job_history_currentcompany_true').prop("checked") ){
+            $(".datehide").hide();
+            }
+            else{
+            $(".datehide").show();}
+        });
+        $("#job_history_currentcompany_true,#job_history_currentcompany_false").ready(function(){
+           if ( $('#job_history_currentcompany_true').prop("checked") ){
+               $(".datehide").hide();
+           }
+           else{
+               $(".datehide").show();}
+       });
+    });
+</script>
+
+<%= form_for @job_history, :html => { :class => "form-horizontal job_history" } do |f| %>
+    <% if @job_history.errors.any? %>
+        <div class="errors1">
+          <!-- <h2><%= pluralize(@job_history.errors.count, "error") %> prohibited this job from being saved:</h2> -->
+
+          <ul>
+            <% @job_history.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+    <div class="l-block l-block_1">
+      <label>Title<em>*</em></label><%= f.text_field :title,:required=>true,:maxlength=>100 %>
+    </div>
+
+
+    <div class="l-block l-block_1">
+      <label>Organization<em>*</em></label><%= f.text_field :organization,:required=>true,:maxlength=>100 %>
+    </div>
+
+    <div class="l-block l-block_1">
+      <label>Is it current company</label>
+      <%= f.radio_button :currentcompany,true,:value=>true %><%= f.label :currentcompany, "Yes" %>
+      <%= f.radio_button :currentcompany,false,:value=>false%><%= f.label :currentcompany, "No" %>
+
+      </select>
+    </div>
+
+   <!-- check_box_tag(name, value = "1", checked = false, options = {})
+    <input checked="checked" id="receive_email" name="receive_email" type="checkbox" value="yes" />
+-->
+    <div class="l-block l-block_10">
+      <label>From:</label><%= f.date_select :from %>
+    </div>
+
+
+    <div class="l-block l-block_10 datehide">
+      <label>To:</label><%= f.date_select :to %>
+    </div>
+
+
+    <div class="form-group pro_form_group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <%= f.submit 'Save', :class => 'btn btn-primary' %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    job_histories_path, :class => 'btn btn-warning' %>
+      </div>
+    </div>
+
+<%end%>

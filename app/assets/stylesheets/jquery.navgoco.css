@@ -1,0 +1,81 @@
+.nav, .nav ul, .nav li {
+    list-style: none;
+}
+
+.nav ul {
+
+    margin: 0 0 0 18px;
+}
+
+.nav {
+    padding: 4px;
+    margin: 0px;
+}
+
+.nav > li {
+    margin: 4px 0;
+    border-bottom:1px solid #ddd;
+    padding:5px 0;
+
+}
+
+.nav > li li {
+    margin: 2px 0;
+}
+
+.nav a {
+    color: #0a2961;
+    display: block;
+    outline: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.nav li > a > span {
+    float:left;
+    /* font-size: 19px;
+     font-weight: bolder;*/
+}
+
+.nav li > a:hover > span {
+    /*    color: #fff;
+    */}
+
+.nav li > a > span:after {
+    background:url(/assets/arrow-small.png) no-repeat -1px 5px;
+    width:19px;
+    height:19px;
+    display:block;
+    content:'';
+}
+.nav li.open > a > span:after {
+    background:url(/assets/arrow-down.png) no-repeat -1px 5px;
+    width:19px;
+    height:19px;
+    display:block;
+    content:'';
+}
+
+/*.nav a:hover, .nav li.active > a {
+    color: #5c5f63;
+}
+*/
+.nav > li.open > a  {
+    color:#5c5f63;
+}
+
+.nav > li:last-child{border-bottom:none;}
+
+.nav li a {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 2px 10px;
+}
+
+.nav > li > a {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 4px 10px;
+}

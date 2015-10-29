@@ -1,0 +1,16 @@
+/sample
+/tmp/*
+/log/*
+/tmp/*
+/solr/*
+/solr/pids/*
+/solr/test/*
+/solr/test/data/*
+/config/database.yml
+/public/system/*
+/nbproject/private/
+/Gemfile.lock
+/config/database.yml
+/db/schema.rb
+/solr/pids/development/sunspot-solr-development.pid
+/nbproject/*

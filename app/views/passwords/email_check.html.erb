@@ -1,0 +1,14 @@
+<strong>Please answer your security Question</strong><br/>
+ <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%> <br/>
+<div>
+ <%=@user.security_question.name if @user.security_question%>
+
+ <%= form_tag "/forgot_password/verify_answer" do %>
+  <%= text_field_tag "security_question_answer"%>
+  <%=hidden_field_tag 'user_id', @user.id%>
+  <%= submit_tag "Save" %>
+ <% end %>
+
+</div>

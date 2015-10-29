@@ -1,0 +1,38 @@
+<div class="profile-detail" id="profile_jobhistory_info_window">
+  <ul class="prof-details2">
+
+    <li>
+      <span class="left-det">Title</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @job_history.try(:title) %> </span>
+    </li>
+
+    <li>
+      <span class="left-det">Company Name</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @job_history.try(:company_name) %></span>
+    </li>
+
+
+    <li>
+      <span class="left-det">Experience</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @job_history.try(:experience) %></span>
+    </li>
+
+    <li>
+      <span class="left-det">Salary Type</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @job_history.try(:salary_type).try(:s_type) %> </span>
+    </li>
+
+    <li>
+      <span class="left-det">Salary</span>
+      <span class="dot">:</span>
+      <span class="right-det"><%= @job_history.try(:salary)%></span>
+    </li>
+
+
+
+  </ul>
+</div>

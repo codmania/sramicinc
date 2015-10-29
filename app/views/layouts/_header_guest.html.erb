@@ -1,0 +1,52 @@
+<div class="container-fluid no_pad ">
+<div class="header-wrap">
+    <div class="container header">
+    	<div class="row">
+        <div class="col-md-4 col-sm-4">
+          <a href="<%=home_index_path%>">
+            <img src="/assets/logo.png"/>
+        </a>
+        </div>
+        <div class="col-md-8 col-sm-8">
+
+          <ul class="top_links_container">
+                          <li><form action="<%= new_job_path %>"><input type="submit" value="Post a Job"></form></li>
+                          <li>
+                            <form action="<%= jprofiles_path %>" method="get">
+                            <input type="hidden" value="candidate" name="t"/>
+                            <input type="submit" value="Post a Talent"/>
+                          </form>
+                          </li>
+                          <li class="top_links top_link_drop">
+                          <a href="#"><span class="icon icon_1"></span>Login<div class="white_patch"></div></a>
+
+                              <div class="emp_candidate_container">
+                                  <%= link_to "Employer Login", new_user_session_path(:t=>'employer') %>
+                                  <%= link_to "Candidate Login", new_user_session_path(:t=>'candidate') %>
+                              </div>
+                           </li>
+                          <li class="top_links top_link_drop"><a href="#"><span class="icon icon_2"></span>Register <div class="white_patch"></div></a>
+
+                          	<div class="emp_candidate_container">
+                                  <%= link_to "Employer Register", employer_registration_path %>
+                                  <%= link_to "Jobseeker Register", new_user_registration_path %>
+                              </div>
+
+                           </li>
+                          <li class="top_links last"><a href="<%= new_enquiry_path %>"><span class="icon icon_3"></span>Help</a></li>
+
+
+                      </ul>
+
+
+        </div>
+    </div>
+
+      <%- flash.each do |name, msg| -%>
+          <% if  msg != 'employer' &&  msg != 'candidate' && name == 'notice'%>
+              <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+          <% end %>
+      <%- end -%>
+    </div>
+</div>
+</div>

@@ -1,0 +1,88 @@
+<div class="container-fluid footer_container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 col-sm-4">
+        <h3>Employers</h3>
+        <ul>
+          <li><a href="<%= new_job_path %>">Post A Job</a></li>
+          <li><a href="<%= new_user_session_path(:t=>'employer')%>">Signup / Login</a></li>
+           <li><a href="<%= pricing_payments_path%>">Pricing</a></li>
+         <!-- <li><a href="#">Reviews</a></li>-->
+          <li><a href="<%=faqs_path%>">FAQs</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="col-md-2 col-sm-4">
+        <h3>Job Seekers</h3>
+        <ul>
+          <li><a href="/search/jobs">Search Jobs</a></li>
+          <li><a href="<%= jprofiles_path(:t=>'candidate') %>">Post Talent</a></li>
+          <li><a href="<%= new_user_session_path(:t=>'candidate')%>">Signup /Login</a></li>
+           <li><a href="/payments/jobseekerpricing">Pricing</a></li>
+       <!--   <li><a href="#">Recommendations</a></li>-->
+
+
+        </ul>
+
+      </div>
+
+      <div class="col-md-2 col-sm-4">
+        <h3>Job Search</h3>
+        <ul>
+          <li><a href="<%= page_about_path%>">About Us</a></li>
+          <li><a href="<%=careers_path%>">Careers</a></li>
+          <li><a href="<%= sitemap_index_path%>">Sitemap</a></li>
+          <li><a href="<%= new_enquiry_path %>">Contact Us</a></li>
+          <li><a href="<%= new_news_letter_path %>">Subscribe Newsletter</a></li>
+
+        </ul>
+
+      </div>
+      <div class="col-md-2 col-sm-4">
+        <h3>Social Network</h3>
+        <ul class="social_container">
+          <li><a href=" #"><span class="social social_1"></span>Facebook</a></li>
+          <li><a href="#"><span class="social social_2"></span>Twitter</a></li>
+          <li><a href=" #"><span class="social social_3"></span>Google+</a></li>
+          <li><a href="#"><span class="social social_4"></span>Linkedin</a></li>
+          <li><a href="#"><span class="social social_5"></span>Youtube</a></li>
+        </ul>
+      </div>
+      <div class="col-md-1 col-sm-4">
+        <h3>APIs</h3>
+        <ul class="">
+
+          <li><a href="<%= job_api_index_path%>"><span class="social social_1"></span>Job API</a></li>
+
+        </ul>
+
+      </div>
+      <div class="col-md-3 col-sm-4">
+        <h3>Download</h3>
+        <a href="#"><img src="/assets/app_store.png"/></a>
+        <a href="#"><img src="/assets/play_store.png"/></a>
+        <h3>Payment</h3>
+        <a href="#"><img src="/assets/payment.png"/></a>
+
+      </div></div>
+
+
+  </div>
+</div>
+<div class="container-fluid copyright_container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-6">
+        <p>© 2015 SRAMIC.</p>
+      </div>
+
+      <div class="col-sm-6">
+        <a href="#">Terms and Conditions</a> <span>-</span> <a href="#">Privacy Policy</a>
+      </div>
+
+    </div>
+  </div>
+</div>

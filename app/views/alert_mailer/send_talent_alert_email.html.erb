@@ -1,0 +1,8 @@
+Based on your Talent alert
+<% @res.each do |res| %>
+
+
+    <%= link_to "#{res.title}", :controller => "employer", :action => "talents",
+                :only_path => false, :id => res.id%> <br/>
+
+<% end %>

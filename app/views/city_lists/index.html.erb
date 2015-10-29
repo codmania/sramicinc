@@ -1,0 +1,64 @@
+<!--start search-container-->
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 no_pad ">
+
+        <div class="company_users">
+
+          <h1>City
+            <%= link_to "Add", new_city_list_path, :class => 'orange-btn pull-right align-orange-btn' %>
+          </h1>
+          <div class="paginations top-pagination">
+            <%= will_paginate @city_lists,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+          </div>
+
+          <div id="no-more-tables">
+            <table class="col-sm-12 table-striped table-condensed cf">
+              <p id="notice"><%= flash['message']%></p>
+              <thead class="cf">
+              <tr>
+                <th style="display: none"></th>
+                <th width=550>Name</th>
+                <th width="100" class="table-last-th"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @city_lists.each do |city_list| %>
+                  <tr>
+                    <td data-title="id" style="display: none"><%= city_list.id %></td>
+                    <td data-title="Name"><%= city_list.try(:name) %></td>
+                    <td data-title="" class="table-last-td">
+
+                      <ul class="actions_container">
+                        <li>
+                          <%= link_to '<span class="icon icon_1"></span>'.html_safe,
+                                      edit_city_list_path(city_list) %>
+
+                        </li>
+                        <li>
+                          <%= link_to '<span class="icon icon_2"></span>'.html_safe,
+                                      city_list_path(city_list),
+                                      :method => :delete,
+                                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+                        </li>
+                      </ul>
+
+                    </td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

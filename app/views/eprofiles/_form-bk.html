@@ -1,0 +1,87 @@
+<%= form_for @eprofile, :html => { :class => "form-horizontal education" } do |f| %>
+  <% if @eprofile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@eprofile.errors.count, "error") %> prohibited this eprofile from being saved:</h2>
+
+      <ul>
+      <% @eprofile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name,"Contact person" %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="control-group">
+    <%= f.label :company_name %><br>
+    <%= f.text_field :company_name %>
+  </div>
+  <div class="control-group">
+    <%= f.label :type %><br>
+    <%= f.radio_button :company_type, '1' %>
+    <%= label :company_type, 'Company' %>
+    <%= f.radio_button :company_type, '0' %>
+    <%= label :company_type_sms, 'Consultancy' %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :industry_type %><br>
+    <%= f.collection_select :industry_id, Industry.all, :id, :name%>
+  </div>
+   <div class="control-group">
+    <%= f.label :overview %><br>
+    <%= f.text_area :overview %>
+  </div>
+   <div class="control-group">
+    <%= f.label :products %><br>
+    <%= f.text_field :products %>
+  </div>
+  <div class="control-group">
+    <%= f.label :services %><br>
+    <%= f.text_field :services %>
+  </div>
+  <div class="control-group">
+    <%= f.label :address1 %><br>
+    <%= f.text_field :address1 %>
+  </div>
+  <div class="control-group">
+    <%= f.label :address2 %><br>
+    <%= f.text_field :address2 %>
+  </div>
+  <div class="control-group">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="control-group">
+    <%= f.label :state %><br>
+     <%= f.collection_select :state_list_id, StateList.all, :id, :name%>
+  </div>
+  <div class="control-group">
+    <%= f.label :country %><br>
+     <%= f.collection_select :country_list_id, CountryList.all, :id, :name%>
+  </div>
+  <div class="control-group">
+    <%= f.label :pin %><br>
+    <%= f.text_field :pin %>
+  </div>
+  <div class="control-group">
+    <%= f.label :mobile %><br>
+    <%= f.text_field :mobile %>
+  </div>
+  <div class="control-group">
+    <%= f.label :website %><br>
+    <%= f.text_field :website %>
+  </div>
+  <div class="control-group">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+    <%= f.hidden_field :employer_id, :value=>@eprofile[:employer_id] %>
+  <div class="actions"><br>
+    <%= f.submit "Save"%><br>
+  </div>
+<% end %>

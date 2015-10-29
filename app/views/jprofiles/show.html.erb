@@ -1,0 +1,38 @@
+
+<!--left-side-->
+<div class="col-lg-3 col-md-4 col-sm-4 no_pad_left job-req">
+  <div class="col-lg-12 no_pad job-det">
+
+    <div class="similar-jobs">
+
+      <div class="comp-profile">
+        <div class="logo-dis">
+          <%= image_tag @jprofile.logo.url(:medium)%>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+  <!--End explore-result-->
+</div>
+<!--End left-side-->
+
+<!--job-description-->
+<div class="col-lg-9 col-md-8 col-sm-8 no_pad profile-description">
+  <!--start job-portion-->
+  <div class="profile-portion">
+    <div class="top-portion">
+      <h4>Jobseeker Profile</h4>
+      <a href="<%= edit_jprofile_path(@jprofile.id)%>" id="show_edit_profile"><img src="/assets/edit-icon.png" alt="" /></a>
+    </div>
+
+    <%= render 'profile_info' %>
+
+  </div>
+  <!--End job-portion-->
+
+
+</div>

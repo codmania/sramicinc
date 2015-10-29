@@ -1,0 +1,51 @@
+
+<div class="container summary-container job_seeker_myaccount_summary">
+  <h1 class="employee_summary">Summary
+    <span class="member_log">Member Since  <%= @jobseeker.created_at.strftime("%m/%d/%Y") %></span></h1>
+  <div class="row">
+
+      <!--left-side-->
+      <div class="col-md-6 left-side no_pad_left">
+        <!--content-container-->
+        <div class="col-lg-12 content-container">
+
+          <div class="top-portion-left">
+            <h4>Recent Acitivity</h4>
+          </div>
+
+          <ul>
+            <li><a href="#"><span class="icon icon_1"></span> <%= @jobapp.count %> Jobs Applied</a></li>
+            <li><a href="#"><span class="icon icon_2"></span> <%= @views %> Employers viewed your profile</a></li>
+            <li><a href="#"><span class="icon icon_7"></span> <%= @contat.count %> Employees contacted</a></li>
+            <li><a href="#"><span class="icon icon_4"></span> <%= @networks.count %> Employers in your network</a></li>
+            <li><a href="#"><span class="icon icon_5"></span> <%= @reviews.count %> Reviews</a></li>
+          </ul>
+
+        </div>
+        <!--content-container end-->
+      </div>
+      <!--End left-side-->
+      <!--left-side-->
+      <div class="col-md-6 left-side no_pad_right">
+        <!--content-container-->
+        <div class="col-lg-12 content-container">
+
+          <div class="top-portion-left">
+            <h4>Update from last visit:</h4>
+          </div>
+
+          <ul>
+            <li><a href="#"><span class="icon icon_8"></span> <%= @newjobs.count %> New Jobs</a></li>
+            <li><a href="#"><span class="icon icon_2"></span> <%= @views_recent %> Employers viewed</a></li>
+            <li><a href="#"><span class="icon icon_7"></span> <%= @contact_recent.count %> Employer contacted</a></li>
+            <li><a href="#"><span class="icon icon_5"></span> <%= @reviews_recent.count %> Reviews</a></li>
+          </ul>
+
+        </div>
+        <!--content-container end-->
+      </div>
+      <!--End left-side-->
+
+
+  </div>
+</div>

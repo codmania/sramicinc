@@ -1,0 +1,75 @@
+<!--start search-container-->
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 no_pad ">
+
+    <div class="company_users">
+
+      <h1>Testimonials
+        <%= link_to "Add", new_testimonial_path, :class => 'orange-btn pull-right align-orange-btn' %>
+        </h1>
+
+        <div id="no-more-tables">
+        <table class="col-sm-12 table-striped table-condensed cf">
+          <thead class="cf">
+          <tr>
+            <th width="">Name</th>
+            <!--<th>Email</th>-->
+            <th width="">Company</th>
+            <th width="300">Description</th>
+            <th width="225 ">Logo</th>
+            <th width="100" class="table-last-th"></th>
+          </tr>
+          </thead>
+          <tbody>
+           <% @testimonials.try(:each) do |testimonial| %>
+          <tr>
+            <td data-title="Name"><%= testimonial.name %></td>
+            <!--<td data-title="Type"><%#= testimonial.email %></td>-->
+            <td data-title="Company"><%= testimonial.company %></td>
+            <td data-title="Description"><%= testimonial.description %></td>
+            <% if testimonial.logo?%>
+            <td data-title="Logo"><%= image_tag testimonial.logo.url(:medium) %></td>
+            <% else %>
+            <td></td>
+            <% end %>
+            <td data-title="" class="table-last-td">
+
+              <ul class="actions_container">
+                <li>
+                <%= link_to '<span class="icon icon_1"></span>'.html_safe,
+                                edit_testimonial_path(testimonial) %>
+
+                </li>
+                <li>
+                    <%= link_to '<span class="icon icon_2"></span>'.html_safe,
+                                 testimonial_path(testimonial),
+                                :method => :delete,
+                                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+                  </li>
+              </ul>
+
+            </td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+
+
+     </div>
+
+    </div>
+
+  </div>
+        <div class="paginations top-pagination">
+         <%= will_paginate @networks, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+         </div>
+
+</div>

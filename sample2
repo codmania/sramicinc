@@ -1,0 +1,175 @@
+<%if @eprofile%>
+<h4><strong>Employer Profile</strong></h4>
+<!-- <p id="notice"><%= notice %></p> -->
+<%#=params.inspect%>
+<div class="col-md-6 well">
+<p>
+  <strong>Contact person:</strong>
+  <%= @eprofile.name %>
+</p>
+<p>
+  <strong>Company Name:</strong>
+  <%= @eprofile.company_name %>
+</p>
+<p>
+  <strong>Type:</strong>
+  <%= @eprofile.company_type ==true ? "Company" : "Consultancy" %>
+</p>
+<p>
+  <strong>Industry type:</starong>
+  <%= @eprofile.industry.name if @eprofile.industry_id %>
+</p>
+<p>
+  <strong>Overview:</strong>
+  <%= @eprofile.overview %>
+</p>
+<p>
+  <strong>Products:</strong>
+  <%= @eprofile.products %>
+</p>
+<p>
+  <strong>Services:</strong>
+  <%= @eprofile.services %>
+</p>
+<p>
+  <strong>Address1:</strong>
+  <%= @eprofile.address1 %>
+</p>
+</div>
+<div class="col-md-6 well">
+<p>
+  <strong>Address2:</strong>
+  <%= @eprofile.address2 %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @eprofile.city %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%= @eprofile.state %>
+</p>
+<p>
+  <strong>Country:</strong>
+  <%= @eprofile.country %>
+</p>
+<p>
+  <strong>Pin:</strong>
+  <%= @eprofile.pin %>
+</p>
+<p>
+  <strong>Mobile:</strong>
+  <%= @eprofile.mobile %>
+</p>
+<p>
+  <strong>Website:</strong>
+  <%= @eprofile.website %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @eprofile.email %>
+</p>
+
+</div>
+<%= link_to 'Edit', edit_eprofile_path(@eprofile) %> |
+<%if current_user.role.id==1%>
+ <%= link_to 'Back', eprofiles_path %>
+ <%else%>
+ <%= link_to 'Back', home_index_path %>
+ <%end%><br/><br/><br/>
+<h4><strong>Jobs</strong></h4>
+<table class="table table-striped">
+ <thead>
+    <tr>
+      <th> JobTitle</th>
+    </tr>
+  </thead>
+  <tbody>
+	<%@jobs.each do |job|%>
+    <tr>
+      <td><%=job.title%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<h4><strong>Reviews</strong></h4>
+<table class="table table-striped">
+ <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+	<%@eprofile.reviews.each do |review|%>
+    <tr>
+      <td><%=review.content%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<h4><strong>Recent Hire</strong></h4>
+<table class="table table-striped">
+ <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+	<%#@eprofile.reviews.each do |review|%>
+    <tr>
+      <td><%#=review.content%></td>
+    </tr>
+    <%#end%>
+  </tbody>
+</table>
+
+<h4><strong>Bookmarks</strong></h4>
+<table class="table table-striped">
+ <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+	<%@eprofile.bookmarks.each do |bookmark|%>
+    <tr>
+      <td><%=bookmark.title%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<h4><strong>Ask Questions</strong></h4>
+<table class="table table-striped">
+ <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+	<%@eprofile.questionaires.each do |question|%>
+    <tr><td>Q:<%=question.question%></td></tr>
+    <tr><td>A:<%=question.answer%></td></tr>
+    <%end%>
+  </tbody>
+</table>
+
+<h4><strong>Share</strong></h4>
+<table class="table table-striped">
+ <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+	<%@eprofile.shares.each do |share|%>
+    <tr>
+      <td><%=share.news%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<%end%>

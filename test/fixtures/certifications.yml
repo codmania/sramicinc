@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  institution: MyString
+  received: 2015-06-25
+  expired: 2015-06-25
+
+two:
+  name: MyString
+  institution: MyString
+  received: 2015-06-25
+  expired: 2015-06-25

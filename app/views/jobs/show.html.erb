@@ -1,0 +1,437 @@
+<style>
+    @media print {
+        /*#main-nav,.top_links_container..buttons,.comment-detail-portion {*/
+        #main-nav,.top_links_container,.buttons,.comment-detail-portion,.share-icons,.similar-jobs,.footer_container,.welcome-box,.bell,.copyright_container {
+            display: none;
+        }
+        a[href]:after {
+            content: initial;
+        }
+        .job-det{
+            float:left
+        }
+        .job-portion{
+            float:right;
+            width: 59%;
+        }
+    }
+
+</style>
+<!--start search-container-->
+<!--<meta property="og:image" content="thumbnail_image" />-->
+<input type="hidden" id="curpage" value="<%=params[:page]%>"/>
+<input type="hidden" id="total" value="<%=params[:total]%>"/>
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+
+      <!--<div class="col-lg-12 heading-box2">-->
+      <!--<a href="#" class="back-link"><img src="/assets/left-arrow.png" /> <span>Back to search results</span></a>-->
+      <!-- -->
+      <!--<div class="arrow-box">-->
+      <!--<a href="#"> <img src="/assets/box-left-arrow.png" alt="" /></a>-->
+      <!--<a href="#"> <img src="/assets/box-right-arrow.png" alt="" /></a>-->
+      <!--</div>-->
+      <!-- -->
+      <!--</div>-->
+      <% if params['what'] %>
+      <div class="col-lg-12 heading-box2">
+        <a href="#" class="back-link"><img src="/assets/left-arrow.png"> <span>Back to search results</span></a>
+        <div class="arrow-box">
+          <a href="/search/jobs/" class="prev_page"> <img src="/assets/box-left-arrow.png" alt=""></a>
+          <a href="/search/jobs/" class="nxt_page"> <img src="/assets/box-right-arrow.png" alt=""></a>
+        </div>
+      </div>
+      <%end%>
+
+
+      <div class="col-lg-12 no_pad heads-btns">
+        <h3><%= @job.title %></h3>
+
+        <% if current_user.try(:role).try(:authority)=='jobseeker' %>
+            <div class="buttons">
+            <!--<p id="notice"><%= flash['notice'] %></p>-->
+              <%= link_to "Apply", jobs_apply_job_path(:id => @job), :method => 'post', :class => "app-btn apply_action" %>
+              <%= link_to "Add to Cart", jobs_addtocart_path(:id => @job), :method => 'post', :class => "add-cart add_cart_action" %>
+              <%= link_to "Add to WatchList", jobs_add_to_watchlist_path(:id => @job), :method => 'post', :class => "add-cart add_watchlist_Action" %>
+
+            </div>
+        <% end %>
+
+      </div>
+
+
+      <!--left-side-->
+      <div class="col-lg-3 col-md-3 col-sm-3 no_pad_left job-req">
+        <div class="col-lg-12 no_pad job-det">
+          <div class="detail-person">
+            <ul class="details">
+              <li>
+                <span class="left-det">Job ID</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.id %></span>
+              </li>
+               <!-- <li>
+                <span class="left-det">Keywords</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.keywords %></span>
+              </li> -->
+
+
+              <li>
+                <span class="left-det">Location</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:city) %> <%= @job.try(:state_list).try(:name) %>  <%= @job.try(:country_list).try(:name) %></span>
+              </li>
+
+              <li>
+                <span class="left-det">Post Date</span>
+                <span class="dot">:</span>
+                <% t = @job.created_at %>
+                <span class="right-det"><%= t.strftime("%m/%d/%Y") %></span>
+              </li>
+
+
+              <li>
+                <span class="left-det">Company</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @eprofile.try(:company_name) %></span>
+              </li>
+
+              <li>
+                <span class="left-det">Industry</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:industry).try(:name) %></span>
+              </li>
+
+              <li>
+                <span class="left-det">Category</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:category).try(:name) %></span>
+              </li>
+
+              <li>
+                <span class="left-det">Experience </span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:experience) %></span>
+
+              </li>
+              <li>
+                <span class="left-det">Education</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:education) %> </span>
+              </li>
+
+              <!--  <li>
+                                  <span class="left-det">Relation</span>
+                                      <span class="dot">:</span>
+                                    <span class="right-det"><%= @job.try(:relation) %></span>
+                                </li>
+                                 -->
+
+              <li>
+                <span class="left-det">Salary</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:salary) %> </span>
+              </li>
+
+              <li>
+                <span class="left-det">Salary Type</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:salary_type).try(:s_type) %> </span>
+              </li>
+
+
+            <!--  <li>
+                <span class="left-det">Job Length</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:job_length) %></span>
+              </li>-->
+
+              <li>
+                <span class="left-det">Relocation</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:relocation) ? 'yes' : 'no' %></span>
+              </li>
+
+              <li>
+                <span class="left-det">Certification</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:certification) %></span>
+              </li>
+
+              <li>
+                <span class="left-det">Clearance</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:clearance) %></span>
+              </li>
+
+              <li>
+                <span class="left-det">Reference</span>
+                <span class="dot">:</span>
+                <span class="right-det"><%= @job.try(:references) %></span>
+              </li>
+
+            </ul>
+            <div class="share-icons">
+              <div class="share-box">
+                <span>Share :</span>
+                <!--<a href="http://www.facebook.com/sharer.php?u=<%= root_url+"jobs/"+@job.try(:id).to_s+"&"+"p[title]="+@job.try(:title).to_s+"&"+"p[summary]="+@job.try(:plain_description).to_s %>" target="_blank"><img src="/assets/facebook.png" alt="" /></a>-->
+
+                <a data-method="post" href="http://www.linkedin.com/shareArticle?url=<%= root_url+"jobs/"+@job.try(:id).to_s+"&"+"title="+@job.try(:title).to_s+"&"+"summary="+@job.try(:plain_description).to_s %>" target="_blank"><img src="/assets/linedin.png" alt=""/></a>
+              </div>
+
+
+              <div class="print-copy">
+                <a href="#" onclick="window.print();"><img src="/assets/print-icon.png" alt=""/></a>
+                <a data-method="post" href=<%= jobs_add_to_watchlist_path(:id => @job) %>><img src="/assets/save-icon.png" alt=""/></a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="similar-jobs">
+            <h3>Similar Jobs for You</h3>
+            <% @similarjobs.try(:each) do |f| %>
+                <div class="similar-wrap">
+                  <div class="similar-box">
+                    <a href="<%= job_path(f.id) %>" target="_blank"><%= f.title %></a>
+                    <span><%= f.try(:eprofile).try(:company_name) %></span>
+
+                    <div class="year-loc">
+                      <div class="year-in">
+                        <img src="/assets/bag-icon.png" alt="image">
+                        <span><%= f.try(:experience) %></span>
+                      </div>
+
+                      <div class="loc-info">
+                        <img src="/assets/location-icon.png" alt="image">
+                        <span><%= f.try(:city) %></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+            <% if @similarjobs.count > 4 %>
+                <a class="view-all-link" title="View All" target="_blank" data-method="get" href="/search/jobs?what=<%= @keywords %>&where=<%= @place %>&distance=50">View
+                  All</a>
+            <%end%>
+          </div>
+
+        </div>
+        <!--End explore-result-->
+      </div>
+      <!--End left-side-->
+
+      <!--job-description-->
+      <div class="col-lg-9 col-md-9 col-sm-9 no_pad job-description">
+        <!--start job-portion-->
+        <div class="job-portion">
+
+          <h4>Job Description</h4>
+
+          <ul class="job-description">
+            <p><%= raw(@job.description)  %> </p>
+          </ul>
+
+          <div class="job-profile">
+
+            <h4>
+              <%= link_to "Company Profile", jobs_job_eprofile_path(:id => @job.employer.eprofile), :method => 'get', :target => "_blank" %>
+            </h4>
+
+
+            <span><%#= @job.company_type %></span>
+
+            <p><%= @eprofile.try(:overview) %></p>
+
+
+          </div>
+
+
+        </div>
+        <!--End job-portion-->
+
+
+        <!--start comment-detail-portion-->
+        <div class="comment-detail-portion">
+          <h3 class="heading-comt"><img src="/assets/comment-icon2.png" alt=""/> <%= @job.try(:comments).try(:count) %>
+            Comments </h3>
+
+          <div class="comment-side">
+            <% @job.try(:comments).limit(10).order('created_at desc').try(:each) do |comment| %>
+
+                <div class="comment-box">
+
+                  <div class="comment-person">
+                    <%= image_tag comment.commented_user_profile.logo.url(:thumb) %>
+                  </div>
+
+                  <div class="comment-text">
+                          <span class="comt-name">
+                          <%if comment.user.role.authority=='jobseeker'%>
+                            <%= link_to "#{comment.user.name}", employer_talents_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
+                            <%else%>
+                             <%= link_to "#{comment.user.name}", jobs_job_eprofile_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
+                            <%end%>
+                          </span>
+                    <span class="comt-date"><%= comment.try(:created_at).strftime("%m/%d/%Y") %></span>
+
+                    <p>
+                      <%= comment.comment %>
+                    </p>
+                  </div>
+
+                </div>
+
+            <% end %>
+
+            <% if @job.try(:comments).try(:count) > PER_PAGE_COUNT %>
+                <%= link_to "More Comment..", more_comments_path(:id => @job.id), :method => 'get', :target => "_blank" %>
+            <% end %>
+
+          </div>
+
+          <!--<div class="log-comt">-->
+          <!--<a href="#" title="">Login to comment about this job</a>-->
+          <!--</div>-->
+
+
+          <form name="comment_form" id="comment_form" action="/comments" method="post">
+            <div class="row">
+              <div class="col-md-12">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" required="true" rows="5" id="comment" name="comment"></textarea>
+              </div>
+              <input type="hidden" id="job_id" name="job_id" value="<%= @job.id %>"/>
+              <input type="hidden" id="user_id" name="user_id" value="<%= current_user.try(:id) %>"/>
+
+
+            </div>
+            <button type="submit" class="orange-btn pull-right">Comment</button>
+          </form>
+
+        </div>
+        <!--end comment-detail-portion-->
+
+        <!--End job-decsription-->
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--End search-container-->
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".top-sc a").click(function () {
+            $('html, body').animate({scrollTop: 0}, 'slow');
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.prev_page').click(function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            console.log('prev page ');
+            prev=parseInt($('#curpage').val())-1;
+            if(prev<=0) {
+                prev = 1;
+                alert('No more jobs are available');
+                return;
+
+            }
+            a=window.location.search;
+            url=a.substring(0,a.indexOf('&page'));
+            url=url+'&page='+prev;
+            url='/search/jobs'+url
+           window.location=url;
+        });
+        $('.nxt_page').click(function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            console.log('nxt page ');
+            nxt=parseInt($('#curpage').val())+1;
+            total=parseInt($('#total').val());
+            if(nxt>total){
+                nxt=total;
+                alert('No more jobs are available');
+                return;
+            }
+
+            a=window.location.search;
+            url=a.substring(0,a.indexOf('&page'));
+            url=url+'&page='+nxt;
+            url='/search/jobs'+url
+            window.location=url;
+        });
+
+        $('.back-link').click(function(event){
+            event.stopPropagation();
+            event.preventDefault();
+            a = window.location.search;
+            url=a.substring(0,a.indexOf('&offset'));
+            url='/search/jobs'+url
+            //console.log('back-link called **'+url);
+            window.location=url;
+        });
+
+
+        a = window.location.search;
+        url=a.substring(a.indexOf('what'),a.length);
+        // Hire
+        $('.apply_action').attr('href',$('.apply_action').attr('href')+'&'+url)
+        $('.add_cart_action').attr('href',$('.add_cart_action').attr('href')+'&'+url);
+        $('.add_watchlist_Action').attr('href',$('.add_watchlist_Action').attr('href')+'&'+url);
+
+        // for comment form, for paginations fix
+        $('#comment_form').attr('action', $('#comment_form').attr('action')+'?'+url );
+
+
+        $(function () {
+
+            var appendthis = ("<div class='modal-overlay js-modal-close'></div>");
+
+            $('a[data-modal-id]').click(function (e) {
+                e.preventDefault();
+                $("body").append(appendthis);
+                $(".modal-overlay").fadeTo(500, 0.7);
+                //$(".js-modalbox").fadeIn(500);
+                var modalBox = $(this).attr('data-modal-id');
+                $('#' + modalBox).fadeIn($(this).data());
+            });
+
+
+            $(".js-modal-close, .modal-overlay").click(function () {
+                $(".modal-box, .modal-overlay").fadeOut(500, function () {
+                    $(".modal-overlay").remove();
+                });
+
+            });
+
+            $(window).resize(function () {
+                $(".modal-box").css({
+                    top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
+                    left: ($(window).width() - $(".modal-box").outerWidth()) / 2
+                });
+            });
+
+            $(window).resize();
+
+        });
+    });
+
+
+</script>

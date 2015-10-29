@@ -1,0 +1,17 @@
+<div class="container-fluid banner2 ">
+    <div class="container">
+        <div class="row">
+            <div class="search-panel">
+              <% if current_user==nil %>
+              <h1>&nbsp;</h1>
+              <% end %>
+              <div class="row main_search_container2" style="display:block  !important">
+                <%= render '/layouts/search/search_job_form' %>
+              </div>
+            </div>
+            <!--End search-panel-->
+
+        </div>
+        <%= render '/layouts/search/advance_search_job_form' %>
+    </div>
+</div>

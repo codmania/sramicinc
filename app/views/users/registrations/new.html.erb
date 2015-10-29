@@ -1,0 +1,81 @@
+<!--start-->
+<!--start-->
+<!--start-->
+<div class="container-fluid bg-wrap">
+<div class="container">
+<div class="row">
+<div class="login-wrap">
+<div class="top-login">
+<div class="log-detail">
+<h6>Candidates Registration  </h6>
+  </div>
+  </div>
+   <div class="login-bottom">
+   <div class="l-block">
+    <label></label>
+
+      <%flash.each do |key, value| %>
+      <%if value != 'candidate' && value != 'employer'%>
+      <div class="error"><%= value %></div>
+      <%end%>
+      <%end %>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="l-block">
+      <label>Name<em>*</em></label>
+      <%= f.text_field :name, autofocus: true,:required=>true %>
+      </div>
+                
+        <div class="l-block">
+        <label>Email<em>*</em></label>
+        <%= f.email_field :email,:required=>true, :class => 'email_field' %>
+          </div>
+
+          <div class="l-block">
+           <label>Password<em>*</em></label>
+           <%= f.password_field :password, autocomplete: "off",:pattern=>'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,})',:title=>"Please Enter Atleast one upper case and lower case letter,one numeric, one special character and minimum password length 8",:required=>true %>
+            </div>
+
+           <div class="l-block">
+
+            <label>Confirm Password<em>*</em></label>
+            <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true, :oninput=>"check_password()" %>
+            </div>
+               
+
+            <%= f.hidden_field :role_id, :value => 3 %>
+
+
+            <div class="l-block">
+            <label>Enter Code<em>*</em></label>
+            <%= show_simple_captcha %>
+            </div>
+
+            
+              <!--End reg-position-->
+              <div class="l-block">
+             <label></label>
+            <%= f.submit "Register", :class=>"input-login login-center-button" %>
+             </div>
+            <% end %>
+              </div>
+        <!--En reg-wrap-->
+              </div>
+      <!--End reg-main-wrap-->
+
+           </div>
+          </div>
+           </div>
+<!--End-->
+
+<script>
+    function check_password(){
+
+        if($('#user_password').val() != $('#user_password_confirmation').val()) {
+            $('#user_password_confirmation').get(0).setCustomValidity("Passwords Don't Match");
+        } else {
+            $('#user_password_confirmation').get(0).setCustomValidity('');
+        }
+
+    }
+</script>

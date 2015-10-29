@@ -1,0 +1,64 @@
+<div class="container-fluid search-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 no_pad ">
+        <!--End responsive-menu-->
+
+        <div class="job-portion">
+
+          <h4>Job Description</h4>
+
+          <ol class="job-desc">
+            <li><p><%= @job.description%> </p></li>
+          </ol>
+
+          <div class="job-profile">
+            <h4>
+              <%= link_to "Company Profile", jobs_job_eprofile_path(:id => @job.employer.eprofile), :method => 'get', :target => "_blank"%>
+            </h4>
+          </div>
+    </div>
+
+        <div class="review_container">
+          <h1>Comments </h1>
+        </div>
+
+        <div class="comment-detail-portion">
+          <div class="comment-side">
+            <% @comments.try(:each) do |comment|%>
+
+                <div class="comment-box">
+
+                  <div class="comment-person">
+                    <%= image_tag comment.commented_user_profile.logo.url(:thumb)%>
+                  </div>
+
+                  <div class="comment-text">
+                          <span class="comt-name">
+                            <%= link_to "#{comment.user.name}", employer_talents_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
+                          </span>
+                    <span class="comt-date"><%= comment.try(:created_at).strftime("%m/%d/%Y") %></span>
+
+                    <p>
+                      <%= comment.comment%>
+                    </p>
+                  </div>
+
+                </div>
+
+            <%end %>
+
+          </div>
+
+        </div>
+
+        <div class="paginations top-pagination">
+          <%= will_paginate @comments, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

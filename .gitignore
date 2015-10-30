@@ -14,3 +14,6 @@
 /db/schema.rb
 /solr/pids/development/sunspot-solr-development.pid
 /nbproject/*
+/.bundle
+/db/*.sqlite3
+/db/*.sqlite3-journal

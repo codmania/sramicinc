@@ -9,7 +9,6 @@
 /config/database.yml
 /public/system/*
 /nbproject/private/
-/Gemfile.lock
 /config/database.yml
 /db/schema.rb
 /solr/pids/development/sunspot-solr-development.pid

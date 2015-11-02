@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+
+@font-face {
+  font-family: "font-sramic";
+  src:  font-url("font-sramic.eot");
+  src:  font-url("font-sramic.eot?#iefix") format("embedded-opentype"),
+        font-url("font-sramic.woff") format("woff"),
+        font-url("font-sramic.ttf") format("truetype"),
+        font-url("font-sramic.svg#font-sramic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "font-sramic" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "font-sramic" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-american:before {
+  content: "a";
+}
+.icon-apple:before {
+  content: "b";
+}
+.icon-arrow-circle-down:before {
+  content: "c";
+}
+.icon-arrow-circle-left:before {
+  content: "d";
+}
+.icon-arrow-circle-right:before {
+  content: "e";
+}
+.icon-arrow-circle-up:before {
+  content: "f";
+}
+.icon-arrow-down:before {
+  content: "g";
+}
+.icon-arrow-left:before {
+  content: "h";
+}
+.icon-arrow-right:before {
+  content: "i";
+}
+.icon-arrow-up:before {
+  content: "j";
+}
+.icon-cap:before {
+  content: "k";
+}
+.icon-clock:before {
+  content: "l";
+}
+.icon-comment:before {
+  content: "m";
+}
+.icon-facebook:before {
+  content: "n";
+}
+.icon-google:before {
+  content: "o";
+}
+.icon-link:before {
+  content: "p";
+}
+.icon-linkedin:before {
+  content: "q";
+}
+.icon-location:before {
+  content: "r";
+}
+.icon-lock:before {
+  content: "s";
+}
+.icon-master:before {
+  content: "t";
+}
+.icon-notification:before {
+  content: "u";
+}
+.icon-paypal:before {
+  content: "v";
+}
+.icon-play:before {
+  content: "w";
+}
+.icon-print:before {
+  content: "x";
+}
+.icon-review:before {
+  content: "y";
+}
+.icon-save:before {
+  content: "z";
+}
+.icon-visa:before {
+  content: "A";
+}
+.icon-user:before {
+  content: "B";
+}
+.icon-twitter:before {
+  content: "C";
+}
+.icon-tie:before {
+  content: "D";
+}
+.icon-star:before {
+  content: "E";
+}
+.icon-scroll:before {
+  content: "F";
+}

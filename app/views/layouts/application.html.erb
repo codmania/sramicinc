@@ -77,7 +77,16 @@
 
 </head>
 
-<body onLoad="highlightmenu()">
+
+<% unless current_user %>
+  <body>
+<% else %>
+  <% if current_user.role.authority=='employer'%>
+    <body class="orange">
+  <% elsif current_user.role.authority == 'jobseeker' %>
+    <body class="blue">
+  <% end %>
+<% end %>
 
     <% unless current_user %>
       <%= render '/layouts/header_guest' %>
@@ -85,32 +94,36 @@
       <%= render '/layouts/header' %>
     <% end %>
 
-    <% unless current_user %>
-    <div>
-      <%= yield %>
-    </div>
-    <% else %>
-        <div class="container-fluid search-container-modified">
-            <div class="container">
+    <div class="vessel">
+
+      <% unless current_user %>
+      <div>
+        <%= yield %>
+      </div>
+      <% else %>
+          <div class="container-fluid search-container-modified">
+              <div class="container">
+                  <div class="row">
+                          <%if current_user.role.id==2%>
+                            <%= render '/layouts/employer_menu' %>
+                          <% elsif current_user.role.id==3%>
+                                <%= render '/layouts/jobseeker_menu' %>
+                          <% elsif current_user.role.id==1%>
+                            <%= render '/layouts/admin_menu' %>
+                          <% end %>
+                  </div>
+              </div>
+              <div class="container">
                 <div class="row">
-                        <%if current_user.role.id==2%>
-                          <%= render '/layouts/employer_menu' %>
-                        <% elsif current_user.role.id==3%>
-                              <%= render '/layouts/jobseeker_menu' %>
-                        <% elsif current_user.role.id==1%>
-                          <%= render '/layouts/admin_menu' %>
-                        <% end %>
+                  <%= yield %>
                 </div>
-            </div>
-            <div class="container">
-              <div class="row">
-                <%= yield %>
+
               </div>
 
-            </div>
+          </div>
+      <% end %>
 
-        </div>
-    <% end %>
+    </div>
     <%= render '/layouts/footer' %>
 </body>
 </html>

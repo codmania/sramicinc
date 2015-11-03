@@ -7,23 +7,6 @@ $(document).ready(function(){
     /*page steps sub-tabs*/
     $('.sub_tabs li a').click(function(){$('.sub_tabs li').removeClass('current');$(this).parent().addClass('current');$('.sub-tab-content').hide();var selected_tab =	'#'+$(this).attr('rel'); $(selected_tab).show(); 	 return false;});
 
-    /*fixed header after scroll*/
-    $(window).scroll(function () {
-
-        var windowsize_val = $(window).width();
-        if ((windowsize_val > 760)) { /* condition to check window size*/
-
-            if ($(this).scrollTop() > $('.header').height()) {
-
-                $('.header-wrap').addClass('fixed');
-            } else {
-
-                $('.header-wrap').removeClass('fixed');
-
-            }
-        }
-
-    });
 
     /*banner search*/
     $('.hire').click(function(){

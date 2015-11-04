@@ -159,22 +159,22 @@ if Page.find_by(name: 'About').nil?
 end
 
 
-if Page.find_by(name: 'Home Banner').nil?
-  home_page_banner=Page.new
-  home_page_banner.name='Home Banner'
-  home_page_banner.content=''
+# if Page.find_by(name: 'Home Banner').nil?
+#   home_page_banner=Page.new
+#   home_page_banner.name='Home Banner'
+#   home_page_banner.content=''
 
-  home_page_banner.save
-end
+#   home_page_banner.save
+# end
 
 
-if Page.find_by(name: 'Home Banner Heading').nil?
-  home_page_banner_heading=Page.new
-  home_page_banner_heading.name='Home Banner Heading'
-  home_page_banner_heading.content='<h2> What You Do Makes You, So Come And Join The Right Platform </h2>'
+# if Page.find_by(name: 'Home Banner Heading').nil?
+#   home_page_banner_heading=Page.new
+#   home_page_banner_heading.name='Home Banner Heading'
+#   home_page_banner_heading.content='<h2> What You Do Makes You, So Come And Join The Right Platform </h2>'
 
-  home_page_banner_heading.save
-end
+#   home_page_banner_heading.save
+# end
 
 
 if Page.find_by(name: 'Employer Content').nil?

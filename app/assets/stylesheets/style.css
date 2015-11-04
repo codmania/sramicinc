@@ -61,8 +61,7 @@
 
 
 
-#hiring.active{ background:#0a2961 !important; color:#fff; text-shadow:none;}
-#hiring2.active{ background:#0a2961 !important; color:#fff; text-shadow:none;}
+
 
 
 .emp_contianer{ background-color:#f3f3f3; padding-top:60px; padding-bottom:60px;}
@@ -235,17 +234,7 @@
 }
 
 
-.advance_search {
-    color: hsl(36, 91%, 58%);
-    float: left;
-    font-size: 14px;
-    margin-top: 20px;
-    font-weight: 600;
-    text-align:right;
-    width:96%;
-    cursor:pointer;
-    text-decoration:underline;
-}
+
 .main_search_container{margin-top:16px;}
 
 /*modify*/
@@ -253,8 +242,6 @@
 .more-search-btn { display: block; margin: 40px 0 0;text-align: center; width: 100%;}
 .more-search-btn .post{  background-color: #f3f3f3; border: 1px solid #0a2961;border-radius: 3px; color: #0a2961; font-weight: bold; margin-right: 9px; padding: 4px 31px;}
 .hire:hover ,.hire1:hover{background:#0a2961;color:#fff; text-shadow:none;}
-.search-panel{width:100%; display:block; margin-top:14px;}
-.search-panel label{ width:100%; font-weight:100; color:#fff; font-size:16px;}
 .search-what {display: inline-block; width: 25%;}
 .search-what input[type="text"]{ border:none;  border-radius: 4px; color: #5c5f63; font-size: 14px;  padding: 12px 10px;  width: 100%;}
 
@@ -1772,8 +1759,6 @@ padding: 0px;
 	.heads-btns .buttons {display: inline-block;text-align: center; width: 100%;}
 	.heads-btns .buttons a {display: block;margin: 0 auto 5px;max-width: 200px;}
 	.search-contain.search-contain{ margin-left:0px;}
-	.search-panel .sear-btn-portion{ width:100%;}
-	.search-panel .search-btn2{ width:100%;}
 
 	.search-container .orange-btn{ display: block;float: none !important; margin: 10px auto !important;text-align: center;width: 200px;}
 

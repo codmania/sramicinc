@@ -1,48 +1,50 @@
-                <form action="/search/jobs" class="search-panel">
-                    <div class="col-sm-4">
-                      <div class="input-container">
-                        <label>What</label>
-                        <input type="text" value="<%= params[:what]%>" placeholder="Keywords, Job title, Or Company" class="search" name="what"/>
-                    </div>
-                  </div>
+<div class="banner-search blue" id="search-seeking">
+  <div class="margin">
+    <div class="wrap">
+      <em class="icon icon-cap"></em>
+    </div>
+    <form action="/search/jobs" class="search-panel">
 
-                    <div class="col-sm-4">
-                      <div class="input-container">
-                        <label>Where</label>
-                        <input type="text" value="<%= params[:where]%>" placeholder="City, State or Zip Code" name="where" class="search"/>
-                      </div>
-                    </div>
+       <div class="form-group">
+        <label>What</label>
+        <input type="text" value="<%= params[:what]%>" placeholder="Keywords, Job title, or Company" class="search" name="what"/>
+      </div>
 
-                    <div class="search-within">
-                        <label>Within</label>
-                        <select class="select" name="distance" value="<%= params[:distance]%>" >
-                            <option value="500" selected="<%= params[:distance]==500 %>"  >Any Where</option>
+       <div class="form-group">
+        <label>Where</label>
+         <input type="text" value="<%= params[:where]%>" placeholder="City, State or Zip Code" name="where" class="search"/>
+      </div>
 
-                            <option value="5"  <%if params[:distance]=='5' %>
-                                    selected
-                                    <%end%>>5 Miles</option>
-                            <option value="10" <%if params[:distance]=='10' %>
-                                    selected
-                                    <%end%>>10 Miles</option>
-                            <option value="20" <%if params[:distance]=='20' %>
-                                    selected
-                                    <%end%>>20 Miles</option>
-                            <option value="30" <%if params[:distance]=='30' %>
-                                    selected
-                                    <%end%>>30 Miles</option>
-                            <option value="50" <%if params[:distance]=='50' %>
-                                    selected
-                                    <%end%>>50 Miles</option>
-                        </select>
-                    </div>
+      <div class="form-group">
+        <label>Within</label>
+        <select class="selectpicker" name="distance" value="<%= params[:distance]%>" >
+            <option value="500" selected="<%= params[:distance]==500 %>"  >Any Where</option>
 
+            <option value="5"  <%if params[:distance]=='5' %>
+                    selected
+                    <%end%>>5 Miles</option>
+            <option value="10" <%if params[:distance]=='10' %>
+                    selected
+                    <%end%>>10 Miles</option>
+            <option value="20" <%if params[:distance]=='20' %>
+                    selected
+                    <%end%>>20 Miles</option>
+            <option value="30" <%if params[:distance]=='30' %>
+                    selected
+                    <%end%>>30 Miles</option>
+            <option value="50" <%if params[:distance]=='50' %>
+                    selected
+                    <%end%>>50 Miles</option>
+        </select>
+      </div>
 
-                    <div class="sear-btn-portion">
-                        <input type="submit" value="Search" class="search-btn2"/>
-                        <a class="advance_search js-open-modal" href="#" data-modal-id="popup1">Advance Search</a>
-                    </div>
+      <input type="submit" value="Search" class="btn btn-blue"/>
 
-                    <!-- <div class="adv-div">
-                        <a class="js-open-modal" href="#" data-modal-id="popup1">Advance Search</a>
-                    </div> -->
-                </form>
+      <div class="wrap">
+        <a class="js-open-modal" href="#" data-modal-id="popup1">advance search</a>
+      </div>
+
+    </form>
+  </div>
+
+</div>

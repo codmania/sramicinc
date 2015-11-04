@@ -57,6 +57,8 @@
 
 @mixin font_base {font-family: 'pro-thin'; font-size: 18px; color: $base_color;}
 @mixin reset_space{ margin: 0; padding: 0;}
+@mixin font_icons {font-family: "font-sramic" !important; font-style: normal !important;  font-weight: normal !important;
+  font-variant: normal !important;text-transform: none !important;speak: none;line-height: 1;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 
 $base_color: #666666;
@@ -87,14 +89,14 @@ html, body {@extend .full-height;}
 html { position: relative;}
 body {background:#fff; position: static; @include reset_space;  overflow-x: hidden;}
 
-.vessel {@extend .block;@include reset_space; padding-top: $header_height;  }
+.vessel {@extend .block;@include reset_space; padding-top: $header_height; @extend .full-height;  }
 
 body, a, textarea  {line-height: 160%; @include font_base; font-weight: normal !important; }
 
 hr { border-bottom: 1px solid $line_color;border-top: 0;border-right: 0;border-left: 0;min-height: 0px;height: 1px; clear: both; margin: 0px;}
 
 h1, h2, h3, h4, h5, h6 {line-height: 100%; @include reset_space;}
-h1 {}
+h1 { font-size: 44px;}
 h2 {}
 h3 {}
 h4 { font-size: 18px;}
@@ -110,12 +112,14 @@ a:hover, a:active, a:focus { outline: 0 !important;}
 .nav > li > a:hover, .nav > li > a:focus { background-color: transparent;}
 
 form { display: inline; @include reset_space; }
+.form-group { margin: 0px;}
+label { color: $dark_color; font-size: 20px; font-family: 'pro-light'; @extend .block; margin-bottom: 6px;}
 
 textarea, input[type="text"], input[type="password"], input[type="search"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select.form-control, select,
-textarea.form-control  { @include box-shadow(none); @include border-radius(2px);  }
+textarea.form-control  { @include box-shadow(none); @include border-radius(2px); background: #fff; border: 1px solid $line_color; padding: 8px 10px; width: 100%; font-size: 16px; color: $base_color;  }
 
 
-textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus, textarea:hover, input[type="text"]:hover, input[type="password"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="date"]:hover, input[type="month"]:hover, input[type="time"]:hover, input[type="week"]:hover, input[type="number"]:hover, input[type="email"]:hover, input[type="url"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="color"]:hover, .uneditable-input:hover, select:hover, select.form-control:hover, .form-control:focus, .form-control:hover, textarea.form-control:hover, textarea.form-control:focus, input[type="search"]:focus, input[type="search"]:hover  {@include box-shadow(none); @include border-radius(2px);   }
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus, textarea:hover, input[type="text"]:hover, input[type="password"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="date"]:hover, input[type="month"]:hover, input[type="time"]:hover, input[type="week"]:hover, input[type="number"]:hover, input[type="email"]:hover, input[type="url"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="color"]:hover, .uneditable-input:hover, select:hover, select.form-control:hover, .form-control:focus, .form-control:hover, textarea.form-control:hover, textarea.form-control:focus, input[type="search"]:focus, input[type="search"]:hover  {@include box-shadow(none); @include border-radius(2px); background: #fff; border: 1px solid $dark_color; padding: 8px 10px; }
 
 
 textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus,button:focus,button:active,button:hover {outline:0px !important;}
@@ -126,10 +130,8 @@ input[type="radio"], input[type="checkbox"] { margin: 0px; width: auto !importan
 textarea, textarea.form-control, textarea.form-control:focus, textarea.form-control:hover {resize:none; }
 
 
-.form-group { margin: 0px;}
 .btn-group.open .dropdown-toggle {@include box-shadow(none); }
-
-.btn, .btn:active, .btn:focus  {cursor: pointer; margin: 0; padding: 14px 20px 11px 20px; background: none;  @include border-radius(2px); @include box-shadow(none); vertical-align: middle; border:0; text-transform: uppercase; font-size: 16px; font-family: 'pro-light'; line-height: 100%;  }
+.btn, .btn:active, .btn:focus, .btn.active, .btn.active:active {cursor: pointer; margin: 0; padding: 14px 20px 11px 20px; background: none;  @include border-radius(2px); @include box-shadow(none); vertical-align: middle; border:0; text-transform: uppercase; font-size: 16px; font-family: 'pro-light'; line-height: 100%;  }
 .btn:hover{ cursor: pointer; padding: 14px 20px 11px 20px; background: none; font-size: 16px; font-family: 'pro-light';   @include border-radius(2px); @include box-shadow(none); border:0; line-height: 100%;  }
 
 .btn-ghost, .btn-ghost:active, .btn-ghost:focus  { color: $grey_color; border: 1px solid $grey_color; }
@@ -141,6 +143,11 @@ textarea, textarea.form-control, textarea.form-control:focus, textarea.form-cont
 .btn-blue-ghost, .btn-blue-ghost:active, .btn-blue-ghost:focus  { color: $blue_color; border: 1px solid $blue_color; }
 .btn-blue-ghost:hover{color: #fff; background: $blue_color; border: 1px solid $blue_color; } 
 
+.btn-orange, .btn-orange:active, .btn-orange:focus  { color: #fff; background-color: $orange_color; border: 1px solid $orange_color; }
+.btn-orange:hover{color:$orange_color; background: none; border: 1px solid $orange_color; }
+
+.btn-blue, .btn-blue:active, .btn-blue:focus  { color: #fff; background-color: $blue_color; border: 1px solid $blue_color; }
+.btn-blue:hover{color:$blue_color; background: none; border: 1px solid $blue_color; }
 
 .btn-icon { display: inline;}
 .btn-icon .icon, .btn-icon:focus .icon  { display: inline; float: left; color: $grey_color; font-size: 24px; margin: 3px 0px 0px 0px;}
@@ -193,7 +200,7 @@ header .profile .dropdown-menu > li > a:hover { color: $blue_color}
 
 /* ---- FOOTER ---- */
 
-footer {@extend .block; background: $base_color; color: $light_grey_color; padding: 80px 0px; float: left; clear: both;}
+footer {@extend .block; background: $base_color; color: $light_grey_color; padding: 80px 0px 60px 0px; float: left; clear: both;}
 
 
 footer nav.w25 { float: left; margin-right: 20px;}
@@ -230,6 +237,65 @@ footer .social li a::before {line-height: 0% !important;}
 
 
 
+/* ---- FULL SCREEN ---- */
+
+.full-screen {@extend .block; @extend .full-height; text-align: center; overflow: hidden; background:no-repeat transparent center top image-url("layout/seeker.jpg");-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/seeker.jpg', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/seeker.jpg', sizingMethod='scale')"; position: relative;  }
+.full-screen .middle { width: 100%; position: absolute; top: 25%;  }
+.full-screen h1 { color: #fff; text-transform: uppercase; font-family: 'pro-semi'; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); line-height: 140%; margin-bottom: 40px;}
+.full-screen .btn, .full-screen .btn:focus{ font-size: 24px; padding-left: 40px; padding-right: 40px; margin: 0px 20px 60px 0px;}
+.full-screen .btn.btn-orange.active {color:#fff; background: $orange_color; border: 1px solid $orange_color;  }
+.full-screen .btn.btn-blue.active {color:#fff; background: $blue_color; border: 1px solid $blue_color;  }
+.full-screen .btn.btn-orange.pass {color:#fff; background: none; border: 1px solid #fff;  }
+.full-screen .btn.btn-blue.pass {color:#fff; background: none; border: 1px solid #fff;  }
+
+.full-screen .centered {position: absolute; left: 0px; bottom:34px; text-align: center; clear: both; width: 100%; }
+.full-screen a.icon-scroll, .full-screen a.icon-scroll:focus { @extend .inline-block; font-size: 32px; color: #fff;}
+.full-screen a.icon-scroll:hover {  color:$orange_color;}
+
+.full-screen .banner-search { display: none;}
+.full-screen .banner-search.active { display: block;}
+.full-screen .banner-search .wrap { display: none;}
+
+
+/* ---- BANNER SEARCH ---- */
+
+.banner-search { text-align: left;}
+.banner-search .margin { width: 960px; background: rgba(255, 255, 255, 0.5); @include border-radius(4px); padding: 20px; }
+
+.banner-search .form-group { vertical-align: middle; @extend .inline-block; width: 27.8%; margin-right: 12px; margin-bottom: 12px; }
+.banner-search .btn, .banner-search .btn:focus{vertical-align: middle; @extend .inline-block; padding: 14px 20px 11px 20px; font-size: 16px;  margin: 22px 0px 0px 0px;}
+
+.banner-search .wrap { vertical-align: middle; @extend .inline-block; width: 100%; text-align: center; }
+.banner-search .wrap > a, .banner-search .wrap > a:focus { text-decoration: none; font-size: 16px; font-family: 'pro-light'; text-transform: lowercase; }
+.banner-search .wrap > a:hover { text-decoration: underline;}
+
+.banner-search .icon {vertical-align: middle; @extend .inline-block; font-size: 60px;}
+
+
+
+/* ----------- CUSTOM SELECT ----------- */
+
+.bootstrap-select, .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) { width: 100%;}
+.bootstrap-select > .dropdown-toggle, .bootstrap-select > .dropdown-toggle:active, .bootstrap-select > .dropdown-toggle:focus { border: 1px solid $line_color !important; background: #fff !important; color: $base_color; line-height: normal; vertical-align: middle; padding: 13px 24px 13px 10px;  @extend .inline-block; float: none;@include font_base; text-transform: none; text-align: left;  font-size: 16px; @include box-shadow(none); outline: 0 !important;  @include box-shadow(none); margin: 0px; }
+.bootstrap-select > .dropdown-toggle:hover {@include box-shadow(none); border-color: $dark_color; outline: 0 !important; background: none; }
+
+
+.bootstrap-select.btn-group .dropdown-toggle .caret { border:0; width: auto; height: auto; top:14px; right: 10px; margin: 0px 0px 0px 0px;}
+.bootstrap-select.btn-group .dropdown-toggle .caret::before { @include font_icons;  content: "g"; font-size: 20px;}
+.bootstrap-select.btn-group.open .dropdown-toggle .caret::before { @include font_icons;  content: "j"; font-size: 20px;}  
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option { vertical-align: middle;}
+
+
+.bootstrap-select.btn-group .dropdown-menu { border:0; background: #fff; @include border-radius(2px); @include box-shadow(none);  }
+.bootstrap-select.btn-group .dropdown-menu > li > a, .bootstrap-select.btn-group .dropdown-menu > li > a:focus {font-size: 16px; color: $base_color; padding: 4px 10px; line-height: normal; background: none; text-transform: none;}
+.bootstrap-select.btn-group .dropdown-menu > li > a:hover { background: none;}
+
+
+.bootstrap-select .selected, .bootstrap-select .subselected { background: none; border: 0;}
+
+
+
 /* ORANGE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -239,6 +305,16 @@ footer .social li a::before {line-height: 0% !important;}
 .orange header .profile .dropdown-toggle:hover .img-circle {border: 1px solid $orange_color;}
 .orange header .profile .dropdown-menu > li > a:hover { color: $orange_color}
 .orange header .profile.open .img-circle { border-color: $orange_color;}
+
+.orange .bootstrap-select.btn-group .dropdown-toggle .caret { color:$orange_color; }
+.orange .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$orange_color;}
+.orange .bootstrap-select .selected span, .orange .bootstrap-select .subselected span {color:$orange_color !important; }
+
+.banner-search.orange .wrap > a, .banner-search.orange .wrap > a:focus, .banner-search.orange .wrap > a:hover  { color: $orange_color;}
+.banner-search.orange .icon {color: $orange_color;}
+.banner-search.orange .bootstrap-select.btn-group .dropdown-toggle .caret {color: $orange_color;}
+.banner-search.orange .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$orange_color; }
+.banner-search.orange .bootstrap-select .selected span, .banner-search.orange .bootstrap-select .subselected span {color:$orange_color !important; }
 
 
 /* BLUE */
@@ -251,9 +327,15 @@ footer .social li a::before {line-height: 0% !important;}
 .blue header .profile .dropdown-menu > li > a:hover { color: $blue_color}
 .blue header .profile.open .img-circle { border-color: $blue_color;}
 
+.blue .bootstrap-select.btn-group .dropdown-toggle .caret { color:$blue_color; }
+.blue .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$blue_color; }
+.blue .bootstrap-select .selected span, .blue .bootstrap-select .subselected span {color:$blue_color !important; }
 
-
-
+.banner-search.blue .wrap > a, .banner-search.blue .wrap > a:focus, .banner-search.blue .wrap > a:hover  { color: $blue_color;}
+.banner-search.blue .icon {color: $blue_color;}
+.banner-search.blue .bootstrap-select.btn-group .dropdown-toggle .caret {color: $blue_color;}
+.banner-search.blue .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$blue_color; }
+.banner-search.blue .bootstrap-select .selected span, .banner-search.blue .bootstrap-select .subselected span {color:$blue_color !important; }
 
 
 

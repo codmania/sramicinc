@@ -1,6 +1,34 @@
 // JavaScript Document
 $(document).ready(function(){
 
+      /*alignments*/
+      $('.midst').each(function() {
+        $(this).position({
+          my: 'center center',
+          at: 'center center',
+          of: $(this).parent()
+        });
+      });
+
+      $(window).resize(function() {
+        $('.midst').each(function() {
+          $(this).position({
+            my: 'center center',
+            at: 'center center',
+            of: $(this).parent()
+          });
+        });
+      });
+
+    /*page scroll*/ 
+      $('a.icon-scroll').bind('click', function(event) {
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+          scrollTop: $($anchor.attr('href')).offset().top - 110
+      }, 1000, 'easeInOutExpo');
+      event.preventDefault();
+    });
+
     /*page steps tabs*/
     $('.tabs li a').click(function(){$('.tabs li').removeClass('current');$(this).parent().addClass('current');$('.tab-content').hide();var selected_tab =		'#'+$(this).attr('rel'); $(selected_tab).show(); 	 return false;});
 
@@ -9,19 +37,22 @@ $(document).ready(function(){
 
 
     /*banner search*/
-    $('.hire').click(function(){
-
-        $('.hire').addClass('active');
-        $('.main_search_container').toggle().parent().toggleClass('active');
-        $('.main_search_container2').css('display','none');
-        $('#hiring2').removeClass('active');
+    $('#banner-hiring').click(function(){
+        $(this).addClass('active');
+        $(this).removeClass('pass');
+        $('#banner-seeking').removeClass('active');
+        $('#banner-seeking').addClass('pass');
+        $('#search-hiring').addClass('active');
+        $('#search-seeking').removeClass('active');
     });
 
-    $('.hire1').click(function(){
-        $('.hire1').addClass('active');
-        $('#hiring').removeClass('active');
-        $('.main_search_container2').toggle().parent().toggleClass('active');
-        $('.main_search_container').css('display','none');
+    $('#banner-seeking').click(function(){
+        $(this).addClass('active');
+        $(this).removeClass('pass');
+        $('#banner-hiring').removeClass('active');
+        $('#banner-hiring').addClass('pass');
+        $('#search-seeking').addClass('active');
+        $('#search-hiring').removeClass('active');
 
     });
 

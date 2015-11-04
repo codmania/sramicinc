@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get 'checkout'
       get 'transfer_amount'
       get 'pricing'
-       get 'jobseekerpricing'
+      get 'jobseekerpricing'
    end
  end
 
@@ -124,7 +124,7 @@ Rails.application.routes.draw do
   post 'country_lists/country_list_update'
   get 'update_enquiry_status'=>'enquiries#update_status'
 
-  get 'search/jobs'=>'search#search_jobs'
+  get 'search/jobs'=>'search#search_jobs', as: :search_jobs
   get 'search/profiles'=>'search#search_profiles'
   get 'search/search_local_employers' => 'search#search_local_employers'
   get 'search/search_local_talents' => 'search#search_local_talents'

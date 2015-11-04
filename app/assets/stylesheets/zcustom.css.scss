@@ -60,6 +60,7 @@
 
 
 $base_color: #666666;
+$line_color: #dedede;
 $light_grey_color: #f8f8f8;
 $grey_color: #bbbbbb;
 $dark_grey_color: #404040;
@@ -88,15 +89,15 @@ body {background:#fff; position: static; @include reset_space;  overflow-x: hidd
 
 .vessel {@extend .block;@include reset_space; padding-top: $header_height;  }
 
-body, a, textarea  {line-height: 180%; @include font_base; font-weight: normal !important; }
+body, a, textarea  {line-height: 160%; @include font_base; font-weight: normal !important; }
 
-hr { border-bottom: 1px solid #000;border-top: 0;border-right: 0;border-left: 0;min-height: 0px;height: 1px; clear: both; margin: 0px;}
+hr { border-bottom: 1px solid $line_color;border-top: 0;border-right: 0;border-left: 0;min-height: 0px;height: 1px; clear: both; margin: 0px;}
 
 h1, h2, h3, h4, h5, h6 {line-height: 100%; @include reset_space;}
 h1 {}
 h2 {}
 h3 {}
-h4 {}
+h4 { font-size: 18px;}
 h5 {}
 h6 {}
 
@@ -148,6 +149,14 @@ textarea, textarea.form-control, textarea.form-control:focus, textarea.form-cont
 .btn-icon:hover span { color:$blue_color; }
 
 
+/* ---- COLUMNS ---- */
+
+.w25, .w50, .w75, .w100 { display: inline;}
+.w25 { width: 23.7%;}
+.w50 { width: 49.1%;}
+.w75 { width: 74.6%;}
+.w100 { width: 100%;}
+
 
 /* ---- HEADER ---- */
 
@@ -179,6 +188,45 @@ header .profile .dropdown-toggle:hover .img-circle {border: 1px solid $blue_colo
 header .profile .dropdown-menu { margin: 0; border: 0; padding: 15px 0px; @include border-radius(2px); @include box-shadow(0px 1px 6px 2px rgba(0, 0, 0, 0.2)); right: -80%; left: auto; text-align: center; min-width: 200px; }
 header .profile .dropdown-menu > li > a, header .profile .dropdown-menu > li > a:focus { background: none; padding: 15px 20px; line-height: normal; color: $base_color; font-family: 'pro-light'; }
 header .profile .dropdown-menu > li > a:hover { color: $blue_color}
+
+
+
+/* ---- FOOTER ---- */
+
+footer {@extend .block; background: $base_color; color: $light_grey_color; padding: 80px 0px; float: left; clear: both;}
+
+
+footer nav.w25 { float: left; margin-right: 20px;}
+footer nav.w25:last-of-type { margin-right: 0px;}
+footer nav h4 {@extend .block; float: left; text-transform: uppercase; color: $dark_grey_color; font-family: 'pro-regular'; margin-bottom: 20px;}
+footer nav h4.payment { margin-top: -40px;} 
+footer nav a, footer nav a:focus  {@extend .block; color: $light_grey_color; text-decoration: none; margin-bottom: 20px; line-height: 100%; float: left; text-decoration: none;}
+footer nav a:hover {color: $light_grey_color; text-decoration: underline;}
+footer nav a:last-of-type { margin-bottom: 0px;}
+
+footer nav a.icon, footer nav a.icon:focus { display: inline; width: auto;}
+footer nav a.icon:hover { color: $orange_color; text-decoration: none;}
+footer nav a.icon::before { line-height: 0% !important;}
+footer nav a.icon.icon-apple {font-size: 141px; margin: -24px 15px 0px 0px;}
+footer nav a.icon.icon-play {font-size: 128px; margin: -20px 0px 0px 0px;}
+
+
+footer nav em.icon { font-size: 30px; font-size: 70px; color: $light_grey_color; display: inline; float: left; margin: 6px 0px 0px 0px; }
+footer nav em.icon::before {line-height: 0% !important;}
+
+footer hr { border-color:$light_grey_color; @extend .block;  float: left;  margin: 25px 0px 33px 0px; }
+
+footer .copy { display: inline; float: left; margin-top: 12px;}
+footer .copy small { display: inline; color: $light_grey_color; font-size: 16px;}
+footer .copy a, footer .copy a:focus { display: inline; color: $light_grey_color; font-size: 16px; text-decoration: none;}
+footer .copy a:hover { text-decoration: underline;}
+footer .copy a::before { content: "|"; padding: 0px 20px;}
+
+footer .social {display: inline; float: right;}
+footer .social li {display: inline; float: left;}
+footer .social li a, footer .social li a:focus { font-size: 44px; color: $light_grey_color; margin-left: 20px; }
+footer .social li a:hover { color: $orange_color; }
+footer .social li a::before {line-height: 0% !important;}
 
 
 

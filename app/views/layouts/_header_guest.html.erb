@@ -5,8 +5,8 @@
     <nav class="pull-right">
       <%= link_to new_user_registration_path, class: "btn-icon" do %><em class="icon icon-user"></em><span>Register</span><% end %>
       <%= link_to new_user_session_path, class: "btn-icon" do %><em class="icon icon-lock"></em><span>Login</span><% end %>
-      <form action="<%= new_job_path %>"><input type="submit" value="Post a Job" class="btn btn-orange-ghost"></form>
-      <form action="<%= jprofiles_path %>" method="get"><input type="submit" value="Post a Talent" class="btn btn-blue-ghost"/></form>
+      <%= link_to "Post a Job", new_job_path, class: "btn btn-orange-ghost" %>
+      <%= link_to "Post a Talent", jprofiles_path, class: "btn btn-blue-ghost" %>
     </nav>
   </div>
 
@@ -17,3 +17,6 @@
   <%- end -%>
   
 </header>
+
+
+

@@ -50,6 +50,10 @@ if !User.find_by(email: 'employer@gmail.com').present?
   emp=User.create email:'employer@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:2,confirmed_at:Date.today,name:'employer1'
 end
 
+if !User.find_by(email: 'employer2@gmail.com').present?
+  emp=User.create email:'employer2@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:2,confirmed_at:Date.today,name:'employer2'
+end
+
 if !User.find_by(email: 'jobseeker1@gmail.com').present?
   jobseeker_user1=User.create email:'jobseeker1@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:3,confirmed_at:Date.today,name:'jobseeker 1'
 end

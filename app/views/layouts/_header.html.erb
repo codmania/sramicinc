@@ -6,7 +6,7 @@
      <nav class="inline-block">
 
       <% if current_user.role.authority=='employer'%>
-        <form action="<%= new_job_path %>"><input type="submit" value="Post a Job" class="btn btn-orange-ghost"></form>
+        <%= link_to "Post a Job", new_job_path, class: "btn btn-orange-ghost" %>
         <form action="/search/profiles"><input type="submit" value="Search" class="btn btn-ghost"></form>
         <% elsif current_user.role.authority == 'jobseeker' %>
           <form action="/search/jobs"><input type="submit" value="Search" class="btn btn-ghost"></form>
@@ -14,7 +14,7 @@
 
       <% if PaymentModule.first.active? %>
         <% if current_user.try(:subscription).try(:plan_id)==1 || current_user.try(:subscription).try(:plan_id)== 6%>
-          <form action="<%= payments_path%>"><input type="submit" value="Upgrade Account" class="btn btn-ghost"></form>
+           <%= link_to "Upgrade Account", payments_path, class: "btn btn-ghost" %>
         <% end %>
       <% end%> 
 

@@ -53,7 +53,7 @@
 @mixin box-shadow($shadow) { -webkit-box-shadow: $shadow; -moz-box-shadow: $shadow; -ms-box-shadow: $shadow; -o-box-shadow: $shadow; box-shadow: $shadow; }
 @mixin text-shadow($shadow) { -webkit-text-shadow: $shadow; -moz-text-shadow: $shadow; -ms-text-shadow: $shadow; -o-text-shadow: $shadow; text-shadow: $shadow; }
 @mixin opacity($value){ $IEValue: $value*100; opacity: $value; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")"; filter: alpha(opacity=$IEValue); zoom:1; -khtml-opacity: $value; -moz-opacity:$value; -webkit-opacity:$value;}
-
+@mixin transform($transform-value) {-webkit-transform:$transform-value; -moz-transform:$transform-value; -ms-transform:$transform-value; -o-transform:$transform-value; transform:$transform-value; }
 
 @mixin font_base {font-family: 'pro-thin'; font-size: 18px; color: $base_color;}
 @mixin reset_space{ margin: 0; padding: 0;}
@@ -92,13 +92,14 @@ body {background:#fff; position: static; @include reset_space;  overflow-x: hidd
 .vessel {@extend .block;@include reset_space; padding-top: $header_height; @extend .full-height;  }
 
 body, a, textarea  {line-height: 160%; @include font_base; font-weight: normal !important; }
+strong { font-weight: normal;}
 
 hr { border-bottom: 1px solid $line_color;border-top: 0;border-right: 0;border-left: 0;min-height: 0px;height: 1px; clear: both; margin: 0px;}
 
 h1, h2, h3, h4, h5, h6 {line-height: 100%; @include reset_space;}
 h1 { font-size: 44px;}
 h2 { font-size: 28px;}
-h3 {}
+h3 { font-size: 24px;}
 h4 { font-size: 18px;}
 h5 {}
 h6 {}
@@ -273,7 +274,7 @@ footer .social li a::before {line-height: 0% !important;}
 
 
 
-/* ----------- CUSTOM SELECT ----------- */
+/* ---- CUSTOM SELECT ---- */
 
 .bootstrap-select, .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) { width: 100%;}
 .bootstrap-select > .dropdown-toggle, .bootstrap-select > .dropdown-toggle:active, .bootstrap-select > .dropdown-toggle:focus { border: 1px solid $line_color !important; background: #fff !important; color: $base_color; line-height: normal; vertical-align: middle; padding: 13px 24px 13px 10px;  @extend .inline-block; float: none;@include font_base; text-transform: none; text-align: left;  font-size: 16px; @include box-shadow(none); outline: 0 !important;  @include box-shadow(none); margin: 0px; }
@@ -296,16 +297,90 @@ footer .social li a::before {line-height: 0% !important;}
 
 
 
-/* ----------- SECTION ----------- */
+/* ---- SECTION ---- */
 
 section { @extend .block; padding: 80px 0px; clear: both;}
 
 
-/* ----------- HOME EXHIBIT ----------- */
+
+/* ---- STRATUM ---- */
+
+.stratum { overflow: hidden; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;  }
+
+.stratum.blue {background:repeat transparent center top image-url("layout/stratum-blue.png"); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-blue.png', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-blue.png', sizingMethod='scale')";} 
+.stratum.orange {background:repeat transparent center top image-url("layout/stratum-orange.png"); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-orange.png', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-orange.png', sizingMethod='scale')";} 
+
+
+
+/* ---- SLICK ---- */
+
+.slick-slider, .slick-slide {outline: 0 !important;}
+
+.slick-prev, .slick-next {line-height: 0;position: absolute;top: 45%;display: block; margin-top:0px;padding: 0;cursor: pointer;border: none;outline: none;  width: 50px; height: 50px; background: none; color: transparent; font-size: 0px; }
+.slick-prev::before, .slick-next::before { @include font_icons; font-size: 45px; color: $grey_color;}
+.slick-next:hover, .slick-prev:hover {outline: none; color: transparent;font-size: 0px; }
+.slick-next:hover::before, .slick-prev:hover::before {color: $orange_color; }
+
+.slick-next::before {content: "e";}
+.slick-next, .slick-next:focus{right: -40px;  }
+
+.slick-prev::before {content: "d";}
+.slick-prev, .slick-prev:focus{left: -40px;}
+
+
+/* ---- LOZENGE ---- */
+
+.lozenge {@extend .inline-block; vertical-align: middle; position: relative; position: relative; }
+
+.lozenge .mask{ @extend .inline-block; vertical-align: middle; background: #fff; border: 10px solid $blue_color; width:130px; height:130px;  @include transform(rotate(-45deg));  @include border-radius(6px);  overflow: hidden; position: relative;}
+.lozenge .mask img { display: block; @include transform(rotate(45deg)); margin: -25px 0px 0px -35px; vertical-align: middle; position: relative; z-index: 1 }
+
+.lozenge .commas { display: block; width: 30px; height: 30px; background: $orange_color; @include transform(rotate(-45deg)); position: absolute; z-index: 2; top: 50px; right: -25px; @include border-radius(2px); text-align: center;}
+.lozenge .commas span {display: block;font-size: 50px; @include transform(rotate(45deg));  color: #fff; font-family: 'pro-thin'; position: absolute;top: 12px; left: -4px;}
+
+
+/* ---- NAV TABS ---- */
+
+.nav.nav-tabs { padding: 0px; margin: 0px; border: 0; text-align: center;}
+.nav.nav-tabs  > li { float: none;@extend .inline-block; margin: 0px; border: 0; border-right: 1px solid $line_color; padding: 20px 40px 10px 40px;}
+.nav.nav-tabs  > li:last-of-type { border:0;}
+.nav.nav-tabs  > li a, .nav.nav-tabs  > li a:focus {@include border-radius(0px); background: none; font-family: 'pro-regular'; font-size: 28px; color: $grey_color; border: 0; clear: both; }
+
+.nav.nav-tabs  > li a strong { font-family: 'pro-regular'; font-size: 28px; color: $grey_color;  font-weight: normal; display: inline; float: left;}
+.nav.nav-tabs  > li a .icon { font-size: 40px;color: $grey_color; display: inline; float: left; margin: -10px 10px 0px 0px;}
+
+.nav.nav-tabs  > li.active a, .nav.nav-tabs  > li a:hover { border: 0; background: none;}  
+
+.nav.nav-tabs  > li.orange a:hover strong, .nav.nav-tabs  > li.orange.active a strong, .nav.nav-tabs  > li.orange a:hover .icon, .nav.nav-tabs  > li.orange.active a .icon  { color: $orange_color;}
+.nav.nav-tabs  > li.blue a:hover strong, .nav.nav-tabs  > li.blue.active a strong, .nav.nav-tabs  > li.blue a:hover .icon, .nav.nav-tabs  > li.blue.active a .icon  { color: $blue_color;}
+
+
+.nav.nav-tabs.sub { margin: 40px 0px;}
+.nav.nav-tabs.sub > li, .nav.nav-tabs.sub > li:last-of-type {  padding: 0px; border:0; margin: 0px 20px; }
+.nav.nav-tabs.sub  > li a, .nav.nav-tabs.sub  > li a:focus {@include border-radius(2px); font-family: 'pro-light';  text-transform: uppercase; line-height: 100%;  vertical-align: middle;  font-size: 14px; font-family: 'pro-light';  margin: 0px; border: 1px solid $line_color; padding: 8px 20px 6px 20px;} 
+
+
+.nav.nav-tabs.sub  > li.orange a:hover, .nav.nav-tabs.sub  > li.orange.active a, .nav.nav-tabs.sub  > li.orange a:hover .icon, .nav.nav-tabs.sub  > li.orange.active a .icon  { color: $orange_color; border-color: $orange_color;}
+.nav.nav-tabs.sub  > li.blue a:hover, .nav.nav-tabs.sub  > li.blue.active a, .nav.nav-tabs.sub  > li.blue a:hover .icon, .nav.nav-tabs.sub  > li.blue.active a .icon  { color: $blue_color; border-color: $blue_color;}
+
+
+.tab-content .item {@extend .block; text-align: left;}
+.tab-content .item li { width:24%; vertical-align: top; @extend .inline-block; padding: 10px 10px 10px 10px}
+.tab-content .item li a { font-size: 18px; color: $base_color; font-family: 'pro-thin';}
+.tab-content .item li a span {font-family: 'pro-light'; padding: 0px 4px;}
+
+.tab-content .item li.orange a span {color: $orange_color;}
+
+
+/* CONTENT */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+/* ---- HOME EXHIBIT ---- */
 
 .exhibit { text-align: center;}
-.exhibit article { width: 49%; @extend .inline-block; padding: 40px; vertical-align: top;}
-.exhibit article:last-of-type { border-left: 1px solid $line_color;}
+.exhibit article { width: 49%; @extend .inline-block; padding: 40px; vertical-align: top; border-right: 1px solid $line_color;}
+.exhibit article:last-of-type { border:0;}
 .exhibit article .img-circle { @extend .inline-block;  width: 180px; height: 180px; position: relative; text-align: center; }
 .exhibit article .img-circle .icon { font-size: 130px; position: relative; }
 .exhibit article .img-circle .icon::before { top: 30px; left: 26px; position: absolute;}
@@ -317,6 +392,40 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .exhibit article.orange .img-circle .icon { color: $orange_color;}
 .exhibit article.blue .img-circle { border: 1px solid $blue_color;}
 .exhibit article.blue .img-circle .icon { color: $blue_color;}
+
+
+/* ---- HOME AMOUNT ---- */
+
+.amount {@extend .block; text-align: center;}
+.amount li {@extend .inline-block; vertical-align: top; text-align: left; padding: 20px 60px; border-right: 1px solid #c8c8c8; }
+.amount li:last-of-type { border-right:0; }
+.amount li h2 {@extend .block; color: #fff; font-family: 'pro-light';}
+.amount li h2 strong { font-size: 48px; font-family: 'pro-regular'; padding-right: 10px;}
+.amount li p {@extend .block; color: #fff; margin: 10px 0px 0px 0px;}
+
+
+/* ---- HOME TESTIMONIALS ---- */
+
+.testimonials {@extend .block; }
+.testimonials li { width: 100%; text-align: center; padding: 0px 40px  }
+.testimonials li .lozenge{ margin-right: 46px;}
+.testimonials li article {@extend .inline-block; vertical-align: middle; width: 50%; text-align: left;} 
+.testimonials li article h3 {@extend .block; color: $dark_color; font-family: 'pro-regular'; margin-bottom: 10px;}
+.testimonials li article h4 {@extend .block;  color: $blue_color; margin-bottom: 20px;}
+.testimonials li article p{@extend .block;  margin-bottom: 20px;}
+.testimonials li article p:last-of-type { margin-bottom: 0px;}
+
+
+
+/* ---- HOME TABS ---- */
+
+.tabs-container { border-top: 20px solid $orange_color; background:$light_grey_color; }
+
+
+
+
+
+
 
 
 
@@ -362,15 +471,6 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .banner-search.blue .bootstrap-select.btn-group .dropdown-toggle .caret {color: $blue_color;}
 .banner-search.blue .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$blue_color; }
 .banner-search.blue .bootstrap-select .selected span, .banner-search.blue .bootstrap-select .subselected span {color:$blue_color !important; }
-
-
-
-
-
-
-
-
-
 
 
 

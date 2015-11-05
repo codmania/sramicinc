@@ -39,251 +39,159 @@
     </div>
   </section>
 
+  <section class="tabs-container">
+    <div class="margin">
 
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="orange active"><a href="#jobs-tab" aria-controls="jobs-tab" role="tab" data-toggle="tab"><em class="icon icon-tie"></em><strong>Jobs</strong></a></li>
+        <li role="presentation" class="blue"><a href="#talent-tab" aria-controls="talent-tab" role="tab" data-toggle="tab"><em class="icon icon-cap"></em><strong>Talents<strong></a></li>
+      </ul>
 
-  </div>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="jobs-tab">
 
-
-  <div class="container-fluid job_pro_container">
-    <div class="container">
-      <div class="row">
-        <ul class="tabs">
-          <li class="current"><a href="" rel="tab1" id="job_tab">Jobs</a></li>
-          <li><a href="" rel="tab2" id="profile_tab">Profiles</a></li>
-        </ul>
-        <div class="tab-content" id="tab1" >
-
-          <!--sub tabs-->
-          <ul class="sub_tabs">
-
-            <li class="hvr-underline-reveal current"><a href="" rel="sub_tab1" id="job_subtab">Jobs By Category  </a></li>
-            <li class="hvr-underline-reveal"><a href="" rel="sub_tab2">Jobs By Location     </a></li>
-            <li class="hvr-underline-reveal"><a href="" rel="sub_tab3"> Jobs By Company   </a></li>
-            <li class="hvr-underline-reveal"><a href="" rel="sub_tab4"> Jobs By Industry</a></li>
-
-
-          </ul>
-          <div class="sub-tab-content" id="sub_tab1" >
-        <%if @res != nil %>
-             <% @res.facet(:categoryname).rows.each do |facet| %>
-             <ul class="list col-md-3 col-xs-12">
-             <li><a href="/search/jobs?&category=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">(<%=facet.count%>)</span></a> </li></ul>
-               <%end%>
-                <%end%>
-
-
-           <!--<div class="more-search-btn"> <input type="submit" class="post" value="More Searches" name="1"></div>-->
-           </div>
-
-          <div class="sub-tab-content" id="sub_tab2" >
-
-            <%if @res != nil %>
-              <% @res.facet(:city).rows.each do |facet| %>
-              <ul class="list col-md-3 col-xs-12">
-              <li><a href="/search/jobs?&city=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count"> (<%=facet.count%>)</span></a></li></ul>
-             <%end%>
-              <%end%>
-
-
-          </div>
-
-
-          <div class="sub-tab-content" id="sub_tab3" >
-
-            <%if @res != nil %>
-             <% @res.facet(:companyname).rows.each do |facet| %>
-               <ul class="list col-md-3 col-xs-12">
-                <li><a href="/search/jobs?&company=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count"> (<%=facet.count%>)</span></a><li></ul>
-                <%end%>
-                  <%end%>
-
-
-               </div>
-
-          <div class="sub-tab-content" id="sub_tab4" >
-
-              <%if @res != nil %>
-              <% @res.facet(:industry).rows.each do |facet| %>
-               <ul class="list col-md-3 col-xs-12">
-                <li><a href="/search/jobs?&industry=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count"> (<%=facet.count%>)</span></a></li></ul>
-
-                <%end%>
-                <%end%>
-
-
-               </div>
-          <!--sub tabs end-->
-
-
-        </div>
-
-        <div class="tab-content" id="tab2" >
-            <!--sub tabs-->
-          <ul class="sub_tabs">
-            <li class="hvr-underline-reveal current"><a href="" rel="sub_tab11" id="profile_subtab"> Profiles by Location </a></li>
-            <li class="hvr-underline-reveal"><a href="" rel="sub_tab12" > Profiles by Skills </a></li>
-            <!--<li class="hvr-underline-reveal"><a href="" rel="sub_tab13">Profiles by Education </a></li>-->
-            <!--<li class="hvr-underline-reveal"><a href="" rel="sub_tab14"> Profiles by ABCDEF </a></li>-->
+          <!-- Sub Nav tabs -->
+          <ul class="nav nav-tabs sub" role="tablist">
+            <li role="presentation" class="orange active"><a href="#jobs-tab1" aria-controls="jobs-tab1" role="tab" data-toggle="tab">By Category </a></li>
+            <li role="presentation" class="orange"><a href="#jobs-tab2" aria-controls="jobs-tab2" role="tab" data-toggle="tab">By Location</a></li>
+            <li role="presentation" class="orange"><a href="#jobs-tab3" aria-controls="jobs-tab3" role="tab" data-toggle="tab">By Company</a></li>
+            <li role="presentation" class="orange"><a href="#jobs-tab4" aria-controls="jobs-tab4" role="tab" data-toggle="tab">By Industry</a></li>
           </ul>
 
-        <div class="sub-tab-content" id="sub_tab11" >
 
-          <%if @res1 != nil %>
-              <% @res1.facet(:city).rows.each do |facet| %>
-              <ul class="list col-md-3 col-xs-12">
-                <li><a href="/search/profiles?&city=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">(<%=facet.count%>)</span> </a></li></ul>
-              <%end%>
-          <%end%>
-
-        </div>
-        <div class="sub-tab-content" id="sub_tab12" >
-           <%if @res1 != nil %>
-              <% @res1.facet(:skills).rows.each do |facet| %>
-              <ul class="list col-md-3 col-xs-12">
-                <li><a href="/search/profiles?&skills=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">(<%=facet.count%>)</span> </a></li></ul>
-              <%end%>
-          <%end%>
-        </div>
-        <div class="sub-tab-content" id="sub_tab13" >
-      <%if @res1 != nil %>
-              <% @res1.facet(:educations).rows.each do |facet| %>
-              <ul class="list col-md-3 col-xs-12">
-                <li><a href="/search/profiles?&education=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">(<%=facet.count%>)</span> </a></li></ul>
-              <%end%>
-          <%end%>
-        </div>
-        <!--<div class="sub-tab-content" id="sub_tab14" >
-            Demo4
-        </div>-->
-
-    </div>
-
-
-  </div>
-
-  </div>
-  </div>
-
-  <div class="container-fluid overall_description_container">
-    <div class="container">
-      <div class="row">
-        <ul class="col-sm-3">
-          <li>
-            <span><%=@jobs.count%><br/> jobs</span>
-          </li>
-        </ul>
-        <ul class="col-sm-3">
-          <li>
-            <span><%=@jprofiles.count%><br/> Profiles</span>
-          </li>
-        </ul>
-        <ul class="col-sm-3">
-          <li>
-            <span><%=@eprofiles.count%><br/> Companies</span>
-          </li>
-        </ul>
-        <ul class="col-sm-3">
-          <li>
-            <span><%=@users.count%><br/> Members</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <%if @testimonials.count > 0 %>
-
-      <div class="container-fluid testimonial_container">
-        <div class="container">
-          <div class="row">
-            <%= raw Page.find_by(name:'Testimonial Header').content %>
-
-
-            <% @testimonials.each do |testimonial|%>
-
-                <div class="col-md-3 col-sm-6">
-                  <div class="testimonial_box">
-                    <div class="left_quote"></div>
-                    <%= testimonial.try(:description)%>
-                    <div class="right_quote"></div>
-                    <span class="arrow_bottom"></span>
-                  </div>
-                  <p class="last">
-                   <% if testimonial.logo? %>
-                    <span class=""> <%= image_tag testimonial.logo.url(:medium)%> </span>
-                   <% end %>
-                    <span class="name"><%= testimonial.try(:name)%></span>
-                    <span class="place"><%= testimonial.try(:company)%></span>
-                  </p>
-                </div>
-
-            <% end %>
-
-
-
-          </div>
-
-        </div>
-      </div>
-
-  <% end %>
-
-  <div class="container-fluid sign_up_container">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <%= raw Page.find_by(name:'Footer Social Header').content %>
-        </div>
-        <div class="social_container2">
-          <div class="col-lg-5">
-            <div class="social_container">
-
-
-              <span>Sign Up With:</span>
-              <ul>
-              <li><a href=" <%= user_omniauth_authorize_path(:facebook, user: params[:t]=='candidate'? 'jobseeker':'employer')  %>" class="social social_1"></a></li>
-              <li><a href=" <%= user_omniauth_authorize_path(:google_oauth2, user: params[:t]=='candidate'? 'jobseeker':'employer')%>" class="social social_2"></a></li>
-             <!-- <li><a href="#" class="social social_3"></a></li>
-              <li><a href="#" class="social social_4"></a></li>-->
-              </ul>
+          <!-- Sub Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="jobs-tab1">
+              <ul class="item">
+                <%if @res != nil %>
+                  <% @res.facet(:categoryname).rows.each do |facet| %>
+                    <li class="orange"><a href="/search/jobs?&category=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                  <%end%>  
+                <%end%>
+              </ul> 
+            </div>
+            <div role="tabpanel" class="tab-pane" id="jobs-tab2">
+              <ul class="item">
+                <%if @res != nil %>
+                  <% @res.facet(:city).rows.each do |facet| %>
+                    <li class="orange"><a href="/search/jobs?&city=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                  <%end%>  
+                <%end%>
+              </ul> 
+            </div>
+            <div role="tabpanel" class="tab-pane" id="jobs-tab3">
+              <ul class="item">
+                <%if @res != nil %>
+                  <% @res.facet(:companyname).rows.each do |facet| %>
+                    <li class="orange"><a href="/search/jobs?&company=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                  <%end%>  
+                <%end%>
+              </ul> 
+            </div>
+            <div role="tabpanel" class="tab-pane" id="jobs-tab4">
+              <ul class="item">
+                <%if @res != nil %>
+                  <% @res.facet(:industry).rows.each do |facet| %>
+                    <li class="orange"><a href="/search/jobs?&industry=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                  <%end%>  
+                <%end%>
+              </ul> 
             </div>
           </div>
 
         </div>
-      </div></div>
-  </div>
+        <div role="tabpanel" class="tab-pane" id="talent-tab">
+          
+          <!-- Sub Nav tabs -->
+          <ul class="nav nav-tabs sub" role="tablist">
+            <li role="presentation" class="blue active"><a href="#talent-tab1" aria-controls="talent-tab1" role="tab" data-toggle="tab">By Location </a></li>
+            <li role="presentation" class="blue"><a href="#talent-tab2" aria-controls="talent-tab2" role="tab" data-toggle="tab">By Skills</a></li>
+          </ul>
+
+
+          <!-- Sub Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="talent-tab1">
+              <ul class="item">
+                <%if @res1 != nil %>
+                  <% @res1.facet(:city).rows.each do |facet| %>
+                    <li class="orange"><a href="/search/profiles?&city=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                  <%end%>  
+                <%end%>
+              </ul> 
+            </div>
+            <div role="tabpanel" class="tab-pane" id="talent-tab2">
+              <ul class="item">
+                <%if @res1 != nil %>
+                  <% @res1.facet(:skills).rows.each do |facet| %>
+                    <li class="orange"><a href="/search/profiles?&skills=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                  <%end%>  
+                <%end%>
+              </ul> 
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="stratum blue">
+    <div class="margin">
+
+      <ul class="amount">
+
+        <li>
+          <h2><strong><%=@jobs.count%></strong>Jobs</h2>
+          <p>Lorem ipsum dolor sit amet</p>
+        </li>
+
+        <li>
+          <h2><strong><%=@eprofiles.count%></strong>Employers</h2>
+          <p>Proin bibendum urna id ante</p>
+        </li>
+
+        <li>
+          <h2><strong><%=@jprofiles.count%></strong>Talents</h2>
+          <p>Amet laoreet diam molestie</p>
+        </li>
+
+      </ul>
+
+    </div>
+  </section>
+
+  <%if @testimonials.count > 0 %>
+  <section>
+    <div class="margin">
+
+      <ul class="testimonials">
+        <% @testimonials.each do |testimonial|%>
+          <li>
+            <div class="lozenge">
+              <div class="mask">
+                <% if testimonial.logo? %>
+                  <%= image_tag testimonial.logo.url(:medium), title: "", alt: "" %>
+                <% end %>   
+              </div>
+              <div class="commas"><span>“</span></div>
+            </div>
+            
+            <article>
+              <h3><%= testimonial.try(:name)%></h3>
+              <h4><%= testimonial.try(:company)%></h4>
+              <p><%= testimonial.try(:description)%></p>
+            </article>
+          </li>
+        <% end %>
+      </ul>
+      
+    </div>
+  </section>
+  <% end %>
+
 
 </div>
-
-
-<script type="text/javascript">
-
-    $(document).ready(function(){
-
-      $('#job_tab').click(function(){
-          $('#job_subtab').click();
-      });
-      $('#profile_tab').click(function(){
-            $('#profile_subtab').click();
-      });
-
-
-        $('#post_a_job').click(function(){
-            $('#new_post_job_form').submit();
-        });
-
-        $('#create_a_talent_alert').click(function(){
-            $('#new_talent_alert_form').submit();
-        });
-
-        $('#post_a_talent').click(function(){
-            $('#jprofile_path_form').submit();
-        });
-
-        $('#create_a_job_alert').click(function(){
-            $('#new_job_alert_form').submit();
-        });
-
-    });
-
-</script>

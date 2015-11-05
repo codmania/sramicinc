@@ -1336,9 +1336,6 @@ color: red !important;
   text-align: center;
 }
 
-p, ol, ul, td {
-    font-family: 'Arial', Helvetica, sans-serif !important;
-}
 
 .search_container {
 padding: 12px 20px 9px;

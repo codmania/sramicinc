@@ -17,62 +17,32 @@
 
 <div id="content">
 
-  
+  <section class="exhibit">
+    <div class="margin">
 
+      <article class="orange">
+        <div class="img-circle"><em class="icon icon-tie"></em></div>
+        <h2>Employer</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis tempor urna. Proin vitae velit efficitur, aliquet justo eget, maximus purus.</p>
+        <%= link_to "Post a Job", new_job_path, class: "btn btn-orange" %>
+        <%= link_to "Talent alert", new_talent_alert_path, class: "btn btn-orange-ghost" %>
+      </article>
 
-  </div>
-  </div>
-  <div class="container-fluid emp_contianer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 pull_center">
-                  <span class="emp_logo">
-                      <img src="/assets/employer.png"/>
-                  </span>
-          <h3>Employer</h3>
-          <%= raw Page.find_by(name:'Employer Content').content %>
+      <article class="blue">
+        <div class="img-circle"><em class="icon icon-cap"></em></div>
+        <h2>Job Seeker</h2>
+        <p>Cras blandit eu nisl ut dictum. Mauris non quam elit. Morbi laoreet eros nisi, interdum dictum orci commodo consectetur adipiscing </p>
+        <%= link_to "Post a Talent", jprofiles_path, class: "btn btn-blue" %>
+        <%= link_to "Job alert", new_job_alert_path, class: "btn btn-blue-ghost" %>
+      </article>
 
-          <form id="new_post_job_form" action="<%= new_job_path %>">
-          </form>
-
-          <form id="new_talent_alert_form" action="<%= new_talent_alert_path %>">
-          </form>
-
-          <input id="post_a_job" type="submit" name="1" value="Post a Job" class="post"/>
-          <input id="create_a_talent_alert" type="submit" name="1" value="Create a Talent Alert" class="create"/>
-
-          <script type="text/javascript">
-              $(document).ready(function(){
-
-                  $('#create_alert').click(function(){
-                      $('#create_alert_form').submit();
-                  });
-
-                  //post_job_form
-              });
-          </script>
-        </div>
-        <div class="col-md-6 pull_center">
-                  <span class="emp_logo">
-                      <img src="/assets/candidate.png"/>
-                  </span>
-          <h3>Candidates</h3>
-
-          <%= raw Page.find_by(name:'Candidate Content').content %>
-          <form id="jprofile_path_form" action="<%= jprofiles_path %>" method="get">
-            <input type="hidden" value="candidate" name="t"/>
-          </form>
-
-          <form id="new_job_alert_form" action="<%= new_job_alert_path %>" method="get">
-            <input type="hidden" value="candidate" name="t"/>
-          </form>
-
-          <input id="post_a_talent" type="submit" name="1" value="Post a Talent" class="post"/>
-          <input id="create_a_job_alert" type="submit" name="1" value="Create a Job Alert" class="create"/>
-        </div>
-      </div>
     </div>
+  </section>
+
+
+
   </div>
+
 
   <div class="container-fluid job_pro_container">
     <div class="container">

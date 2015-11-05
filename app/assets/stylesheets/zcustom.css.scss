@@ -97,7 +97,7 @@ hr { border-bottom: 1px solid $line_color;border-top: 0;border-right: 0;border-l
 
 h1, h2, h3, h4, h5, h6 {line-height: 100%; @include reset_space;}
 h1 { font-size: 44px;}
-h2 {}
+h2 { font-size: 28px;}
 h3 {}
 h4 { font-size: 18px;}
 h5 {}
@@ -293,6 +293,32 @@ footer .social li a::before {line-height: 0% !important;}
 
 
 .bootstrap-select .selected, .bootstrap-select .subselected { background: none; border: 0;}
+
+
+
+/* ----------- SECTION ----------- */
+
+section { @extend .block; padding: 80px 0px; clear: both;}
+
+
+/* ----------- HOME EXHIBIT ----------- */
+
+.exhibit { text-align: center;}
+.exhibit article { width: 49%; @extend .inline-block; padding: 40px; vertical-align: top;}
+.exhibit article:last-of-type { border-left: 1px solid $line_color;}
+.exhibit article .img-circle { @extend .inline-block;  width: 180px; height: 180px; position: relative; text-align: center; }
+.exhibit article .img-circle .icon { font-size: 130px; position: relative; }
+.exhibit article .img-circle .icon::before { top: 30px; left: 26px; position: absolute;}
+.exhibit article h2 { @extend .block; color: $dark_color; font-family: 'pro-regular'; margin-top: 40px;}
+.exhibit article p { @extend .block; margin: 20px 0px 40px 0px; padding: 0px 40px;}
+.exhibit article .btn {margin: 0px 20px;}
+
+.exhibit article.orange .img-circle { border: 1px solid $orange_color;}
+.exhibit article.orange .img-circle .icon { color: $orange_color;}
+.exhibit article.blue .img-circle { border: 1px solid $blue_color;}
+.exhibit article.blue .img-circle .icon { color: $blue_color;}
+
+
 
 
 

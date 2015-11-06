@@ -8,11 +8,11 @@
 
       <div class="form-group">
         <label>Email<em>*</em></label>
-        <%= f.email_field :email, autofocus: true,presence: true,required:true, :class => 'email_field' %>
+        <%= f.email_field :email, autofocus: true,presence: true,required:true, :class => 'email_field', :placeholder => "Enter your email address" %>
       </div>
       <div class="form-group">
         <label>Password<em>*</em></label>
-        <%= f.password_field :password, autocomplete: "off",required:true %>
+        <%= f.password_field :password, autocomplete: "off",required:true, :placeholder => "Enter your password" %>
       </div>
 
       <%= f.submit "Login", class: "btn btn-blue" %>

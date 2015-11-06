@@ -9,7 +9,7 @@
 
       <div class="form-group">
         <label>Email<em>*</em></label>
-        <%= f.text_field :email, autofocus: true,:required=>true %>
+        <%= f.text_field :email, autofocus: true,:required=>true, :placeholder => "Enter your email address" %>
       </div>
 
       <%= f.submit "Send me a reset password link", class: "btn btn-blue" %>

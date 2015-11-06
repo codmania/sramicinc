@@ -28,22 +28,22 @@
 
           <div class="form-group">
             <label>Company Name<em>*</em></label>
-            <%= f.text_field :name, autofocus: true,:required=>true %>
+            <%= f.text_field :name, autofocus: true,:required=>true, :placeholder => "Enter your full company name" %>
           </div>
 
           <div class="form-group">
             <label>Email<em>*</em></label>
-            <%= f.email_field :email,:required=>true, :class => 'email_field' %>
+            <%= f.email_field :email,:required=>true, :class => 'email_field', :placeholder => "Enter your company email address" %>
           </div>
 
           <div class="form-group">
             <label>Password<em>*</em></label>
-            <%= f.password_field :password, autocomplete: "off",:pattern=>'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,})',:title=>"Please Enter Atleast one upper case and lower case letter,one numeric, one special character and minimum password length 8",:required=>true %>
+            <%= f.password_field :password, autocomplete: "off",:pattern=>'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,})',:title=>"Please Enter Atleast one upper case and lower case letter,one numeric, one special character and minimum password length 8",:required=>true, :placeholder => "Enter your password" %>
           </div>
 
           <div class="form-group">
             <label>Confirm password<em>*</em></label>
-            <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true, :oninput=>"check_password()"  %>
+            <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true, :oninput=>"check_password()", :placeholder => "Enter your password confirmation"  %>
           </div>
 
           <%= f.hidden_field :role_id, :value => 2 %>
@@ -72,22 +72,22 @@
 
           <div class="form-group">
             <label>Name<em>*</em></label>
-            <%= f.text_field :name, autofocus: true,:required=>true %>
+            <%= f.text_field :name, autofocus: true,:required=>true, :placeholder => "Enter your name" %>
           </div>
 
           <div class="form-group">
             <label>Email<em>*</em></label>
-            <%= f.email_field :email,:required=>true, :class => 'email_field' %>
+            <%= f.email_field :email,:required=>true, :class => 'email_field', :placeholder => "Enter your email address" %>
           </div>
 
           <div class="form-group">
             <label>Password<em>*</em></label>
-            <%= f.password_field :password, autocomplete: "off",:pattern=>'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,})',:title=>"Please Enter Atleast one upper case and lower case letter,one numeric, one special character and minimum password length 8",:required=>true %>
+            <%= f.password_field :password, autocomplete: "off",:pattern=>'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,})',:title=>"Please Enter Atleast one upper case and lower case letter,one numeric, one special character and minimum password length 8",:required=>true, :placeholder => "Enter your password" %>
           </div>
 
           <div class="form-group">
             <label>Confirm password<em>*</em></label>
-            <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true, :oninput=>"check_password()" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true, :oninput=>"check_password()", :placeholder => "Enter your password confirmation" %>
           </div>
 
           <%= f.hidden_field :role_id, :value => 3 %>

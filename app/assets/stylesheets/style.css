@@ -543,23 +543,14 @@ a.close:hover { color: #fff;-webkit-transition: color 1s ease; -moz-transition: 
 .log-bt p{font-size:14px; font-family:arial; font-weight:bold; color:#46494e; text-align:center; margin:20px 0px 0px}
 .log-bt p a{color:#062a5c;}
 
-.r-block.large-b{width:62%;}
-.reg-wrap{display:block; background:#fff; box-shadow:0px 0px 2px 0px #ccc; width:100%; margin:15px auto 40px; padding:20px 30px; overflow:hidden; border-radius:3px;}
-.re-block{display:block; width:100%; margin-top:5px; margin-bottom:10px; overflow:hidden; }
-.r-block{display:block; width:30%; overflow:hidden; float:left; margin-bottom:10px; margin-right:10px;}
-.r-block label{display:inline-block; width:100%; font-weight:normal; font-size:14px; color:#5c5e63; float:left; margin-right:3px;}
-.r-block input[type="text"]{ background:#f8f8f8; border:1px solid #cbced1; padding:9px 6px; width:98%; float:left;  }
-.r-block input[type="password"]{ background:#f8f8f8; border:1px solid #cbced1; padding:9px 6px; width:98%; float:left; }
-.mar-r{margin-right:4%;}
-.r-block.fl-none{float:none !important; display:block !important;}
+
 .tiny-box{ width:22% !important; margin-right:5px; display:inline-block; padding:9px 6px;}
 .mid-bxx{width:50% !important; float:left !important; padding:9px 6px;}
 
 .capcha-img{display:inline-block;}
 
 .reload-info {display: inline-block; margin: 0 15px; overflow: hidden;  vertical-align: middle;  width: 30px;}
-.reload-info a{display: block; margin-top: 5px; overflow: hidden; vertical-align: middle;}
-.r-block.tiny-b{float:none; width:187px; margin-top:18px;}
+
 
 
 
@@ -1386,9 +1377,6 @@ margin-left:-28px;
     margin-right: 57%;
 }
 
-.simple_captcha_field{
-    margin-left: 14px;
-}
 
 .simple_captcha_image{
     margin-left: 2px;
@@ -1502,16 +1490,6 @@ padding: 0px;
     width: 50px !important;
 }
 
-
-.email_field{
-    background: #f8f8f8;
-    border: 1px solid #cbced1;
-    padding: 9px 6px;
-    width: 313px;
-    float: right;
-    vertical-align: middle;
-    display: table-cell;
-}
 
 
 

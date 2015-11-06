@@ -1,72 +1,120 @@
-<!--start-->
-<!--start-->
-<!--start-->
-<div class="container-fluid bg-wrap">
-<div class="container">
-<div class="row">
-<div class="login-wrap">
-<div class="top-login">
-<div class="log-detail">
-<h6>Candidates Registration  </h6>
-  </div>
-  </div>
-   <div class="login-bottom">
-   <div class="l-block">
-    <label></label>
+<div class="session">
 
-      <%flash.each do |key, value| %>
+  <div class="wrapper midst">
+    <h1>Registration</h1>
+
+    <%flash.each do |key, value| %>
       <%if value != 'candidate' && value != 'employer'%>
-      <div class="error"><%= value %></div>
+        <div class="error"><%= value %></div>
       <%end%>
-      <%end %>
-      </div>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <div class="l-block">
-      <label>Name<em>*</em></label>
-      <%= f.text_field :name, autofocus: true,:required=>true %>
-      </div>
-                
-        <div class="l-block">
-        <label>Email<em>*</em></label>
-        <%= f.email_field :email,:required=>true, :class => 'email_field' %>
+    <%end %>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="orange active">
+        <a href="#employer-register" aria-controls="employer-register" role="tab" data-toggle="tab"><em class="icon icon-tie"></em><strong>Employer</strong></a>
+      </li>
+      <li role="presentation" class="blue">
+        <a href="#talent-register" aria-controls="talent-register" role="tab" data-toggle="tab"><em class="icon icon-cap"></em><strong>Job seeker</strong></a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+      <div role="tabpanel" class="tab-pane active" id="employer-register">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+          <div class="form-group">
+            <label>Company Name<em>*</em></label>
+            <%= f.text_field :name, autofocus: true,:required=>true %>
           </div>
 
-          <div class="l-block">
-           <label>Password<em>*</em></label>
-           <%= f.password_field :password, autocomplete: "off",:pattern=>'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,})',:title=>"Please Enter Atleast one upper case and lower case letter,one numeric, one special character and minimum password length 8",:required=>true %>
-            </div>
+          <div class="form-group">
+            <label>Email<em>*</em></label>
+            <%= f.email_field :email,:required=>true, :class => 'email_field' %>
+          </div>
 
-           <div class="l-block">
+          <div class="form-group">
+            <label>Password<em>*</em></label>
+            <%= f.password_field :password, autocomplete: "off",:pattern=>'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,})',:title=>"Please Enter Atleast one upper case and lower case letter,one numeric, one special character and minimum password length 8",:required=>true %>
+          </div>
 
-            <label>Confirm Password<em>*</em></label>
+          <div class="form-group">
+            <label>Confirm password<em>*</em></label>
+            <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true, :oninput=>"check_password()"  %>
+          </div>
+
+          <%= f.hidden_field :role_id, :value => 2 %>
+
+          <div class="form-group">
+            <label>Verification code<em>*</em></label>
+            <%= show_simple_captcha %>       
+          </div>
+
+          <%= f.submit "Register", class: "btn btn-blue" %>
+
+          <div class="centered">
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+            <%= link_to "Already have an account? Login", new_user_session_path %>
+          </div>
+
+        <% end %>
+
+
+
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="talent-register">
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+          <div class="form-group">
+            <label>Name<em>*</em></label>
+            <%= f.text_field :name, autofocus: true,:required=>true %>
+          </div>
+
+          <div class="form-group">
+            <label>Email<em>*</em></label>
+            <%= f.email_field :email,:required=>true, :class => 'email_field' %>
+          </div>
+
+          <div class="form-group">
+            <label>Password<em>*</em></label>
+            <%= f.password_field :password, autocomplete: "off",:pattern=>'((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W).{8,})',:title=>"Please Enter Atleast one upper case and lower case letter,one numeric, one special character and minimum password length 8",:required=>true %>
+          </div>
+
+          <div class="form-group">
+            <label>Confirm password<em>*</em></label>
             <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true, :oninput=>"check_password()" %>
-            </div>
-               
-
-            <%= f.hidden_field :role_id, :value => 3 %>
-
-
-            <div class="l-block">
-            <label>Enter Code<em>*</em></label>
-            <%= show_simple_captcha %>
-            </div>
-
-            
-              <!--End reg-position-->
-              <div class="l-block">
-             <label></label>
-            <%= f.submit "Register", :class=>"input-login login-center-button" %>
-             </div>
-            <% end %>
-              </div>
-        <!--En reg-wrap-->
-              </div>
-      <!--End reg-main-wrap-->
-
-           </div>
           </div>
-           </div>
-<!--End-->
+
+          <%= f.hidden_field :role_id, :value => 3 %>
+
+          <div class="form-group">
+            <label>Verification code<em>*</em></label>
+            <%= show_simple_captcha %>       
+          </div>
+
+          <%= f.submit "Register", class: "btn btn-blue" %>
+
+          <div class="centered">
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+            <%= link_to "Already have an account? Login", new_user_session_path %>
+          </div>
+
+        <% end %>
+
+
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
 
 <script>
     function check_password(){

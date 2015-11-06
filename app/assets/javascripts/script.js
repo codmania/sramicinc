@@ -41,7 +41,13 @@ $(document).ready(function(){
     /* nav tabs */
     $('ul.nav-tabs a').click(function (e) {
       e.preventDefault();  
-        $(this).tab('show');
+      $(this).tab('show');
+    });
+
+    /* custom checkbox and radio buttons */
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_flat',
+      radioClass: 'iradio_flat'
     });
 
 

@@ -18,6 +18,7 @@
 //= require jquery.inview
 //= require bootstrap-select.min
 //= require slick.min
+//= require icheck.min
 //= require script
 //= require ckeditor/init
 //= require_tree .

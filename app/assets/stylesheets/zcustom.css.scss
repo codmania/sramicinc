@@ -102,8 +102,8 @@ h1 { font-size: 44px;}
 h2 { font-size: 28px;}
 h3 { font-size: 24px;}
 h4 { font-size: 18px;}
-h5 {}
-h6 {}
+h5 {font-size: 16px;}
+h6 {font-size: 14px;}
 
 
 ul, ol { list-style:none;  @include reset_space; }
@@ -115,7 +115,7 @@ a:hover, a:active, a:focus { outline: 0 !important;}
 
 form { display: inline; @include reset_space; }
 .form-group { margin: 0px;}
-label { color: $dark_color; font-size: 20px; font-family: 'pro-light'; @extend .block; margin-bottom: 6px;}
+label { color: $dark_color; font-size: 20px; font-family: 'pro-light'; @extend .block; margin-bottom: 6px; font-weight: normal;}
 label em { color: $orange_color; font-style: normal; font-size: 22px; font-family: 'pro-semi'; padding-left: 5px;}
 
 textarea, input[type="text"], input[type="password"], input[type="search"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select.form-control, select,
@@ -126,6 +126,8 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 
 
 textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus,button:focus,button:active,button:hover {outline:0px !important;}
+
+select, select:active, select:focus, select:hover { height: 48px; outline:0px !important;}
 
 
 input[type="radio"], input[type="checkbox"] { margin: 0px; width: auto !important;}
@@ -283,19 +285,28 @@ footer .social li a::before {line-height: 0% !important;}
 .bootstrap-select > .dropdown-toggle:hover {@include box-shadow(none); border-color: $dark_color; outline: 0 !important; background: none; }
 
 
-.bootstrap-select.btn-group .dropdown-toggle .caret { border:0; width: auto; height: auto; top:14px; right: 10px; margin: 0px 0px 0px 0px;}
+.bootstrap-select.btn-group .dropdown-toggle .caret { border:0; width: auto; height: auto; top:14px; right: 10px; margin: 0px 0px 0px 0px; color: $blue_color;}
+.bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $orange_color;}
 .bootstrap-select.btn-group .dropdown-toggle .caret::before { @include font_icons;  content: "g"; font-size: 20px;}
 .bootstrap-select.btn-group.open .dropdown-toggle .caret::before { @include font_icons;  content: "j"; font-size: 20px;}  
 
 .bootstrap-select.btn-group .dropdown-toggle .filter-option { vertical-align: middle;}
 
 
-.bootstrap-select.btn-group .dropdown-menu { border:0; background: #fff; @include border-radius(2px); @include box-shadow(none);  }
+.bootstrap-select.btn-group .dropdown-menu { border:1px solid $line_color; background: #fff; @include border-radius(2px); @include box-shadow(none);  }
 .bootstrap-select.btn-group .dropdown-menu > li > a, .bootstrap-select.btn-group .dropdown-menu > li > a:focus {font-size: 16px; color: $base_color; padding: 4px 10px; line-height: normal; background: none; text-transform: none;}
 .bootstrap-select.btn-group .dropdown-menu > li > a:hover { background: none;}
 
 
 .bootstrap-select .selected, .bootstrap-select .subselected { background: none; border: 0;}
+.bootstrap-select .selected span, .orange .bootstrap-select .subselected span {color:$orange_color !important; }
+
+
+select.selectpicker, select.selectpicker:active, select.selectpicker:focus, select.selectpicker:hover { height: auto;}
+
+
+
+.blue .bootstrap-select .selected span, .blue .bootstrap-select .subselected span {color:$blue_color !important; }
 
 
 
@@ -303,6 +314,12 @@ footer .social li a::before {line-height: 0% !important;}
 
 section { @extend .block; padding: 80px 0px; clear: both;}
 
+
+/* ---- TITLE  ---- */
+
+.title { font-size: 30px; color: $dark_color;  font-family: 'pro-regular'; @extend .block; margin-bottom: 40px; text-align: center;}
+.title .add, .title .add:focus  { font-size: 16px; padding: 0px 10px; color: $orange_color; text-decoration: none;}
+.title .add:hover { color: $orange_color; text-decoration: underline;} 
 
 
 /* ---- STRATUM ---- */
@@ -383,6 +400,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .session .wrapper h1 {@extend .block; text-transform: uppercase; font-size: 24px; color: $dark_color; font-family: 'pro-regular'; margin-bottom: 20px;}
 
 .session .wrapper .form-group { text-align: left; @extend .block; margin-bottom: 20px; clear: both;}
+.session .wrapper .form-group label {margin-bottom: 0px;}
 
 .session .wrapper .centered {@extend .block; margin-top: 20px;}
 .session .wrapper .centered a { @extend .block;  margin-bottom: 0px;}
@@ -405,8 +423,45 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 
 
+/* ---- CUSTOM CHECKBOX AND RADIO BUTTONS ---- */
+
+.icheckbox,  .iradio {@extend .block; }
+
+.icheckbox_flat, .iradio_flat{display: inline-block;*display: inline;vertical-align: middle;margin: 0;padding: 0;width: 20px;height: 20px; border: none; cursor: pointer; background:no-repeat  image-url("layout/flat.png");}
+ 
+.icheckbox_flat {background-position: 0 0;}
+.icheckbox_flat.checked {background-position: -22px 0;}
+.icheckbox_flat.disabled {background-position: -44px 0;cursor: default;}
+.icheckbox_flat.checked.disabled {background-position: -66px 0;}
+
+.iradio_flat {background-position: -88px 0;}
+.iradio_flat.checked {background-position: -110px 0;}
+.iradio_flat.disabled {background-position: -132px 0;cursor: default;}
 
 
+
+/* ---- COLLAPSE ---- */
+
+.panel-group {@extend .inline-block;  width: 100%; clear: both; margin: 0px;}
+.panel-group .panel {@include border-radius(0px); border:0; border-bottom: 1px solid $line_color; background: none; @include box-shadow(none); margin: 10px 0px 0px 0px; display: inline; float: left; width: 100%; margin-bottom: 10px; padding-bottom: 10px;}
+.panel-group .panel:last-of-type { margin-bottom: 0;}
+
+.panel-group .panel .panel-heading { padding: 0px; @include border-radius(0px); border: 0; background: none; }
+.panel-group .panel .panel-heading a, .panel-group .panel .panel-heading a:focus, .panel-group .panel .panel-heading a:hover { font-size: 22px; color: $orange_color; font-family: 'pro-light';  @extend .block; float: left;}
+.panel-group .panel .panel-heading a.collapsed, .panel-group .panel .panel-heading a.collapsed:focus, .panel-group .panel .panel-heading a:hover.collapsed { color: $blue_color;} 
+.panel-group .panel .panel-heading a span { display: inline; float: left;}
+.panel-group .panel .panel-heading a .icon { display: inline; float: right; margin-top: 3px;}
+.panel-group .panel .panel-heading a:hover .icon { }
+
+.panel-group .panel .panel-heading a .icon.icon-arrow-down { display: none; color: $blue_color;}
+.panel-group .panel .panel-heading a .icon.icon-arrow-up { display: inline; color: $orange_color;}
+.panel-group .panel .panel-heading a.collapsed .icon.icon-arrow-down { display: inline; color: $blue_color}
+.panel-group .panel .panel-heading a.collapsed .icon.icon-arrow-up { display: none;  color: $orange_color;}
+
+
+
+
+.panel-group .panel .panel-collapse {width: 100%; float: left;}
 
 
 
@@ -445,7 +500,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 /* ---- HOME TESTIMONIALS ---- */
 
 .testimonials {@extend .block; }
-.testimonials li { width: 100%; text-align: center; padding: 0px 40px  }
+.testimonials li { width: 100%; text-align: center; padding: 0px 40px ; }
 .testimonials li .lozenge{ margin-right: 46px;}
 .testimonials li article {@extend .inline-block; vertical-align: middle; width: 50%; text-align: left;} 
 .testimonials li article h3 {@extend .block; color: $dark_color; font-family: 'pro-regular'; margin-bottom: 10px;}
@@ -461,12 +516,29 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 
 
+/* ---- CONTACT US/ NEWSLETTER FORM ---- */
+
+.form-field {@extend .inline-block; vertical-align: top; width: 50%; margin-top: 80px; }
+
+.form-field .form-group { text-align: left; margin-bottom: 20px;}
+.form-field .form-group textarea { height: 200px;}
+.form-field .btn { margin: 0px 5px;}
 
 
+/* ---- ABOUT US ---- */
+
+.about-us ul {@extend .block; margin-top: 40px;}
+.about-us ul li {@extend .inline-block; vertical-align: top; padding: 40px 40px 30px 40px; border-right: 1px solid $line_color; width: 49%; }
+.about-us ul li.no-line { border-right: 0px;} 
+.about-us ul li h2 {@extend .block; font-size: 22px; text-transform: uppercase; font-family: 'pro-light'; margin-bottom: 40px;}
+.about-us ul li h2.blue { color: $blue_color;} 
+.about-us ul li h2.orange { color: $orange_color;} 
+.about-us ul li p {@extend .block; }
 
 
+/* ---- FAQS ---- */
 
-
+.faqs .centered {@extend .block;}
 
 
 /* ORANGE */
@@ -482,12 +554,14 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .orange .bootstrap-select.btn-group .dropdown-toggle .caret { color:$orange_color; }
 .orange .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$orange_color;}
 .orange .bootstrap-select .selected span, .orange .bootstrap-select .subselected span {color:$orange_color !important; }
+.orange .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $orange_color;}
 
 .banner-search.orange .wrap > a, .banner-search.orange .wrap > a:focus, .banner-search.orange .wrap > a:hover  { color: $orange_color;}
 .banner-search.orange .icon {color: $orange_color;}
 .banner-search.orange .bootstrap-select.btn-group .dropdown-toggle .caret {color: $orange_color;}
 .banner-search.orange .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$orange_color; }
 .banner-search.orange .bootstrap-select .selected span, .banner-search.orange .bootstrap-select .subselected span {color:$orange_color !important; }
+.banner-search.orange .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $orange_color;}
 
 
 /* BLUE */
@@ -497,20 +571,58 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .blue header .notification strong  { color: $blue_color;}
 .blue header .notification:hover .icon  { color:$blue_color; }
 .blue header .profile .dropdown-toggle:hover .img-circle {border: 1px solid $blue_color;}
-.blue header .profile .dropdown-menu > li > a:hover { color: $blue_color}
+.blue header .profile .dropdown-menu > li > a:hover { color: $blue_color;}
 .blue header .profile.open .img-circle { border-color: $blue_color;}
 
 .blue .bootstrap-select.btn-group .dropdown-toggle .caret { color:$blue_color; }
 .blue .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$blue_color; }
 .blue .bootstrap-select .selected span, .blue .bootstrap-select .subselected span {color:$blue_color !important; }
+.blue .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $blue_color;}
 
 .banner-search.blue .wrap > a, .banner-search.blue .wrap > a:focus, .banner-search.blue .wrap > a:hover  { color: $blue_color;}
 .banner-search.blue .icon {color: $blue_color;}
 .banner-search.blue .bootstrap-select.btn-group .dropdown-toggle .caret {color: $blue_color;}
 .banner-search.blue .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$blue_color; }
 .banner-search.blue .bootstrap-select .selected span, .banner-search.blue .bootstrap-select .subselected span {color:$blue_color !important; }
+.banner-search.blue .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $blue_color;}
 
 
 
+/* RETINA */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx) {
+
+  .icheckbox_flat, .iradio_flat { background-image:  image-url("flat@2x.png"); -webkit-background-size: 176px 22px;background-size: 176px 22px;}
+
+}
+
+/* MOBILE WIDTH */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ---- W 1024 ---- */
+
+@media screen and (max-width: 1024px){
+
+  html { -webkit-overflow-scrolling: touch; }
+  body {-webkit-text-size-adjust: none;}
+
+}
+
+/* MOBILE HEIGHT */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ---- H 960 ---- */
+
+@media screen and (max-height: 960px){
+
+  .session {height: auto; min-height: auto; padding: 40px 0px;}
+
+}

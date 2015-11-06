@@ -50,6 +50,11 @@ $(document).ready(function(){
       radioClass: 'iradio_flat'
     });
 
+    /* about-us style */
+    $('.about-us ul li:nth-of-type(2n)').addClass('no-line');
+    $('.about-us ul h2:even').addClass('blue');
+    $('.about-us ul h2:odd').addClass('orange');
+
 
     /*page steps tabs*/
     $('.tabs li a').click(function(){$('.tabs li').removeClass('current');$(this).parent().addClass('current');$('.tab-content').hide();var selected_tab =		'#'+$(this).attr('rel'); $(selected_tab).show(); 	 return false;});

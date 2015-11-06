@@ -1,68 +1,58 @@
-<div class="container-fluid search-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 no_pad ">
-<div class="company_users ">
-  <h3>FAQs
-    <% if current_user.try(:role).try(:authority) =='admin'%>
-        <h3>
-          <%= link_to "Add", new_faq_path, :class => 'orange-btn pull-right align-orange-btn ' %>
-        </h3><br><br><br>
-      </h3>
-      <%end%>
-      
+<section class="faqs">
+  <div class="margin">
 
-<div class = "container">
-    <% @fc.each do |fc|%>
-        <%if  !@faqs[fc.id].nil?%>
-            <div class = "panel panel-default">
-              <div class = "panel-heading">
-                <h3 class = "panel-title">
-
-                  <%= fc.name%> </h3>
-              </div>
-              <% @faqs[fc.id].each do |faq|%>
-
-                  <div class = "panel-body">
-                    <div class = "col-xs-10">
-                      <p>
-                        <strong>Question:</strong>&nbsp;&nbsp;<%= faq.question %>
-                      </p>
-                      <p>
-                        <strong>Answer:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%= faq.answer %>
-                      </p>
-                    </div>
-
-                    <div class ="col-xs-2">
-                      <ul class="actions_container table-last-th">
-                        <% if current_user.try(:role).try(:authority) =='admin'%>
-                        <li>
-                            <%= link_to '<span class="icon icon_1"></span>'.html_safe,
-                                        edit_faq_path(faq) %>
-
-                        </li>
-                        <li>
-                            <%= link_to '<span class="icon icon_2"></span>'.html_safe, faq_path(faq), :method => :delete,
-                                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
-                        </li>
-                        <%end%>
-                      </ul>
-                    </div>
-                  </div>
-              <%end%>
-            </div>
+    <article>
+      <h1 class="title">
+        Frequently Asked Questions
+        <% if current_user.try(:role).try(:authority) =='admin'%>
+          <%= link_to "Add new", new_faq_path, :class => 'add' %>
         <%end%>
-    <%end%>
-  </div>
-</div>
-</div>
+      </h1>
+      <p>
+        Proin ac nibh justo. Proin blandit risus ut nisl posuere lobortis. Morbi justo mauris, aliquam sit amet varius sit amet, sodales id neque. Aliquam maximus commodo justo. Quisque vitae purus massa. Aliquam in velit in diam tempus blandit.
+      </p>
+    </article>
 
-</div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-</div>
+      <% @fc.each_with_index do |fc, index|%>
+        <%if  !@faqs[fc.id].nil?%>
+          <% @faqs[fc.id].each_with_index do |faq, faq_index|%> 
+            <div class="panel panel-default">
+                
+              <div class="panel-heading" role="tab">
+              <%= link_to "#faq#{index}#{faq_index}", class: "collapsed", :"role" => 'button', :"data-toggle" => 'collapse', :"data-parent" => '#accordion', :"aria-expanded" => 'false', :"aria-controls" => "faq#{index}#{faq_index}" do %>
+                  <span><%= faq.question %></span>
+                  <em class="icon icon-arrow-down"></em>
+                  <em class="icon icon-arrow-up"></em>
+                <% end %>
+              </div>
+              <div id="faq<%= index %><%= faq_index %>" class="panel-collapse collapse" role="tabpanel">
+                <p>
+                  <%= faq.answer %>
+                </p>
+                <ul class="actions_container table-last-th">
+                  <% if current_user.try(:role).try(:authority) =='admin'%>
+                    <li><%= link_to '<span class="icon icon_1"></span>'.html_safe, edit_faq_path(faq) %></li>
+                    <li><%= link_to '<span class="icon icon_2"></span>'.html_safe, faq_path(faq), :method => :delete,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %></li>
+                  <%end%>
+                </ul>
 
-<div class="paginations top-pagination">
+              </div>
+                
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </div>
+
+    <div class="centered">
       <%= will_paginate @faqs1,:inner_window =>2,:outer_window =>0,:renderer=> PaginationHelper::LinkRenderer%>
     </div>
-    
-</div>
+
+  </div>
+</section>
+
+
+<%#= fc.name%>

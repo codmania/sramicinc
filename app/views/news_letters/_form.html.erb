@@ -1,46 +1,48 @@
-<%= form_for @news_letter, :html => { :class => "form-horizontal news_letter" } do |f| %>
-    <% if @news_letter.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@news_letter.errors.count, "error") %> prohibited this job from being saved:</h2>
+<div class="centered">
+  <div class="form-field">
 
-          <ul>
-            <% @news_letter.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+    <%= form_for @news_letter, :html => { :class => "form-horizontal news_letter" } do |f| %>
+
+        <% if @news_letter.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@news_letter.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+            <ul>
+              <% @news_letter.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <label>Title<em>*</em></label>
+          <%= f.select :title,['Mr.','Mrs.','Ms.', 'Dr.','Miss.', 'Prof.', 'Rev.',' Jr.',' Sr.',' Other'], {}, {class: 'selectpicker'} %>
         </div>
+
+
+        <div class="form-group">
+          <label>Email<em>*</em></label>
+          <%= f.text_field :email, :pattern=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$",:title=>"Invalid format", :required=>true, :placeholder => "Enter your email address" %>
+        </div>
+
+        <div class="form-group">
+          <label>Active</label>
+          <div class="icheckbox">  
+            <%= f.check_box :active %>
+          </div>
+        </div>
+
+
+        <%= f.submit 'Save', class: "btn btn-blue" %>
+        <%  if current_user.try(:role).try(:authority) == 'admin' %>
+          <%= link_to t('.cancel', :default => t("helpers.links.cancel")), news_letters_path, :class => 'btn btn-ghost' %>
+        <% else %>
+          <%= link_to t('.cancel', :default => t("helpers.links.cancel")), home_index_path , :class => 'btn btn-ghost' %>
+        <% end %>
+
+
     <% end %>
 
-
-
-    <div class="l-block ">
-      <label>Title<em>*</em></label><%= f.select :title,['Mr.','Mrs.','Ms.', 'Dr.','Miss.', 'Prof.', 'Rev.',' Jr.',' Sr.',' Other'],:class => 'form-control'%>
   </div>
-
-   <div class="l-block l-block_1">
-      <label>Name<em>*</em></label><%= f.text_field :name,:required=>true %>
-  </div>
-
-  <div class="l-block l-block_1">
-     <label>Email<em>*</em></label><%= f.text_field :email,:pattern=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$",:title=>"Invalid format", :required=>true%>
- </div>
-
- <div class="l-block l-block_1">
-    <label>Active</label><%= f.check_box :active%>
 </div>
-
-<div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10">
-        <%= f.submit 'Save', :class => 'btn btn-primary' %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%  if current_user.try(:role).try(:authority) == 'admin' %>
-          <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                      news_letters_path, :class => 'btn btn-warning' %>
-        <% else %>
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                     home_index_path , :class => 'btn btn-warning' %>
-        <% end %>
-      </div>
-    </div>
-
-<%end%>

@@ -1,51 +1,49 @@
-<%= form_for @enquiry, :html => {:class => "form-horizontal enquiry"} do |f| %>
-    <% if @enquiry.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@enquiry.errors.count, "error") %> prohibited this job from being saved:</h2>
+<div class="centered">
+  <div class="form-field">
 
-          <ul>
-            <% @enquiry.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+    <%= form_for @enquiry, :html => {:class => "form-horizontal enquiry"} do |f| %>
+        <% if @enquiry.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@enquiry.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+              <ul>
+                <% @enquiry.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+
+
+        <div class="form-group">
+          <label>Reason for enquiry<em>*</em></label>
+          <%= f.collection_select :enquiry_category_id, EnquiryCategory.all, :id, :name, {}, {class: 'selectpicker'} %>
         </div>
+        <div class="form-group">
+          <label>Name</label>
+          <%= f.text_field :name, :placeholder => "Enter your name" %>
+        </div>
+
+        <div class="form-group">
+          <label>Email<em>*</em></label>
+          <%= f.text_field :email, :pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$", :title => "Invalid format", :required => true, :placeholder => "Enter your email address" %>
+        </div>
+
+
+        <div class="form-group">
+          <label>Description<em>*</em></label>
+          <%= f.text_area :description,:class => 'text_area_alignment', :required => true ,:maxlength=>1000, :placeholder => "Maximum 1000 characters are allowed" %>
+        </div>
+
+
+        <%= f.submit 'Submit', class: "btn btn-blue" %>
+
+
     <% end %>
 
-
-
-    <div class="l-block l-block_1">
-      <label>Reason for
-        enquiry<em>*</em></label><%= f.collection_select :enquiry_category_id, EnquiryCategory.all, :id, :name %>
-    </div>
-    <div class="l-block l-block_1">
-      <label>Name</label><%= f.text_field :name %>
-    </div>
-
-    <div class="l-block l-block_1">
-      <label>Email<em>*</em></label><%= f.text_field :email, :pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$", :title => "Invalid format", :required => true %>
-    </div>
-
-
-    <div class="l-block l-block_1">
-      <label>Description<em>*</em></label>
-      <%= f.text_area :description,:class => 'text_area_alignment', :required => true ,:maxlength=>1000%>
-    </div>
-
-    <h6 style="margin-left:29%">Maximum 1000 characters are allowed</h6>
-
-
-    <div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10"><br>
-        <%= f.submit 'Submit', :class => 'btn btn-primary' %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-      </div>
-    </div>
-
-<% end %>
-
-
+  </div>
+</div>
 
 
 

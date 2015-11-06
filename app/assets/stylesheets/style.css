@@ -1313,13 +1313,7 @@ color: red !important;
 }
 
 
-.pro_col_sm_4 select, textarea {
-    background-color: #f6f8fa;
-    border: 1px #dee2e6 solid;
-    height: 31px;
-    width: 100%;
-    padding: 0 10px;
-}
+
 
 .create_job
 {
@@ -1457,19 +1451,7 @@ em{
   margin-left:5%;
 }
 
-.text_area_align label{
-    font-size: 14px;
-    font-weight: normal;color: #5c5e63;width:px;float:left;width:152px;
 
-}
-.text_area_align textarea{
-    width: 72%; display: block;height:100px;
-}
-
-.text_area_alignment{
-
-    max-height: none !important;
-}
 .l-block2{
 padding: 0px;
   background-color: none;

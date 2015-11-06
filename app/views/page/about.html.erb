@@ -1,9 +1,37 @@
-<div class="container-fluid search-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 no_pad ">
-                <%= raw Page.find_by(name:'About').content %>
-            </div>
-        </div>
-    </div>
-</div>
+<section class="about-us">
+  <div class="margin">
+    <article>
+      <h1 class="title">About us</h1>
+      <p>
+        Proin ac nibh justo. Proin blandit risus ut nisl posuere lobortis. Morbi justo mauris, aliquam sit amet varius sit amet, sodales id neque. Aliquam maximus commodo justo. Quisque vitae purus massa. Aliquam in velit in diam tempus blandit.
+      </p>
+      <p>
+        Quisque ante orci, gravida nec euismod eu, laoreet eget sem. Proin aliquam pellentesque ex, sit amet consectetur magna venenatis ut. Sed laoreet condimentum justo sit amet euismod. Sed rhoncus rutrum blandit. Aliquam a faucibus diam.
+      </p>
+    </article>
+
+    <ul>
+
+      <li>
+        <h2>Dolor sit amet</h2>
+        <p>
+          Proin ac nibh justo. Proin blandit risus ut nisl posuere lobortis. Morbi justo mauris, aliquam sit amet varius sit amet, sodales id neque. Aliquam maximus commodo justo. Quisque vitae purus massa. Aliquam in velit in diam tempus blandit.
+        </p>
+      </li>
+
+      <li>
+        <h2>Vestibulum vitae lobortis</h2>
+        <p>
+          Nam tempor convallis quam et ultrices. Fusce elementum, odio semper malesuada porta, nibh velit vulputate massa, id lobortis metus lacus eget leo. Morbi mollis gravida augue, condimentum auctor dolor iaculis eu. Nulla a purus sit amet augue laoreet ullamcorper.
+        </p>
+      </li>
+
+    </ul>
+
+  </div>
+</section>
+
+
+<%#= raw Page.find_by(name:'About').content %>
+
+

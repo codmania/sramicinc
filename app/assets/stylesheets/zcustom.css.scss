@@ -549,6 +549,33 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .faqs .panel-group {@extend .inline-block; vertical-align: top;  width: 84%;}
 
 
+/* ---- PRICING ---- */
+
+.pricing article { margin-bottom: 40px;}
+
+.pricing table { width: 100%; margin-top: 40px; background: #fff;}
+
+.pricing table td { background: #fff; border:1px solid $line_color; text-align: center; padding: 20px 5px; vertical-align: middle; }
+.pricing table td.noline{ border: 0;}
+.pricing table td.highlight { padding: 5px; text-transform: uppercase; color: $orange_color; font-family: 'pro-semi'; font-size: 16px;}
+.pricing table td strong {font-family: 'pro-regular';  font-size: 16px; color: $dark_color} 
+
+.pricing table th { background: $light_grey_color; border:1px solid $line_color; text-align: center; font-size: 22px; color: $dark_color; font-family: 'pro-regular';  padding: 30px 5px; vertical-align: middle; }
+
+.pricing table h4 {@extend .block; font-size: 22px; color: $blue_color; text-transform: uppercase; font-family: 'pro-regular'; }
+.pricing table .wrap {@extend .block; margin-top: 20px; }
+.pricing table em {font-size: 22px;  display: inline; color: $orange_color;  font-family: 'pro-light'; font-style: normal;}
+.pricing table h5 {font-size: 76px;  display: inline; color: $blue_color; font-family: 'pro-regular';}
+.pricing table small {font-size: 12px;  display: inline; color: $base_color; font-family: 'pro-regular'; text-transform: uppercase;}
+
+
+/* ---- TERMS ---- */
+
+.terms p {@extend .block; margin-bottom: 20px;}
+.terms p:last-of-type { margin-bottom: 20px;}
+.terms h2 {@extend .block; margin: 40px 0px 20px 0px; color: $blue_color;}
+
+
 /* ORANGE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -570,6 +597,12 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .banner-search.orange .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$orange_color; }
 .banner-search.orange .bootstrap-select .selected span, .banner-search.orange .bootstrap-select .subselected span {color:$orange_color !important; }
 .banner-search.orange .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $orange_color;}
+
+.pricing .tab-content .orange.tab-pane table td.highlight { color: $orange_color;}
+.pricing .tab-content .orange.tab-pane table h4 { color: $blue_color;}
+.pricing .tab-content .orange.tab-pane table em { color: $orange_color;}
+.pricing .tab-content .orange.tab-pane table h5 { color: $blue_color;}
+
 
 
 /* BLUE */
@@ -593,6 +626,15 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .banner-search.blue .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$blue_color; }
 .banner-search.blue .bootstrap-select .selected span, .banner-search.blue .bootstrap-select .subselected span {color:$blue_color !important; }
 .banner-search.blue .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $blue_color;}
+
+
+.pricing .tab-content .blue.tab-pane table td.highlight { color: $blue_color;}
+.pricing .tab-content .blue.tab-pane table h4 { color: $orange_color;}
+.pricing .tab-content .blue.tab-pane table em { color: $blue_color;}
+.pricing .tab-content .blue.tab-pane table h5 { color: $orange_color;}
+
+
+
 
 
 

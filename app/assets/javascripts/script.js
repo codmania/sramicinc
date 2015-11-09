@@ -44,6 +44,27 @@ $(document).ready(function(){
       $(this).tab('show');
     });
 
+
+
+    var hash = window.location.hash;
+    hash && $('.pricing ul.nav-tabs a[href="' + hash + '"]').tab('show');
+
+    $('.pricing ul.nav-tabs a').click(function (e) {
+      $(this).tab('show');
+      var scrollmem = $('body').scrollTop();
+      window.location.hash = this.hash;
+      $('html,body').scrollTop(scrollmem);
+    });
+
+    window.addEventListener('hashchange', function() {
+      var changedHash = window.location.hash;
+      changedHash && $('.pricing ul.nav-tabs a[href="' + changedHash + '"]').tab('show');
+    }, false);
+
+
+
+
+
     /* custom checkbox and radio buttons */
     $('input').iCheck({
       checkboxClass: 'icheckbox_flat',

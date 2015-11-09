@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   resources :careers
   post '/careers/:id', to: 'careers#update'
   mount Ckeditor::Engine => '/ckeditor'
-  get 'page/about'
 
   resources :banners
  post '/faqs/:id', to: 'faqs#update'
@@ -77,11 +76,14 @@ Rails.application.routes.draw do
 
   #static pages
   get 'page/about'
+  get 'page/pricing'
+  get 'page/terms'
+  get 'page/privacy'
   get 'page/home_page_banner'
  # get 'payments/jobseekerpricing'=>'payments#jobseekerpricing'
   get 'payment_modules/edit'
   get 'payment_modules/update'
- get 'enquiries/contactus'=>'enquiries#contactus'
+  get 'enquiries/contactus'=>'enquiries#contactus'
 
   post 'news_letters/news_letter'=>'news_letters#news_letter'
 

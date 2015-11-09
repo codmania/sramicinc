@@ -4,14 +4,14 @@
     <nav class="w25">
       <h4>Employers</h4>
       <%= link_to "Post a Job", new_job_path %>
-      <%= link_to "Pricing", '#' %>
+      <%= link_to "Pricing", page_pricing_path %>
     </nav>
 
     <nav class="w25">
       <h4>Job Seekers</h4>
       <%= link_to "Post a Talent", jprofiles_path(:t=>'candidate')%>
       <%= link_to "Search Jobs", search_jobs_path %>
-      <%= link_to "Pricing", '#' %>
+      <%= link_to "Pricing", page_pricing_path(anchor: "job-seekers") %>
     </nav>
 
     <nav class="w25">
@@ -36,7 +36,7 @@
     <hr>
 
     <div class="copy">
-      <small>Copyright © <%= "#{Time.now.year}" %> Sramic</small><%= link_to "Privacy Policy", '#' %><%= link_to "Terms and Conditions", '#' %>
+      <small>Copyright © <%= "#{Time.now.year}" %> Sramic</small><%= link_to "Privacy Policy", page_privacy_path %><%= link_to "Terms and Conditions", page_terms_path %>
     </div>
 
     <ul class="social">

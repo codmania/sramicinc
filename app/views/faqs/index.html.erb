@@ -13,6 +13,15 @@
       </p>
     </article>
 
+    <aside class="filtering">
+      <%= link_to "Registration", "#", class: "btn btn-ghost active" %>
+      <%= link_to "Job Seeker", "#", class: "btn btn-ghost" %>
+      <%= link_to "Talent", "#", class: "btn btn-ghost" %>
+      <%= link_to "Search", "#", class: "btn btn-ghost" %>
+      <%= link_to "Pricing", "#", class: "btn btn-ghost" %>
+
+    </aside>
+
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
       <% @fc.each_with_index do |fc, index|%>

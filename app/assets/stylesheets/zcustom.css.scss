@@ -459,10 +459,15 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .panel-group .panel .panel-heading a.collapsed .icon.icon-arrow-up { display: none;  color: $orange_color;}
 
 
-
-
 .panel-group .panel .panel-collapse {width: 100%; float: left;}
 
+
+/* ---- ASIDE FILTERS ---- */
+
+.filtering {@extend .inline-block; text-align: center;  }
+.filtering .btn, .filtering .btn:focus, .filtering .btn:hover, .filtering .btn:active { display: block; padding: 8px 20px 6px 20px; font-size: 14px; margin: 0px 0px 20px 0px;}
+
+.filtering .btn.active, .filtering .btn.active:focus, .filtering .btn.active:hover, .filtering .btn.active:active { border: 1px solid $orange_color; color: $orange_color; background: none; cursor:default; }
 
 
 /* CONTENT */
@@ -539,6 +544,9 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 /* ---- FAQS ---- */
 
 .faqs .centered {@extend .block;}
+.faqs article { margin-bottom: 40px;}
+.faqs .filtering {@extend .inline-block; vertical-align: top;  width: 12%; margin-right: 40px; padding-top: 18px;}
+.faqs .panel-group {@extend .inline-block; vertical-align: top;  width: 84%;}
 
 
 /* ORANGE */

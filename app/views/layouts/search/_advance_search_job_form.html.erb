@@ -1,117 +1,75 @@
-<!--start advance search popup-->
-<%#= form_for :search, :url => {:controller => 'search', :action => 'search_jobs'}, :method => 'get' do |s| %>
-    <form action="/search/jobs" class="search-panel">
-    <!--start advance search popup-->
-    <div id="popup1" class="modal-box">
-      <header>
+<form action="/search/jobs" class="search-panel">
+  <div class="modal-box blue" id="popup1">
+
+      <div class="modal-header">
         <a href="#" class="js-modal-close close">×</a>
+        <h2>Advanced Job Search</h2>
+      </div>
 
-        <h3>Advanced Job Search</h3>
-      </header>
+       <div class="modal-body">
 
-      <div class="modal-body">
-
-        <div class="advance-job-container">
-          <div class="advance-job">
+          <div class="form-group">
             <label>Keywords</label>
             <input type="text" value="<%= params[:keywords] %>" name="keywords" class="ad1-text" placeholder="Keywords"/>
           </div>
 
-          <div class="advance-job">
+          <div class="form-group">
             <label>Job Title</label>
             <input type="text" name="title" class="ad1-text" value="<%= params[:title] %>" placeholder="Designation"/>
           </div>
 
-          <div class="advance-job">
+          <div class="form-group">
             <label>Company</label>
             <input type="text" name="company" class="ad1-text" value="<%= params[:company] %>" placeholder="Name"/>
           </div>
 
-        </div>
-        <!--End advance-job-container-->
-
-        <div class="advance-job-container">
-          <div class="advance-job">
+           <div class="form-group">
             <label>Location</label>
             <input type="text" name="location" class="ad1-text" placeholder="City, State or Zip Code" value="<%= params[:location] %>"/>
           </div>
 
-          <div class="advance-job">
+          <div class="form-group">
             <label>Radius Within</label>
-
-            <div class="radius">
-              <span></span>
-              <select class="small-drp" name="distance" value="<%= params[:distance] %>">
-                <option value="500" <%if params[:distance]=='500' %>
-                        selected
-                        <%end%>  >Any Where</option>
-                <option value="5" <%if params[:distance]=='5' %>
-                        selected
-                        <%end%>>5 Miles</option>
-                <option value="10" <%if params[:distance]=='10' %>
-                        selected
-                        <%end%>>10 Miles</option>
-                <option value="20" <%if params[:distance]=='20' %>
-                        selected
-                        <%end%>>20 Miles</option>
-                <option value="30" <%if params[:distance]=='30' %>
-                        selected
-                        <%end%>>30 Miles</option>
-                <option value="50" <%if params[:distance]=='50' %>
-                        selected
-                        <%end%>>50 Miles</option>
-              </select>
-            </div>
+            <select class="small-drp selectpicker" name="distance" value="<%= params[:distance] %>">
+              <option value="500" <%if params[:distance]=='500' %>
+                      selected
+                      <%end%>  >Any Where</option>
+              <option value="5" <%if params[:distance]=='5' %>
+                      selected
+                      <%end%>>5 Miles</option>
+              <option value="10" <%if params[:distance]=='10' %>
+                      selected
+                      <%end%>>10 Miles</option>
+              <option value="20" <%if params[:distance]=='20' %>
+                      selected
+                      <%end%>>20 Miles</option>
+              <option value="30" <%if params[:distance]=='30' %>
+                      selected
+                      <%end%>>30 Miles</option>
+              <option value="50" <%if params[:distance]=='50' %>
+                      selected
+                      <%end%>>50 Miles</option>
+            </select>
           </div>
 
-          <div class="advance-job">
+          <div class="form-group">
             <label>Job Category</label>
-
-            <div style="color:#0000FF" class="search_bar_l-block_1">
-              <%= select_tag "category", options_from_collection_for_select(Category.all, "name", "name", params[:category]), :prompt => 'Any', :class => 'small_drp' %>
-            </div>
+            <%= select_tag "category", options_from_collection_for_select(Category.all, "name", "name", params[:category]), :prompt => 'Any', :class => 'small_drp selectpicker' %>
           </div>
 
-
-        </div>
-        <!--End advance-job-container-->
-
-        <div class="advance-job-container">
-
-
-          <!--<div class="advance-job">-->
-          <!--<label>Sort By</label>-->
-
-          <!--<div class="sort-by">-->
-          <!--<a href="#" class="active">Date</a>-->
-          <!--<a href="#">Relevance</a>-->
-          <!--<a href="#">Comments</a>-->
-          <!--</div>-->
-
-          <!--</div>-->
-
-        </div>
-        <!--End advance-job-container-->
-
-
-        <div class="advance-job">
-          <label>Salary Type</label>
-
-          <div style="color:#0000FF" class="search_bar_l-block_1">
-            <%= select_tag "salary_type", options_from_collection_for_select(SalaryType.all, :s_type, :s_type, params[:salary_type]), :prompt => 'Any', :class => 'search_bar_small-drp' %>
+          <div class="form-group">
+            <label>Salary Type</label>
+            <%= select_tag "salary_type", options_from_collection_for_select(SalaryType.all, :s_type, :s_type, params[:salary_type]), :prompt => 'Any', :class => 'search_bar_small-drp selectpicker' %>
           </div>
-        </div>
 
+          <div class="form-group">
+            <label>Salary</label>
+            <input type="text" name="salary" class="ad1-text" placeholder="Amount" value="<%= params[:salary] %>"/>
+          </div>
 
-        <div class="advance-job">
-          <label>Salary</label>
-          <input type="text" name="salary" class="ad1-text" placeholder="Amount" value="<%= params[:salary] %>"/>
-        </div>
-        <div class="advance-job">
-          <label>Posting Date</label>
-
-          <div style="color:#0000FF">
-            <select class="small-drp" name="postingdate">
+          <div class="form-group">
+            <label>Posting Date</label>
+            <select class="small-drp selectpicker" name="postingdate">
               <option value="" <%if params[:postingdate]=='' %>
                       selected
                       <%end%>>Any</option>
@@ -134,18 +92,20 @@
 
             </select>
           </div>
-          <div class="search-button">
-            <input type="submit" name="" class="search-btn" value="Search"/>
-          </div>
+       </div>
+
+       <div class="modal-footer">
+        <input type="submit" name="" class="btn btn-blue" value="Search"/>
+       </div>
+
+  </div>
+</form>
 
 
-        </div>
 
 
-      </div>
 
-    </div>
-    <!--End advance search popup-->
-      </form>
 
-<%# end %>
+
+
+

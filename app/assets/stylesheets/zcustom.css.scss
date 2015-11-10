@@ -54,6 +54,10 @@
 @mixin text-shadow($shadow) { -webkit-text-shadow: $shadow; -moz-text-shadow: $shadow; -ms-text-shadow: $shadow; -o-text-shadow: $shadow; text-shadow: $shadow; }
 @mixin opacity($value){ $IEValue: $value*100; opacity: $value; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")"; filter: alpha(opacity=$IEValue); zoom:1; -khtml-opacity: $value; -moz-opacity:$value; -webkit-opacity:$value;}
 @mixin transform($transform-value) {-webkit-transform:$transform-value; -moz-transform:$transform-value; -ms-transform:$transform-value; -o-transform:$transform-value; transform:$transform-value; }
+@mixin transition($transition-value) {-webkit-transition:$transition-value; -moz-transition:$transition-value; -ms-transition:$transition-value; -o-transition:$transition-value; transition:$transition-value; }
+
+
+
 
 @mixin font_base {font-family: 'pro-thin'; font-size: 18px; color: $base_color;}
 @mixin reset_space{ margin: 0; padding: 0;}
@@ -71,7 +75,7 @@ $dark_color_fade: rgba(39, 51, 57, 0.40);
 $orange_color: #fe894f;
 $blue_color: #257fd2;
 
-$header_height: 110px;
+$header_height: 80px;
 
 .margin {width:1200px; margin: 0 auto;}
 .centered { text-align: center;}
@@ -175,23 +179,23 @@ textarea, textarea.form-control, textarea.form-control:focus, textarea.form-cont
 
 header { @extend .block; background: #fff; height: $header_height; position: fixed; z-index: 200; clear: both; border-bottom: 1px solid #d8d8d8; text-align: center;}
 
-header .logo { display: inline; float: left; margin: 34px 0px 0px 0px; text-align: left;}
+header .logo { display: inline; float: left; margin: 20px 0px 0px 0px; text-align: left;}
 header .logo:hover {@include opacity(0.6); } 
 
 header nav.pull-right { display: inline; text-align: left;}
-header nav.pull-right .btn-icon { display: inline; float: left; margin:42px 20px 0px 20px;}
-header nav.pull-right .btn { display: inline; float: left; margin:33px 0px 0px 20px;}
+header nav.pull-right .btn-icon { display: inline; float: left; margin:28px 20px 0px 20px;}
+header nav.pull-right .btn { display: inline; float: left; margin:19px 0px 0px 20px;}
 
-header nav.inline-block .btn { @extend .inline-block; vertical-align: top; margin:32px 10px 0px 10px;}
+header nav.inline-block .btn { @extend .inline-block; vertical-align: top; margin:19px 10px 0px 10px;}
 
-header .notification {display: inline; float: left;  margin:42px 20px 0px 20px; text-align: left;}
+header .notification {display: inline; float: left;  margin:29px 20px 0px 20px; text-align: left;}
 header .notification .icon {display: inline; float: left; color: $grey_color; font-size: 24px; margin: 3px 2px 0px 0px; }
 header .notification strong {display: inline; float: left; font-size: 20px; color: $base_color; font-family: 'pro-regular'; margin-right: 4px;}
 header .notification span {display: inline; float: left; font-size: 20px; color: $base_color; font-family: 'pro-light';}
 header .notification:hover span { color:$dark_color; }
 
 
-header .profile {float: left; display: inline; margin: 22px 0px 0px 0px; position: relative; text-align: center;}
+header .profile {float: left; display: inline; margin: 6px 0px 0px 0px; position: relative; text-align: center;}
 header .profile .img-circle { display: block; width: 64px; height: 64px; border: 1px solid $grey_color; }
 header .profile.open .img-circle { border-color: $blue_color;}
 
@@ -276,6 +280,10 @@ footer .social li a::before {line-height: 0% !important;}
 
 .banner-search .icon {vertical-align: middle; @extend .inline-block; font-size: 60px;}
 
+
+/* ---- SEARCH ENSIGN ---- */
+
+.ensign { background:no-repeat transparent center center image-url("layout/job.jpg");-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/job.jpg', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/job.jpg', sizingMethod='scale')"; position: relative; padding: 100px 0px; }
 
 
 /* ---- CUSTOM SELECT ---- */
@@ -383,9 +391,9 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .nav.nav-tabs.sub  > li.blue a:hover, .nav.nav-tabs.sub  > li.blue.active a, .nav.nav-tabs.sub  > li.blue a:hover .icon, .nav.nav-tabs.sub  > li.blue.active a .icon  { color: $blue_color; border-color: $blue_color;}
 
 
-.tab-content .item {@extend .block; text-align: left;}
-.tab-content .item li { width:24%; vertical-align: top; @extend .inline-block; padding: 10px 10px 10px 10px}
-.tab-content .item li a { font-size: 18px; color: $base_color; font-family: 'pro-thin';}
+.tab-content .item {width: 100%; text-align: left; display: inline; float: left; clear: both;}
+.tab-content .item li { width:20%; vertical-align: top;  display: inline; float: left; padding: 0px 5px 0px 5px; margin: 0px;}
+.tab-content .item li a { font-size: 16px; color: $base_color; font-family: 'pro-thin';}
 .tab-content .item li a span {font-family: 'pro-light'; padding: 0px 4px;}
 
 .tab-content .item li.orange a span {color: $orange_color;}
@@ -451,7 +459,6 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .panel-group .panel .panel-heading a.collapsed, .panel-group .panel .panel-heading a.collapsed:focus, .panel-group .panel .panel-heading a:hover.collapsed { color: $blue_color;} 
 .panel-group .panel .panel-heading a span { display: inline; float: left;}
 .panel-group .panel .panel-heading a .icon { display: inline; float: right; margin-top: 3px;}
-.panel-group .panel .panel-heading a:hover .icon { }
 
 .panel-group .panel .panel-heading a .icon.icon-arrow-down { display: none; color: $blue_color;}
 .panel-group .panel .panel-heading a .icon.icon-arrow-up { display: inline; color: $orange_color;}
@@ -468,6 +475,24 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .filtering .btn, .filtering .btn:focus, .filtering .btn:hover, .filtering .btn:active { display: block; padding: 8px 20px 6px 20px; font-size: 14px; margin: 0px 0px 20px 0px;}
 
 .filtering .btn.active, .filtering .btn.active:focus, .filtering .btn.active:hover, .filtering .btn.active:active { border: 1px solid $orange_color; color: $orange_color; background: none; cursor:default; }
+
+
+/* ---- MODAL ---- */
+
+.modal-box {display: none;position: fixed;z-index: 1001; background:#fff; @include border-radius(4px); @include box-shadow(0 3px 9px rgba(0, 0, 0, 0.5)); border:0px; padding: 40px 40px;}
+
+.modal-box .modal-header { @extend .block; border-bottom:1px solid $line_color; text-align: center; position: relative; min-height: auto; padding: 0px 0px 20px 0px; margin-bottom: 40px;}
+.modal-box .modal-header h2 { font-family: 'pro-regular';}
+
+
+.modal-box a.close, .modal-box a.close:focus { color: $grey_color; font-size: 30px; line-height: 1;position: absolute;right: 25px;text-decoration: none;top: 0px; z-index: 999; @include opacity(1); }
+.modal-box a.close:hover { @include opacity(1);}
+
+.modal-box .modal-body {@extend .block; border:0px; padding: 0px; text-align: center; margin-bottom: 20px; overflow: initial;}
+.modal-box .modal-body .form-group { @extend .inline-block; vertical-align: top;  width: 23%; margin: 0px 10px 20px 10px; text-align: left;}
+
+.modal-box .modal-footer {@extend .block; border:0px; text-align: center; padding: 0px; border:0; background: none; }
+
 
 
 /* CONTENT */
@@ -517,7 +542,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 /* ---- HOME TABS ---- */
 
-.tabs-container { border-top: 20px solid $orange_color; background:$light_grey_color; }
+.tabs-container { border-top: 20px solid $orange_color; background:$light_grey_color; display: inline; float: left; }
 
 
 
@@ -604,6 +629,9 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .pricing .tab-content .orange.tab-pane table h5 { color: $blue_color;}
 
 
+.modal-box.orange .modal-header h2 { color: $orange_color;}
+.modal-box.orange a.close:hover { color: $orange_color;}
+
 
 /* BLUE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -632,6 +660,10 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .pricing .tab-content .blue.tab-pane table h4 { color: $orange_color;}
 .pricing .tab-content .blue.tab-pane table em { color: $blue_color;}
 .pricing .tab-content .blue.tab-pane table h5 { color: $orange_color;}
+
+
+.modal-box.blue .modal-header h2 { color: $blue_color;}
+.modal-box.blue a.close:hover { color: $blue_color;}
 
 
 

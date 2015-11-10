@@ -5,7 +5,7 @@
 
     <%flash.each do |key, value| %>
       <%if value != 'candidate' && value != 'employer'%>
-        <div class="error"><%= value %></div>
+        <center><div class="error"><%= value %></div></center>
       <%end%>
     <%end %>
 

@@ -601,6 +601,29 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .terms h2 {@extend .block; margin: 40px 0px 20px 0px; color: $blue_color;}
 
 
+
+/* ---- SEARCH ---- */
+
+.search section { padding: 40px 0px;}
+
+.search .results { width: 100%; display: inline; float: left; text-align: right; font-size: 18px; font-family: 'pro-light';}
+.search .results small { font-size: 16px; color: $base_color;}
+
+.search .search-results {  display: inline; float: right; background: #f0f; margin-bottom: 40px;}
+
+.search aside { display: inline; float: left; }
+.search aside  article { @extend .block; background: #e0e0e0; padding: 40px 20px; margin-bottom: 40px;}
+.search aside h3 { @extend .block; text-transform: uppercase; text-align: center; font-size: 22px; font-family: 'pro-light'; margin-bottom:40px;}
+.search aside .form-group {@extend .block; margin-bottom: 20px;}
+
+
+
+
+
+
+
+
+
 /* ORANGE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -615,6 +638,9 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .orange .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$orange_color;}
 .orange .bootstrap-select .selected span, .orange .bootstrap-select .subselected span {color:$orange_color !important; }
 .orange .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $orange_color;}
+
+.search.orange .results { color: $orange_color;}
+.search.orange aside h3 { color: $orange_color;}
 
 .banner-search.orange .wrap > a, .banner-search.orange .wrap > a:focus, .banner-search.orange .wrap > a:hover  { color: $orange_color;}
 .banner-search.orange .icon {color: $orange_color;}
@@ -647,6 +673,9 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .blue .bootstrap-select.btn-group .dropdown-menu > li > a:hover { color:$blue_color; }
 .blue .bootstrap-select .selected span, .blue .bootstrap-select .subselected span {color:$blue_color !important; }
 .blue .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $blue_color;}
+
+.search.blue .results { color: $blue_color;}
+.search.blue aside h3 { color: $blue_color;}
 
 .banner-search.blue .wrap > a, .banner-search.blue .wrap > a:focus, .banner-search.blue .wrap > a:hover  { color: $blue_color;}
 .banner-search.blue .icon {color: $blue_color;}
@@ -707,4 +736,12 @@ only screen and (min-resolution: 2dppx) {
 
   .session {height: auto; min-height: auto; padding: 40px 0px;}
 
+}
+
+
+/* ---- H 740 ---- */
+
+@media screen and (max-height: 740px){
+
+  .full-screen .centered { display: none;}
 }

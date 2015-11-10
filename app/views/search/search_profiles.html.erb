@@ -1,99 +1,60 @@
-<%= render 'layouts/search_bar3' %>
-<!--start search-container-->
-<div class="container-fluid search-container search-contain">
-    <div class="container">
+<div class="search orange">
 
-        <div class="row">
-            <div class="col-lg-12 heading-box">
-                <p>
-                  <% if @res != nil && @res.results.length > 0 %>
-                      <%= (@res.results.offset)+1 %>-<%=@res.results.length+@res.results.offset%> of <%= @res.try(:total) %>
-                      <%= params[:keywords]!=nil ?  params[:keywords]: params[:what]  %> Profiles
-                      <%= 'in ' if params[:location].present? || params[:where].present? %>
-                      <%= params[:location]!=nil ?  params[:location]: params[:where]  %>
-                  <%else %>
-                      0 Profile
-                  <% end %>
-                </p>
+  <%= render 'layouts/search_bar3' %>
 
-                <div class="Sort-drop">
-                    <span>Sort by :</span>
-                    <div class="styled-select">
-                        <select onChange="sortJobs(this.value)">
-                            <option value="relevance" <%= 'selected' if params[:sort]=='score'  %>>Relevance</option>
-                            <option value="created_at" <%= 'selected' if params[:sort]=='created_at'  %>>Posted Date</option>
-                        </select>
-                    </div>
-                </div>
-                <!--<div class="icon-side">-->
-                    <!--<a href="#"><img src="/assets/blue-icon.png" /></a>-->
-                    <!--<a href="#"><img src="/assets/line-icon.png" /></a>-->
-                <!--</div>-->
+  <section>
+    <div class="margin">
+
+      <div class="results">
+        <% if @res != nil && @res.results.length > 0 %>
+            <%=@res.results.length+@res.results.offset%> <small>of</small> <%= @res.try(:total) %>
+            <%= params[:keywords]!=nil ?  params[:keywords]: params[:what]  %> <small>Profiles</small>
+            <%= 'in ' if params[:location].present? || params[:where].present? %>
+            <%= params[:location]!=nil ?  params[:location]: params[:where]  %>
+        <%else %>
+          0 <small>Profile</small>
+        <% end %>
+      </div>
+
+      <aside class="w25">
+        <%= render 'profile_results_left_bar' %>
+
+        <article>
+          <h3>Save Last Search</h3>
+          <form id="save_filer_form">
+            <div class="form-group">
+              <input id="filter_name" name="filter_name" type="text" placeholder="Search Name" required="true" value=""/>
+              <input id="search_criteria" name="search_string" type="hidden" value="">
             </div>
+            <input type="submit" value="Save" class="btn btn-orange"  />
+          </form>
+        </article>
 
-
-            <!--left-side-->
-            <%= render 'profile_results_left_bar' %>
-            <!--End left-side-->
-            <!--middle-side-->
-            <%=render 'profile_results'%>
-            <!--End middle-side-->
-
-           <!-- <%#=render 'talent_search_right_bar'%> -->
-
-
-          <!--right-side-->
-          <div class="col-lg-3 col-md-3 col-sm-3  no_pad_right right-side">
-
-            <div id="local_talents">
-
-            </div>
-
-
-            <div id="save_search_criteria ">
-              <div class="col-lg-12 sign-up-box">
-                <h3>Save Last Search</h3>
-                <div class="sign-bx">
-
-                  <form id="save_filer_form">
-                    <input id="filter_name" name="filter_name" type="text" placeholder="Search Name" required="true" value=""/>
-                    <input id="search_criteria" name="search_string" type="hidden" value="">
-                    <input type="submit" value="Save Search" class="sign-up-btn"  />
-                  </form>
-
-                </div>
-              </div>
-
-              <div class="col-lg-12 search-emp">
-                <h4>Search Criteria
-                  <!--<a href="#"><img src="/assets/plus-symbol.png" alt="" /></a>-->
-                </h4>
-                <div class="sign-bx" id="saved_filer">
-                  <% @saved_searched_filer.each do |filter|%>
-
-                      <div class="criteria-portion">
-                        <h6>  <%= filter.name %> </h6>
-                        <a href="javascript:" class="show-link" >Show Criteria <img src="/assets/down-arrow.png" alt="" /></a>
-                        <ul class="criteria-detail">
-                          <li><span><img src="/assets/search-ic1.png" alt="" /></span> <a href="/search/profiles<%=filter.criteria%>"> View Talents</a></li>
-                          <!--<li><span><img src="/assets/search-ic2.png" alt="" /></span>  <a href="#">Modify Criteria</a></li>-->
-                          <li><span><img src="/assets/search-ic3.png" alt="" /> </span> <a href="javascript:deleteSearchFilter(<%= filter.id%>)">Delete Criteria </a> </li>
-                        </ul>
-                      </div>
-                  <%end%>
-                </div>
-
-              </div>
-
-            </div>
-
-
+        <article>
+          <h3>Search Criteria</h3>
+          <% @saved_searched_filer.each do |filter|%>
+          <div class="sign-bx" id="saved_filer">
+              <h6><%= filter.name %> </h6>
+              <a href="javascript:" class="show-link" >Show Criteria <img src="/assets/down-arrow.png" alt="" /></a>
+              <ul class="criteria-detail">
+                <li><span><img src="/assets/search-ic1.png" alt="" /></span> <a href="/search/profiles<%=filter.criteria%>"> View Talents</a></li>
+                <!--<li><span><img src="/assets/search-ic2.png" alt="" /></span>  <a href="#">Modify Criteria</a></li>-->
+                <li><span><img src="/assets/search-ic3.png" alt="" /> </span> <a href="javascript:deleteSearchFilter(<%= filter.id%>)">Delete Criteria </a> </li>
+              </ul>
           </div>
-        </div>
+          <%end%>
+        </article>
+        
+      </aside>
+
+      <div class="search-results w75">
+        <%=render 'profile_results'%>
+      </div>
+
     </div>
+  </section>
 
 </div>
-<!--End search-container-->
 
 
 

@@ -494,6 +494,35 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .modal-box .modal-footer {@extend .block; border:0px; text-align: center; padding: 0px; border:0; background: none; }
 
 
+/* ---- SEARCH RESULT ---- */
+
+.result { width: 100%; display: inline; float: left; margin: 20px 0px 20px 0px; padding-bottom: 20px; border-bottom: 1px solid $line_color;}
+.result a {width: 100%; display: inline; float: left;}
+.result .w25 { display: inline; float: left; width: 94px;}
+.result .w75 { display: inline; float: right; width:86%;}
+
+.result .img-circle {  width: 94px; height: 94px; display: block; border: 1px solid $grey_color;}
+
+.result h2 {font-size: 24px;  font-family: 'pro-regular'; color: $dark_color; width: 100%; display: inline; float: left; margin-bottom: 10px;}
+.result h3 { font-size: 18px; font-family: 'pro-light';  width: 100%; display: inline; float: left; margin-bottom: 10px;}
+.result .details { width: 100%; display: inline; float: left;}
+.result .details .icon { color: $grey_color; font-size: 26px; display: inline; float: left; margin: 2px 4px 0px 0px;}
+.result .details .icon.icon-star { font-size: 28px; margin-top: -2px;} 
+.result .details span { display: inline; float: left; margin: 0px 20px 0px 0px; color: $base_color;}
+.result .details span:last-of-type { margin-right: 0px;}  
+
+.result a:hover{  @include opacity(0.45);}
+
+
+/* ---- PAGINATION ---- */
+
+.pagination { @include border-radius(0px); @extend .inline-block;margin: 20px 0px; }
+.pagination ul li { @extend .inline-block; @include border-radius(0px); border:0;  padding: 0px; text-align: center; @include box-shadow(none); margin: 0px; line-height: 100%; }
+.pagination ul li:hover, .pagination ul li:focus { background: none; color: $dark_grey_color; } 
+.pagination ul li a, .pagination ul li a:focus { margin: 0px; padding: 0px; font-size: 16px; color: $dark_grey_color; font-family: 'pro-light'; @extend .inline-block; padding: 15px 5px; border: 1px solid $line_color; min-width: 35px; line-height: 100%; @include border-radius(2px); }
+.pagination ul li a:hover, .pagination ul li a.active, .pagination ul li a.active:hover { color: #fff;}
+
+
 
 /* CONTENT */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -609,15 +638,21 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .search .results { width: 100%; display: inline; float: left; text-align: right; font-size: 18px; font-family: 'pro-light';}
 .search .results small { font-size: 16px; color: $base_color;}
 
-.search .search-results {  display: inline; float: right; background: #f0f; margin-bottom: 40px;}
+.search .search-results {  display: inline; float: right; margin-bottom: 40px; }
+.search .search-results h6 { @extend .block; font-size: 18px; padding: 20px;}
 
-.search aside { display: inline; float: left; }
+.search aside { display: inline; float: left; width: 21.7%;}
 .search aside  article { @extend .block; background: #e0e0e0; padding: 40px 20px; margin-bottom: 40px;}
-.search aside h3 { @extend .block; text-transform: uppercase; text-align: center; font-size: 22px; font-family: 'pro-light'; margin-bottom:40px;}
+.search aside h3 { @extend .block; text-transform: uppercase; text-align: center; font-size: 22px; font-family: 'pro-light'; margin-bottom:20px;}
 .search aside .form-group {@extend .block; margin-bottom: 20px;}
 
 
-
+.search aside .criteria-bx {@extend .block;  margin-bottom: 10px;}
+.search aside .criteria-bx:last-of-type { margin-bottom: 0;} 
+.search aside .criteria-bx a, .search aside .criteria-bx a:focus  { @extend .inline-block; font-size: 18px; color: $dark_grey_color; text-decoration: none; vertical-align: top; padding: 0px 6px 0px 0px;}
+.search aside .criteria-bx a:hover {color: $dark_grey_color; text-decoration: underline;} 
+.search aside .criteria-bx a.icon, .search aside .criteria-bx a.icon:focus { font-size: 22px; padding: 0px;}
+.search aside .criteria-bx a.icon:hover { text-decoration: none;}
 
 
 
@@ -639,8 +674,15 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .orange .bootstrap-select .selected span, .orange .bootstrap-select .subselected span {color:$orange_color !important; }
 .orange .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $orange_color;}
 
+.orange .pagination ul li a:hover, .orange .pagination ul li a.active, .orange .pagination ul li a.active:hover { background: $orange_color; border-color: $orange_color;}
+
 .search.orange .results { color: $orange_color;}
 .search.orange aside h3 { color: $orange_color;}
+.search.orange aside .criteria-bx a.icon, .search.orange aside .criteria-bx a.icon:focus { color: $orange_color;}
+.search.orange aside .criteria-bx a.icon:hover { color: $base_color;}
+
+
+
 
 .banner-search.orange .wrap > a, .banner-search.orange .wrap > a:focus, .banner-search.orange .wrap > a:hover  { color: $orange_color;}
 .banner-search.orange .icon {color: $orange_color;}
@@ -659,6 +701,9 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .modal-box.orange a.close:hover { color: $orange_color;}
 
 
+.result.orange h3 { color: $orange_color;}
+
+
 /* BLUE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -674,8 +719,13 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .blue .bootstrap-select .selected span, .blue .bootstrap-select .subselected span {color:$blue_color !important; }
 .blue .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $blue_color;}
 
+
+.blue .pagination ul li a:hover, .blue .pagination ul li a.active, .blue .pagination ul li a.active:hover { background: $blue_color; border-color: $blue_color;}
+
 .search.blue .results { color: $blue_color;}
 .search.blue aside h3 { color: $blue_color;}
+.search.blue aside .criteria-bx a.icon, .search.blue aside .criteria-bx a.icon:focus { color: $blue_color;}
+.search.blue aside .criteria-bx a.icon:hover { color: $base_color;}
 
 .banner-search.blue .wrap > a, .banner-search.blue .wrap > a:focus, .banner-search.blue .wrap > a:hover  { color: $blue_color;}
 .banner-search.blue .icon {color: $blue_color;}
@@ -694,7 +744,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .modal-box.blue .modal-header h2 { color: $blue_color;}
 .modal-box.blue a.close:hover { color: $blue_color;}
 
-
+.result.blue h3 { color: $blue_color;}
 
 
 

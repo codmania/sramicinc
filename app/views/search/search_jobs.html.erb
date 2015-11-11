@@ -31,19 +31,15 @@
         </article>
 
         <article>
-          <% @saved_searched_filer.each do |filter|%>
           <h3>Search Criteria</h3>
-          <div class="sign-bx" id="saved_filer">
-              <h6><%= filter.name %> </h6>
-              <a href="javascript:" class="show-link" >Show Criteria <img src="/assets/down-arrow.png" alt="" /></a>
-              <ul class="criteria-detail">
-                <li><span><img src="/assets/search-ic1.png" alt="" /></span> <a href="/search/jobs<%=filter.criteria%>"> View Jobs</a></li>
-                <!--<li><span><img src="/assets/search-ic2.png" alt="" /></span>  <a href="#">Modify Criteria</a></li>-->
-                <li><span><img src="/assets/search-ic3.png" alt="" /> </span> <a href="javascript:deleteSearchFilter(<%= filter.id%>)">Delete Criteria </a> </li>
-              </ul>
+          <% @saved_searched_filer.each do |filter|%>  
+          <div class="criteria-bx">
+              <a href="/search/jobs<%=filter.criteria%>"><%= filter.name %></a>
+              <a href="javascript:deleteSearchFilter(<%= filter.id%>)" class="icon icon-cross"></a> 
           </div>
           <%end%>
         </article>
+ 
        
 
       </aside>

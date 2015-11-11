@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+
+/* RESET */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+textarea {resize:none;}
+
+* {box-sizing: border-box;}
+*::before, *::after {box-sizing: border-box;}
+
+
+
+
+
+/* GLOBAL */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+h1, h2 {  font-family: 'Open Sans', sans-serif; font-weight:400; }
+h1 { font-size: 30px; color: #257fd2; line-height: 140%; }
+h1 strong { font-weight:600;}
+
+
+a { text-decoration: none; }
+a:hover, a:active {text-decoration: none; }
+a:hover, a:active, a:focus { outline: 0 !important;}
+
+img { max-width: 100%; height: auto;}
+
+
+/* LAYOUT */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+html, body {height: 100%; min-height: 100%; }
+
+body {background:#fff; color: #666666; font-family: 'Open Sans', sans-serif; font-weight:300; font-size: 18px;  line-height: 140%;  overflow-x: hidden;  margin: 0px; padding: 0px; text-align: center;}
+
+.container {height: 100%; min-height: 100%; width: 100%; display: table; margin: 0px; padding: 0px 20px;}
+
+.dialog h1 { display: block; width: 100%; margin: 15px 0px 10px 0px; padding: 0px; }
+.dialog p {display: block; width: 100%; padding: 0px;  margin-bottom: 40px;  }
+.dialog p a, .dialog p a:focus { color: #fe894f; text-transform: uppercase; font-weight: 400;}
+.dialog p a:hover{ color: #404040;}
+.dialog small{display: block; width: 100%; font-size: 14px;}
+.dialog small a, .dialog small a:focus{color: #666666; text-decoration: none;}
+.dialog small a:hover{color: #666666; text-decoration: underline;}
+
+
+
+/* MOBILE HEIGHT */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+/* ----------- H 660----------- */
+@media screen and (max-height: 660px) {
+
+   h1 { font-size: 24px; }
+   .dialog p { display: none;}
+
+}
+
+
+
+

@@ -56,10 +56,10 @@ module PaginationHelper
         puts 'taggg '+text.to_s
         puts 'taggg '+(text.to_s=='Next &#8594;').to_s
         if text.to_s=='Next &#8594;'
-          text="<img src='/assets/next-1.png'>"
+          text='>'
           tag(:li, tag(:a, text, attributes))
         elsif text.to_s=='&#8592; Previous'
-          text="<img src='/assets/prev-1.png'>"
+          text='<'
           tag(:li, tag(:a, text, attributes))
         else
           tag(:li, tag(:a, text, attributes), :class => 'plink')

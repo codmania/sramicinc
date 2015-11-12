@@ -334,8 +334,8 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .stratum { overflow: hidden; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;  }
 
-.stratum.blue {background:repeat transparent center top image-url("layout/stratum-blue.png"); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-blue.png', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-blue.png', sizingMethod='scale')";} 
-.stratum.orange {background:repeat transparent center top image-url("layout/stratum-orange.png"); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-orange.png', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-orange.png', sizingMethod='scale')";} 
+.stratum.blue, .present.blue .stratum {background:repeat transparent center top image-url("layout/stratum-blue.png"); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-blue.png', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-blue.png', sizingMethod='scale')";} 
+.stratum.orange, .present.orange .stratum  {background:repeat transparent center top image-url("layout/stratum-orange.png"); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-orange.png', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/stratum-orange.png', sizingMethod='scale')";} 
 
 
 
@@ -644,7 +644,14 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .search aside { display: inline; float: left; width: 21.7%;}
 .search aside  article { @extend .block; background: #e0e0e0; padding: 40px 20px; margin-bottom: 40px;}
 .search aside h3 { @extend .block; text-transform: uppercase; text-align: center; font-size: 22px; font-family: 'pro-light'; margin-bottom:20px;}
-.search aside .form-group {@extend .block; margin-bottom: 20px;}
+.search aside .form-group {@extend .block; margin-bottom: 10px;}
+.search aside article .form-group:last-of-type {margin-bottom: 20px;}
+
+.search aside .bootstrap-select > .dropdown-toggle, .search aside .bootstrap-select > .dropdown-toggle:active, .search aside .bootstrap-select > .dropdown-toggle:focus { padding: 4px 24px 4px 10px;  }
+.search aside .bootstrap-select.btn-group .dropdown-toggle .caret { top: 4px;}
+.search aside label {margin-bottom: 0px; font-size: 16px;}
+
+
 
 
 .search aside .criteria-bx {@extend .block;  margin-bottom: 10px;}
@@ -653,6 +660,72 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .search aside .criteria-bx a:hover {color: $dark_grey_color; text-decoration: underline;} 
 .search aside .criteria-bx a.icon, .search aside .criteria-bx a.icon:focus { font-size: 22px; padding: 0px;}
 .search aside .criteria-bx a.icon:hover { text-decoration: none;}
+
+
+
+/* ---- PRESENT JOBS AND TALENTS ---- */
+
+.present section { padding: 40px 0px; }
+
+.present .stratum { text-align: center;}
+.present .stratum h1 {@extend .block;  color: #fff; font-size: 28px; font-family: 'pro-regular'; margin-bottom: 20px;}
+.present .stratum span {@extend .inline-block; vertical-align: top; color: #fff; font-size: 18px;}
+.present .stratum .icon {@extend .inline-block; vertical-align: top; font-size: 24px; color: #fff; margin: 2px 6px 0px 0px;} 
+
+.present .nav.nav-tabs > li { padding: 20px 40px;}
+
+.present .heading {@extend .block; position: relative;}
+.present .heading .back-link, .present .heading .back-link:focus { position: absolute; top: 20px; left: 0px; font-size: 16px; text-decoration: none;}
+.present .heading .back-link:hover { text-decoration: underline;}
+.present .heading .arrow-box {position: absolute; top: 10px; right: 0px; display: inline; float: none;}
+.present .heading .arrow-box .icon, .present .heading .arrow-box .icon:focus { font-size: 35px; color: $grey_color;}
+
+
+.present .tab-pane {  margin: 40px 0px 40px 0px;  float: left; width: 100%;  }
+
+.present .tab-pane .enclosure {display: table; width: 100%; border:1px solid $line_color; padding: 40px;  @include border-radius(4px); background: #fff;}
+.present .tab-pane .w25 { display: table-cell; width: 25%;  border-right: 1px solid $line_color; padding:20px 40px 20px 0px; height: 100%;   }
+.present .tab-pane .w75 { display: table-cell; width: 75%;  padding:20px 0px 20px 40px;  height: 100%; position: relative;   }
+
+
+.present .tab-pane .list {@extend .block;}
+.present .tab-pane .list li {@extend .block; margin-bottom: 10px;}
+.present .tab-pane .list li:last-of-type { margin-bottom: 0px;}
+.present .tab-pane .list li strong {@extend .inline-block; vertical-align: top; font-family: 'pro-light'; padding-right: 4px; }
+.present .tab-pane .list li span {@extend .inline-block; vertical-align: top; } 
+.present .tab-pane .list li a, .present .tab-pane .list li a:focus { color:$base_color;}
+.present .tab-pane .list li .icon {@extend .inline-block; vertical-align: top; color:$grey_color; font-size: 24px; padding: 2px 0px 0px 0px;}
+
+
+.present .tab-pane article {@extend .block; clear: both;}
+.present .tab-pane article h2 {@extend .block; font-size: 22px; color: $dark_color; font-family: 'pro-regular'; margin-bottom: 40px;}
+.present .tab-pane article .description {@extend .block; margin-bottom: 60px; }
+
+
+.present .tab-pane .actions { @extend .block; position: absolute; right: 0px; bottom: 0px; padding: 0px 0px 0px 40px; }
+.present .tab-pane .actions .icon, .present .tab-pane .actions .icon:focus { color: $grey_color;}
+.present .tab-pane .actions .pull-left em { color: $grey_color; font-size: 16px;@extend .inline-block; vertical-align: top; padding-top: 10px;}
+.present .tab-pane .actions .pull-left .icon, .present .tab-pane .actions .pull-left .icon:focus  {@extend .inline-block; vertical-align: top; font-size: 36px;}
+.present .tab-pane .actions .pull-right .icon,.present .tab-pane .actions .pull-right .icon:focus {@extend .inline-block; vertical-align: top; font-size: 38px; padding-left: 10px;}
+.present .tab-pane .actions .pull-right .btn { margin-left: 20px;}
+
+
+.present .similar {  width: 100%; display: inline; float: left; padding: 80px 0px 60px 0px;}
+.present .similar h3 {@extend .block; text-align: center; text-transform: uppercase; font-size: 22px; margin-bottom: 40px;}
+
+
+.present .similar .result { width: 100%; display: inline;}
+.present .similar .result .w25 { display: inline; float: left; width: 94px; border: 0; padding: 0px; height: auto;}
+.present .similar .result .w75 { display: inline; float: right; width:90%; padding: 0px; height: auto; }
+
+.present .similar .result h2 {font-size: 24px;  font-family: 'pro-regular'; color: $dark_color; width: 100%; display: inline; float: left; margin-bottom: 10px;}
+.present .similar .result h3 { font-size: 18px;  width: 100%; display: inline; text-align: left; text-transform: none; margin-bottom: 10px;}
+
+
+.present .similar .centered { display: inline; width: 100%; float: left; margin-top: 20px;}
+
+
+
 
 
 
@@ -703,6 +776,14 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .result.orange h3 { color: $orange_color;}
 
+.present.orange .heading .back-link, .present.orange  .heading .back-link:focus, .present.orange  .heading .back-link:hover { color: $orange_color;}
+.present.orange .heading .arrow-box .icon:hover {color: $orange_color;} 
+.present.orange .tab-pane .list li strong  {color: $orange_color;}
+.present.orange .tab-pane .list li a:hover { color:$orange_color;}
+.present.orange .tab-pane .list li a:hover .icon { color:$orange_color;} 
+.present.orange .tab-pane .actions .icon:hover {color:$orange_color;}
+.present.orange .similar h3 {color:$orange_color;}
+
 
 /* BLUE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -747,6 +828,13 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .result.blue h3 { color: $blue_color;}
 
 
+.present.blue .heading .back-link, .present.blue  .heading .back-link:focus, .present.blue  .heading .back-link:hover { color: $blue_color;}
+.present.blue .heading .arrow-box .icon:hover {color: $blue_color;}
+.present.blue .tab-pane .list li strong  {color: $blue_color;}
+.present.blue .tab-pane .list li a:hover { color:$blue_color;}
+.present.blue .tab-pane .list li a:hover .icon { color:$blue_color;}  
+.present.blue .tab-pane .actions .icon:hover {color:$blue_color;}
+.present.blue .similar h3 {color:$blue_color;}
 
 
 /* RETINA */
@@ -795,3 +883,13 @@ only screen and (min-resolution: 2dppx) {
 
   .full-screen .centered { display: none;}
 }
+
+
+/* PRINT */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+@media print {
+  header, footer, .btn, .present .nav.nav-tabs, .icon, .present .tab-pane .actions .pull-left { display: none !important;} 
+  .present section { padding:0px;}   
+}
+

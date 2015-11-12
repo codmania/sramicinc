@@ -90,8 +90,8 @@ $(document).ready(function(){
         $(this).removeClass('pass');
         $('#banner-seeking').removeClass('active');
         $('#banner-seeking').addClass('pass');
-        $('#search-hiring').addClass('active');
-        $('#search-seeking').removeClass('active');
+        $('#search-hiring').removeClass('active');
+        $('#search-seeking').addClass('active');
     });
 
     $('#banner-seeking').click(function(){
@@ -99,8 +99,8 @@ $(document).ready(function(){
         $(this).removeClass('pass');
         $('#banner-hiring').removeClass('active');
         $('#banner-hiring').addClass('pass');
-        $('#search-seeking').addClass('active');
-        $('#search-hiring').removeClass('active');
+        $('#search-seeking').removeClass('active');
+        $('#search-hiring').addClass('active');
 
     });
 

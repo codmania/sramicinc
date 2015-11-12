@@ -1,332 +1,223 @@
-<style>
-    @media print {
-        /*#main-nav,.top_links_container..buttons,.comment-detail-portion {*/
-        #main-nav,.top_links_container,.buttons,.comment-detail-portion,.share-icons,.similar-jobs,.footer_container,.welcome-box,.bell,.copyright_container {
-            display: none;
-        }
-        a[href]:after {
-            content: initial;
-        }
-        .job-det{
-            float:left
-        }
-        .job-portion{
-            float:right;
-            width: 59%;
-        }
-    }
-
-</style>
-<!--start search-container-->
 <!--<meta property="og:image" content="thumbnail_image" />-->
 <input type="hidden" id="curpage" value="<%=params[:page]%>"/>
 <input type="hidden" id="total" value="<%=params[:total]%>"/>
-<div class="container-fluid search-container">
-  <div class="container">
-    <div class="row">
 
-      <!--<div class="col-lg-12 heading-box2">-->
-      <!--<a href="#" class="back-link"><img src="/assets/left-arrow.png" /> <span>Back to search results</span></a>-->
-      <!-- -->
-      <!--<div class="arrow-box">-->
-      <!--<a href="#"> <img src="/assets/box-left-arrow.png" alt="" /></a>-->
-      <!--<a href="#"> <img src="/assets/box-right-arrow.png" alt="" /></a>-->
-      <!--</div>-->
-      <!-- -->
-      <!--</div>-->
+<div class="present orange">
+
+  <section class="stratum">
+    <div class="margin">
+      <h1><%= @job.title %></h1>
+      <em class="icon icon-clock"></em><% t = @job.created_at %><span><%= t.strftime("%m / %d / %Y") %></span>              
+    </div>
+  </section>
+
+  <section>
+    <div class="margin">
+
       <% if params['what'] %>
-      <div class="col-lg-12 heading-box2">
-        <a href="#" class="back-link"><img src="/assets/left-arrow.png"> <span>Back to search results</span></a>
-        <div class="arrow-box">
-          <a href="/search/jobs/" class="prev_page"> <img src="/assets/box-left-arrow.png" alt=""></a>
-          <a href="/search/jobs/" class="nxt_page"> <img src="/assets/box-right-arrow.png" alt=""></a>
+        <div class="heading">
+          <a href="#" class="back-link">back to search results</a>
+          <div class="arrow-box">
+            <a href="/search/jobs/" class="icon icon-arrow-circle-left prev_page"> </a>
+            <a href="/search/jobs/" class="icon icon-arrow-circle-right nxt_page"> </a>
+          </div>
         </div>
-      </div>
       <%end%>
 
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="orange active"><a href="#details" aria-controls="details" role="tab" data-toggle="tab"><strong>Details</strong></a></li>
+        <li role="presentation" class="orange"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><strong>Comments<strong></a></li>
+      </ul>
 
-      <div class="col-lg-12 no_pad heads-btns">
-        <h3><%= @job.title %></h3>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="details">
+          
+          <div class="enclosure">
 
-        <% if current_user.try(:role).try(:authority)=='jobseeker' %>
-            <div class="buttons">
-            <!--<p id="notice"><%= flash['notice'] %></p>-->
-              <%= link_to "Apply", jobs_apply_job_path(:id => @job), :method => 'post', :class => "app-btn apply_action" %>
-              <%= link_to "Add to Cart", jobs_addtocart_path(:id => @job), :method => 'post', :class => "add-cart add_cart_action" %>
-              <%= link_to "Add to WatchList", jobs_add_to_watchlist_path(:id => @job), :method => 'post', :class => "add-cart add_watchlist_Action" %>
-
+            <div class="w25">
+              <ul class="list">
+                <li><strong>Job ID:</strong><span><%= @job.id %></span></li>
+                <li><strong>Location:</strong><span><%= @job.try(:city) %> <%= @job.try(:state_list).try(:name) %>  <%= @job.try(:country_list).try(:name) %></span></li>
+                <li>
+                  <strong>Company:</strong>
+                  <%= link_to jobs_job_eprofile_path(:id => @job.employer.eprofile), :method => 'get' do %>
+                    <span><%= @eprofile.try(:company_name) %></span>
+                    <em class="icon icon-link"></em>
+                  <% end %>
+                </li>
+                <li><strong>Industry:</strong><span><%= @job.try(:industry).try(:name) %></span></li>
+                <li><strong>Category:</strong><span><%= @job.try(:category).try(:name) %></span></li>
+                <li><strong>Experience:</strong><span><%= @job.try(:experience) %></span></li>
+                <li><strong>Education:</strong><span><%= @job.try(:education) %></span></li>
+                <li><strong>Salary:</strong><span><%= @job.try(:salary) %></span></li>
+                <li><strong>Salary Type:</strong><span><%= @job.try(:salary_type).try(:s_type) %></span></li>
+                <li><strong>Relocation:</strong><span><%= @job.try(:relocation) ? 'yes' : 'no' %></span></li>
+                <li><strong>Certification:</strong><span><%= @job.try(:certification) %></span></li>
+                <li><strong>Clearance:</strong><span><%= @job.try(:clearance) %></span></li>
+                <li><strong>Reference:</strong><span><%= @job.try(:references) %></span></li>
+              </ul>      
             </div>
-        <% end %>
 
-      </div>
+            <div class="w75">
 
+              <article>
+                <h2>Description</h2>
+                <div class="description">
+                  <%= raw(@job.description) %> 
+                </div>
+              </article>
+              
+              <div class="actions">
 
-      <!--left-side-->
-      <div class="col-lg-3 col-md-3 col-sm-3 no_pad_left job-req">
-        <div class="col-lg-12 no_pad job-det">
-          <div class="detail-person">
-            <ul class="details">
-              <li>
-                <span class="left-det">Job ID</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.id %></span>
-              </li>
-               <!-- <li>
-                <span class="left-det">Keywords</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.keywords %></span>
-              </li> -->
+                <div class="pull-left">
+                  <em>share:</em>
+                  <a data-method="post" href="http://www.linkedin.com/shareArticle?url=<%= root_url+"jobs/"+@job.try(:id).to_s+"&"+"title="+@job.try(:title).to_s+"&"+"summary="+@job.try(:plain_description).to_s %>" class="icon icon-share-linkedin" target="_blank"></a>
+                </div>
 
+                <div class="pull-right">
+                  <a href="#" onclick="window.print();" class="icon icon-print"></a>
+                  <a data-method="post" href=<%= jobs_add_to_watchlist_path(:id => @job) %> class="icon icon-save"></a>
+                    <%= link_to "Add to WatchList", jobs_add_to_watchlist_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_watchlist_Action" %>
+                    <% if current_user.try(:role).try(:authority)=='jobseeker' %>
+                      <%= link_to "Add to Cart", jobs_addtocart_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_cart_action" %>
+                    <% end %>
+                    <%= link_to "Apply", jobs_apply_job_path(:id => @job), :method => 'post', :class => "btn btn-orange apply_action" %>                
+                </div>
 
-              <li>
-                <span class="left-det">Location</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:city) %> <%= @job.try(:state_list).try(:name) %>  <%= @job.try(:country_list).try(:name) %></span>
-              </li>
-
-              <li>
-                <span class="left-det">Post Date</span>
-                <span class="dot">:</span>
-                <% t = @job.created_at %>
-                <span class="right-det"><%= t.strftime("%m/%d/%Y") %></span>
-              </li>
-
-
-              <li>
-                <span class="left-det">Company</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @eprofile.try(:company_name) %></span>
-              </li>
-
-              <li>
-                <span class="left-det">Industry</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:industry).try(:name) %></span>
-              </li>
-
-              <li>
-                <span class="left-det">Category</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:category).try(:name) %></span>
-              </li>
-
-              <li>
-                <span class="left-det">Experience </span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:experience) %></span>
-
-              </li>
-              <li>
-                <span class="left-det">Education</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:education) %> </span>
-              </li>
-
-              <!--  <li>
-                                  <span class="left-det">Relation</span>
-                                      <span class="dot">:</span>
-                                    <span class="right-det"><%= @job.try(:relation) %></span>
-                                </li>
-                                 -->
-
-              <li>
-                <span class="left-det">Salary</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:salary) %> </span>
-              </li>
-
-              <li>
-                <span class="left-det">Salary Type</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:salary_type).try(:s_type) %> </span>
-              </li>
-
-
-            <!--  <li>
-                <span class="left-det">Job Length</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:job_length) %></span>
-              </li>-->
-
-              <li>
-                <span class="left-det">Relocation</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:relocation) ? 'yes' : 'no' %></span>
-              </li>
-
-              <li>
-                <span class="left-det">Certification</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:certification) %></span>
-              </li>
-
-              <li>
-                <span class="left-det">Clearance</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:clearance) %></span>
-              </li>
-
-              <li>
-                <span class="left-det">Reference</span>
-                <span class="dot">:</span>
-                <span class="right-det"><%= @job.try(:references) %></span>
-              </li>
-
-            </ul>
-            <div class="share-icons">
-              <div class="share-box">
-                <span>Share :</span>
-                <!--<a href="http://www.facebook.com/sharer.php?u=<%= root_url+"jobs/"+@job.try(:id).to_s+"&"+"p[title]="+@job.try(:title).to_s+"&"+"p[summary]="+@job.try(:plain_description).to_s %>" target="_blank"><img src="/assets/facebook.png" alt="" /></a>-->
-
-                <a data-method="post" href="http://www.linkedin.com/shareArticle?url=<%= root_url+"jobs/"+@job.try(:id).to_s+"&"+"title="+@job.try(:title).to_s+"&"+"summary="+@job.try(:plain_description).to_s %>" target="_blank"><img src="/assets/linedin.png" alt=""/></a>
               </div>
 
-
-              <div class="print-copy">
-                <a href="#" onclick="window.print();"><img src="/assets/print-icon.png" alt=""/></a>
-                <a data-method="post" href=<%= jobs_add_to_watchlist_path(:id => @job) %>><img src="/assets/save-icon.png" alt=""/></a>
-              </div>
             </div>
+
           </div>
 
+          <div class="similar">
+            <h3>Similar Jobs</h3>
 
-          <div class="similar-jobs">
-            <h3>Similar Jobs for You</h3>
             <% @similarjobs.try(:each) do |f| %>
-                <div class="similar-wrap">
-                  <div class="similar-box">
-                    <a href="<%= job_path(f.id) %>" target="_blank"><%= f.title %></a>
-                    <span><%= f.try(:eprofile).try(:company_name) %></span>
+              <article class="result orange">
+                <a href="<%= job_path(f.id) %>">
+                  <div class="w25">
+                    <%= image_tag "layout/employer.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
+                  </div>
+                  <div class="w75">
+                    <h2><%= f.title %></h2>
+                    <h3><%= f.employer.try(:eprofile).try(:company_name) %></h3>
+                    
+                    <div class="details">
+                      <div class="pull-left">
+                        <em class="icon icon-location"></em><span><%=  f.addr %></span>
+                        <em class="icon icon-review"></em><span><%=Review.where(to: f.try(:employer).user.id).count%> reviews</span>    
 
-                    <div class="year-loc">
-                      <div class="year-in">
-                        <img src="/assets/bag-icon.png" alt="image">
-                        <span><%= f.try(:experience) %></span>
                       </div>
-
-                      <div class="loc-info">
-                        <img src="/assets/location-icon.png" alt="image">
-                        <span><%= f.try(:city) %></span>
+                      <div class="pull-right">             
+                        <em class="icon icon-comment"></em><span><%= Comment.where(job_id: f.id).count%> comments</span>     
+                        <em class="icon icon-clock"></em><span><%=distance_of_time_in_words(Time.now, f.created_at.to_time) %></span>
                       </div>
                     </div>
+
                   </div>
-                </div>
-            <% end %>
-            <% if @similarjobs.count > 4 %>
-                <a class="view-all-link" title="View All" target="_blank" data-method="get" href="/search/jobs?what=<%= @keywords %>&where=<%= @place %>&distance=50">View
-                  All</a>
+                </a>
+              </article>
             <%end%>
-          </div>
 
-        </div>
-        <!--End explore-result-->
-      </div>
-      <!--End left-side-->
-
-      <!--job-description-->
-      <div class="col-lg-9 col-md-9 col-sm-9 no_pad job-description">
-        <!--start job-portion-->
-        <div class="job-portion">
-
-          <h4>Job Description</h4>
-
-          <ul class="job-description">
-            <p><%= raw(@job.description)  %> </p>
-          </ul>
-
-          <div class="job-profile">
-
-            <h4>
-              <%= link_to "Company Profile", jobs_job_eprofile_path(:id => @job.employer.eprofile), :method => 'get', :target => "_blank" %>
-            </h4>
-
-
-            <span><%#= @job.company_type %></span>
-
-            <p><%= @eprofile.try(:overview) %></p>
-
-
-          </div>
-
-
-        </div>
-        <!--End job-portion-->
-
-
-        <!--start comment-detail-portion-->
-        <div class="comment-detail-portion">
-          <h3 class="heading-comt"><img src="/assets/comment-icon2.png" alt=""/> <%= @job.try(:comments).try(:count) %>
-            Comments </h3>
-
-          <div class="comment-side">
-            <% @job.try(:comments).limit(10).order('created_at desc').try(:each) do |comment| %>
-
-                <div class="comment-box">
-
-                  <div class="comment-person">
-                    <%= image_tag comment.commented_user_profile.logo.url(:thumb) %>
-                  </div>
-
-                  <div class="comment-text">
-                          <span class="comt-name">
-                          <%if comment.user.role.authority=='jobseeker'%>
-                            <%= link_to "#{comment.user.name}", employer_talents_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
-                            <%else%>
-                             <%= link_to "#{comment.user.name}", jobs_job_eprofile_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
-                            <%end%>
-                          </span>
-                    <span class="comt-date"><%= comment.try(:created_at).strftime("%m/%d/%Y") %></span>
-
-                    <p>
-                      <%= comment.comment %>
-                    </p>
-                  </div>
-
-                </div>
-
-            <% end %>
-
-            <% if @job.try(:comments).try(:count) > PER_PAGE_COUNT %>
-                <%= link_to "More Comment..", more_comments_path(:id => @job.id), :method => 'get', :target => "_blank" %>
-            <% end %>
-
-          </div>
-
-          <!--<div class="log-comt">-->
-          <!--<a href="#" title="">Login to comment about this job</a>-->
-          <!--</div>-->
-
-
-          <form name="comment_form" id="comment_form" action="/comments" method="post">
-            <div class="row">
-              <div class="col-md-12">
-                <label for="comment">Comment:</label>
-                <textarea class="form-control" required="true" rows="5" id="comment" name="comment"></textarea>
-              </div>
-              <input type="hidden" id="job_id" name="job_id" value="<%= @job.id %>"/>
-              <input type="hidden" id="user_id" name="user_id" value="<%= current_user.try(:id) %>"/>
-
-
+            <div class="centered">
+              <% if @similarjobs.count > 4 %>
+                <a data-method="get" href="/search/jobs?what=<%= @keywords %>&where=<%= @place %>&distance=50" class="btn btn-orange-ghost">View All</a>
+              <% end %>
             </div>
-            <button type="submit" class="orange-btn pull-right">Comment</button>
-          </form>
+           
+          </div>
+
 
         </div>
-        <!--end comment-detail-portion-->
-
-        <!--End job-decsription-->
-
-
+        <div role="tabpanel" class="tab-pane" id="comments">
+          2
+        </div>
       </div>
+
+  
+
+    </div>
+  </section>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--start comment-detail-portion-->
+  <div class="comment-detail-portion" style="display:none;">
+    <h3 class="heading-comt"><img src="/assets/comment-icon2.png" alt=""/> <%= @job.try(:comments).try(:count) %>
+      Comments </h3>
+
+    <div class="comment-side">
+      <% @job.try(:comments).limit(10).order('created_at desc').try(:each) do |comment| %>
+
+          <div class="comment-box">
+
+            <div class="comment-person">
+              <%= image_tag comment.commented_user_profile.logo.url(:thumb) %>
+            </div>
+
+            <div class="comment-text">
+                    <span class="comt-name">
+                    <%if comment.user.role.authority=='jobseeker'%>
+                      <%= link_to "#{comment.user.name}", employer_talents_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
+                      <%else%>
+                       <%= link_to "#{comment.user.name}", jobs_job_eprofile_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
+                      <%end%>
+                    </span>
+              <span class="comt-date"><%= comment.try(:created_at).strftime("%m/%d/%Y") %></span>
+
+              <p>
+                <%= comment.comment %>
+              </p>
+            </div>
+
+          </div>
+
+      <% end %>
+
+      <% if @job.try(:comments).try(:count) > PER_PAGE_COUNT %>
+          <%= link_to "More Comment..", more_comments_path(:id => @job.id), :method => 'get', :target => "_blank" %>
+      <% end %>
+
     </div>
 
+    <!--<div class="log-comt">-->
+    <!--<a href="#" title="">Login to comment about this job</a>-->
+    <!--</div>-->
+
+
+    <form name="comment_form" id="comment_form" action="/comments" method="post">
+      <div class="row">
+        <div class="col-md-12">
+          <label for="comment">Comment:</label>
+          <textarea class="form-control" required="true" rows="5" id="comment" name="comment"></textarea>
+        </div>
+        <input type="hidden" id="job_id" name="job_id" value="<%= @job.id %>"/>
+        <input type="hidden" id="user_id" name="user_id" value="<%= current_user.try(:id) %>"/>
+
+
+      </div>
+      <button type="submit" class="orange-btn pull-right">Comment</button>
+    </form>
+
   </div>
-</div>
-<!--End search-container-->
-
-
-
-
+  <!--end comment-detail-portion-->
 
 
 

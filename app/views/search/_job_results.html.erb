@@ -16,10 +16,10 @@
           <div class="details">
             <div class="pull-left">
               <em class="icon icon-location"></em><span><%=  rest.addr %></span>
-              <em class="icon icon-star"></em><span><%= rest.experience==nil ? "Any Experience": rest.experience %></span>
+              <em class="icon icon-review"></em><span><%=Review.where(to: rest.try(:employer).user.id).count%> reviews</span>    
+
             </div>
-            <div class="pull-right">
-              <em class="icon icon-review"></em><span><%=Review.where(to: rest.try(:employer).user.id).count%> reviews</span>        
+            <div class="pull-right">             
               <em class="icon icon-comment"></em><span><%= Comment.where(job_id: rest.id).count%> comments</span>     
               <em class="icon icon-clock"></em><span><%=distance_of_time_in_words(Time.now, rest.created_at.to_time) %></span>
             </div>

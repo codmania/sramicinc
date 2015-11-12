@@ -393,10 +393,9 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .tab-content .item {width: 100%; text-align: left; display: inline; float: left; clear: both;}
 .tab-content .item li { width:20%; vertical-align: top;  display: inline; float: left; padding: 0px 5px 0px 5px; margin: 0px;}
-.tab-content .item li a { font-size: 16px; color: $base_color; font-family: 'pro-thin';}
+.tab-content .item li a, .tab-content .item li a:focus { font-size: 16px; color: $base_color; font-family: 'pro-thin';}
 .tab-content .item li a span {font-family: 'pro-light'; padding: 0px 4px;}
 
-.tab-content .item li.orange a span {color: $orange_color;}
 
 
 
@@ -754,8 +753,8 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .search.orange aside .criteria-bx a.icon, .search.orange aside .criteria-bx a.icon:focus { color: $orange_color;}
 .search.orange aside .criteria-bx a.icon:hover { color: $base_color;}
 
-
-
+.tab-content .item li.orange a span {color: $orange_color;}
+.tab-content .item li.orange a:hover {color: $orange_color;}
 
 .banner-search.orange .wrap > a, .banner-search.orange .wrap > a:focus, .banner-search.orange .wrap > a:hover  { color: $orange_color;}
 .banner-search.orange .icon {color: $orange_color;}
@@ -785,6 +784,8 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .present.orange .similar h3 {color:$orange_color;}
 
 
+
+
 /* BLUE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -807,6 +808,9 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .search.blue aside h3 { color: $blue_color;}
 .search.blue aside .criteria-bx a.icon, .search.blue aside .criteria-bx a.icon:focus { color: $blue_color;}
 .search.blue aside .criteria-bx a.icon:hover { color: $base_color;}
+
+.tab-content .item li.blue a span {color: $blue_color;}
+.tab-content .item li.blue a:hover {color: $blue_color;}
 
 .banner-search.blue .wrap > a, .banner-search.blue .wrap > a:focus, .banner-search.blue .wrap > a:hover  { color: $blue_color;}
 .banner-search.blue .icon {color: $blue_color;}

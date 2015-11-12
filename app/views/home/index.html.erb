@@ -117,7 +117,7 @@
               <ul class="item">
                 <%if @res1 != nil %>
                   <% @res1.facet(:city).rows.each do |facet| %>
-                    <li class="orange"><a href="/search/profiles?&city=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                    <li class="blue"><a href="/search/profiles?&city=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
                   <%end%>  
                 <%end%>
               </ul> 
@@ -126,7 +126,7 @@
               <ul class="item">
                 <%if @res1 != nil %>
                   <% @res1.facet(:skills).rows.each do |facet| %>
-                    <li class="orange"><a href="/search/profiles?&skills=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                    <li class="blue"><a href="/search/profiles?&skills=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
                   <%end%>  
                 <%end%>
               </ul> 

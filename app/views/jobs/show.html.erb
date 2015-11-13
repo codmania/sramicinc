@@ -27,7 +27,7 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="orange active"><a href="#details" aria-controls="details" role="tab" data-toggle="tab"><strong>Details</strong></a></li>
-        <li role="presentation" class="orange"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><strong>Comments<strong></a></li>
+        <li role="presentation" class="orange"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><strong><%= @job.try(:comments).try(:count) %> Comments<strong></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -133,7 +133,42 @@
 
         </div>
         <div role="tabpanel" class="tab-pane" id="comments">
-          2
+
+          <div class="enclosure">
+            <% @job.try(:comments).limit(10).order('created_at desc').try(:each) do |comment| %>
+
+              <div class="comment">
+                <div class="w25">
+                  <%= image_tag comment.commented_user_profile.logo.url(:thumb), title: "", alt: "", size: "94x94", class: "img-circle" %>
+                  <%if comment.user.role.authority=='jobseeker'%>
+                    <h4 class="blue"><%= link_to "#{comment.user.name}", employer_talents_path(:id => comment.commented_user_profile), :method => 'get' %></h4>
+                  <%else%>
+                    <h4 class="orange"><%= link_to "#{comment.user.name}", jobs_job_eprofile_path(:id => comment.commented_user_profile), :method => 'get' %></h4>
+                  <%end%>
+                  <div class="time">
+                    <em class="icon icon-clock"></em><span><%= comment.try(:created_at).strftime("%m / %d / %Y") %></span>
+                  </div>
+                </div>
+                <div class="w75">
+                  <%= comment.comment %>
+                </div>
+              </div>
+
+            <% end %>
+            
+          </div>
+
+          <div class="comment-area">
+            <form name="comment_form" id="comment_form" action="/comments" method="post">
+              <h6>Comment</h6>
+              <textarea class="form-control" required="true" id="comment" name="comment"></textarea>
+              <input type="hidden" id="job_id" name="job_id" value="<%= @job.id %>"/>
+              <input type="hidden" id="user_id" name="user_id" value="<%= current_user.try(:id) %>"/>
+              <button type="submit" class="btn btn-orange">Submit</button>
+            </form>
+          </div>
+
+
         </div>
       </div>
 
@@ -158,66 +193,8 @@
 
 
 
-  <!--start comment-detail-portion-->
-  <div class="comment-detail-portion" style="display:none;">
-    <h3 class="heading-comt"><img src="/assets/comment-icon2.png" alt=""/> <%= @job.try(:comments).try(:count) %>
-      Comments </h3>
-
-    <div class="comment-side">
-      <% @job.try(:comments).limit(10).order('created_at desc').try(:each) do |comment| %>
-
-          <div class="comment-box">
-
-            <div class="comment-person">
-              <%= image_tag comment.commented_user_profile.logo.url(:thumb) %>
-            </div>
-
-            <div class="comment-text">
-                    <span class="comt-name">
-                    <%if comment.user.role.authority=='jobseeker'%>
-                      <%= link_to "#{comment.user.name}", employer_talents_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
-                      <%else%>
-                       <%= link_to "#{comment.user.name}", jobs_job_eprofile_path(:id => comment.commented_user_profile), :method => 'get', :target => "_blank" %>
-                      <%end%>
-                    </span>
-              <span class="comt-date"><%= comment.try(:created_at).strftime("%m/%d/%Y") %></span>
-
-              <p>
-                <%= comment.comment %>
-              </p>
-            </div>
-
-          </div>
-
-      <% end %>
-
-      <% if @job.try(:comments).try(:count) > PER_PAGE_COUNT %>
-          <%= link_to "More Comment..", more_comments_path(:id => @job.id), :method => 'get', :target => "_blank" %>
-      <% end %>
-
-    </div>
-
-    <!--<div class="log-comt">-->
-    <!--<a href="#" title="">Login to comment about this job</a>-->
-    <!--</div>-->
 
 
-    <form name="comment_form" id="comment_form" action="/comments" method="post">
-      <div class="row">
-        <div class="col-md-12">
-          <label for="comment">Comment:</label>
-          <textarea class="form-control" required="true" rows="5" id="comment" name="comment"></textarea>
-        </div>
-        <input type="hidden" id="job_id" name="job_id" value="<%= @job.id %>"/>
-        <input type="hidden" id="user_id" name="user_id" value="<%= current_user.try(:id) %>"/>
-
-
-      </div>
-      <button type="submit" class="orange-btn pull-right">Comment</button>
-    </form>
-
-  </div>
-  <!--end comment-detail-portion-->
 
 
 

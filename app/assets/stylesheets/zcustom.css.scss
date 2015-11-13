@@ -522,6 +522,38 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .pagination ul li a:hover, .pagination ul li a.active, .pagination ul li a.active:hover { color: #fff;}
 
 
+/* ---- COMMENT ---- */
+
+.comment {width: 100%; display: inline; float: left; margin: 0px 0px 40px 0px;  }
+.comment:last-of-type { margin-bottom: 0px;} 
+.comment .w25 { display: table-cell; width: 25%; float: left; border-right: 1px solid $line_color; padding: 10px 20px 10px 0px !important; height: 100%;}
+.comment .w75 { display: table-cell; width: 75%; float: right; padding: 20px 0px 20px 40px;  height: 100%; position: relative;}
+
+.comment .img-circle {  width: 94px; height: 94px; border: 1px solid $grey_color; display: inline; float: left; margin-right: 20px; }
+.comment h4 { display: inline; float: left; margin-bottom: 10px; width: 55%;}
+.comment h4 a, .comment h4 a:focus  {font-size: 18px;  font-family: 'pro-light';  text-decoration: none;}
+.comment h4 a:hover {  text-decoration: underline;} 
+.comment .time {display: inline; float: left; width: 55%; }
+.comment .time .icon { color: $grey_color; font-size: 26px; display: inline; float: left; margin: 2px 4px 0px 0px;}
+.comment .time span { display: inline; float: left; margin: 0px 0px 0px 0px; color: $base_color;}
+
+
+
+.comment-area {width: 100%; display: inline; float: left; background: #e0e0e0; padding: 40px; margin-top: 40px; }
+.comment-area h6 {width: 100%; display: inline; float: left; font-size:22px; text-transform: uppercase; font-family: 'pro-light'; margin-bottom: 20px;}
+.comment-area textarea {width: 100%; display: inline; float: left; min-height: 100px; margin-bottom: 20px;}
+.comment-area .btn{ display: inline; float: right;}
+
+
+
+
+
+
+
+
+
+
+
 
 /* CONTENT */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -784,6 +816,11 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .present.orange .similar h3 {color:$orange_color;}
 
 
+.comment h4.orange a,  .comment h4.orange a:focus, .comment h4.orange a:hover  { color: $orange_color; }
+.orange .comment-area h6 { color: $orange_color;}
+
+
+
 
 
 /* BLUE */
@@ -839,6 +876,11 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .present.blue .tab-pane .list li a:hover .icon { color:$blue_color;}  
 .present.blue .tab-pane .actions .icon:hover {color:$blue_color;}
 .present.blue .similar h3 {color:$blue_color;}
+
+
+
+.comment h4.blue a,  .comment h4.blue a:focus, .comment h4.blue a:hover  { color: $blue_color; }
+.blue .comment-area h6 { color: $blue_color;}
 
 
 /* RETINA */

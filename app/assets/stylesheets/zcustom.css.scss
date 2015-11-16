@@ -46,7 +46,6 @@
 
 
 
-
 @mixin border-radius($radius) { -webkit-border-radius: $radius; -moz-border-radius: $radius; -ms-border-radius: $radius; -o-border-radius: $radius; border-radius: $radius;}
 @mixin border-radius-left($radius-left) { -webkit-border-top-left-radius: $radius-left; -webkit-border-bottom-left-radius: $radius-left; -moz-border-radius-topleft: $radius-left; -moz-border-radius-bottomleft: $radius-left; -ms-border-radius-topleft: $radius-left; -ms-border-radius-bottomleft: $radius-left; -o-border-radius-topleft: $radius-left; -o-border-radius-bottomleft: $radius-left; border-top-left-radius: $radius-left; border-bottom-left-radius: $radius-left;}
 @mixin border-radius-right($radius-right) { -webkit-border-top-right-radius: $radius-right;-webkit-border-bottom-right-radius: $radius-right;-moz-border-radius-topright: $radius-right;-moz-border-radius-bottomright: $radius-right;-ms-border-radius-topright: $radius-right;-ms-border-radius-bottomright: $radius-right;-o-border-radius-topright: $radius-right;-o-border-radius-bottomright: $radius-right;border-top-right-radius: $radius-right;border-bottom-right-radius: $radius-right;}
@@ -57,13 +56,12 @@
 @mixin transition($transition-value) {-webkit-transition:$transition-value; -moz-transition:$transition-value; -ms-transition:$transition-value; -o-transition:$transition-value; transition:$transition-value; }
 
 
-
-
 @mixin font_base {font-family: 'pro-thin'; font-size: 18px; color: $base_color;}
 @mixin reset_space{ margin: 0; padding: 0;}
 @mixin font_icons {font-family: "font-sramic" !important; font-style: normal !important;  font-weight: normal !important;
   font-variant: normal !important;text-transform: none !important;speak: none;line-height: 1;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
+  
 
 $base_color: #666666;
 $line_color: #dedede;
@@ -493,6 +491,21 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .modal-box .modal-footer {@extend .block; border:0px; text-align: center; padding: 0px; border:0; background: none; }
 
 
+.modal .modal-content{background:#fff; @include border-radius(4px); @include box-shadow(0 3px 9px rgba(0, 0, 0, 0.5)); border:0px; padding: 40px 40px;}
+
+.modal .modal-header { @extend .block; border-bottom:1px solid $line_color; text-align: center; position: relative; min-height: auto; padding: 0px 0px 20px 0px; margin-bottom: 40px;}
+.modal .modal-header h2 { font-family: 'pro-regular';}
+
+
+.modal .close, .modal .close:focus { color: $grey_color; font-size: 30px; line-height: 1;position: absolute;right: 25px;text-decoration: none;top: 0px; z-index: 999; @include opacity(1); }
+.modal .close:hover { @include opacity(1);}
+
+.modal .modal-body {@extend .block; border:0px; padding: 0px; text-align: center; margin-bottom: 20px; overflow: initial;}
+.modal .modal-body .form-group { @extend .inline-block; vertical-align: top;  width: 23%; margin: 0px 10px 20px 10px; text-align: left;}
+
+.modal .modal-footer {@extend .block; border:0px !important; text-align: center; padding: 0px; border:0; background: none; }
+
+
 /* ---- SEARCH RESULT ---- */
 
 .result { width: 100%; display: inline; float: left; margin: 20px 0px 20px 0px; padding-bottom: 20px; border-bottom: 1px solid $line_color;}
@@ -545,12 +558,29 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .comment-area .btn{ display: inline; float: right;}
 
 
+/* ---- REVIEWS ---- */
 
+.reviews {width: 100%; display: inline; float: left; margin: 0px 0px 40px 0px;  }
+.reviews:last-of-type { margin-bottom: 0px;} 
+.reviews .w25 { display: table-cell; width: 25%; float: left; border-right:0 !important; padding: 10px 20px 10px 0px !important; height: 100%;}
+.reviews .w75 { display: table-cell; width: 75%; float: right; padding: 20px 0px 20px 40px;  height: 100%; position: relative; border-left: 1px solid $line_color !important;}
 
+.reviews .img-circle {  width: 94px; height: 94px; border: 1px solid $grey_color; display: inline; float: left; margin-right: 20px; }
+.reviews h4 { display: inline; float: left; margin-bottom: 10px; width: 55%; font-size: 18px;  font-family: 'pro-light'; margin-top: 20px; }
+.reviews h4 a, .reviews h4 a:focus  {font-size: 18px;  font-family: 'pro-light';  text-decoration: none;}
+.reviews h4 a:hover {  text-decoration: underline;} 
+.reviews .time {display: inline; float: left; width: 55%; }
+.reviews .time .icon { color: $grey_color; font-size: 26px; display: inline; float: left; margin: 2px 4px 0px 0px;}
+.reviews .time span { display: inline; float: left; margin: 0px 0px 0px 0px; color: $base_color;}
+.reviews .stars {display: inline; float: left; width: 55%; margin-top: 10px;}
 
+.reviews .w75 p {@extend .block; margin-bottom: 40px; }
+.reviews .w75 p:last-of-type { margin-bottom: 0px;}  
+.reviews .w75 p strong {@extend .block; font-family: 'pro-regular';}
 
-
-
+.reviews .w75 .responses {@extend .block; text-align: right; margin-top: 40px;}
+.reviews .w75 .responses a, .reviews .w75 .responses a:focus {font-size: 18px;text-decoration: none; font-family: 'pro-light';  }
+.reviews .w75 .responses a:hover { text-decoration: underline;}
 
 
 
@@ -683,8 +713,6 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .search aside label {margin-bottom: 0px; font-size: 16px;}
 
 
-
-
 .search aside .criteria-bx {@extend .block;  margin-bottom: 10px;}
 .search aside .criteria-bx:last-of-type { margin-bottom: 0;} 
 .search aside .criteria-bx a, .search aside .criteria-bx a:focus  { @extend .inline-block; font-size: 18px; color: $dark_grey_color; text-decoration: none; vertical-align: top; padding: 0px 6px 0px 0px;}
@@ -694,11 +722,12 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 
 
-/* ---- PRESENT JOBS AND TALENTS ---- */
+/* ---- PRESENT  ---- */
 
 .present section { padding: 40px 0px; }
 
 .present .stratum { text-align: center;}
+.present .stratum .img-circle {@extend .inline-block; margin-bottom: 20px;}
 .present .stratum h1 {@extend .block;  color: #fff; font-size: 28px; font-family: 'pro-regular'; margin-bottom: 20px;}
 .present .stratum span {@extend .inline-block; vertical-align: top; color: #fff; font-size: 18px;}
 .present .stratum .icon {@extend .inline-block; vertical-align: top; font-size: 24px; color: #fff; margin: 2px 6px 0px 0px;} 
@@ -716,7 +745,10 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .present .tab-pane .enclosure {display: table; width: 100%; border:1px solid $line_color; padding: 40px;  @include border-radius(4px); background: #fff;}
 .present .tab-pane .w25 { display: table-cell; width: 25%;  border-right: 1px solid $line_color; padding:20px 40px 20px 0px; height: 100%;   }
-.present .tab-pane .w75 { display: table-cell; width: 75%;  padding:20px 0px 20px 40px;  height: 100%; position: relative;   }
+.present .tab-pane .w75 { display: table-cell; width: 75%;  padding:20px 0px 20px 40px;  height: 100%; position: relative; }
+
+.present .tab-pane .profile .w25 { border:0; text-align: center; padding:20px 0px 20px 40px; vertical-align: middle; }
+.present .tab-pane .profile .w75 { border-right: 1px solid $line_color;  padding:20px 40px 20px 0px;}
 
 
 .present .tab-pane .list {@extend .block;}
@@ -755,6 +787,22 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .present .similar .centered { display: inline; width: 100%; float: left; margin-top: 20px;}
 
+.present .social {@extend .inline-block; width: 100%;}
+.present .social li {@extend .inline-block; margin: 0px 5px;  }
+.present .social li a, .present .social li a:focus {@extend .inline-block;  font-size: 45px; color: $grey_color;}
+
+.present .include {@extend .inline-block; width: 100%;}
+.present .include .btn { margin-bottom: 20px; min-width: 180px;}
+.present .include .btn:last-of-type { margin-bottom: 40px;} 
+
+
+
+
+
+
+
+
+
 
 
 
@@ -778,7 +826,12 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .orange .bootstrap-select .selected span, .orange .bootstrap-select .subselected span {color:$orange_color !important; }
 .orange .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $orange_color;}
 
+.search aside.orange .bootstrap-select.btn-group .dropdown-toggle .caret  {color:$orange_color;}
+.modal-box.orange .bootstrap-select.btn-group .dropdown-toggle .caret  {color:$orange_color;}
+
 .orange .pagination ul li a:hover, .orange .pagination ul li a.active, .orange .pagination ul li a.active:hover { background: $orange_color; border-color: $orange_color;}
+.paginations.orange .pagination ul li a:hover, .paginations.orange .pagination ul li a.active, .paginations.orange .pagination ul li a.active:hover { background: $orange_color; border-color: $orange_color;}
+
 
 .search.orange .results { color: $orange_color;}
 .search.orange aside h3 { color: $orange_color;}
@@ -801,8 +854,8 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .pricing .tab-content .orange.tab-pane table h5 { color: $blue_color;}
 
 
-.modal-box.orange .modal-header h2 { color: $orange_color;}
-.modal-box.orange a.close:hover { color: $orange_color;}
+.modal-box.orange .modal-header h2, .modal.orange .modal-header h2 { color: $orange_color;}
+.modal-box.orange a.close:hover, .modal.orange a.close:hover { color: $orange_color;}
 
 
 .result.orange h3 { color: $orange_color;}
@@ -814,10 +867,13 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .present.orange .tab-pane .list li a:hover .icon { color:$orange_color;} 
 .present.orange .tab-pane .actions .icon:hover {color:$orange_color;}
 .present.orange .similar h3 {color:$orange_color;}
-
+.present.orange .social li a:hover { color: $orange_color;} 
+.present.orange .reviews .w75 .responses a, .present.orange .reviews .w75 .responses a:focus,  .present.orange .reviews .w75 .responses a:hover { color: $orange_color;}
 
 .comment h4.orange a,  .comment h4.orange a:focus, .comment h4.orange a:hover  { color: $orange_color; }
 .orange .comment-area h6 { color: $orange_color;}
+
+.reviews h4.orange, .reviews h4.orange a, .reviews h4.orange a:focus, .reviews h4.orange a:hover   { color: $orange_color; }
 
 
 
@@ -838,8 +894,13 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .blue .bootstrap-select .selected span, .blue .bootstrap-select .subselected span {color:$blue_color !important; }
 .blue .bootstrap-select.btn-group.open .dropdown-toggle .caret { color: $blue_color;}
 
+.search aside.blue .bootstrap-select.btn-group .dropdown-toggle .caret  {color:$blue_color;}
+.modal-box.blue .bootstrap-select.btn-group .dropdown-toggle .caret  {color:$blue_color;}
+
 
 .blue .pagination ul li a:hover, .blue .pagination ul li a.active, .blue .pagination ul li a.active:hover { background: $blue_color; border-color: $blue_color;}
+.paginations.blue .pagination ul li a:hover, .paginations.blue .pagination ul li a.active, .paginations.blue .pagination ul li a.active:hover { background: $blue_color; border-color: $blue_color;}
+
 
 .search.blue .results { color: $blue_color;}
 .search.blue aside h3 { color: $blue_color;}
@@ -863,8 +924,8 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .pricing .tab-content .blue.tab-pane table h5 { color: $orange_color;}
 
 
-.modal-box.blue .modal-header h2 { color: $blue_color;}
-.modal-box.blue a.close:hover { color: $blue_color;}
+.modal-box.blue .modal-header h2, .modal.blue .modal-header h2  { color: $blue_color;}
+.modal-box.blue a.close:hover, .modal.blue a.close:hover { color: $blue_color;}
 
 .result.blue h3 { color: $blue_color;}
 
@@ -876,11 +937,17 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .present.blue .tab-pane .list li a:hover .icon { color:$blue_color;}  
 .present.blue .tab-pane .actions .icon:hover {color:$blue_color;}
 .present.blue .similar h3 {color:$blue_color;}
+.present.blue .social li a:hover { color: $blue_color;}
+.present.blue .reviews .w75 .responses a, .present.blue .reviews .w75 .responses a:focus, .present.blue .reviews .w75 .responses a:hover { color: $blue_color;} 
 
 
 
 .comment h4.blue a,  .comment h4.blue a:focus, .comment h4.blue a:hover  { color: $blue_color; }
 .blue .comment-area h6 { color: $blue_color;}
+
+.reviews h4.blue, .reviews h4.blue a, .reviews h4.blue a:focus, .reviews h4.blue a:hover  { color: $blue_color; }
+
+
 
 
 /* RETINA */

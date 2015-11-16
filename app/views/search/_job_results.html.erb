@@ -38,7 +38,7 @@
 <% end %>
 
 <div class="centered">
-  <div class="paginations">
+  <div class="paginations orange">
     <% if @res != nil %>
       <%= will_paginate @res.hits,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
     <%end%>

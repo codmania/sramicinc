@@ -584,6 +584,29 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 
 
+/* ---- RESUME ---- */
+
+.resume {@extend .block; text-align: center;}
+.resume .btn {@extend .inline-block; vertical-align: top;  margin: 0px 10px;}
+
+
+
+/* ---- TABLE LODGE ---- */
+
+table.lodge {width: 100%; background: #fff; margin-bottom: 60px;  }
+table.lodge:last-of-type { margin-bottom: 0px;}
+table.lodge td {background: #fff; border-bottom:4px solid #fff;  border-right:4px solid #fff; padding: 10px 20px 0px 20px; vertical-align: middle; font-size: 16px; }
+table.lodge th {background: $light_grey_color;  border-right:4px solid #fff; font-size: 18px; color: $dark_color; font-family: 'pro-light';  padding: 10px 20px; vertical-align: middle;}
+
+table.lodge td.last {border-right: 0; }
+table.lodge th.last { border-right: 0;} 
+
+table.lodge td strong { font-size: 18px; font-family: 'pro-thin';}
+table.lodge td em { font-size: 14px; color: $base_color;}
+
+
+
+
 
 /* CONTENT */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -726,11 +749,11 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .present section { padding: 40px 0px; }
 
-.present .stratum { text-align: center;}
+.present .stratum { text-align: center; padding: 40px 0px 20px 0px;}
 .present .stratum .img-circle {@extend .inline-block; margin-bottom: 20px;}
 .present .stratum h1 {@extend .block;  color: #fff; font-size: 28px; font-family: 'pro-regular'; margin-bottom: 20px;}
-.present .stratum span {@extend .inline-block; vertical-align: top; color: #fff; font-size: 18px;}
-.present .stratum .icon {@extend .inline-block; vertical-align: top; font-size: 24px; color: #fff; margin: 2px 6px 0px 0px;} 
+.present .stratum span {@extend .inline-block; vertical-align: top; color: #fff; font-size: 18px; margin-bottom: 20px;}
+.present .stratum .icon {@extend .inline-block; vertical-align: top; font-size: 24px; color: #fff; margin: 2px 6px 20px 0px;} 
 
 .present .nav.nav-tabs > li { padding: 20px 40px;}
 
@@ -744,6 +767,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .present .tab-pane {  margin: 40px 0px 40px 0px;  float: left; width: 100%;  }
 
 .present .tab-pane .enclosure {display: table; width: 100%; border:1px solid $line_color; padding: 40px;  @include border-radius(4px); background: #fff;}
+.present .tab-pane .enclosure h2 {@extend .block; margin-bottom: 20px; font-family: 'pro-light'; font-size: 20px; text-transform: uppercase;  }
 .present .tab-pane .w25 { display: table-cell; width: 25%;  border-right: 1px solid $line_color; padding:20px 40px 20px 0px; height: 100%;   }
 .present .tab-pane .w75 { display: table-cell; width: 75%;  padding:20px 0px 20px 40px;  height: 100%; position: relative; }
 
@@ -869,6 +893,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .present.orange .similar h3 {color:$orange_color;}
 .present.orange .social li a:hover { color: $orange_color;} 
 .present.orange .reviews .w75 .responses a, .present.orange .reviews .w75 .responses a:focus,  .present.orange .reviews .w75 .responses a:hover { color: $orange_color;}
+.present.orange .tab-pane .enclosure h2 {color: $orange_color; }
 
 .comment h4.orange a,  .comment h4.orange a:focus, .comment h4.orange a:hover  { color: $orange_color; }
 .orange .comment-area h6 { color: $orange_color;}
@@ -876,7 +901,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .reviews h4.orange, .reviews h4.orange a, .reviews h4.orange a:focus, .reviews h4.orange a:hover   { color: $orange_color; }
 
 
-
+table.lodge.orange td strong {color: $orange_color; }
 
 
 /* BLUE */
@@ -938,7 +963,8 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .present.blue .tab-pane .actions .icon:hover {color:$blue_color;}
 .present.blue .similar h3 {color:$blue_color;}
 .present.blue .social li a:hover { color: $blue_color;}
-.present.blue .reviews .w75 .responses a, .present.blue .reviews .w75 .responses a:focus, .present.blue .reviews .w75 .responses a:hover { color: $blue_color;} 
+.present.blue .reviews .w75 .responses a, .present.blue .reviews .w75 .responses a:focus, .present.blue .reviews .w75 .responses a:hover { color: $blue_color;}
+.present.blue .tab-pane .enclosure h2 {color: $blue_color; } 
 
 
 
@@ -947,7 +973,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .reviews h4.blue, .reviews h4.blue a, .reviews h4.blue a:focus, .reviews h4.blue a:hover  { color: $blue_color; }
 
-
+table.lodge.blue td strong {color: $blue_color; }
 
 
 /* RETINA */

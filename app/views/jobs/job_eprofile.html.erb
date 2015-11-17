@@ -113,6 +113,14 @@
 
               <%end%>
             <%end%>
+
+          <script>
+              $('.stars').raty({readOnly: true,
+                  score: function() {
+                      return $(this).attr('data-score');
+                  }
+              });
+          </script>
             
 
           </div>
@@ -141,17 +149,6 @@
 <%= render :partial => 'review_popover' %>
 
 
-
-
-
-
-<script>
-    $('.stars').raty({readOnly: true,
-        score: function() {
-            return $(this).attr('data-score');
-        }
-    });
-</script>
 
 
 

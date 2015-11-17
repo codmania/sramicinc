@@ -58,6 +58,10 @@ if !User.find_by(email: 'jobseeker1@gmail.com').present?
   jobseeker_user1=User.create email:'jobseeker1@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:3,confirmed_at:Date.today,name:'jobseeker 1'
 end
 
+if !User.find_by(email: 'jobseeker2@gmail.com').present?
+  jobseeker_user1=User.create email:'jobseeker2@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:3,confirmed_at:Date.today,name:'jobseeker 2'
+end
+
 
 #['Accounting','Bank','Transport','Insurance','IT'].each {|industry|
 #  Industry.find_or_create_by({name: industry})

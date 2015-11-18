@@ -614,6 +614,66 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .alert .close, .alert .close:focus  { font-size: 26px; @include opacity(1); color: $blue_color; text-shadow:none;}
 .alert .close:hover {@include opacity(1); color: $base_color;} 
 
+
+/* ---- INBOARD MENU ---- */
+
+.inboard-menu {@extend .block; border-top:20px solid $orange_color; padding: 40px 0px;}
+
+.inboard-menu .nav{ @extend .block;  padding: 0px; margin: 0px; border: 0; text-align: center;}
+.inboard-menu .nav > li { float: none;@extend .inline-block; margin: 0px; border: 0; border-right: 1px solid $line_color; padding: 20px 40px;}
+.inboard-menu .nav > li:last-of-type { border:0;}
+.inboard-menu .nav > li a, .inboard-menu .nav > li a:focus {@include border-radius(0px); background: none; font-family: 'pro-regular'; font-size: 28px; color: $grey_color; border: 0; clear: both; }
+
+.inboard-menu .nav > li a strong { font-family: 'pro-regular'; font-size: 28px; color: $grey_color;  font-weight: normal; display: inline; float: left;}
+.inboard-menu .nav > li a .icon { font-size: 40px;color: $grey_color; display: inline; float: left; margin: -10px 10px 0px 0px;}
+
+.inboard-menu .nav > li.active a, .inboard-menu .nav > li a:hover { border: 0; background: none;}  
+
+
+.inboard-menu .sub-nav { width: 100%; margin: 40px 0px 0px 0px; text-align: center; display: none;}
+.inboard-menu .sub-nav.active { display: block;}
+.inboard-menu .sub-nav > li { @extend .inline-block; margin: 0px 10px; padding: 0px !important; border: 0;}
+.inboard-menu .sub-nav > li .detail, .inboard-menu .sub-nav > li .detail:focus {@include border-radius(2px); font-family: 'pro-light';  text-transform: uppercase; line-height: 100%;  vertical-align: middle;  font-size: 14px; font-family: 'pro-light';  margin: 0px; border: 1px solid $line_color; padding: 8px 20px 6px 20px; color: $grey_color;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* CONTENT */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -827,20 +887,6 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ORANGE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -908,6 +954,11 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 
 table.lodge.orange td strong {color: $orange_color; }
+
+.inboard-menu.orange .sub-nav > li .detail:hover, .inboard-menu.orange .sub-nav > li.active .detail { color: $orange_color; border:1px solid $orange_color;}
+.inboard-menu .nav > li.orange a:hover strong, .inboard-menu .nav > li.orange.active a strong, .inboard-menu .nav > li.orange a:hover .icon, .inboard-menu .nav > li.orange.active a .icon  { color: $orange_color;}
+
+
 
 
 /* BLUE */
@@ -980,6 +1031,9 @@ table.lodge.orange td strong {color: $orange_color; }
 .reviews h4.blue, .reviews h4.blue a, .reviews h4.blue a:focus, .reviews h4.blue a:hover  { color: $blue_color; }
 
 table.lodge.blue td strong {color: $blue_color; }
+
+.inboard-menu.blue .sub-nav > li .detail:hover, .inboard-menu.blue .sub-nav > li.active .detail { color: $blue_color; border: 1px solid $blue_color;}
+.inboard-menu .nav > li.blue a:hover strong, .inboard-menu .nav > li.blue.active a strong, .inboard-menu .nav > li.blue a:hover .icon, .inboard-menu .nav > li.blue.active a .icon  { color: $blue_color;}
 
 
 /* RETINA */

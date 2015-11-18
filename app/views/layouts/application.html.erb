@@ -61,18 +61,6 @@
           jQuery('#job_application_id').val(idd);
         }
 
-       function highlightmenu(){
-           $("#main-nav a").removeClass('selected');
-           $("#main-nav a").removeClass('subselected');
-           ele=$('#main-nav').find("a[href='"+window.location.pathname+"']")
-           ele.addClass('selected');
-           if(ele.attr('rel')!=undefined)
-               ele.parent().parent().parent().find('a.main-link').addClass('subselected')
-           if(window.location.pathname.indexOf('/eprofiles/')==0){
-            $("a.main-link:contains('Company')").addClass('selected')
-           }
-
-       }
   </script>
 
 </head>
@@ -99,26 +87,17 @@
       <% unless current_user %>
         <%= yield %>
       <% else %>
-          <div class="container-fluid search-container-modified">
-              <div class="container">
-                  <div class="row">
-                          <%if current_user.role.id==2%>
-                            <%= render '/layouts/employer_menu' %>
-                          <% elsif current_user.role.id==3%>
-                                <%= render '/layouts/jobseeker_menu' %>
-                          <% elsif current_user.role.id==1%>
-                            <%= render '/layouts/admin_menu' %>
-                          <% end %>
-                  </div>
-              </div>
-              <div class="container">
-                <div class="row">
-                  <%= yield %>
-                </div>
 
-              </div>
 
-          </div>
+      <%if current_user.role.id==2%>
+        <%= render '/layouts/employer_menu' %>
+        <% elsif current_user.role.id==3%>
+          <%= render '/layouts/jobseeker_menu' %>
+        <% elsif current_user.role.id==1%>
+          <%= render '/layouts/admin_menu' %>
+        <% end %>
+        
+        <%= yield %>    
       <% end %>
       
     <%= render '/layouts/footer' %>

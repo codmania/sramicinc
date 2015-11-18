@@ -1,216 +1,93 @@
-<div class="col-lg-12 no_pad ">
-  <ul id="main-nav">
+<section class="inboard-menu blue admin">
 
-    <li><a class="main-link" href="/home/index">Home</a>
-      <ul class="sub-links">
-        <li><a rel="nofollow" data-method="get" href="/home/index">Home</a></li>
-        <!--<li><a rel="nofollow" data-method="get" href="<%= banners_path %>">Banners</a></li>-->
-        <li><a rel="nofollow" data-method="get" href="<%= news_letters_path %>">Newsletters</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%= admin_cms_pages_path %>">CMS</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%=careers_path%>">Post Career</a></li>
-      </ul>
-   </li>
-    <li><a class="main-link" href="<%= app_users_path %>">Users</a></li>
-    <li><a class="main-link" href="<%= jobs_path %>">Jobs</a>
-      <ul class="sub-links">
-        <li><a rel="nofollow" data-method="get" href="<%= jobs_path %>">Jobs</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%= categories_path %>">Job Category</a></li>
-
-        <li><a rel="nofollow" data-method="get" href="<%= industries_path %>">Industry</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%= job_types_path %>">Job Type</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%= salary_types_path %>">Salary Type</a></li>
-      </ul>
-    </li>
-
-    <li class="bd-none"><a class="main-link" href="<%= state_lists_path %>">Location</a>
-      <ul class="sub-links">
-        <li><a rel="nofollow" data-method="get" href="<%= state_lists_path %>">State</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%= country_lists_path%>">Country</a></li>
-
-      </ul></li>
-
-    <li><a class="main-link" href="<%= subscriptions_path %>">Billing  </a>
-      <ul class="sub-links">
-        <li><a rel="nofollow" data-method="get" href="<%= subscriptions_path%>">Subscribed</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%= plans_path%>">Plans</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%= payment_modules_edit_path%>">Payment Module</a></li>
-      </ul>
-    </li>
-
-    <li><a class="main-link" data-method="get" href="<%=testimonials_path%>"> Testimonials </a> </li>
-    <li><a class="main-link" data-method="get" href="<%=faqs_path%>"> FAQs </a>
-      <ul class="sub-links">
-        <li><a rel="nofollow" data-method="get" href="<%=faqs_path%>">FAQ's</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%=faq_categories_path%>">FAQ Categories</a></li>
-        </ul>
-    </li>
-      <li><a class="main-link" data-method="get" href="<%=enquiries_path%>"> Enquiries</a>
-      <ul class="sub-links">
-        <li><a rel="nofollow" data-method="get" href="<%=enquiries_path%>">Enquiries</a></li>
-        <li><a rel="nofollow" data-method="get" href="<%=enquiry_categories_path%>">Enquiry Categories</a></li>
-        </ul></li>
-
-  </ul>
-
-    <!--responsive-menu-->
-  <nav id="menu-wrap">
-    <ul id="menu">
-
-      <li>
-        <a href="/home/index"> Home </a>
-        <ul>
-          <li><a data-method="get" href="/home/index">Home</a> </li>
-          <li><a data-method="get" href="<%= banners_path %>">Banners</a> </li>
-          <li><a data-method="get" href="<%= news_letters_path %>">Newsletters</a> </li>
-          <li><a data-method="get" href="<%= admin_cms_pages_path %>">CMS</a> </li>
-
-        </ul>
-      </li>
-
-      <li><a href="<%= app_users_path%>">Users</a></li>
-      <li>
-        <a href="<%= jobs_path%>">Jobs</a>
-        <ul>
-          <li><a data-method="get" href="<%= jobs_path  %>">Jobs</a> </li>
-          <li><a data-method="get" href="<%= categories_path %>">Job Category</a> </li>
-          <li><a data-method="get" href="<%= industries_path %>">Industry</a> </li>
-          <li><a data-method="get" href="<%= job_types_path %>">Job Type</a> </li>
-          <li><a data-method="get" href="<%= salary_types_path %>">Salary Type</a> </li>
-
-        </ul>
-      </li>
-
-
-      <li>
-        <a href="<%= state_lists_path %>"> Location </a>
-        <ul>
-          <li><a data-method="get" href="<%= state_lists_path  %>">State</a> </li>
-          <li><a data-method="get" href="<%= country_lists_path  %>">Country</a> </li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="<%= subscriptions_path %>">Billing  </a>
-        <ul>
-          <li><a data-method="get" href="<%= subscriptions_path%>">Subscribed</a></li>
-          <li><a data-method="get" href="<%= plans_path%>">Plans</a></li>
-          <li><a data-method="get" href="<%= payment_modules_edit_path%>">Payment Module</a></li>
-        </ul>
-      </li>
-
-      <li><a href="<%=testimonials_path%>">Testimonials</a></li>
-      <li>
-        <a href="<%=faqs_path %>"> FAQs </a>
-        <ul>
-          <li><a data-method="get" href="<%= faqs_path %>">FAQs</a> </li>
-          <li><a data-method="get" href="<%= faq_categories_path %>">FAQs Categories</a> </li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="<%= enquiries_path%>">Enquiries</a>
-        <ul>
-          <li><a data-method="get" href="<%= enquiries_path %>">Enquiries</a> </li>
-          <li><a data-method="get" href="<%= enquiry_categories_path %>">Enquiries Categories</a> </li>
-
-        </ul>
-      </li>
-
+    <!-- Nav -->
+    <ul class="nav">
+      <li id="nav-home" class="blue <%= 'active' if request.path == '/admin/index' ||  request.path == news_letters_path || request.path == admin_cms_pages_path || request.path == careers_path  %>"><a href="/home/index"><strong>Home</strong></a></li>
+      <li class="blue <%= 'active' if request.path == app_users_path %>"><a href="<%= app_users_path %>"><strong>Users</strong></a></li>
+      <li id="nav-jobs" class="blue <%= 'active' if request.path == jobs_path || request.path == categories_path || request.path == industries_path || request.path == job_types_path || request.path == salary_types_path  %>"><a href="<%= jobs_path %>"><strong>Jobs</strong></a></li>
+      <li id="nav-location" class="blue <%= 'active' if request.path == state_lists_path || request.path == country_lists_path  %>"><a href="<%= state_lists_path %>"><strong>Location</strong></a></li>
+      <li id="nav-billing" class="blue <%= 'active' if request.path == subscriptions_path || request.path == plans_path || request.path == payment_modules_edit_path  %>"><a href="<%= subscriptions_path %>"><strong>Billing</strong></a></li>
+      <li class="blue <%= 'active' if request.path == testimonials_path %>"><a href="<%= testimonials_path %>"><strong>Testimonials</strong></a></li>
+      <li id="nav-faqs" class="blue <%= 'active' if request.path == faqs_path || request.path == faq_categories_path %>"><a href="<%= faqs_path %>"><strong>FAQs</strong></a></li>
+      <li id="nav-enquiries" class="blue <%= 'active' if request.path == enquiries_path || request.path == enquiry_categories_path  %>"><a href="<%= enquiries_path %>"><strong>Enquiries</strong></a></li>
     </ul>
-  </nav>
-    <!--End responsive-menu-->
-</div>
 
-<script type="text/javascript" id="demo1-javascript">
-    $(document).ready(function() {
-        // Initialize navgoco with default options
-        $("#demo1").navgoco({accordion: true});
+    <!-- Sub Navs  -->
 
-    });
-</script>
+    <ul class="sub-nav" id="sub-home">
+      <li class="<%= 'active' if request.path == news_letters_path %>"><a rel="nofollow" data-method="get" href="<%= news_letters_path %>" class="detail">Newsletters</a></li>
+      <li class="<%= 'active' if request.path == admin_cms_pages_path %>"><a rel="nofollow" data-method="get" href="<%= admin_cms_pages_path %>" class="detail">CMS</a></li>
+      <li class="<%= 'active' if request.path == careers_path %>"><a rel="nofollow" data-method="get" href="<%= careers_path %>" class="detail">Post Career</a></li>
+    </ul>
 
+    <ul class="sub-nav" id="sub-jobs">
+      <li class="<%= 'active' if request.path == jobs_path %>"><a rel="nofollow" data-method="get" href="<%= jobs_path %>" class="detail">Jobs</a></li>
+      <li class="<%= 'active' if request.path == categories_path %>"><a rel="nofollow" data-method="get" href="<%= categories_path %>" class="detail">Job Category</a></li>
+      <li class="<%= 'active' if request.path == industries_path %>"><a rel="nofollow" data-method="get" href="<%= industries_path %>" class="detail">Industry</a></li>
+      <li class="<%= 'active' if request.path == job_types_path %>"><a rel="nofollow" data-method="get" href="<%= job_types_path %>" class="detail">Job Type</a></li>
+      <li class="<%= 'active' if request.path == salary_types_path %>"><a rel="nofollow" data-method="get" href="<%= salary_types_path %>" class="detail">Salary Type</a></li>
+    </ul>
 
+    <ul class="sub-nav" id="sub-location">
+      <li class="<%= 'active' if request.path == state_lists_path %>"><a rel="nofollow" data-method="get" href="<%= state_lists_path %>" class="detail">State</a></li>
+      <li class="<%= 'active' if request.path == country_lists_path %>"><a rel="nofollow" data-method="get" href="<%= country_lists_path%>" class="detail">Country</a></li>
+    </ul>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#main-nav li a.main-link").hover(function(){
-            $("#main-nav li a.close").fadeIn();
-            $("#main-nav li a.main-link").removeClass("active");
-            $(this).addClass("active");
-            $("#sub-link-bar").animate({
-                height: "40px"
-            });
-            $(".sub-links").hide();
-            $(this).siblings(".sub-links").fadeIn();
-        });
-        $("#main-nav li a.close").click(function(){
-            $("#main-nav li a.main-link").removeClass("active");
-            $(".sub-links").fadeOut();
-            $("#sub-link-bar").animate({
-                height: "10px"
-            });
-            $("#main-nav li a.close").fadeOut();
-        });
+    <ul class="sub-nav" id="sub-billing">
+      <li class="<%= 'active' if request.path == subscriptions_path %>"><a rel="nofollow" data-method="get" href="<%= subscriptions_path%>" class="detail">Subscribed</a></li>
+      <li class="<%= 'active' if request.path == plans_path %>"><a rel="nofollow" data-method="get" href="<%= plans_path%>" class="detail">Plans</a></li>
+      <li class="<%= 'active' if request.path == payment_modules_edit_path %>"><a rel="nofollow" data-method="get" href="<%= payment_modules_edit_path%>" class="detail">Payment Module</a></li>
+    </ul>
 
+    <ul class="sub-nav" id="sub-faqs">
+      <li class="<%= 'active' if request.path == faqs_path %>"><a rel="nofollow" data-method="get" href="<%= faqs_path %>" class="detail">FAQ's</a></li>
+      <li class="<%= 'active' if request.path == faq_categories_path %>"><a rel="nofollow" data-method="get" href="<%= faq_categories_path %>" class="detail">FAQ Categories</a></li>
+    </ul>
 
-    });
-</script>
-
-
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        (function() {
-            /* Mobile */
-            $('#menu-wrap').prepend('<div id="menu-trigger">Menu</div>');
-            $("#menu-trigger").on("click", function() {
-                $("#menu").slideToggle();
-            });
-
-            // iPad
-            var isiPad = navigator.userAgent.match(/iPad/i) != null;
-            if (isiPad) $('#menu ul').addClass('no-transition');
-        })();
-
-    });
-</script>
+    <ul class="sub-nav" id="sub-enquiries">
+      <li class="<%= 'active' if request.path == enquiries_path %>"><a rel="nofollow" data-method="get" href="<%= enquiries_path %>" class="detail">Enquiries</a></li>
+      <li class="<%= 'active' if request.path == enquiry_categories_path %>"><a rel="nofollow" data-method="get" href="<%= enquiry_categories_path %>" class="detail">Enquiry Categories</a></li>
+    </ul>
+   
+</section>
 
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $(".top-sc a").click(function(){
-            $('html, body').animate({ scrollTop: 0 },'slow');
-        });
-    });
-</script>
 
+  if ($( '#nav-home' ).hasClass( 'active' )) {    
+    $('#sub-home').addClass( 'active' );
+  } else {
+    $('#sub-home').removeClass( 'active' );
+  }
 
-<script>
-    $(document).ready(function(){
+  if ($( '#nav-jobs' ).hasClass( 'active' )) {    
+    $('#sub-jobs').addClass( 'active' );
+  } else {
+    $('#sub-jobs').removeClass( 'active' );
+  }
 
-        $('ul.tabs li').click(function(){
-            var tab_id = $(this).attr('data-tab');
+  if ($( '#nav-location' ).hasClass( 'active' )) {    
+    $('#sub-location').addClass( 'active' );
+  } else {
+    $('#sub-location').removeClass( 'active' );
+  }
 
-            $('ul.tabs li').removeClass('current');
-            $('.tab-content').removeClass('current');
+  if ($( '#nav-billing' ).hasClass( 'active' )) {    
+    $('#sub-billing').addClass( 'active' );
+  } else {
+    $('#sub-billing').removeClass( 'active' );
+  }
 
-            $(this).addClass('current');
-            $("#"+tab_id).addClass('current');
-        })
+  if ($( '#nav-faqs' ).hasClass( 'active' )) {    
+    $('#sub-faqs').addClass( 'active' );
+  } else {
+    $('#sub-faqs').removeClass( 'active' );
+  }
 
-    });
+  if ($( '#nav-enquiries' ).hasClass( 'active' )) {    
+    $('#sub-enquiries').addClass( 'active' );
+  } else {
+    $('#sub-enquiries').removeClass( 'active' );
+  }
 
-</script>
-
-<script type="">
-    $(document).ready(function(){
-
-        $('.show-link').on('click',function(event ){
-
-            $(this).next().toggle(500);
-
-        });
-
-
-    });
 </script>

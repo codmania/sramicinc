@@ -1,0 +1,10 @@
+<%- flash.each do |name, msg| -%>
+  <% if  msg != 'employer' &&  msg != 'candidate' %>
+  <div class="alert">
+    <button class="close" data-dismiss="alert" type="button">×</button>
+    <p>  
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>     
+    </p>
+  </div>
+  <% end %>
+<%- end -%>

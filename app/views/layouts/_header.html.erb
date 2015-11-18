@@ -57,16 +57,5 @@
 
   </div>
 
-  <% if PaymentModule.first.active? %>
-    <% if current_user.try(:role).try(:authority) != 'admin'%>
-      <div class="pull-right" id="flash_notice"> Your current plan is "<%= current_user.try(:subscription).try(:plan).try(:name)%>" <% if current_user.try(:subscription).try(:plan_id) !=1 && current_user.try(:subscription).try(:plan_id) !=6 %> and will expire on "<%= current_user.try(:subscription).try(:end_date)%>" <%else %>, please upgrade<%end%> </div>
-    <% end %>
-  <% end %>
-
-  <%- flash.each do |name, msg| -%>
-    <% if  msg != 'employer' &&  msg != 'candidate' %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-    <% end %>
-  <%- end -%>
 
 </header>

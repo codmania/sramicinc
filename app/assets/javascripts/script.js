@@ -44,6 +44,8 @@ $(document).ready(function(){
       $(this).tab('show');
     });
 
+    /* alert */
+    $('.alert').animate({right: '0%'}, 1000, 'easeOutExpo');
 
 
     var hash = window.location.hash;

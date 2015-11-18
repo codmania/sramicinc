@@ -1,0 +1,10 @@
+<% if PaymentModule.first.active? %>
+  <% if current_user.try(:role).try(:authority) != 'admin'%>
+    <div class="alert">
+      <button class="close" data-dismiss="alert" type="button">×</button>
+      <p>
+        Your current plan is "<%= current_user.try(:subscription).try(:plan).try(:name)%>" <% if current_user.try(:subscription).try(:plan_id) !=1 && current_user.try(:subscription).try(:plan_id) !=6 %> and will expire on "<%= current_user.try(:subscription).try(:end_date)%>" <%else %>, please upgrade<%end%>   
+      </p>
+    </div>
+  <% end %>
+<% end %>

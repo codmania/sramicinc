@@ -1,41 +1,28 @@
+<div class="inboard">
+  <div class="margin">
 
-<!--start-->
-<div class="container-fluid bg-wrap">
-  <div class="container">
-      <div class="row">
-      <div class="login-wrap reset_password">
+     <div class="enclosure w50">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.hidden_field :reset_password_token %>
+          <h3>Reset Your Password</h3>
+          <div class="form-group">
+            <label>New Password<em>*</em></label>
+            <%= f.password_field :password, autofocus: true, autocomplete: "off",:required=>true %>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password<em>*</em></label>
+            <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true %>
+          </div>
+          <div class="form-group">
+            <label>Enter Code<em>*</em></label>
+            <%= show_simple_captcha %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Save", :class=>"btn btn-orange" %>
+          </div>
+        <% end %>
+     </div>
 
-              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-
-              <%= devise_error_messages! %>
-
-              <%= f.hidden_field :reset_password_token %>
-
-                <div class="login-bottom">
-                  <h1 class="reset_password">Reset Your Password</h1>
-                  <div class="l-block">
-                      <label>New Password<em>*</em></label>
-                        <%= f.password_field :password, autofocus: true, autocomplete: "off",:required=>true %>
-                    </div>
-
-                    <div class="l-block">
-                      <label>Confirm Password<em>*</em></label>
-                       <%= f.password_field :password_confirmation, autocomplete: "off",:required=>true %>
-                    </div>
-                    <div class="l-block">
-                    <label>Enter Code<em>*</em></label>
-                    <%= show_simple_captcha %>
-                    </div>
-
-
-                </div>
-
-                <div class="l-block">
-                    <%= f.submit "Save", :class=>"input-login" %>
-                </div>
-                 <% end %>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
-<!--End-->

@@ -1,59 +1,37 @@
-<!--start search-container-->
-<div class="container-fluid search-container">
-  <div class="container">
-    <div class="row">
+<div class="inboard">
+  <div class="margin">
 
-      <div class="col-lg-12 no_pad ">
-
-        <div class="company_users">
-
-          <h1>My Network</h1>
-          
-          <div id="no-more-tables">
-            <table class="col-sm-12 table-bordered table-striped table-condensed cf">
-              <p id="notice"><%= flash['message']%></p>
-              <thead class="cf">
-              <tr>
-                <th style="display: none"></th>
-                <th width=550>Name</th>
-                <th>Email</th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @networks.each do |network| %>
-                  <tr>
-                    <td data-title="id" style="display: none">  <%= network.id %></td>
-                     <% if network.user.role.authority == 'jobseeker' %>
-                    <%jp = Jprofile.find_by_jobseeker_id(Jobseeker.find_by_user_id(network.user.id)) %>
-                    <td data-title="Name" > <a href="/employer/talents?id=<%=jp.id%>" target="_blank">
-                    <% else %>
-                       <%ep = Eprofile.find_by_employer_id(Employer.find_by_user_id(network.user.id)) %>
-                        <td data-title="Name" > <a href="/jobs/job_eprofile?id=<%=ep.id%>" target="_blank">
-                        <%end%>
-
-                    <%= network.try(:user).try(:name) %></td></a>
-                    <td data-title="Email"><%= network.try(:user).try(:email) %></td>
-                  </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-
+    <div class="enclosure">
+      <h3>My Network</h3>
+      <%= flash['message']%>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <!-- <th></th> -->
+          <th>Name</th>
+          <th class="last">Email</th>
+        </tr>
+        <% @networks.each do |network| %>
+          <tr>
+            <!-- <td data-title="id"><%#= network.id %></td> -->
+             <% if network.user.role.authority == 'jobseeker' %>
+            <%jp = Jprofile.find_by_jobseeker_id(Jobseeker.find_by_user_id(network.user.id)) %>
+            <td data-title="Name" ><a href="/employer/talents?id=<%=jp.id%>" class="blue">
+            <% else %>
+               <%ep = Eprofile.find_by_employer_id(Employer.find_by_user_id(network.user.id)) %>
+                <td data-title="Name" ><a href="/jobs/job_eprofile?id=<%=ep.id%>" class="orange">
+                <%end%>
+            <%= network.try(:user).try(:name) %></td>
+            <td data-title="Email" class="last"><%= network.try(:user).try(:email) %></td>
+          </tr>
+        <% end %>
+      </table> 
     </div>
+
+    <div class="centered">
+      <div class="paginations">
+        <%= will_paginate @networks, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+      </div>
+    </div> 
 
   </div>
-
-<div class="paginations top-pagination">
-
-  <%= will_paginate @networks, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
-
-    </div>
-  
-
 </div>
-
-
-

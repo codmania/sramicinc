@@ -985,6 +985,9 @@ table.lodge.orange td strong {color: $orange_color; }
 .orange .inboard .enclosure .lodge td a, .orange .inboard .enclosure .lodge td a:focus {  color: $orange_color;}
 .orange .inboard .enclosure .lodge td a:hover {  color: $orange_color;}
 
+.inboard .enclosure .lodge td a.orange, .inboard .enclosure .lodge td a.orange:focus {  color: $orange_color !important;}
+.inboard .enclosure .lodge td a.orange:hover {  color: $orange_color !important;}
+
 
 
 /* BLUE */
@@ -1069,6 +1072,8 @@ table.lodge.blue td strong {color: $blue_color; }
 .blue .inboard .enclosure .lodge td a, .blue .inboard .enclosure .lodge td a:focus {  color: $blue_color;}
 .blue .inboard .enclosure .lodge td a:hover {  color: $blue_color;}
 
+.inboard .enclosure .lodge td a.blue, .inboard .enclosure .lodge td a.blue:focus {  color: $blue_color !important;}
+.inboard .enclosure .lodge td a.blue:hover {  color: $blue_color !important;}
 
 
 

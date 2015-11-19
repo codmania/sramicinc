@@ -14,7 +14,7 @@
           <tr>
             <!-- <td data-title="id"><%#= notification.id %></td> -->
             <td data-title="Notification Type"><%= notification.n_type %></td>
-            <td data-title="Check"><a rel="nofollow" data-method="get" href="<%= notification.url %>" onclick="destroy_notification(<%= notification.id %>, '<%= notification.n_type%>');"> Check </a></td>
+            <td data-title="Check" class="last"><a rel="nofollow" data-method="get" href="<%= notification.url %>" onclick="destroy_notification(<%= notification.id %>, '<%= notification.n_type%>');"> Check </a></td>
           </tr>
         <% end %>
       </table> 

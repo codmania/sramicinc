@@ -1,47 +1,44 @@
- <h1 class="employee_summary">Summary <span class="member_log">Member Since <%= @employer.created_at.strftime("%m/%d/%Y")%></span></h1>
-                <div class="container-fluid summary-container">
+<div class="inboard">
+  <div class="margin">
 
-                    <div class="row">
-                        <!--left-side-->
-                        <div class="col-md-6 left-side no_pad_left">
-                        		<!--content-container-->
-                                <div class="col-lg-12 content-container">
+    <div class="enclosure">
+      <h3>Summary</h3>
+      <h6>Member Since <%= @employer.created_at.strftime("%m / %d / %Y")%></h6>
 
-                                	<div class="top-portion-left">
-                                		<h4>Recent Acitivity</h4>
-                            		</div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge summary">
+        <tr>
+          <th>Recent Acitivity</th>
+          <th class="last">Update from last visit</th>
+        </tr>
+        <tr>
+          <td><span><%= @jobs.count %> Jobs Posted</span></td>
+          <td class="last"><span><%= @jobapp_recent.count%> New Applications</span></td>
+        </tr>
+        <tr>
+          <td><span><%= @jobapp.count %> Applications received</span></td>         
+          <td class="last"><span><%= @visitors_recent %>  Job page visitors</span></td>
+        </tr>
+        <tr>
+          <td><span><%= @visitors%> Job page visitors</span></td>
+          <td class="last"><em class="icon icon-cap"></em><span><%= @subscribed %> New job seekers subscribed</span></td>       
+        </tr>
+        <tr>
+          <td><em class="icon icon-tie"></em><span><%= @networks.count %> Employers in your network</span></td>
+          <td class="last"><em class="icon icon-comment"></em><span><%= @comments_recent.count %> Job Comments</span></td>
+        </tr>
+        <tr>
+          <td><em class="icon icon-review"></em><span><%= @reviews.count %> Reviews</span></td>
+          <td class="last">&nbsp;</td>
+        </tr>
+        <tr>
+          <td><em class="icon icon-comment"></em><span><%= @comments.count %> Job Comments</span></td>
+          <td class="last">&nbsp;</td>
+        </tr>
+      </table> 
 
-                                    <ul>
-                                        <li><a href="#"><span class="icon icon_1"></span> <%= @jobs.count %> Jobs Posted</a></li>
-                                        <li><a href="#"><span class="icon icon_2"></span> <%= @visitors%> Job page visitors</a></li>
-                                        <li><a href="#"><span class="icon icon_3"></span> <%= @jobapp.count %> Applications received</a></li>
-                                        <li><a href="#"><span class="icon icon_4"></span><%= @networks.count %> Employers in your network</a></li>
-                                        <li><a href="#"><span class="icon icon_5"></span> <%= @reviews.count %> Reviews</a></li>
-                                        <li><a href="#"><span class="icon icon_6"></span> <%= @comments.count %> Job Comments </a></li>
+    </div>
 
-                                      </ul>
 
-                                </div>
-                                <!--content-container end-->
-                        </div>
-                        <!--End left-side-->
-                        <!--left-side-->
-                        <div class="col-md-6 left-side no_pad_right">
-                           <!--content-container-->
-                            <div class="col-lg-12 content-container">
 
-                                <div class="top-portion-left">
-                                    <h4>Update from last visit:</h4>
-                                </div>
-
-                                <ul>
-                                    <li><a href="#"><span class="icon icon_3"></span> <%= @jobapp_recent.count%> New Applications</a></li>
-                                    <li><a href="#"><span class="icon icon_2"></span><%= @visitors_recent %>  Job page visitors </a></li>
-                                    <li><a href="#"><span class="icon icon_6"></span> <%= @comments_recent.count %> Job Comments</a></li>
-                                    <li><a href="#"><span class="icon icon_4"></span><%= @subscribed %> New job seekers subscribed</a></li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  </div>
+</div>

@@ -853,6 +853,7 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 /* ---- INBOARD/ BACKEND  ---- */
 
 .inboard { text-align: center;}
+.inboard .paginations { margin-bottom: 40px;}
 .inboard .enclosure {@extend .inline-block; width: 100%; border:1px solid $line_color; padding: 40px;  @include border-radius(4px); background: #fff; margin-bottom: 40px; }
 .inboard .enclosure.w50 { width: 50%;}
 
@@ -860,8 +861,9 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .inboard .enclosure .form-group {@extend .block; margin-bottom: 40px; text-align: left;}
 .inboard .enclosure .actions {@extend .block; text-align: right;}
 
-
-
+.inboard .enclosure .lodge { text-align: left;}
+.inboard .enclosure .lodge td a, .inboard .enclosure .lodge td a:focus { font-size: 16px; text-decoration: underline;}
+.inboard .enclosure .lodge td a:hover { text-decoration: none;}
 
 
 
@@ -980,6 +982,8 @@ table.lodge.orange td strong {color: $orange_color; }
 .inboard-menu.orange .sub-nav > li .detail:hover, .inboard-menu.orange .sub-nav > li.active .detail { color: $orange_color; border:1px solid $orange_color;}
 .inboard-menu .nav > li.orange a:hover strong, .inboard-menu .nav > li.orange.active a strong, .inboard-menu .nav > li.orange a:hover .icon, .inboard-menu .nav > li.orange.active a .icon  { color: $orange_color;}
 
+.orange .inboard .enclosure .lodge td a, .orange .inboard .enclosure .lodge td a:focus {  color: $orange_color;}
+.orange .inboard .enclosure .lodge td a:hover {  color: $orange_color;}
 
 
 
@@ -1061,6 +1065,9 @@ table.lodge.blue td strong {color: $blue_color; }
 
 .blue .inboard .enclosure .actions .btn-orange, .blue .inboard .enclosure .actions .btn-orange:active, .blue .inboard .enclosure .actions .btn-orange:focus  {color: #fff; background-color: $blue_color; border: 1px solid $blue_color;}
 .blue .inboard .enclosure .actions .btn-orange:hover {color:$blue_color; background: none; border: 1px solid $blue_color; }
+
+.blue .inboard .enclosure .lodge td a, .blue .inboard .enclosure .lodge td a:focus {  color: $blue_color;}
+.blue .inboard .enclosure .lodge td a:hover {  color: $blue_color;}
 
 
 

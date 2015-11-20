@@ -20,6 +20,24 @@ $(document).ready(function(){
       });
     });
 
+    $('.right-center').each(function() {
+      $(this).position({
+        my: 'right center',
+        at: 'right center',
+        of: $(this).parent()
+      });
+    });
+
+    $(window).resize(function() {
+      $('.right-center').each(function() {
+        $(this).position({
+          my: 'right center',
+          at: 'right center',
+          of: $(this).parent()
+        });
+      });
+    });
+
     /* page scroll */ 
     $('a.icon-scroll').bind('click', function(event) {
       var $anchor = $(this);

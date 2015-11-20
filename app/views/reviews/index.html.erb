@@ -1,153 +1,89 @@
-<!--start search-container-->
-<div class="container-fluid search-container">
-  <div class="container">
-    <div class="row">
+<div class="inboard">
+  <div class="margin">
+    <div class="enclosure">
 
-      <div class="col-lg-12 no_pad ">
-        <!--End responsive-menu-->
+      <% @reviews.try(:each) do |review|%>
+        <div class="reviews">
+           
+          <div class="w25">
+            <%= image_tag "layout/talent.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
 
-        <div class="review_container">
-
-
-         <% if params[:by]=='me' %>
-          <h1>Reviews By Me  </h1>
-          <% else %>
-          <h1>My Reviews </h1>
-          <% end %>
-
-
-
-          <div id="no-more-tables">
-            <table class="col-sm-12 table-bordered table-striped table-condensed cf">
-
-              <thead class="cf">
-              <tr>
-                <th>Review Details </th>
-                <% if params[:by]!='me' %>
-                <th>Review From </th>
-                <% end %>
-                <% if params[:by]=='me' %>
-                <th>Review to </th>
-                <% end %>
-                <th>Review Date</th>
-                <th>Rating</th>
-                <th>Responses</th>
-                <th width="150">Action</th>
-              </tr>
-              <%# if resp.response.present?%>
-              <tr>
-              </tr>
-              <%#end%>
-              </thead>
-              <tbody>
-              <% @reviews.try(:each) do |review|%>
-
-                  <tr>
-                    <td data-title="Review Details">
-                      <div class="content">
-                        <p>
-                          <span>Pros:</span>
-                          <%= review.try(:pros) %>
-                        </p>
-                        <!--<p class="hidden_para">
-                            These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
-                        </p>
-                        <span href="#" class="button"><span>Read More...</span></span>
-                    </div>-->
-                      </div>
-                      <div class="content">
-                        <p>
-                          <span>Cons:</span>
-                          <%= review.try(:cons) %>
-                        </p>
-                        <!--  <p class="hidden_para">
-                              These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
-                          </p>
-                      <span href="#" class="button"><span>Read More...</span></span>
-                  </div>-->
-                      </div>
-                      <div class="content last">
-                        <p>
-                          <span>Recommendations:</span>
-                          <%= review.try(:recommendations) %>
-                        </p>
-                        <!-- <p class="hidden_para">
-                             These folks know exactly what they are doing. They set high standards and consistently strive to deliver.Their project expectations, process and planning is excellent. The top level management folks are extremely smart and have a great sense of vision and planning.
-                         </p>
-                         <span href="#" class="button"><span>Read More...</span></span>
-                     </div>-->
-                      </div>
-
-                    </td>
-                    <% if params[:by] !='me' %>
-                        <td data-title="Review from">
-                          <% if review.review_from_user_role == 'jobseeker' %>
-                              <%= link_to "#{review.review_from.name}", employer_talents_path(:id => review.review_from), :method => 'get', :target => "_blank" %>
-                          <% else %>
-                              <%= link_to "#{review.review_from.company_name}", jobs_job_eprofile_path(:id => review.review_from), :method => 'get', :target => "_blank" %>
-                          <% end %>
-                        </td>
-                    <% end %>
-
-                    <% if params[:by]=='me' %>
-                        <td data-title="Review to">
-                          <% if review.review_to_user_role == 'employer' %>
-                              <%= link_to "#{review.review_to.company_name}", jobs_job_eprofile_path(:id => review.review_to), :method => 'get', :target => "_blank" %>
-                          <% else %>
-                              <%= link_to "#{review.review_to.name}", employer_talents_path(:id => review.review_to), :method => 'get', :target => "_blank" %>
-                          <% end %>
-                        </td>
-                    <% end %>
-
-                    <td data-title="Review Date"><%= review.created_at.strftime("%m/%d/%Y") %></td>
-                    <td data-title="Rating"> <div data-score="<%=review.score%>" class="stars"></div> </td>
-
-                     <td data-title="Responses">
-             <a href="/review_responses?id=<%=review.id%>"><%= review.review_responses.count %></a>
-                </td>
-
-
-                    <td data-title="Action" >
-                      <div class="respond" onClick="SetRespondData(<%= current_user.id%>, <%= review.id%>)" data-toggle="modal" data-target="#myModal">
-                        <span class="icon"></span>
-                        Respond
-                      </div>
-                    </td>
-                  </tr>
-
-
+            <% if params[:by] !='me' %>
+              <% if review.review_from_user_role == 'jobseeker' %>
+                <h4 class="blue"><%= link_to "#{review.review_from.name}", employer_talents_path(:id => review.review_from), :method => 'get'%></h4>
+              <% else %>
+                <h4 class="orange"><%= link_to "#{review.review_from.company_name}", jobs_job_eprofile_path(:id => review.review_from), :method => 'get' %></h4>
               <% end %>
+            <% end %>
 
-              </tbody>
-            </table>
+            <% if params[:by]=='me' %>
+              <% if review.review_to_user_role == 'employer' %>
+                <h4 class="orange"><%= link_to "#{review.review_to.company_name}", jobs_job_eprofile_path(:id => review.review_to), :method => 'get', :target => "_blank" %></h4>
+              <% else %>
+                 <h4 class="blue"><%= link_to "#{review.review_to.name}", employer_talents_path(:id => review.review_to), :method => 'get', :target => "_blank" %></h4>
+              <% end %>
+            <% end %>
+
+            <div class="time">
+              <em class="icon icon-clock"></em><span><%= review.created_at.strftime("%m / %d / %Y") %></span>
+            </div>
+            <div data-score="<%=review.score%>" class="stars"></div>
           </div>
-        </div>
+
+          <div class="w50">
+            <p>
+            <strong>Pros:</strong>
+            <%= review.try(:pros) %>
+            </p>
+            <p>
+            <strong>Cons:</strong>
+            <%= review.try(:cons) %>
+            </p>
+            <p>
+            <strong>Recommendations:</strong>
+            <%= review.try(:recommendations) %>
+            </p>
+          </div>
+
+          <div class="w15 right-center">
+            <div class="btn btn-orange-ghost" onClick="SetRespondData(<%= current_user.id%>, <%= review.id%>)" data-toggle="modal" data-target="#myModal">
+              Respond
+            </div>
+            <div class="responses">
+              Responses: <a href="/review_responses?id=<%=review.id%>"><%= review.review_responses.count %></a>         
+            </div>
+          </div>
 
         </div>
-<script>
-    $('.stars').raty({readOnly: true,
-        score: function() {
-            return $(this).attr('data-score');
-        }
-    });
-</script>
+      <% end %>
 
-
-
+      <script>
+        $('.stars').raty({readOnly: true,
+            score: function() {
+                return $(this).attr('data-score');
+            }
+        });
+      </script>
 
     </div>
-  </div>
 
-  <% if params[:by]=='me' %>
-           <div class="paginations top-pagination remove_pad">
-            <%= will_paginate @reviews, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
-          </div>
-          <% else %>
-          <div class="paginations top-pagination remove_pad">
-            <%= will_paginate @reviews, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
-          </div>
-          <% end %>
+    <% if params[:by]=='me' %>
+    <div class="centered">
+      <div class="paginations">
+        <%= will_paginate @reviews, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+      </div>
+    </div> 
+    <% else %>
+    <div class="centered">
+      <div class="paginations">
+        <%= will_paginate @reviews, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+      </div>
+    </div>
+    <% end %>
+
+
+  </div>
 </div>
-<!--End search-container-->
+
 
 <%= render :partial => 'review_response_popover'%>

@@ -1,96 +1,50 @@
-<div class="container-fluid search-container">
-  <div class="container">
-
+<div class="inboard">
+  <div class="margin">
 
     <%if !current_user.nil? && current_user.try(:role).try(:authority) == 'employer'%>
-            <div class="row">
-              <div class="col-lg-12 no_pad ">
-                <div class="company_users ">
-
-
-                  <div class = "container">
-                    <h3> Employer Detail</h3>
-                    <div class = "panel panel-default">
-                      <div class = "panel-heading">
-                        <h3 class = "panel-title">My Employer Detail</h3>
-                      </div>
-
-                      <div class = "panel-body">
-                        <div class = "col-xs-10">
-                          <p>
-                            <strong>Employer Name:</strong>&nbsp;&nbsp;<%= current_user.name %>
-                          </p>
-                          <p>
-                            <strong>Employer ID:</strong>&nbsp;&nbsp;<%= @employer.id%>
-                          </p>
-                        </div>
-
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-            </div>
-    <%end %>
-
-
-
-    <div class="row">
-      <div class="col-lg-12 no_pad ">
-        <div class="company_users ">
-
-            <div class = "container">
-              <h3> Job API's</h3>
-              <div class = "panel panel-default">
-                <div class = "panel-heading">
-                  <h3 class = "panel-title">Get all jobs by an Employer</h3>
-                </div>
-
-                <div class = "panel-body">
-                  <div class = "col-xs-10">
-                    <p>
-                      <strong>Format:</strong>&nbsp;&nbsp;http://<%= request.host%>:<%= request.port%>/job_api/get_all_jobs.json?employer=:employer_id
-                    </p>
-                    <p>
-                      <strong>Example:</strong>&nbsp;&nbsp;http://localhost:3000/job_api/get_all_jobs.json?employer=2
-                    </p>
-                  </div>
-
-
-                </div>
-
-              </div>
-
-              <div class = "panel panel-default">
-                <div class = "panel-heading">
-                  <h3 class = "panel-title">Get single job details by employer</h3>
-                </div>
-
-                <div class = "panel-body">
-                  <div class = "col-xs-10">
-                    <p>
-                      <strong>Format:</strong>&nbsp;&nbsp;http://<%= request.host%>:<%= request.port%>/job_api/get_job.json?employer=:employer_id&job=:job_id
-                    </p>
-                    <p>
-                      <strong>Answer:</strong>&nbsp;&nbsp;http://localhost:3000/job_api/get_job.json?employer=2&job=2
-                    </p>
-                  </div>
-
-
-                </div>
-
-              </div>
-
-            </div>
-            </div>
-      </div>
-
+    <div class="enclosure">
+      <h3>Employer Detail</h3>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th class="last">My Employer Detail</th>
+        </tr>
+        <tr>
+          <td class="last">
+            <p><strong>Employer Name: </strong><%= current_user.name %></p>
+            <p><strong>Employer ID: </strong><%= @employer.id%></p>
+          </td>
+        </tr>        
+      </table> 
     </div>
+    <% end %>
+
+
+    <div class="enclosure">
+      <h3>Job API's</h3>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th class="last">Get all jobs by an Employer</th>
+        </tr>
+        <tr>
+          <td class="last">
+            <p><strong>Format: </strong>http://<%= request.host%>:<%= request.port%>/job_api/get_job.json?employer=:employer_id&job=:job_id</p>
+            <p><strong>Example: </strong>http://localhost:3000/job_api/get_job.json?employer=2&job=2</p>
+          </td>
+        </tr> 
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th class="last">Get single job details by employer</th>
+        </tr>
+        <tr>
+          <td class="last">
+            <p><strong>Format: </strong>http://<%= request.host%>:<%= request.port%>/job_api/get_job.json?employer=:employer_id&job=:job_id</p>
+            <p><strong>Example: </strong>http://localhost:3000/job_api/get_job.json?employer=2&job=2</p>
+          </td>
+        </tr> 
+      </table> 
+    </div>
+
 
   </div>
-    </div>
-
+</div>

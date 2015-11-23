@@ -862,8 +862,8 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .inboard .enclosure {@extend .inline-block; width: 100%; border:1px solid $line_color; padding: 20px;  @include border-radius(4px); background: #fff; margin-bottom: 40px; }
 .inboard .enclosure.w50 { width: 50%;}
 
-.inboard .enclosure h3 {@extend .block; text-align: center; color: $dark_color; font-family: 'pro-regular'; margin-bottom: 30px;}
-.inboard .enclosure h6 {@extend .block; text-align: center;  margin:-10px 0px 30px 0px;}
+.inboard .enclosure h3 {@extend .block; text-align: center; color: $dark_color; font-family: 'pro-regular'; margin-bottom: 20px;}
+.inboard .enclosure h6 {@extend .block; text-align: center;  margin:-10px 0px 20px 0px;}
 .inboard .enclosure h6 a, .inboard .enclosure h6 a:focus {font-size: 16px; text-decoration: underline;}
 .inboard .enclosure h6 a:hover {text-decoration: none;}
 .inboard .enclosure .form-group {@extend .block; margin-bottom: 40px; text-align: left;}

@@ -552,7 +552,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 
 
-.comment-area {width: 100%; display: inline; float: left; background: #e0e0e0; padding: 40px; margin-top: 40px; }
+.comment-area {width: 100%; display: inline; float: left; background: #e0e0e0; padding: 20px; margin-top: 40px; }
 .comment-area h6 {width: 100%; display: inline; float: left; font-size:22px; text-transform: uppercase; font-family: 'pro-light'; margin-bottom: 20px;}
 .comment-area textarea {width: 100%; display: inline; float: left; min-height: 100px; margin-bottom: 20px;}
 .comment-area .btn{ display: inline; float: right;}
@@ -563,8 +563,8 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .reviews {width: 100%; display: inline; float: left; margin: 0px 0px 40px 0px;  }
 .reviews:last-of-type { margin-bottom: 0px;} 
 .reviews .w25 { display: table-cell; width: 25%; float: left; border-right:0 !important; padding: 10px 20px 10px 0px !important; height: 100%;}
-.reviews .w75 { display: table-cell; width: 75%; float: right; padding: 20px 0px 20px 40px;  height: 100%; position: relative; border-left: 1px solid $line_color !important;}
-.reviews .w50 {display: table-cell; width: 60%; float: left; ; padding: 20px 40px 20px 40px; height: 100%; position: relative; border-left: 1px solid $line_color !important; border-right: 1px solid $line_color !important;}
+.reviews .w75 { display: table-cell; width: 75%; float: right; padding: 10px 0px 10px 20px;  height: 100%; position: relative; border-left: 1px solid $line_color !important;}
+.reviews .w50 {display: table-cell; width: 60%; float: left; ; padding: 10px 20px 10px 20px; height: 100%; position: relative; border-left: 1px solid $line_color !important; border-right: 1px solid $line_color !important;}
 .reviews .w15 { display: table-cell; width: 15%; float: right; border-right:0 !important; padding: 0px 0px 0px 40px !important; height: 100%; text-align: center; vertical-align: middle;}
 .reviews .w15 .btn {@extend .inline-block; vertical-align: middle; margin-bottom: 0px;} 
 
@@ -581,7 +581,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .reviews .w75 p:last-of-type, .reviews .w50 p:last-of-type  { margin-bottom: 0px;}  
 .reviews .w75 p strong, .reviews .w50 p strong  {@extend .block; font-family: 'pro-regular';}
 
-.reviews .responses {@extend .block; text-align: right; margin-top: 40px;}
+.reviews .responses {@extend .block; text-align: right; margin-top: 20px;}
 .reviews .w15 .responses { text-align: center; margin: 20px 0px;} 
 .reviews .responses a, .reviews .responses a:focus  {font-size: 18px;text-decoration: none; font-family: 'pro-light';  }
 .reviews .responses a:hover { text-decoration: underline;}
@@ -801,13 +801,13 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 .present .tab-pane {  margin: 40px 0px 40px 0px;  float: left; width: 100%;  }
 
-.present .tab-pane .enclosure {display: table; width: 100%; border:1px solid $line_color; padding: 40px;  @include border-radius(4px); background: #fff;}
+.present .tab-pane .enclosure {display: table; width: 100%; border:1px solid $line_color; padding: 20px;  @include border-radius(4px); background: #fff;}
 .present .tab-pane .enclosure h2 {@extend .block; margin-bottom: 20px; font-family: 'pro-light'; font-size: 20px; text-transform: uppercase;  }
-.present .tab-pane .w25 { display: table-cell; width: 25%;  border-right: 1px solid $line_color; padding:20px 40px 20px 0px; height: 100%;   }
-.present .tab-pane .w75 { display: table-cell; width: 75%;  padding:20px 0px 20px 40px;  height: 100%; position: relative; }
+.present .tab-pane .w25 { display: table-cell; width: 25%;  border-right: 1px solid $line_color; padding:10px 20px 10px 0px; height: 100%;   }
+.present .tab-pane .w75 { display: table-cell; width: 75%;  padding:10px 0px 10px 20px;  height: 100%; position: relative; }
 
-.present .tab-pane .profile .w25 { border:0; text-align: center; padding:20px 0px 20px 40px; vertical-align: middle; }
-.present .tab-pane .profile .w75 { border-right: 1px solid $line_color;  padding:20px 40px 20px 0px;}
+.present .tab-pane .profile .w25 { border:0; text-align: center; padding:10px 0px 10px 20px; vertical-align: middle; }
+.present .tab-pane .profile .w75 { border-right: 1px solid $line_color;  padding:10px 20px 10px 0px;}
 
 
 .present .tab-pane .list {@extend .block;}
@@ -824,7 +824,7 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .present .tab-pane article .description {@extend .block; margin-bottom: 60px; }
 
 
-.present .tab-pane .actions { @extend .block; position: absolute; right: 0px; bottom: 0px; padding: 0px 0px 0px 40px; }
+.present .tab-pane .actions { @extend .block; position: absolute; right: 0px; bottom: 0px; padding: 0px 0px 0px 20px; }
 .present .tab-pane .actions .icon, .present .tab-pane .actions .icon:focus { color: $grey_color;}
 .present .tab-pane .actions .pull-left em { color: $grey_color; font-size: 16px;@extend .inline-block; vertical-align: top; padding-top: 10px;}
 .present .tab-pane .actions .pull-left .icon, .present .tab-pane .actions .pull-left .icon:focus  {@extend .inline-block; vertical-align: top; font-size: 36px;}
@@ -859,11 +859,11 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 .inboard { text-align: center;}
 .inboard .paginations { margin-bottom: 40px;}
-.inboard .enclosure {@extend .inline-block; width: 100%; border:1px solid $line_color; padding: 40px;  @include border-radius(4px); background: #fff; margin-bottom: 40px; }
+.inboard .enclosure {@extend .inline-block; width: 100%; border:1px solid $line_color; padding: 20px;  @include border-radius(4px); background: #fff; margin-bottom: 40px; }
 .inboard .enclosure.w50 { width: 50%;}
 
-.inboard .enclosure h3 {@extend .block; text-align: center; color: $dark_color; font-family: 'pro-regular'; margin-bottom: 40px;}
-.inboard .enclosure h6 {@extend .block; text-align: center;  margin:-20px 0px 40px 0px;}
+.inboard .enclosure h3 {@extend .block; text-align: center; color: $dark_color; font-family: 'pro-regular'; margin-bottom: 30px;}
+.inboard .enclosure h6 {@extend .block; text-align: center;  margin:-10px 0px 30px 0px;}
 .inboard .enclosure h6 a, .inboard .enclosure h6 a:focus {font-size: 16px; text-decoration: underline;}
 .inboard .enclosure h6 a:hover {text-decoration: none;}
 .inboard .enclosure .form-group {@extend .block; margin-bottom: 40px; text-align: left;}

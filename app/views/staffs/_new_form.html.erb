@@ -1,42 +1,31 @@
-<div class="l-block">
-  <label></label>
+<% @user.try(:errors).try(:full_messages).try(:each) do |msg| %>
+  <p><%= msg %></p>
+<%end %>
 
-  <% @user.try(:errors).try(:full_messages).try(:each) do |msg| %>
-        <div class="error"><p><%= msg %></p></div>
-  <%end %>
-</div>
 
 <%= form_tag({action: 'create'}) do %>
 
-    <div class="l-block l-block_1">
-      <label>Name<em>*</em></label>
-      <%= text_field_tag :name, @user.try(:name), required: true,:maxlength=>50%>
-    </div>
 
-    <div class="l-block l-block_1">
-      <label>Email<em>*</em></label>
-      <%= text_field_tag :email, nil, required: true,:maxlength=>50,:pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$", :title => "Invalid format"%>
+  <div class="form-group">
+    <label>Name<em>*</em></label>
+    <%= text_field_tag :name, @user.try(:name), required: true,:maxlength=>50%>
+  </div>
+  <div class="form-group">
+    <label>Email<em>*</em></label>
+    <%= text_field_tag :email, nil, required: true,:maxlength=>50,:pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$", :title => "Invalid format"%>
+  </div>
+  <div class="form-group">
+    <label>Password<em>*</em></label>
+    <%= password_field_tag :password, nil, required: true ,:maxlength=>25%>
+  </div>
+  <div class="form-group">
+    <label>Confirm Password<em>*</em></label>
+    <%= password_field_tag :conf_password,nil, required: true ,:maxlength=>25%>
+  </div>
+  
+  <div class="actions">
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),staffs_path, :class => 'btn btn-ghost' %>
+    <%= submit_tag "Create", :class => 'btn btn-orange'%>
+  </div>
 
-    </div>
-
-    <div class="l-block l-block_1">
-      <label>Password<em>*</em></label>
-      <%= password_field_tag :password, nil, required: true ,:maxlength=>25%>
-    </div>
-
-    <div class="l-block l-block_1">
-      <label>Confirm Password<em>*</em></label>
-      <%= password_field_tag :conf_password,nil, required: true ,:maxlength=>25%>
-    </div>
-
-
-    <div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10">
-        <%= submit_tag "Create", class: "btn btn-primary" %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    staffs_path, :class => 'btn btn-warning' %>
-      </div>
-    </div>
-
-<% end %>
+<%end%>

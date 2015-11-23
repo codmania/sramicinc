@@ -890,9 +890,7 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 .inboard .enclosure .reviews { text-align: left;}
 
-
-
-
+.inboard .enclosure td.last .active {@extend .inline-block; vertical-align: top; margin-right: 10px;}
 
 
 

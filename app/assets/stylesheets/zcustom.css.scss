@@ -120,6 +120,9 @@ form { display: inline; @include reset_space; }
 label { color: $dark_color; font-size: 20px; font-family: 'pro-light'; @extend .block; margin-bottom: 6px; font-weight: normal;}
 label em { color: $orange_color; font-style: normal; font-size: 22px; font-family: 'pro-semi'; padding-left: 5px;}
 
+.form-group.tripartite select { @extend .inline-block; width: 30%; margin-right: 22px;}
+.form-group.tripartite select:last-of-type { margin-right: 0px;} 
+
 textarea, input[type="text"], input[type="password"], input[type="search"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, select.form-control, select,
 textarea.form-control  { @include box-shadow(none); @include border-radius(2px); background: #fff; border: 1px solid $line_color; padding: 8px 10px; width: 100%; font-size: 16px; color: $base_color;  }
 
@@ -442,6 +445,8 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 .iradio_flat {background-position: -88px 0;}
 .iradio_flat.checked {background-position: -110px 0;}
 .iradio_flat.disabled {background-position: -132px 0;cursor: default;}
+
+.icheckbox label,  .iradio label { width: auto; @extend .inline-block; @include font_base; font-size: 16px; vertical-align: middle; margin: 2px 20px 0px 4px;}
 
 
 

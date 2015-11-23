@@ -3,12 +3,6 @@
   <div class="wrapper midst">
     <h1>Registration</h1>
 
-    <%flash.each do |key, value| %>
-      <%if value != 'candidate' && value != 'employer'%>
-        <center><div class="error"><%= value %></div></center>
-      <%end%>
-    <%end %>
-
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="orange active">

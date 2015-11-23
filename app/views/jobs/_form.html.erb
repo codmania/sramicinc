@@ -46,8 +46,8 @@
         </div>
 
         <div class="l-block l-block_1">
-          <label>Industry
-          </label><%= f.collection_select :industry_id, Industry.all, :id, :name %>
+          <label>Industry<em>*</em></label>
+          <%= f.collection_select :industry_id, Industry.all, :id, :name %>
         </div>
 
         <div class="l-block l-block_1">

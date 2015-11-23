@@ -9,12 +9,6 @@
       <%= link_to "Post a Talent", jprofiles_path, class: "btn btn-blue-ghost" %>
     </nav>
   </div>
-
-  <%- flash.each do |name, msg| -%>
-    <% if  msg != 'employer' &&  msg != 'candidate' && name == 'notice'%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-    <% end %>
-  <%- end -%>
   
 </header>
 

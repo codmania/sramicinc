@@ -3,12 +3,6 @@
   <div class="wrapper midst">
     <h1>Sign in</h1>
 
-    <%- flash.each do |name, msg| -%>
-      <% if  msg != 'employer' &&  msg != 'candidate' %>
-      <center><%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %></center>
-      <% end %>
-    <%- end -%>
-
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <input type="hidden" name="t" value="<%= params[:t]%>" />
 

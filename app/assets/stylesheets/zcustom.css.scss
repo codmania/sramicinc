@@ -247,9 +247,9 @@ footer .social li a::before {line-height: 0% !important;}
 /* ---- FULL SCREEN ---- */
 
 .full-screen {@extend .block; @extend .full-height; text-align: center; overflow: hidden; background:no-repeat transparent center top image-url("layout/seeker.jpg");-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/seeker.jpg', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='layout/seeker.jpg', sizingMethod='scale')"; position: relative;  }
-.full-screen .middle { width: 100%; position: absolute; top: 25%;  }
+.full-screen .middle { width: 100%; position: absolute; top: 25%; text-align: center;  }
 .full-screen h1 { color: #fff; text-transform: uppercase; font-family: 'pro-semi'; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); line-height: 140%; margin-bottom: 40px;}
-.full-screen .btn, .full-screen .btn:focus{ font-size: 24px; padding-left: 40px; padding-right: 40px; margin: 0px 20px 60px 0px;}
+.full-screen .btn, .full-screen .btn:focus{@extend .inline-block; text-align: center; font-size: 24px; padding-left: 40px; padding-right: 40px; margin: 0px 10px 60px 10px;}
 .full-screen .btn.btn-orange.active {color:#fff; background: $orange_color; border: 1px solid $orange_color;  }
 .full-screen .btn.btn-blue.active {color:#fff; background: $blue_color; border: 1px solid $blue_color;  }
 .full-screen .btn.btn-orange.pass {color:#fff; background: none; border: 1px solid #fff;  }

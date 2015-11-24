@@ -897,28 +897,22 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 .inboard .enclosure td.last .active {@extend .inline-block; vertical-align: top; margin-right: 10px;}
 
+.inboard.profile .enclosure {display: table;}
+.inboard.profile .enclosure .w25 { display: table-cell; border-right: 1px solid $line_color; padding:10px 20px 10px 0px; height: 100%; vertical-align: middle;   }
+.inboard.profile .enclosure .w25 .img-circle { @extend .inline-block; vertical-align: middle; width: 94px; height: 94px;  border: 1px solid $grey_color;}
+.inboard.profile .enclosure .w50 { display: table-cell; padding:10px 0px 10px 20px;  height: 100%; position: relative; text-align: left; }
+
+.inboard.profile .enclosure .list {@extend .block;}
+.inboard.profile .enclosure .list li {@extend .block; margin-bottom: 10px;}
+.inboard.profile .enclosure .list li:last-of-type { margin-bottom: 0px;}
+.inboard.profile .enclosure .list li strong {@extend .inline-block; vertical-align: top; font-family: 'pro-light'; padding-right: 4px; }
+.inboard.profile .enclosure .list li span {@extend .inline-block; vertical-align: top; } 
+
+.inboard.profile .enclosure .list .btn, .inboard.profile .enclosure .list .btn:focus, .inboard.profile .enclosure .list .btn:hover { font-size: 14px; padding: 8px 20px 6px 20px; margin-right: 10px;}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.inboard.edit .enclosure .w50 {@extend .inline-block; width: 40%; margin: 0px 20px 0px 20px; vertical-align: top; }
 
 
 
@@ -986,7 +980,7 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 .present.orange .heading .back-link, .present.orange  .heading .back-link:focus, .present.orange  .heading .back-link:hover { color: $orange_color;}
 .present.orange .heading .arrow-box .icon:hover {color: $orange_color;} 
-.present.orange .tab-pane .list li strong  {color: $orange_color;}
+.present.orange .tab-pane .list li strong, .orange .inboard.profile .enclosure .list li strong   {color: $orange_color;}
 .present.orange .tab-pane .list li a:hover { color:$orange_color;}
 .present.orange .tab-pane .list li a:hover .icon { color:$orange_color;} 
 .present.orange .tab-pane .actions .icon:hover {color:$orange_color;}
@@ -1079,7 +1073,7 @@ table.lodge.orange td strong {color: $orange_color; }
 
 .present.blue .heading .back-link, .present.blue  .heading .back-link:focus, .present.blue  .heading .back-link:hover { color: $blue_color;}
 .present.blue .heading .arrow-box .icon:hover {color: $blue_color;}
-.present.blue .tab-pane .list li strong  {color: $blue_color;}
+.present.blue .tab-pane .list li strong, .blue .inboard.profile .enclosure .list li strong    {color: $blue_color;}
 .present.blue .tab-pane .list li a:hover { color:$blue_color;}
 .present.blue .tab-pane .list li a:hover .icon { color:$blue_color;}  
 .present.blue .tab-pane .actions .icon:hover {color:$blue_color;}

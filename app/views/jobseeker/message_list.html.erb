@@ -1,46 +1,32 @@
+<div class="inboard">
+  <div class="margin">
 
-<!--start search-container-->
-   <div class="container-fluid search-container">
-   <div class="container">
-   <div class="row">
+    <div class="enclosure">
+      <h3>My Messages</h3>
 
-   <div class="col-lg-12 no_pad ">
-
-   <div class="company_users">
-   <div class="paginations top-pagination remove_pad  ">
-   <%= will_paginate @jobseeker_messages, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
-   </div>
-
-
-    <div id="no-more-tables">
-    <table class="col-sm-12 table-striped table-condensed cf">
-    <thead class="cf">
-    <tr>
-    <th >From</th>
-    <th >Message</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @jobseeker_messages.try(:each) do |message| %>
-    <tr>
-    <td data-title="From"><%=message.try(:employer).try(:user).try(:name) %></td>
-    <td data-title="Message"><%= message.try(:message) %></td>
-    </tr>
-    <% end %>
-    </tbody>
-    </table>
-    </div>
-
-
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th>From</th>
+          <th class="last">Message</th>
+        </tr>
+        <% @jobseeker_messages.try(:each) do |message| %>
+        <tr>
+          <td data-title="From"><span><%=message.try(:employer).try(:user).try(:name) %></span></td>
+          <td data-title="Message" class="last"><span><%= message.try(:message) %></span></td>
+          </td>
+        </tr>
+        <% end %>
+      </table> 
 
     </div>
 
-
-
+    <div class="centered">
+      <div class="paginations">
+        <%= will_paginate @jobseeker_messages, :inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+      </div>
     </div>
 
-    </div>
 
-    </div>
+  </div>
+</div>
 
-    </div>

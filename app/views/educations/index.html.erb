@@ -1,177 +1,91 @@
-<!--start search-container-->
-<div class="container-fluid search-container">
-<div class="container">
-<div class="row">
+<div class="inboard">
+  <div class="margin">
 
-<div class="col-lg-12 no_pad ">
+    <div class="enclosure">
+      <h3>Degrees</h3>
+      <h6><%= link_to "Add", new_education_path %></h6>
 
-<!--End responsive-menu-->
-<div class="job_seeker_my_acc">
-
-  <div class="company_users">
-
-    <h1>Education</h1>
-    <h2>Degrees
-      <%= link_to "Add", new_education_path, :class => 'orange-btn pull-right align-orange-btn' %>
-    </h2>
-    <div id="no-more-tables">
-      <table class="col-sm-12 table-striped table-condensed cf">
-        <thead class="cf">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
         <tr>
           <th>Degree</th>
           <th>Field</th>
           <th>Institution</th>
           <th>Location</th>
           <th>Completion</th>
-          <th width="100" class="table-last-th"></th>
+          <th class="last">Actions</th>
         </tr>
-        </thead>
-        <tbody>
-
         <% @educations.each do |education| %>
-
-            <tr>
-              <td data-title="Degree"><%= education.degree %></td>
-              <td data-title="Field"><%= education.field %></td>
-              <td data-title="Institution"><%= education.institution %></td>
-              <td data-title="Location"><%= education.location %></td>
-              <td data-title="Completion"><%= education.completion %></td>
-              <td data-title="" class="table-last-td">
-
-                <ul class="actions_container">
-                  <li>
-                    <%= link_to '<span class="icon icon_1"></span>'.html_safe,
-                                edit_education_path(education) %>
-                  </li>
-
-
-                  <li>
-                    <%= link_to '<span class="icon icon_2"></span>'.html_safe,
-                                 education_path(education),
-                                :method => :delete,
-                                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
-                  </li>
-                </ul>
-
-              </td>
-            </tr>
+        <tr>
+          <td data-title="Degree"><span><%= education.degree %></span></td>
+          <td data-title="Field"><span><%= education.field %></span></td>
+          <td data-title="Institution"><span><%= education.institution %></span></td>
+          <td data-title="Location"><span><%= education.location %></span></td>
+          <td data-title="Completion"><span><%= education.completion %></span></td>
+          <td class="last">
+            <%= link_to edit_education_path(education), class: "icon icon-edit", title: "Edit" do %><% end %>
+            <%= link_to education_path(education), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
+          </td>
+        </tr>
         <% end %>
-
-
-
-
-        </tbody>
-      </table>
+      </table> 
     </div>
 
-    <h2>Certification
-      <%= link_to "Add", new_certification_path, :class => 'orange-btn pull-right align-orange-btn' %>
-    </h2>
-    <div id="no-more-tables">
-      <table class="col-sm-12 table-striped table-condensed cf">
-        <thead class="cf">
+    <div class="enclosure">
+      <h3>Certification</h3>
+      <h6><%= link_to "Add", new_certification_path %></h6>
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
         <tr>
           <th>Certification Name</th>
           <th>Institution</th>
           <th>Received</th>
           <th>Expired</th>
-          <th width="100" class="table-last-th"></th>
+          <th class="last">Actions</th>
         </tr>
-        </thead>
-        <tbody>
-
         <% @certifications.each do |certification| %>
-
-            <tr>
-              <td data-title="Certification Name"><%= certification.name %></td>
-              <td data-title="Institution"><%= certification.institution %></td>
-              <td data-title="Received"><%= certification.received.try(:strftime,"%m/%d/%Y") %></td>
-              <td data-title="Expired"><%= certification.expired.try(:strftime,"%m/%d/%Y") %></td>
-              <td data-title=""  class="table-last-td">
-
-                <ul class="actions_container">
-                  <li>
-                    <%= link_to '<span class="icon icon_1"></span>'.html_safe,
-                                edit_certification_path(certification) %>
-                  </li>
-
-
-                  <li>
-                    <%= link_to '<span class="icon icon_2"></span>'.html_safe,
-                                certification_path(certification),
-                                :method => :delete,
-                                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
-                  </li>
-                </ul>
-
-              </td>
-            </tr>
+        <tr>
+          <td data-title="Certification Name"><span><%= certification.name %></span></td>
+          <td data-title="Institution"><span><%= certification.institution %></span></td>
+          <td data-title="Received"><span><%= certification.received.try(:strftime,"%m/%d/%Y") %></span></td>
+          <td data-title="Expired"><span><%= certification.expired.try(:strftime,"%m/%d/%Y") %></span></td>
+          <td class="last">
+            <%= link_to edit_certification_path(certification), class: "icon icon-edit", title: "Edit" do %><% end %>
+            <%= link_to certification_path(certification), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
+          </td>
+        </tr>
         <% end %>
-
-        </tbody>
-      </table>
+      </table> 
     </div>
 
-    <h2>Papers/Journals
-      <%= link_to "Add", new_journal_path, :class => 'orange-btn pull-right align-orange-btn' %>
-    </h2>
-    <div id="no-more-tables">
-      <table class="col-sm-12 table-striped table-condensed cf">
-        <thead class="cf">
+    <div class="enclosure">
+      <h3>Papers/Journals</h3>
+      <h6><%= link_to "Add", new_journal_path %></h6>
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
         <tr>
           <th>Name</th>
           <th>Date</th>
           <th>Reference</th>
-          <th width="100" class="table-last-th"></th>
+          <th class="last">Actions</th>
         </tr>
-        </thead>
-        <tbody>
-
-
         <% @journals.each do |journal| %>
-
-            <tr>
-              <td data-title="Name"><%= journal.name %></td>
-              <td data-title="Date"><%= journal.date.strftime("%m/%d/%Y") %></td>
-              <td data-title="Reference"><%= journal.reference %></td>
-              <td data-title="" class="table-last-td">
-
-                <ul class="actions_container">
-                  <li>
-                    <%= link_to '<span class="icon icon_1"></span>'.html_safe,
-                                edit_journal_path(journal) %>
-                  </li>
-
-
-                  <li>
-                    <%= link_to '<span class="icon icon_2"></span>'.html_safe,
-                                journal_path(journal),
-                                :method => :delete,
-                                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
-                  </li>
-                </ul>
-
-              </td>
-            </tr>
+        <tr>
+          <td data-title="Name"><span><%= journal.name %></span></td>
+          <td data-title="Date"><span><%= journal.date.strftime("%m/%d/%Y") %></span></td>
+          <td data-title="Reference"><span><%= journal.reference %></span></td>
+          <td class="last">
+            <%= link_to edit_journal_path(journal), class: "icon icon-edit", title: "Edit" do %><% end %>
+            <%= link_to journal_path(journal), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
+          </td>
+        </tr>
         <% end %>
-
-        </tbody>
-      </table>
+      </table> 
     </div>
 
 
+
+
+
   </div>
-
-
 </div>
 
-</div>
-
-
-
-
-
-</div>
-</div>
-</div>
-<!--End search-container-->

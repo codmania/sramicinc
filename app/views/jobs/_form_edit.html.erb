@@ -1,140 +1,155 @@
-<%= form_for @job, :html => {:multipart => true, :class => "form-horizontal education"} do |f| %>
-    <% if @job.errors.any? %>
-        <div>
-          <h4>
-            <% pluralize(@job.errors.count, "error") %>
-          </h4>
-          <ul>
-            <% @job.errors.full_messages.each do |message| %>
-                <li style="color:red"><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+<%= form_for @job, :html => {:multipart => true, :class => "education"} do |f| %>
 
-    <div class="single_form">
-      <div class="l-block2">
-        <div class="l-block l-block_1">
-          <label>Job Title
-            <em>*</em>
-          </label><%= f.text_field :title, :required => true, :maxlength => 100 %>
-        </div>
+  <% if @job.errors.any? %>
+    <% pluralize(@job.errors.count, "error") %>
+    <ul>
+      <% @job.errors.full_messages.each do |message| %>
+          <li style="color:red"><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-        <!--  <div class="l-block l-block_1">
-    <label>Keywords:</label><%= f.text_field :keywords %>
-  </div> -->
+  <div class="w50">
 
-        <div class="l-block l-block_1">
-          <label>Country:<em>*</em></label>
-          <%= f.collection_select :country_list_id, CountryList.all, :id, :name, {:prompt => 'Select Country'}, :required => true %>
-        </div>
+    <div class="form-group">
+      <label>Job Title<em>*</em></label>
+      <%= f.text_field :title, :required => true, :maxlength => 100 %>
+    </div>
+    <div class="form-group">
+      <label>Country<em>*</em></label>
+      <%= f.collection_select :country_list_id, CountryList.all, :id, :name, {:prompt => 'Select Country'}, :required => true, class: 'selectpicker' %>
+    </div>
+    <div class="form-group">
+      <label>State<em>*</em></label>
+      <input type="hidden" name="state_list_id" id="state_list_id" value="<%= @job.state_list_id %>">
+      <select required="required" id="job_state_list_id" name="job[state_list_id]" class="state_list"></select>
+    </div>
+    <div class="form-group">
+      <label>City<em>*</em></label>
+      <%= f.text_field :city, :required => true, :maxlength => 50 %>
+    </div>
+    <div class="form-group">
+      <label>Zip Code<em>*</em></label>
+      <%= f.text_field :zip, :required => true, :pattern => "[0-9]{5}$", :title => 'Zip code Should be in digits and 5 digits' %>
+    </div>
+ 
+  </div>
 
-        <div class="l-block l-block_1">
-          <label>State:<em>*</em></label>
+  <div class="w50">
 
-          <input type="hidden" name="state_list_id" id="state_list_id" value="<%= @job.state_list_id %>">
-          <select required="required" id="job_state_list_id" name="job[state_list_id]" class="state_list"></select>
-        </div>
+    <div class="form-group">
+      <label>Industry<em>*</em></label>
+      <%= f.collection_select :industry_id, Industry.all, :id, :name, {}, {class: 'selectpicker'} %>
+    </div>
 
-        <div class="l-block l-block_1">
-          <label>City:<em>*</em></label><%= f.text_field :city, :required => true, :maxlength => 50 %>
-        </div>
+    <div class="form-group">
+      <label>Job Description<em>*</em></label>
+      <%= f.cktext_area :description,:class => 'text_area_alignment'%>
+      <small>Maximum 5000 characters are allowed</small>
+    </div>
 
-        <div class="l-block l-block_1">
-          <label>Zip Code:<em>*</em>
-          </label><%= f.text_field :zip, :required => true, :pattern => "[0-9]{5}$", :title => 'Zip code Should be in digits and 5 digits' %>
-        </div>
+  </div>
 
-        <div class="l-block l-block_1">
-          <label>Industry<em>*</em></label>
-          <%= f.collection_select :industry_id, Industry.all, :id, :name %>
-        </div>
+  <div class="w100">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-        <div class="l-block l-block_1">
-          <label>Category
-          </label><%= f.collection_select :category_id, Category.all, :id, :name %>
-        </div>
-
-        <div class="l-block l-block_1">
-          <label>Experience
-          </label>
-          <%= f.text_field :experience, :pattern => "[0-9]{1,2}(?:[\.]{1}[0-9]{1,2})?", :title => 'Experience should be in xx.xx format',:maxlength=>5%>
-        </div>
-
-        <div class="l-block l-block_1">
-          <label>Education
-          </label>
-          <%= f.text_field :education, :maxlength => 100 %>
-        </div>
-
-        <div class="l-block l-block_1">
-          <label>Relocation</label>
-          <%= f.select :relocation, [["Yes", 'true'], ["No", 'false']] %>
-          </select>
-        </div>
-
-
-        <div class="l-block l-block_1">
-          <label>Salary Type:</label><%= f.collection_select :salary_type_id, SalaryType.all, :id, :s_type %>
-        </div>
-
-        <div class="l-block l-block_1">
-          <label>Salary:</label><%= f.text_field :salary,:pattern => "[$][0-9]{1,10}(?:[\.]{1}[0-9]{1,3})?", :title => "Salary should be preceded by '$',max 10 digits before decimal, optional decimal, decimal max 3 digits",:maxlength=>15%>
-        </div>
-
-        <!--<div class="l-block l-block_1">
-    <label>Job Length:</label><%= f.text_field :job_length, :pattern => "[0-9]{0,10}", :title => "Enter only digits" %>
-  </div>-->
-
-        <div class="l-block l-block_1">
-          <label>Job Type:</label><%= f.collection_select :job_type_id, JobType.all, :id, :name %>
-        </div>
-
-        <div class="l-block l-block_1">
-          <label>Certification:</label><%= f.text_field :certification, :maxlength => 100 %>
-        </div>
-
-        <div class="l-block l-block_1">
-          <label>Reference:</label><%= f.text_field :references, :maxlength => 100 %>
-        </div>
-
-        <div class="l-block l-block_1">
-          <label>Status:</label>
-          <%= f.select :status, [["Open", 'true'], ["Close", 'false']] %>
-          </select>
-        </div>
-        <div class="l-block l-block_1">
-          <label>Job Description<em>*</em></label>
-          <%= f.cktext_area :description,:class => 'text_area_alignment',:required=>true ,:maxlength=>5000%>
-        </div>
-
-        <h6 style="margin-left:29%">Maximum 5000 characters are allowed</h6>
-
-        <div class="l-block l-block_1 " style="display: none;">
-          <label>Job Description plan<em>*</em></label>
-          <%= f.text_area :plain_description,:class => 'text_area_alignment' ,:maxlength=>5000%>
-        </div>
-
-
-        <div class="l-block l-block_1">
-          <label>Clearance:</label><%= f.text_field :clearance, :maxlength => 100 %>
-        </div>
-
-        <div clas="row" style="margin-left: 26%;">
-          <%= f.submit "Create", :class => "orange-btn", :onclick => "return add_desc_to_plain_desc();" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <% if current_user.try(:role).try(:authority) == 'employer' %>
-              <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                          my_jobs_path, :class => 'orange-btn', :id => 'can' %>
-          <% elsif current_user.try(:role).try(:authority) == 'admin' %>
-              <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                          jobs_path, :class => 'orange-btn', :id => 'can' %>
+      <div class="panel panel-default">
+          
+        <div class="panel-heading" role="tab">
+        <%= link_to "#optional", class: "collapsed", :"role" => 'button', :"data-toggle" => 'collapse', :"data-parent" => '#accordion', :"aria-expanded" => 'false', :"aria-controls" => "optional" do %>
+            <span>Optional fields</span>
+            <em class="icon icon-arrow-down"></em>
+            <em class="icon icon-arrow-up"></em>
           <% end %>
         </div>
+        <div id="optional" class="panel-collapse collapse" role="tabpanel">
+          
+          <div class="w50">
 
+            <div class="form-group">
+              <label>Category</label>
+              <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: 'selectpicker'} %>
+            </div>
 
+            <div class="form-group">
+              <label>Experience</label>
+              <%= f.text_field :experience, :pattern => "[0-9]{1,2}(?:[\.]{1}[0-9]{1,2})?", :title => 'Experience should be in xx.xx format',:maxlength=>5 %>
+            </div>
+
+            <div class="form-group">
+              <label>Education</label>
+              <%= f.text_field :education, :maxlength => 100 %>
+            </div>
+
+            <div class="form-group">
+              <label>Relocation</label>
+              <%= f.select :relocation, [["Yes", 'true'], ["No", 'false']], {}, {class: 'selectpicker'}  %>
+            </div>
+
+            <div class="form-group">
+              <label>Salary Type</label>
+              <%= f.collection_select :salary_type_id, SalaryType.all, :id, :s_type, {}, {class: 'selectpicker'} %>
+            </div>
+
+            <div class="form-group">
+              <label>Salary</label>
+              <%= f.text_field :salary,:pattern => "[$][0-9]{1,10}(?:[\.]{1}[0-9]{1,3})?",:title => "Salary should be preceded by '$',max 10 digits before decimal, optional decimal, decimal max 3 digits",:maxlength=>15%>
+            </div>
+
+          </div>
+
+          <div class="w50 last">
+
+            <div class="form-group">
+              <label>Job Type</label>
+              <%= f.collection_select :job_type_id, JobType.all, :id, :name, {}, {class: 'selectpicker'} %>
+            </div>
+
+            <div class="form-group">
+              <label>Certification</label>
+              <%= f.text_field :certification, :maxlength => 100 %>
+            </div>
+
+            <div class="form-group">
+              <label>Reference</label>
+              <%= f.text_field :references, :maxlength => 100 %>
+            </div>
+
+            <div class="form-group">
+              <label>Status</label>
+              <%= f.select :status, [["Open", 'true'], ["Close", 'false']], {}, {class: 'selectpicker'} %>
+            </div>
+
+            <div class="form-group">
+              <label>Clearance</label>
+              <%= f.text_field :clearance, :maxlength => 100 %>
+            </div>
+
+          </div>
+
+        </div>
+          
       </div>
+
+
     </div>
-<% end %>
+  </div>
+
+
+  <div class="w100">
+  
+    <div class="actions">
+      <% if current_user.try(:role).try(:authority) == 'employer' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),my_jobs_path, :class => 'btn btn-ghost', :id => 'can' %>
+      <% elsif current_user.try(:role).try(:authority) == 'admin' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),jobs_path, :class => 'btn btn-ghost', :id => 'can' %>
+      <% end %>
+      <%= f.submit "Save", :class => "btn btn-orange", :onclick => "return add_desc_to_plain_desc();" %>
+    </div>
+
+  </div>
+
+<%end%>
 
 
 <script>

@@ -915,8 +915,18 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .inboard.profile .enclosure .list li a .icon-link {@extend .inline-block; vertical-align: top;  font-size: 24px; margin: 2px 0px 0px 0px; color:$grey_color;}
 
 
-
 .inboard.edit .enclosure .w50 {@extend .inline-block; width: 40%; margin: 0px 20px 0px 20px; vertical-align: top; }
+
+
+
+.inboard .result {@extend .inline-block; vertical-align: middle;  width: auto; float: none; margin: 0px; padding-bottom: 0px; border-bottom: 0;}
+.inboard .result a {width: auto; @extend .inline-block; vertical-align: middle;  float: none;}
+.inboard .result .w25 { width: 64px; margin:10px 0px;}
+.inboard .result .w75 { width:82%; margin: 10px 0px;}
+.inboard .result .img-circle {  width: 64px; height: 64px;}
+.inboard .result h3 { text-align: left; margin-bottom: 0px;}
+
+
 
 
 

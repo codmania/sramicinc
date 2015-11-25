@@ -1,97 +1,27 @@
-<div class="profile-detail" id="info_window">
-    <ul class="prof-details">
-
-          <li>
-            <span class="left-det">Company Name</span>
-            <span class="dot">:</span>
-            <span class="right-det"><%= @eprofile.try(:company_name) %></span>
-          </li>
-
-            <li>
-              <span class="left-det">Industry</span>
-                  <span class="dot">:</span>
-                <span class="right-det"><%= @eprofile.try(:industry).try(:name) %></span>
-            </li>
-
-          <li>
-              <span class="left-det">Services</span>
-                  <span class="dot">:</span>
-                <span class="right-det"><%= @eprofile.services %></span>
-            </li>
-
-            <li>
-              <span class="left-det">Products</span>
-                  <span class="dot">:</span>
-                <span class="right-det"><%= @eprofile.products %></span>
-            </li>
-
-            <li>
-              <span class="left-det">Location</span>
-                  <span class="dot">:</span>
-                <span class="right-det"><%= @eprofile.address1 %><%if @eprofile.address1.present? %>, <%end%><%= @eprofile.address2 %><%if @eprofile.address2.present? %>, <%end%><%= @eprofile.try(:city) %><%if @eprofile.city.present? %>, <%end%><%= @eprofile.try(:state_list).try(:name) %><%if @eprofile.country_list.present? %>, <%end%><%= @eprofile.try(:country_list).try(:name) %></span>
-            </li>
-
-             <li>
-              <span class="left-det">Phone</span>
-                  <span class="dot">:</span>
-                <span class="right-det"><%= @eprofile.phone %></span>
-            </li>
-
-            <li>
-              <span class="left-det">Fax</span>
-                  <span class="dot">:</span>
-                <span class="right-det"><%= @eprofile.fax %></span>
-            </li>
-
-             <li>
-              <span class="left-det">Email</span>
-                  <span class="dot">:</span>
-                <span class="right-det"><a href="#"><%= @eprofile.email %></a></span>
-            </li>
-
-             <li>
-              <span class="left-det">Website</span>
-                  <span class="dot">:</span>
-                <span class="right-det"><a href="<%=@eprofile.website%>" target="_blank"><%= @eprofile.website %></a></span>
-            </li>
-
-            <li>
-              <span class="left-det">Social Networks URL</span>
-                <span class="dot">:</span>
-                <span class="right-det">
-                   <ul class="prof-details">
-
-                        <li>
-                            <span class="left-det">Facebook</span>
-                                <span class="dot">:</span>
-                            <span class="right-det"><a href="<%= @eprofile.fb_url %>" target="_blank"><%= @eprofile.fb_url %></a></span>
-                        </li>
-
-                        <li>
-                            <span class="left-det">Twitter</span>
-                                <span class="dot">:</span>
-                            <span class="right-det"><a href="<%= @eprofile.twitter_url %>" target="_blank"><%= @eprofile.twitter_url %></a></span>
-                        </li>
-
-                        <li>
-                            <span class="left-det">Google Plus</span>
-                                <span class="dot">:</span>
-                            <span class="right-det"><a href="<%= @eprofile.gplus_url %>" target="_blank"><%= @eprofile.gplus_url %></a></span>
-                        </li>
-
-                        <li>
-                            <span class="left-det">Linkedin</span>
-                                <span class="dot">:</span>
-                            <span class="right-det"><a href="<%= @eprofile.linkedin_url %>" target="_blank"><%= @eprofile.linkedin_url %></a></span>
-                        </li>
-
-
-                    </ul>
-
-                </span>
-            </li>
+<ul class="list" id="info_window">
+  <li><strong>Company Name:</strong><span><%= @eprofile.try(:company_name) %></span></li>
+  <li><strong>Industry:</strong><span><%= @eprofile.try(:industry).try(:name) %></span></li>
+  <li><strong>Services:</strong><span><%= @eprofile.services %></span></li>
+  <li><strong>Products:</strong><span><%= @eprofile.products %></span></li>
+  <li>
+    <strong>Location:</strong>
+    <span>
+      <%= @eprofile.address1 %><%if @eprofile.address1.present? %>, <%end%><%= @eprofile.address2 %><%if @eprofile.address2.present? %>, <%end%><%= @eprofile.try(:city) %><%if @eprofile.city.present? %>, <%end%><%= @eprofile.try(:state_list).try(:name) %><%if @eprofile.country_list.present? %>, <%end%><%= @eprofile.try(:country_list).try(:name) %>
+    </span>
+  </li>
+  <li><strong>Phone:</strong><span><%= @eprofile.phone %></span></li>
+  <li><strong>Fax:</strong><span><%= @eprofile.fax %></span></li>
+  <li><strong>Email:</strong><a href="mailto:<%= @eprofile.email %>" target="_blank"><span><%= @eprofile.email %></span><em class="icon icon-link"></em></a></li>
+  <li><strong>Website:</strong><a href="<%=@eprofile.website%>" target="_blank"><span><%= @eprofile.website %></span><em class="icon icon-link"></em></a></li>
+  <li>
+    <strong>Social Networks:</strong>
+    <a href="<%= @eprofile.fb_url %>" target="_blank" class="icon icon-facebook"></a>
+    <a href="<%= @eprofile.twitter_url %>" target="_blank" class="icon icon-twitter"></a>
+    <a href="<%= @eprofile.gplus_url %>" target="_blank" class="icon icon-google"></a>
+    <a href="<%= @eprofile.linkedin_url %>" target="_blank" class="icon icon-linkedin"></a>
+  </li>
 
 
 
-        </ul>
-</div>
+</ul> 
+

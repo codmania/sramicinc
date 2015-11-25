@@ -1,159 +1,123 @@
-<%= form_for @eprofile, :html => { :multipart => true , :class => "form-horizontal jprofile", :role =>"form" } do |f| %>
+<%= form_for @eprofile, :html => { :multipart => true , :class => "jprofile", :role =>"form" } do |f| %>
+
   <% if @eprofile.errors.any? %>
       <ul>
       <% @eprofile.errors.full_messages.each_with_index do |message, index| %>
         <% if index%2 != 0%>
-                <li style="color: red;"><%= message %></li>
+          <li style="color: red;"><%= message %></li>
         <%end %>
-
       <% end %>
       </ul>
-
   <% end %>
 
+  <div class="w50">
 
-
-
-<div class="profile-detail" id="edit_window">
-<div class="prof-details">
-
-
-<div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "comp">Company Name<em>*</em></label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :company_name ,:class => "form-control",:required=>true,:maxlength=>100%>
-  </div>
-  </div>
-  <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "industry">Industry:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.collection_select :industry_id, Industry.all, :id, :name,:class => "form-control" %>
-  </div>
-  </div>
-  <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "services">Services:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :services,:class => "form-control",:maxlength=>1000%>
-  </div>
-  </div>
-  <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "products">Products:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :products,:class => "form-control",:maxlength=>1000 %>
-  </div>
-  </div>
-  <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "address">Address1<em>*</em></label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :address1,:class => "form-control",:required=>true,:maxlength=>1000 %>
-  </div>
-  </div>
-
-  <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "address">Address2:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :address2,:class => "form-control",:maxlength=>1000 %>
-  </div>
-  </div>
-
-  <div class = "form-group pro_form_group">
-    <label class = "col-sm-3" for = "country">Country:</label>
-    <div class = "col-sm-4 pro_col_sm_4">
-      <%= f.collection_select :country_list_id, CountryList.all, :id, :name ,{:prompt => 'Select Country'}%>
+    <div class="form-group">
+      <label for = "comp">Company Name<em>*</em></label>
+       <%= f.text_field :company_name ,:class => "form-control",:required=>true,:maxlength=>100%>
     </div>
-  </div>
 
-  <div class = "form-group pro_form_group">
-    <label class = "col-sm-3" for = "state">State:</label>
-    <div class = "col-sm-4 pro_col_sm_4 ">
+    <div class="form-group">
+      <label for = "industry">Industry</label>
+      <%= f.collection_select :industry_id, Industry.all, :id, :name, {}, {class: 'selectpicker'}  %>
+    </div>
+
+    <div class="form-group">
+      <label for = "services">Services</label>
+      <%= f.text_field :services,:class => "form-control",:maxlength=>1000%>
+    </div>
+
+    <div class="form-group">
+      <label for = "products">Products</label>
+      <%= f.text_field :products,:class => "form-control",:maxlength=>1000 %>
+    </div>
+
+    <div class="form-group">
+      <label for = "address">Address1<em>*</em></label>
+      <%= f.text_field :address1,:class => "form-control",:required=>true,:maxlength=>1000 %>
+    </div>
+
+    <div class="form-group">
+      <label for = "address">Address2</label>
+      <%= f.text_field :address2,:class => "form-control",:maxlength=>1000 %>
+    </div>
+
+    <div class="form-group">
+      <label for = "country">Country</label>
+      <%= f.collection_select :country_list_id, CountryList.all, :id, :name ,{:prompt => 'Select Country'}, {class: 'selectpicker'} %>
+    </div>
+
+    <div class="form-group">
+      <label for = "state">State</label>
       <input type="hidden" name="state_list_id" id="state_list_id" value="<%= @eprofile.state_list_id%>">
-      <select id="eprofile_state_list_id" name="eprofile[state_list_id]" class="state_list">
-      </select>
+      <select id="eprofile_state_list_id" name="eprofile[state_list_id]" class="state_list"></select>
     </div>
-  </div>
 
-   <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "city">City:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :city,:class => "form-control",:maxlength=>50%>
-  </div>
-  </div>
-
-  <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "phone">Phone</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :phone,:class => "form-control",:pattern=>"([\+]?[1]{1})?(?:[\(][0-9]{3}[\)]|[0-9]{3})[\-]?[0-9]{3}[\-]?[0-9]{4}",:title=>'Phone Number Format:Any 10 digit numbers, 123-456-7890 ,(123)456-7890,+11234567890' %>
-  </div>
-  </div>
-  <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "fax">Fax:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :fax,:class => "form-control" ,:pattern=>"[0-9]{3}\-[0-9]{7}",:title=>'Fax should be in format like (area code-fax number)'%>
-  </div>
-  </div>
-
-
-   <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "overview">Overview:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_area :overview,:class => "form-control" ,:maxlength=>2000 %>
-  </div>
-  </div>
-  <h6 style="margin-left:29%">Maximum 2000 characters are allowed</h6>
-   <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "logo">Logo:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.file_field :logo,:class => "form-control" %>
-  </div>
-  <!-- <span class="left-det">Social Networks URL</span> -->
-  </div>
-  <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "website">Website:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :website,:class => "form-control", :pattern => "((https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)", :title => "Format Should be anything that starts with
-http:// 'or' https:// 'or' www.",:maxlength=>256%>
-  </div>
-  </div>
-   <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "facebook">Facebook:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :fb_url,:class => "form-control",:pattern => "^(https?:\/\/)?((w{3}\.)?)facebook.com\/.*",:title =>"Format Should be anything that starts with http(s)://www.facebook.com/",:maxlength=>1000%>
-  </div>
-  </div>
-   <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "twitter">Twitter:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-    <%= f.text_field :twitter_url,:class => "form-control", :pattern => "^(https?:\/\/)?((w{3}\.)?)twitter\.com\/(#!\/)?[a-z0-9_]+$" ,:title =>"Format Should be anything that starts with http(s)://www.twitter.com/",:maxlength=>1000%>
-  </div>
-  </div>
-   <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "comp">Google Plus:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :gplus_url,:class => "form-control" ,:pattern=> "^(https?:\/\/)?((w{3}\.)?)plus\.google\.com\/(#!\/)?[a-z0-9_]+$",:title => "Format Should be anything that starts with http(s)://www.plus.google.com/",:maxlength=>1000%>
-  </div>
-  </div>
-
-   <div class = "form-group pro_form_group">
-  <label class = "col-sm-3" for = "comp">Linkedin:</label>
-  <div class = "col-sm-4 pro_col_sm_4">
-  <%= f.text_field :linkedin_url,:class => "form-control", :pattern =>"^(https?:\/\/)?((w{3}\.)?)linkedin\.com\/(#!\/)?[a-z0-9_]+$", :title => "Format Should be anything that starts with http(s)://www.linkedin.com/",:maxlength=>1000%>
-  </div>
-  </div>
-
-  <div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10">
-        <%= f.submit "Save" ,:class => "btn btn-primary" %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    eprofile_path, :class => 'btn btn-warning' %>
-      </div>
-  </div>
-  <% end %>
-  </div>
+    <div class="form-group">
+      <label for = "city">City</label>
+      <%= f.text_field :city,:class => "form-control",:maxlength=>50%>
+    </div>
 
   </div>
+
+  <div class="w50">
+
+    <div class="form-group">
+      <label for = "phone">Phone</label>
+      <%= f.text_field :phone,:class => "form-control",:pattern=>"([\+]?[1]{1})?(?:[\(][0-9]{3}[\)]|[0-9]{3})[\-]?[0-9]{3}[\-]?[0-9]{4}",:title=>'Phone Number Format:Any 10 digit numbers, 123-456-7890 ,(123)456-7890,+11234567890' %>
+    </div>
+
+    <div class="form-group">
+      <label for = "fax">Fax</label>
+      <%= f.text_field :fax,:class => "form-control" ,:pattern=>"[0-9]{3}\-[0-9]{7}",:title=>'Fax should be in format like (area code-fax number)'%>
+    </div>
+
+    <div class="form-group">
+      <label for = "overview">Overview</label>
+      <%= f.text_area :overview,:class => "form-control" ,:maxlength=>2000 %>
+      <small>Maximum 2000 characters are allowed</small>
+    </div>
+
+    <div class="form-group">
+      <label for = "logo">Logo</label>
+      <%= f.file_field :logo,:class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label for = "website">Website</label>
+      <%= f.text_field :website,:class => "form-control", :pattern => "((https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)", :title => "Format Should be anything that starts with http:// 'or' https:// 'or' www.",:maxlength=>256%>
+    </div>
+
+    <div class="form-group">
+      <label for = "facebook">Facebook</label>
+       <%= f.text_field :fb_url,:class => "form-control",:pattern => "^(https?:\/\/)?((w{3}\.)?)facebook.com\/.*",:title =>"Format Should be anything that starts with http(s)://www.facebook.com/",:maxlength=>1000%>
+    </div>
+
+    <div class="form-group">
+      <label for = "twitter">Twitter</label>
+      <%= f.text_field :twitter_url,:class => "form-control", :pattern => "^(https?:\/\/)?((w{3}\.)?)twitter\.com\/(#!\/)?[a-z0-9_]+$" ,:title =>"Format Should be anything that starts with http(s)://www.twitter.com/",:maxlength=>1000%>
+    </div>
+
+    <div class="form-group">
+      <label for = "comp">Google Plus</label>
+      <%= f.text_field :gplus_url,:class => "form-control" ,:pattern=> "^(https?:\/\/)?((w{3}\.)?)plus\.google\.com\/(#!\/)?[a-z0-9_]+$",:title => "Format Should be anything that starts with http(s)://www.plus.google.com/",:maxlength=>1000%>
+    </div>
+
+    <div class="form-group">
+      <label for = "comp">Linkedin</label>
+      <%= f.text_field :linkedin_url,:class => "form-control", :pattern =>"^(https?:\/\/)?((w{3}\.)?)linkedin\.com\/(#!\/)?[a-z0-9_]+$", :title => "Format Should be anything that starts with http(s)://www.linkedin.com/",:maxlength=>1000%>
+    </div>
+
+    <div class="actions">
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),eprofile_path, :class => 'btn btn-ghost' %>
+      <%= f.submit "Save" ,:class => "btn btn-orange" %>
+    </div>
+
   </div>
-  </div>
+
+  
+<% end %>
+
 <script>
 
     $(document).ready(function(){

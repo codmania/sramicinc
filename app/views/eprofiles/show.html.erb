@@ -1,46 +1,24 @@
+<div class="inboard profile">
+  <div class="margin">
 
-        	<!--left-side-->
-        	<div class="col-lg-3 col-md-4 col-sm-4 no_pad_left job-req">
-            		<div class="col-lg-12 no_pad job-det">
+    <div class="enclosure">
 
-                        <div class="similar-jobs">
+      <div class="w25">
+        <h3>Company Profile</h3>
+        <h6>
+          <%if session[:staff_user].nil?%>
+            <a href="<%= edit_eprofile_path(@eprofile.id)%>" id="show_edit">Edit</a>
+          <% end %>
+        </h6>
+        <%= image_tag @eprofile.logo.url(:medium), class: "img-circle"%> 
+      </div>
 
-                            <div class="comp-profile">
-                            	<div class="logo-dis">
-                                   <%= image_tag @eprofile.logo.url(:medium)%>
+      <div class="w50">
+        <%= render 'info' %>
+      </div>
 
-                                </div>
+    </div>
 
-                                <!-- <div class="comp-name">
-                                	<p><span><a href="#"><img src="/assets/edit-icon.png" alt="" /></a></span></p>
-                                </div> -->
-                            </div>
+  </div>
+</div>
 
-                        </div>
-
-
-                    </div>
-                    <!--End explore-result-->
-            </div>
-            <!--End left-side-->
-
-            <!--job-description-->
-            <div class="col-lg-9 col-md-8 col-sm-8 no_pad profile-description">
-            	<!--start job-portion-->
-            	<div class="profile-portion">
-                	<div class="top-portion">
-                    <h4>Company Information</h4>
-                      <%if session[:staff_user].nil?%>
-                          <a href="<%= edit_eprofile_path(@eprofile.id)%>" id="show_edit"><img src="/assets/edit-icon.png" alt="" /></a>
-                      <% end %>
-
-                    </div>
-
-                    <!--start profile-detail-->
-                    <%= render 'info' %>
-                    <!--End profile-detail-->
-                </div>
-            	<!--End job-portion-->
-
-
-		</div>

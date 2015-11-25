@@ -910,6 +910,10 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 .inboard.profile .enclosure .list .btn, .inboard.profile .enclosure .list .btn:focus, .inboard.profile .enclosure .list .btn:hover { font-size: 14px; padding: 8px 20px 6px 20px; margin-right: 10px;}
 
+.inboard.profile .enclosure .list li a, .inboard.profile .enclosure .list li a:focus { color:$base_color;}
+.inboard.profile .enclosure .list li a.icon, .inboard.profile .enclosure .list li a.icon:focus { font-size: 28px; @extend .inline-block; vertical-align: top; margin:-2px 4px 0px 0px; color: $grey_color;}
+.inboard.profile .enclosure .list li a .icon-link {@extend .inline-block; vertical-align: top;  font-size: 24px; margin: 2px 0px 0px 0px; color:$grey_color;}
+
 
 
 .inboard.edit .enclosure .w50 {@extend .inline-block; width: 40%; margin: 0px 20px 0px 20px; vertical-align: top; }
@@ -1013,6 +1017,11 @@ table.lodge.orange td strong {color: $orange_color; }
 .inboard .enclosure .lodge td a.orange:hover {  color: $orange_color !important;}
 
 
+.orange .inboard.profile .enclosure .list li a.icon:hover { color: $orange_color;} 
+.orange .inboard.profile .enclosure .list a:hover { color:$orange_color;}
+.orange .inboard.profile .enclosure .list a:hover .icon { color:$orange_color;}  
+
+
 
 /* BLUE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -1113,6 +1122,10 @@ table.lodge.blue td strong {color: $blue_color; }
 .inboard .enclosure .lodge td a.blue, .inboard .enclosure .lodge td a.blue:focus {  color: $blue_color !important;}
 .inboard .enclosure .lodge td a.blue:hover {  color: $blue_color !important;}
 
+
+.blue .inboard.profile .enclosure .list li a.icon:hover { color: $blue_color;}
+.blue .inboard.profile .enclosure .list a:hover { color:$blue_color;}
+.blue .inboard.profile .enclosure .list a:hover .icon { color:$blue_color;}   
 
 
 /* RETINA */

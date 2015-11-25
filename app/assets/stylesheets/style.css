@@ -1153,10 +1153,7 @@ opacity: 0; outline: none; background: white; cursor: inherit; display: block;}
     color: green;
 }
 
- #can
- {
-  text-decoration: none; color: #513914;
- }
+
 .btn-eprofile, .btn-jprofile{
   background-color: #f5a934;
   padding: 3px 20px;

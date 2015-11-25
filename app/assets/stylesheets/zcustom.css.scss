@@ -916,7 +916,12 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 
 
 .inboard.edit .enclosure .w50 {@extend .inline-block; width: 40%; margin: 0px 20px 0px 20px; vertical-align: top; }
+.inboard.edit .enclosure .w100 {@extend .inline-block; width: 84%; margin: 0px 20px 0px 20px; vertical-align: top; }
 
+.inboard.edit .panel-group { margin-bottom: 40px;}
+.inboard.edit .panel-group .w50 { width: 48%; display: inline; float: left; margin: 0px 38px 0px 0px;}
+.inboard.edit .panel-group .w50.last {margin: 0px 0px 0px 0px;}
+.inboard.edit .panel-group .form-group { margin: 40px 0px;}
 
 
 .inboard .result {@extend .inline-block; vertical-align: middle;  width: auto; float: none; margin: 0px; padding-bottom: 0px; border-bottom: 0;}
@@ -925,10 +930,6 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .inboard .result .w75 { width:82%; margin: 10px 0px;}
 .inboard .result .img-circle {  width: 64px; height: 64px;}
 .inboard .result h3 { text-align: left; margin-bottom: 0px;}
-
-
-
-
 
 
 

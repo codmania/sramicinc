@@ -1,32 +1,26 @@
+<%= form_for @salary_type, :html => { :class => "salary_type" } do |f| %>
 
-<%= form_for @salary_type, :html => { :class => "form-horizontal salary_type" } do |f| %>
-    <% if @salary_type.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@salary_type.errors.count, "error") %> prohibited this salary Type from being saved:</h2>
+ <% if @salary_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@salary_type.errors.count, "error") %> prohibited this salary Type from being saved:</h2>
 
-          <ul>
-            <% @salary_type.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-
-
-    <div class="l-block l-block_1">
-      <label>Salary Type-Name<em>*</em></label><%= f.text_field :s_type ,:required=>true%>
+      <ul>
+        <% @salary_type.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
+  <% end %>
 
-    <div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10">
-        <%= f.submit 'Save', :class => 'btn btn-primary' %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    salary_types_path, :class => 'btn btn-warning' %>
-      </div>
-    </div>
+  <div class="form-group">
+    <label>Salary Type-Name<em>*</em></label>
+    <%= f.text_field :s_type ,:required=>true%>
+  </div>
+
+  
+  <div class="actions">
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),salary_types_path, :class => 'btn btn-ghost' %>
+    <%= f.submit 'Save', :class => 'btn btn-blue' %>
+  </div>
 
 <%end%>
-
-

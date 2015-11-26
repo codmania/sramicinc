@@ -1,32 +1,25 @@
+<%= form_for @job_type, :html => { :class => "job_type" } do |f| %>
 
-<%= form_for @job_type, :html => { :class => "form-horizontal job_type" } do |f| %>
-    <% if @job_type.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@job_type.errors.count, "error") %> prohibited this jobtype from being saved:</h2>
-
-          <ul>
-            <% @job_type.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-
-
-    <div class="l-block l-block_1">
-      <label>Job Type-Name<em>*</em></label><%= f.text_field :name ,:required=>true%>
+ <% if @job_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_type.errors.count, "error") %> prohibited this jobtype from being saved:</h2>
+      <ul>
+        <% @job_type.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
+  <% end %>
 
-    <div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10">
-        <%= f.submit 'Save', :class => 'btn btn-primary' %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    job_types_path, :class => 'btn btn-warning' %>
-      </div>
-    </div>
+  <div class="form-group">
+    <label>Job Type-Name<em>*</em></label>
+    <%= f.text_field :name ,:required=>true%>
+  </div>
+
+  
+  <div class="actions">
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),job_types_path, :class => 'btn btn-ghost' %>
+    <%= f.submit 'Save', :class => 'btn btn-blue' %>
+  </div>
 
 <%end%>
-
-

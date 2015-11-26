@@ -5,12 +5,12 @@
       <h3>Users</h3>
 
       <%= form_for :app_users ,:url=>{:controller=>'app_users',:action=>'index'} ,:method=>'get' do |s|%>
-        <div class="form-group">
+        <div class="form-group w50">
           <label>User Name</label>
           <input type="text" name="name">
         </div>
 
-        <div class="form-group">
+        <div class="form-group w50">
           <label>User Type</label>
           <select name="user_type" id="user_type" class="selectpicker">
             <option value="">All</option>
@@ -19,7 +19,7 @@
           </select>
         </div>
 
-        <div class="actions">
+        <div class="actions w25">
           <input type="submit" class="btn btn-blue" value="Search"/>
         </div>
       <% end %>

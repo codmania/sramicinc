@@ -1,123 +1,94 @@
-<!--start search-container-->
-<div class="container-fluid search-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 no_pad ">
+<div class="inboard">
+  <div class="margin">
 
-        <div class="company_users">
+    <div class="enclosure">
+      <h3>Jobs</h3>
 
-            <h3>Jobs</h3>
+      <%= form_for :jobs ,:url=>{:controller=>'jobs',:action=>'index'} ,:method=>'get' do |s|%>
+        <div class="form-group w25">
+          <label>Posted Date</label>
+          <select class="small-drp" name = "postingdate" class="selectpicker">
+            <option value = "Last 24 hours" <%if params[:postingdate]=='Last 24 hours' %>selected<%end%>>
+            Last 24 hours</option>
+            <option value = "Last 3 days"  <%if params[:postingdate]=='Last 3 days' %>selected<%end%>>
+            Last 3 days</option>
+            <option value = "Last 7 days"  <%if params[:postingdate]=='Last 7 days' %>selected<%end%>>
+            Last 7 days</option>
+            <option value = "Last 15 days" <%if params[:postingdate]=='Last 15 days' %>selected<%end%>>
+            Last 15 days</option>
+            <option value = "Last 30 days" <%if params[:postingdate]=='Last 30 days' %>selected<%end%>>
+            Last 30 days</option>
+            <option value = ""  <%if params[:postingdate]=='' %>selected<%end%>>
+            Any </option>
+          </select>
+        </div>
 
-            <div class="create_job_sub_container container">
+        <div class="form-group w25">
+          <label>Location</label>
+          <input type="text" name="where" class="ad1-text" placeholder="City, State or Zip Code" value="<%= params[:location]%>" />
+        </div>
 
-              <div class="row">
-                <%= form_for :jobs ,:url=>{:controller=>'jobs',:action=>'index'} ,:method=>'get' do |s|%>
-          <div class="">
-            <div class="job_input_container">
-              <div class="col-xs-12 bot_pad col-sm-3">
-                <label>Posted Date </label>
-                <div>
-                  <select class="small-drp" name = "postingdate">
-                    <option value = "Last 24 hours" <%if params[:postingdate]=='Last 24 hours' %>selected<%end%>>
-                    Last 24 hours</option>
-                    <option value = "Last 3 days"  <%if params[:postingdate]=='Last 3 days' %>selected<%end%>>
-                    Last 3 days</option>
-                    <option value = "Last 7 days"  <%if params[:postingdate]=='Last 7 days' %>selected<%end%>>
-                    Last 7 days</option>
-                    <option value = "Last 15 days" <%if params[:postingdate]=='Last 15 days' %>selected<%end%>>
-                    Last 15 days</option>
-                    <option value = "Last 30 days" <%if params[:postingdate]=='Last 30 days' %>selected<%end%>>
-                    Last 30 days</option>
-                    <option value = ""  <%if params[:postingdate]=='' %>selected<%end%>>
-                    Any </option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-3 bot_pad">
-                <label>Location</label>
-                <input type="text" name="where" class="ad1-text" placeholder="City, State or Zip Code" value="<%= params[:location]%>" />
-              </div>
-              <div class="col-xs-12 col-sm-3 bot_pad">
-                <label>Job ID</label>
-                <input type="text" name="id" class="ad1-text" placeholder="Job ID" value="<%= params[:id]%>" />
-              </div>
-              <div class="col-xs-12 col-sm-3 bot_pad">
-                <label style="visibility:hidden">Dummy Text here</label>
-                <input type="submit" class="blue-btn" value="Search"/>
-              </div>
-            </div>
+        <div class="form-group w25">
+          <label>Job ID</label>
+          <input type="text" name="id" class="ad1-text" placeholder="Job ID" value="<%= params[:id]%>" />
+        </div>
 
-          </div>
-
-          </div>
+        <div class="actions w25">
+          <input type="submit" class="btn btn-blue" value="Search"/>
+        </div>
       <% end %>
-
-      </div>
-</div>
-
-<div id="no-more-tables">
-  <table class="col-sm-12 table-striped table-condensed cf">
-    <thead class="cf">
-    <tr>
-      <th>Job ID</th>
-      <th>Title</th>
-      <th>Location</th>
-      <th>Posted Date</th>
-      <th>Resume Submitted</th>
-      <th>Comments</th>
-      <th>Posted By</th>
-      <th>Status</th>
-      <th width="100" class="table-last-th"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @jobs.results.each do |job| %>
-        <tr>
-          <td data-title="Job ID"><a href="<%= job_path(job.id) %>" target="_blank"><%= job.id%></td>
-          <td data-title="Title"><a href="<%= job_path(job.id) %>" target="_blank"><%= job.title%></td>
-          <td data-title="Location"><%=job.try(:city)%>  <%=job.try(:state_list).try(:name)%>   <%=job.try(:zip)%></td>
-          <td data-title="Posted Date"><%=job.created_at.strftime("%m/%d/%Y")%></td>
-          <td data-title="Resume Submitted">
-            <%=job.try(:job_applications).try(:count)%>
-          </td>
-
-          <td data-title="Comments"><%=job.try(:comments).try(:count)%></td>
-          <td data-title="Posted By"><%=job.try(:employer).try(:eprofile).try(:company_name)%></td>
-          <td data-title="Status">
-                  <span class="stat">
-                        <%if job.status %>
-                           Opened
-                        <% else %>
-                            Closed
-                        <%end%>
-                  </span>
-          </td>
-
-          <td data-title="" class="table-last-td">
-            <ul class="actions_container">
-              <li> <%= link_to '<span class="icon icon_1"></span>'.html_safe,
-                               edit_job_path(job) %></li>
-            </ul>
-          </td>
-
-
-        </tr>
-    <%end%>
-
-    </tbody>
-  </table>
-</div>
-
-</div>
-
-     </div>
 
     </div>
 
+    <div class="enclosure">
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th>Job ID</th>
+          <th>Title</th>
+          <th>Location</th>
+          <th>Posted Date</th>
+          <th>Resume Submitted</th>
+          <th>Comments</th>
+          <th>Posted By</th>
+          <th>Status</th>
+          <th class="last">Actions</th>
+        </tr>
+
+        <% @jobs.results.each do |job| %>
+          <tr>
+            <td data-title="Job ID"><a href="<%= job_path(job.id) %>" target="_blank"><%= job.id%></a></td>
+            <td data-title="Title"><a href="<%= job_path(job.id) %>" target="_blank"><%= job.title%></a></td>
+            <td data-title="Location"><span><%=job.try(:city)%>  <%=job.try(:state_list).try(:name)%>   <%=job.try(:zip)%></span></td>
+            <td data-title="Posted Date"><span><%=job.created_at.strftime("%m/%d/%Y")%></span></td>
+            <td data-title="Resume Submitted"><span><%=job.try(:job_applications).try(:count)%></span></td>
+            <td data-title="Comments"><span><%=job.try(:comments).try(:count)%></span></td>
+            <td data-title="Posted By"><span><%=job.try(:employer).try(:eprofile).try(:company_name)%></span></td>
+            <td data-title="Status">
+              <span>
+                <%if job.status %>
+                  Opened
+                <% else %>
+                  Closed
+                <%end%>
+              </span>
+            </td>
+            <td class="last">
+              <%= link_to edit_job_path(job), class: "icon icon-edit", title: "Edit" do %><% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table> 
+
+    </div>
+
+    <div class="centered">
+      <div class="paginations">
+        <%= will_paginate @jobs.hits,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+      </div>
+    </div>
+
+
   </div>
-
-<div class="paginations top-pagination remove_pad">
-
-<%= will_paginate @jobs.hits,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%></div>
-
 </div>
+

@@ -875,10 +875,12 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .inboard .enclosure .actions {@extend .block; text-align: right;}
 .inboard .enclosure .actions .btn { margin-left: 20px;}
 
+.inboard .enclosure .form-group.w75 {@extend .inline-block; vertical-align: middle; width:80%; margin-right: 10px; }
 .inboard .enclosure .form-group.w50 {@extend .inline-block; vertical-align: middle; width:40%; margin-right: 10px; }
 .inboard .enclosure .form-group.w25 {@extend .inline-block; vertical-align: middle; width:25%; margin-right: 10px; }
 .inboard .enclosure .actions.w25 {@extend .inline-block; vertical-align: middle; width:15%; text-align: left; }
 .inboard .enclosure .actions.w25 .btn {margin: 0px 10px 0px 0px;}
+
 
 .inboard .enclosure .lodge { text-align: left;}
 .inboard .enclosure .lodge td a, .inboard .enclosure .lodge td a:focus { font-size: 16px; text-decoration: underline;}

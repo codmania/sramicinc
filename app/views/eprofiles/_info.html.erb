@@ -1,8 +1,9 @@
 <ul class="list" id="info_window">
-  <li><strong>Company Name:</strong><span><%= @eprofile.try(:company_name) %></span></li>
-  <li><strong>Industry:</strong><span><%= @eprofile.try(:industry).try(:name) %></span></li>
-  <li><strong>Services:</strong><span><%= @eprofile.services %></span></li>
-  <li><strong>Products:</strong><span><%= @eprofile.products %></span></li>
+  <li><strong>Company Name:</strong><span></span><%= @eprofile.try(:company_name) %></li>
+  <li><strong>Overview:</strong><span></span><%= @eprofile.overview %></li>
+  <li><strong>Industry:</strong><span></span><%= @eprofile.try(:industry).try(:name) %></li>
+  <li><strong>Services:</strong><span></span><%= @eprofile.services %></li>
+  <li><strong>Products:</strong><span></span><%= @eprofile.products %></li>
   <li>
     <strong>Location:</strong>
     <span>

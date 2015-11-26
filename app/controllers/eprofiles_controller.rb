@@ -43,7 +43,7 @@ class EprofilesController < ApplicationController
 
     respond_to do |format|
       if @eprofile.save
-        format.html { redirect_to @eprofile, notice: 'Eprofile was successfully created.' }
+        format.html { redirect_to @eprofile, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @eprofile }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class EprofilesController < ApplicationController
   def update
   	respond_to do |format|
       if @eprofile.update(eprofile_params)
-        format.html { redirect_to @eprofile, notice: 'Eprofile was successfully updated.' }
+        format.html { redirect_to @eprofile, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @eprofile }
       else
         format.html { render :edit }

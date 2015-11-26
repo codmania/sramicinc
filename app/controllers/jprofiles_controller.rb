@@ -62,7 +62,7 @@ class JprofilesController < ApplicationController
 
     respond_to do |format|
       if @jprofile.save
-        format.html { redirect_to @jprofile, notice: 'Jprofile was successfully created.' }
+        format.html { redirect_to @jprofile, notice: 'Profile was successfully created.' }
         format.json { render :show, status: :created, location: @jprofile }
       else
         format.html { render :new }
@@ -76,7 +76,7 @@ class JprofilesController < ApplicationController
   def update
     respond_to do |format|
       if @jprofile.update(jprofile_params)
-        format.html { redirect_to @jprofile, notice: 'Jprofile was successfully updated.' }
+        format.html { redirect_to @jprofile, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @jprofile }
       else
         format.html { render :edit }
@@ -90,7 +90,7 @@ class JprofilesController < ApplicationController
   def destroy
     @jprofile.destroy
     respond_to do |format|
-      format.html { redirect_to jprofiles_url, notice: 'Jprofile was successfully destroyed.' }
+      format.html { redirect_to jprofiles_url, notice: 'Profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

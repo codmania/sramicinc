@@ -44,16 +44,16 @@
 
             <div class="w25">
               <ul class="list">
-                <li><strong>Title:</strong><span><%= @jprofile.try(:title) %></span></li>
-                <li><strong>Skills:</strong><span><%= @jprofile.skills.map { |s| s.name }.join(",") %></span></li>
+                <li><strong>Title:</strong><span></span><%= @jprofile.try(:title) %></span></li>
+                <li><strong>Skills:</strong><span></span><%= @jprofile.skills.map { |s| s.name }.join(", ") %></li>
                 <% if current_user.try(:role).try(:authority)=='employer' %>
-                  <li><strong>Email:</strong><span><%= @jprofile.try(:jobseeker).try(:user).try(:email) %></span></li>
-                  <li><strong>Phone:</strong><span><%= @jprofile.try(:phone) %></span></li>
+                  <li><strong>Email:</strong><span></span><%= @jprofile.try(:jobseeker).try(:user).try(:email) %></li>
+                  <li><strong>Phone:</strong><span></span><%= @jprofile.try(:phone) %></li>
                 <% end %>
-                <li><strong>Address:</strong><span><%= @jprofile.try(:city) %> <%if @jprofile.try(:city).present? %>,<%end%><%= @jprofile.try(:state_list).try(:name) %><%if @jprofile.try(:state_list).try(:name).present? %>, <%end%><%= @jprofile.try(:country_list).try(:name) %><%if @jprofile.country_list.present? %>, <%end%><%= @jprofile.try(:zip) %></span></li>
-                <li><strong>City:</strong><span><%= @jprofile.try(:city) %></span></li>
+                <li><strong>Address:</strong><span><%= @jprofile.try(:city)%><%if @jprofile.try(:city).present?%>, <%end%><%= @jprofile.try(:state_list).try(:name) %><%if @jprofile.try(:state_list).try(:name).present? %>, <%end%><%= @jprofile.try(:country_list).try(:name) %><%if @jprofile.country_list.present? %>, <%end%><%= @jprofile.try(:zip) %></span></li>
+                <!-- <li><strong>City:</strong><span><%= @jprofile.try(:city) %></span></li>
                 <li><strong>State:</strong><span><%= @jprofile.try(:state_list).try(:name) %></span></li>
-                <li><strong>Zip Code:</strong><span><%= @jprofile.try(:zip) %></span></li>
+                <li><strong>Zip Code:</strong><span><%= @jprofile.try(:zip) %></span></li> -->
               </ul> 
             </div>
 

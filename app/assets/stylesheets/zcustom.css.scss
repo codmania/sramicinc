@@ -470,6 +470,11 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .panel-group .panel .panel-collapse {width: 100%; float: left;}
 
+.panel-group .panel .panel-collapse .actions {display: inline; float: left; width: 100%; margin: 0px; text-align: right;}
+.panel-group .panel .panel-collapse .actions a.icon, .panel-group .panel .panel-collapse .actions a.icon:focus { text-decoration: none; font-size: 20px;}
+.panel-group .panel .panel-collapse .actions a.icon.icon-edit{ font-size: 21px; margin-right: 10px;}
+.panel-group .panel .panel-collapse .actions a.icon:hover { color: $dark_grey_color !important}
+
 
 /* ---- ASIDE FILTERS ---- */
 
@@ -1031,7 +1036,10 @@ table.lodge.orange td strong {color: $orange_color; }
 
 .orange .inboard.profile .enclosure .list li a.icon:hover { color: $orange_color;} 
 .orange .inboard.profile .enclosure .list a:hover { color:$orange_color;}
-.orange .inboard.profile .enclosure .list a:hover .icon { color:$orange_color;}  
+.orange .inboard.profile .enclosure .list a:hover .icon { color:$orange_color;} 
+
+
+.orange .panel-group .panel .panel-collapse .actions a.icon, .orange .panel-group .panel .panel-collapse .actions a.icon:focus { color: $orange_color;} 
 
 
 
@@ -1138,6 +1146,9 @@ table.lodge.blue td strong {color: $blue_color; }
 .blue .inboard.profile .enclosure .list li a.icon:hover { color: $blue_color;}
 .blue .inboard.profile .enclosure .list a:hover { color:$blue_color;}
 .blue .inboard.profile .enclosure .list a:hover .icon { color:$blue_color;}   
+
+
+.blue .panel-group .panel .panel-collapse .actions a.icon, .blue .panel-group .panel .panel-collapse .actions a.icon:focus { color: $blue_color;} 
 
 
 /* RETINA */

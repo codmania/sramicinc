@@ -39,7 +39,11 @@ if !JobType.exists?
   job_type_5=JobType.create name:'Temporary'
   job_type_6=JobType.create name:'Entry Level'
   job_type_7=JobType.create name:'Commission'
+<<<<<<< .merge_file_LiiySD
   job_type_8=JobType.create name:'Trainee'  
+=======
+  job_type_8=JobType.create name:'Trainee'
+>>>>>>> .merge_file_5wh9Zg
 end
 
 if !User.find_by(email: 'bindas@sramic.com', role_id: 1).present?
@@ -408,6 +412,7 @@ end
 # end
 #
 #
+<<<<<<< .merge_file_LiiySD
 # if !Job.exists?
 #   job_1=Job.create title:'Associate Software Engineer',keywords:'software,Java',category_id:'1',employer_id:1,job_type_id:'1',industry_id:'5',description:'Software engineers apply the principles of software engineering to the design, development, maintenance, testing, and evaluation of the software and systems that make computers or anything containing software work.',country_list_id: '1',state_list_id: '1',city: 'Bangalore',zip: '56010'
 #   job_2=Job.create title:'Java developer',keywords:'java,j2ee',employer_id:1,category_id:'1', job_type_id:'2',industry_id:'5',description:'Java is a set of several computer software and specifications developed by Sun Microsystems, later acquired by Oracle Corporation, that provides a system for developing application software and deploying it in a cross-platform computing environment. Java is used in a wide variety of computing platforms from embedded devices and mobile phones to enterprise servers and supercomputers. While less common, Java applets run in secure, sandboxed environments to provide many features of native applications and can be embedded in HTML pages.',country_list_id: '1',state_list_id: '2',city: 'Jaipur',zip: '33359'
@@ -415,6 +420,15 @@ end
 #   job_4=Job.create title:'Maths Teacher', keywords:'maths,basics', category_id:'4', employer_id:2,job_type_id:'2',industry_id:'1',description:'In contemporary education, mathematics education is the practice of teaching and learning mathematics, along with the associated scholarly research.Researchers in mathematics education are primarily concerned with the tools, methods and approaches that facilitate practice or the study of practice, however mathematics education research, known on the continent of Europe as the didactics or pedagogy of mathematics, has developed into an extensive field of study, with its own concepts, theories, methods, national and international organisations, conferences and literature. This article describes some of the history, influences and recent controversies.',country_list_id: '2',state_list_id: '2',city: 'Sultanpur',zip: '12010'
 #   job_5=Job.create title:'Trainer', keywords:'software,basics', category_id:'3', employer_id:'2',job_type_id:'1',industry_id:'5',description:'Trainers work in many different areas, mainly educating employees of companies on specific topics of workplace importance. Some trainers are in-house, and others work for training companies.Trainers often work within the Human Resources department of a company, fulfilling the most frequent internal needs for education of the workers and management in a company.',country_list_id: '3',state_list_id: '3',city: 'Aurangabad',zip: '98445'
 # end
+=======
+if !Job.exists?
+  job_1=Job.create title:'Associate Software Engineer',keywords:'software,Java',category_id:'1',employer_id:1,job_type_id:'1',industry_id:'5',description:'Software engineers apply the principles of software engineering to the design, development, maintenance, testing, and evaluation of the software and systems that make computers or anything containing software work.',country_list_id: '1',state_list_id: '1',city: 'Bangalore',zip: '56010'
+  job_2=Job.create title:'Java developer',keywords:'java,j2ee',employer_id:1,category_id:'1', job_type_id:'2',industry_id:'5',description:'Java is a set of several computer software and specifications developed by Sun Microsystems, later acquired by Oracle Corporation, that provides a system for developing application software and deploying it in a cross-platform computing environment. Java is used in a wide variety of computing platforms from embedded devices and mobile phones to enterprise servers and supercomputers. While less common, Java applets run in secure, sandboxed environments to provide many features of native applications and can be embedded in HTML pages.',country_list_id: '1',state_list_id: '2',city: 'Jaipur',zip: '33359'
+  job_3=Job.create title:'Senior Java/Grails professional', keywords:'java,grails',employer_id:1,job_type_id:'1',industry_id:'5',description:'Grails is an open source web application framework that uses the Groovy programming language (which is in turn based on the Java platform). It is intended to be a high-productivity framework by following the "coding by convention" paradigm, providing a stand-alone development environment and hiding much of the configuration detail from the developer.',country_list_id: '2',state_list_id: '2',city: 'Delhi',zip: '77524'
+  job_4=Job.create title:'Maths Teacher', keywords:'maths,basics', category_id:'4', employer_id:2,job_type_id:'2',industry_id:'1',description:'In contemporary education, mathematics education is the practice of teaching and learning mathematics, along with the associated scholarly research.Researchers in mathematics education are primarily concerned with the tools, methods and approaches that facilitate practice or the study of practice, however mathematics education research, known on the continent of Europe as the didactics or pedagogy of mathematics, has developed into an extensive field of study, with its own concepts, theories, methods, national and international organisations, conferences and literature. This article describes some of the history, influences and recent controversies.',country_list_id: '2',state_list_id: '2',city: 'Sultanpur',zip: '12010'
+  job_5=Job.create title:'Trainer', keywords:'software,basics', category_id:'3', employer_id:'2',job_type_id:'1',industry_id:'5',description:'Trainers work in many different areas, mainly educating employees of companies on specific topics of workplace importance. Some trainers are in-house, and others work for training companies.Trainers often work within the Human Resources department of a company, fulfilling the most frequent internal needs for education of the workers and management in a company.',country_list_id: '3',state_list_id: '3',city: 'Aurangabad',zip: '98445'
+end
+>>>>>>> .merge_file_5wh9Zg
 #
 #
 #

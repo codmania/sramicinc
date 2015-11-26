@@ -14,7 +14,7 @@
           <th>Status</th>
           <th class="last">Actions</th>
         </tr>
-        <% @jobs.each do |job| %>
+        <% @jobs.order('created_at DESC').each do |job| %>
         <tr>
           <td data-title="Title"><a href="<%= job_path(job.id) %>" target="_blank"><%= job.title%></a></td>
           <td data-title="Location"><span><%=job.try(:city)%>  <%=job.try(:state_list).try(:name)%>   <%=job.try(:zip)%></span></td>

@@ -40,12 +40,12 @@
                 <p>
                   <%= faq.answer %>
                 </p>
-                <ul class="actions_container table-last-th">
+                <div class="actions">
                   <% if current_user.try(:role).try(:authority) =='admin'%>
-                    <li><%= link_to '<span class="icon icon_1"></span>'.html_safe, edit_faq_path(faq) %></li>
-                    <li><%= link_to '<span class="icon icon_2"></span>'.html_safe, faq_path(faq), :method => :delete,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %></li>
+                    <%= link_to edit_faq_path(faq), class: "icon icon-edit", title: "Edit" do %><% end %>
+                    <%= link_to faq_path(faq), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
                   <%end%>
-                </ul>
+                </div>
 
               </div>
                 

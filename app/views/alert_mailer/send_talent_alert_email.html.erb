@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_u24lM8
 Based on your Talent alert
 <% @res.each do |res| %>
 
@@ -6,3 +7,14 @@ Based on your Talent alert
                 :only_path => false, :id => res.id%> <br/>
 
 <% end %>
+=======
+<p>Based on your Talent alert</p>
+
+<% @res.each do |res| %>
+  <p style="padding: 40px 0px;  text-align: center;"> 
+    <%= link_to "#{res.title}", {:controller => "employer", :action => "show", :only_path => false, :id => res.id}, {class: "btn", style: "color:#FFFFFF; font-family:Helvetica, Arial, sans-serif; line-height: 100%; font-weight: 400;  font-size:18px; background-color: #fe894f; padding:12px 60px; text-align: center;"} %>
+  </p>
+<% end %>
+
+
+>>>>>>> .merge_file_hJFjaZ

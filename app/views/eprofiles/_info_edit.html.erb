@@ -14,7 +14,7 @@
 
     <div class="form-group">
       <label for = "comp">Company Name<em>*</em></label>
-       <%= f.text_field :company_name ,:class => "form-control",:required=>true,:maxlength=>100%>
+       <%= f.text_field :company_name ,:class => "form-control",:required=>true,:maxlength=>200%>
     </div>
 
     <div class="form-group">
@@ -24,12 +24,12 @@
 
     <div class="form-group">
       <label for = "services">Services</label>
-      <%= f.text_field :services,:class => "form-control",:maxlength=>1000%>
+      <%= f.text_field :services,:class => "form-control",:maxlength=>10000%>
     </div>
 
     <div class="form-group">
       <label for = "products">Products</label>
-      <%= f.text_field :products,:class => "form-control",:maxlength=>1000 %>
+      <%= f.text_field :products,:class => "form-control",:maxlength=>10000 %>
     </div>
 
     <div class="form-group">
@@ -55,7 +55,7 @@
 
     <div class="form-group">
       <label for = "city">City</label>
-      <%= f.text_field :city,:class => "form-control",:maxlength=>50%>
+      <%= f.text_field :city,:class => "form-control",:maxlength=>100%>
     </div>
 
   </div>
@@ -69,13 +69,13 @@
 
     <div class="form-group">
       <label for = "fax">Fax</label>
-      <%= f.text_field :fax,:class => "form-control" ,:pattern=>"[0-9]{3}\-[0-9]{7}",:title=>'Fax should be in format like (area code-fax number)'%>
+      <%= f.text_field :fax,:class => "form-control" ,:pattern=>"([\+]?[1]{1})?(?:[\(][0-9]{3}[\)]|[0-9]{3})[\-]?[0-9]{3}[\-]?[0-9]{4}",:title=>'Fax should be in format like Any 10 digit numbers, 123-456-7890 ,(123)456-7890,+11234567890'%>
     </div>
 
     <div class="form-group">
       <label for = "overview">Overview</label>
-      <%= f.text_area :overview,:class => "form-control" ,:maxlength=>2000 %>
-      <small>Maximum 2000 characters are allowed</small>
+      <%= f.text_area :overview,:class => "form-control" ,:maxlength=>20000 %>
+      <small>Maximum 20000 characters are allowed</small>
     </div>
 
     <div class="form-group">

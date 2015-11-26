@@ -19,6 +19,7 @@ Rails.application.configure do
 
   config.assets.raise_runtime_errors = true
 
+<<<<<<< .merge_file_6ZoBlt
   config.action_mailer.default_url_options = { host: 'demo.sigmainfo.in:3003', port: 3003 }
 
   config.action_mailer.delivery_method = :smtp
@@ -34,6 +35,29 @@ Rails.application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  
   }
+=======
+  # config.action_mailer.default_url_options = { host: 'demo.sigmainfo.in:3003', port: 3003 }
+  #
+  # config.action_mailer.delivery_method = :smtp
+  #
+  # config.action_mailer.perform_deliveries = true
+  #
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "smtp.mandrillapp.com",
+  #   :port                 => 587,
+  #   :domain               => "gmail.com",
+  #   :user_name            => "newron.dev@gmail.com",
+  #   :password             => "ypUzfciN1NwK6B7_caB9uw",
+  #   :authentication       => 'plain',
+  #   :enable_starttls_auto => true
+  # }
+
+  # Use letter_opener to open the emails
+  config.action_mailer.delivery_method = :letter_opener
+
+  # App default url for emails sent from devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+>>>>>>> .merge_file_65fMck
 
 
   config.after_initialize do

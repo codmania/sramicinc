@@ -20,28 +20,6 @@
 
 
 
-
-//        $("#plan_resume_database").click(function(){
-//            if ( $('#plan_resume_database').prop("checked") ){
-//                $('.job_post2').prop('disabled',true);
-//                $('.job_post2').val('');
-//            }else{
-//                $('.job_post2').prop('disabled',false);
-//            }
-//        });
-//
-//        $("#plan_resume_database").ready(function(){
-//            if($('#plan_resume_database').prop("checked")){
-//                $('.job_post2').prop('disabled',true);
-//            }else{
-//                $('.job_post2').prop('disabled',false);
-//            }
-//
-//        });
-
-
-
-
         $("#plan_user_account").click(function(){
             if ( $('#plan_user_account').prop("checked") ){
                 $('.job_post3').prop('disabled',true);
@@ -77,6 +55,7 @@
 
 
 <%= form_for(@plan) do |f| %>
+
   <% if @plan.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
@@ -89,91 +68,107 @@
     </div>
   <% end %>
 
-   <div class="l-block l-block_1">
-   <label>Name<em>*</em></label><%= f.text_field :name %>
+  <div class="w50">
+
+    <div class="form-group">
+      <label>Name<em>*</em></label>
+      <%= f.text_field :name %>
     </div>
 
-    <div class="l-block l-block_1">
-    <label>Price</label><%= f.text_field :price,:pattern=>"[0-9]*\.?[0-9]*",:title=>"Enter digits only" %>
-      <h6 style="margin-left:10%">(Price is in doller, we add $ sign for price)</h6>
+    <div class="form-group">
+      <label>Price</label>
+      <%= f.text_field :price,:pattern=>"[0-9]*\.?[0-9]*",:title=>"Enter digits only" %>
+      <small>(Price is in doller, we add $ sign for price)</small>
     </div>
 
-    <div class="l-block l-block_1">
-      <label>Days</label><%= f.text_field :days,:pattern=>"[0-9]*\.?[0-9]*",:title=>"Enter digits only" %>
-    </div>
-<!--
-     <div class="l-block l-block_1">
-      <label>Description<em>*</em></label>
-      <%= f.text_area :description,:class => 'text_area_alignment', :required => true %>
-    </div>-->
-    <div class="l-block l-block_1">
-      <label>Plan Type<em>*</em></label><%= f.select :plan_type, [["Employer", 'Employer'], ["Jobseeker", 'Jobseeker']] %>
+    <div class="form-group">
+      <label>Days</label>
+      <%= f.text_field :days,:pattern=>"[0-9]*\.?[0-9]*",:title=>"Enter digits only" %>
     </div>
 
-    <div class="l-block l-block_1">
+    <div class="form-group">
+      <label>Plan Type<em>*</em></label>
+      <%= f.select :plan_type, [["Employer", 'Employer'], ["Jobseeker", 'Jobseeker']], {}, {class: 'selectpicker'} %>
+    </div>
+
+    <div class="form-group">
       <label>Jobs post</label>
-      <%= f.check_box :job_post,{},-1 %><br><br><%= f.label :job_post, "(Unlimited)"%>
-       <%= f.text_field :job_post,:pattern=>"^[0-9][0-9]*",:class=>"job_post1",:title=>"Enter positive digits only",:style=>"width:100%;"%>
-
-    </div>
-
-
-    <!--<div class="l-block l-block_1">-->
-      <!--<label>Resumes</label>-->
-      <!--<%= f.check_box :resume_database,{},-1 %><br><br><%= f.label :job_post, "(Unlimited)"%>-->
-      <!--<%= f.text_field :resume_database,:pattern=>"^[0-9][0-9]*",:class=>"job_post2",:title=>"Enter positive digits only",:style=>"width:100%;"%>-->
-    <!--</div>-->
-
-    <div class="l-block l-block_1">
-      <label>User Account</label>
-      <%= f.check_box :user_account,{},-1 %><br><br><%= f.label :job_post, "(Unlimited)"%>
-      <%= f.text_field :user_account,:pattern=>"^[0-9][0-9]*",:class=>"job_post3",:min=>0,:title=>"Enter positive digits only",:style=>"width:100%;"%>
-
-    </div>
-
-
-
-    <div class="l-block l-block_1">
-      <label>Analytics</label>
-      <%= f.radio_button :analytics,true %><%= f.label :analytics, "Yes" %>
-      <%= f.radio_button :analytics,false %><%= f.label :analytics, "No" %>
-    </div>
-
-    <div class="l-block l-block_1">
-      <label>Email Support</label>
-      <%= f.radio_button :email_support,true %><%= f.label :email_support, "Yes" %>
-      <%= f.radio_button :email_support,false %><%= f.label :email_support, "No" %>
-    </div>
-
-    <div class="l-block l-block_1">
-      <label>Phone Support</label>
-      <%= f.radio_button :phone_support,true %><%= f.label :phone_support, "Yes" %>
-      <%= f.radio_button :phone_support,false %><%= f.label :phone_support, "No" %>
-    </div>
-
-    <div class="l-block l-block_1">
-      <label>API</label>
-      <%= f.radio_button :api,true %><%= f.label :api, "Yes" %>
-      <%= f.radio_button :api,false %><%= f.label :api, "No" %>
-    </div>
-
-    <div class="l-block l-block_1">
-      <label>Profile Alert</label>
-      <%= f.radio_button :profile_alert,true %><%= f.label :profile_alert, "Yes" %>
-      <%= f.radio_button :profile_alert,false %><%= f.label :profile_alert, "No" %>
-    </div>
-    
-
-    <div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10"><br>
-        <%= f.submit 'Submit', :class => 'btn btn-primary' %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    plans_path, :class => 'btn btn-warning' %>
-
+      <div class="icheckbox">  
+        <%= f.check_box :job_post,{},-1 %>
       </div>
     </div>
 
-<% end %>
+    <div class="form-group">
+      <%= f.label :job_post, "(Unlimited)"%>
+      <%= f.text_field :job_post,:pattern=>"^[0-9][0-9]*",:class=>"job_post1",:title=>"Enter positive digits only",:style=>"width:100%;"%>
+    </div>
 
 
+  </div>
+
+  <div class="w50">
+
+    <div class="form-group">
+      <label>User Account</label>
+      <div class="icheckbox">  
+        <%= f.check_box :user_account,{},-1 %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :job_post, "(Unlimited)"%>
+      <%= f.text_field :user_account,:pattern=>"^[0-9][0-9]*",:class=>"job_post3",:min=>0,:title=>"Enter positive digits only",:style=>"width:100%;"%>
+    </div>  
+
+    <div class="form-group">
+      <label>Analytics</label>
+      <div class="iradio">  
+        <%= f.radio_button :analytics,true %><%= f.label :analytics, "Yes" %>
+        <%= f.radio_button :analytics,false %><%= f.label :analytics, "No" %>
+      </div> 
+    </div>
+
+    <div class="form-group">
+      <label>Email Support</label>
+      <div class="iradio">  
+        <%= f.radio_button :email_support,true %><%= f.label :email_support, "Yes" %>
+        <%= f.radio_button :email_support,false %><%= f.label :email_support, "No" %>
+      </div>   
+    </div>
+
+    <div class="form-group">
+      <label>Phone Support</label>
+      <div class="iradio">  
+        <%= f.radio_button :phone_support,true %><%= f.label :phone_support, "Yes" %>
+        <%= f.radio_button :phone_support,false %><%= f.label :phone_support, "No" %>
+      </div>  
+    </div>
+
+    <div class="form-group">
+      <label>API</label>
+      <div class="iradio">  
+        <%= f.radio_button :api,true %><%= f.label :api, "Yes" %>
+        <%= f.radio_button :api,false %><%= f.label :api, "No" %>
+      </div>    
+    </div>
+
+    <div class="form-group">
+      <label>Profile Alert</label>
+      <div class="iradio">  
+        <%= f.radio_button :profile_alert,true %><%= f.label :profile_alert, "Yes" %>
+        <%= f.radio_button :profile_alert,false %><%= f.label :profile_alert, "No" %>
+      </div>   
+    </div>
+
+  </div>
+
+  <div class="w100">
+
+    <div class="actions">
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),plans_path, :class => 'btn btn-ghost' %>
+      <%= f.submit 'Submit', :class => 'btn btn-blue' %>
+    </div>
+
+  </div>
+
+<%end%>

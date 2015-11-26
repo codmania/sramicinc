@@ -80,8 +80,6 @@ $header_height: 80px;
 .block { width: 100%; display: block;}
 .inline-block {*display: inline; display: inline-block; *zoom: 1;}
 .clear {clear: both;}
-.r1x { display: inline !important;}
-.r2x { display: none !important;}
 .full-height { height: 100%; min-height: 100%;}
 
 
@@ -470,6 +468,11 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .panel-group .panel .panel-collapse {width: 100%; float: left;}
 
+.panel-group .panel .panel-collapse .actions {display: inline; float: left; width: 100%; margin: 0px; text-align: right;}
+.panel-group .panel .panel-collapse .actions a.icon, .panel-group .panel .panel-collapse .actions a.icon:focus { text-decoration: none; font-size: 20px;}
+.panel-group .panel .panel-collapse .actions a.icon.icon-edit{ font-size: 21px; margin-right: 10px;}
+.panel-group .panel .panel-collapse .actions a.icon:hover { color: $dark_grey_color !important}
+
 
 /* ---- ASIDE FILTERS ---- */
 
@@ -613,6 +616,7 @@ table.lodge th.last { border-right: 0;}
 
 table.lodge td strong { font-size: 18px; font-family: 'pro-thin';}
 table.lodge td em { font-size: 14px; color: $base_color;}
+table.lodge td .img-circle { width: 74px; height: 74px;}
 
 
 
@@ -875,6 +879,13 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .inboard .enclosure .actions {@extend .block; text-align: right;}
 .inboard .enclosure .actions .btn { margin-left: 20px;}
 
+.inboard .enclosure .form-group.w75 {@extend .inline-block; vertical-align: middle; width:80%; margin-right: 10px; }
+.inboard .enclosure .form-group.w50 {@extend .inline-block; vertical-align: middle; width:40%; margin-right: 10px; }
+.inboard .enclosure .form-group.w25 {@extend .inline-block; vertical-align: middle; width:25%; margin-right: 10px; }
+.inboard .enclosure .actions.w25 {@extend .inline-block; vertical-align: middle; width:15%; text-align: left; }
+.inboard .enclosure .actions.w25 .btn {margin: 0px 10px 0px 0px;}
+
+
 .inboard .enclosure .lodge { text-align: left;}
 .inboard .enclosure .lodge td a, .inboard .enclosure .lodge td a:focus { font-size: 16px; text-decoration: underline;}
 .inboard .enclosure .lodge td a:hover { text-decoration: none;}
@@ -930,9 +941,6 @@ table.lodge td em { font-size: 14px; color: $base_color;}
 .inboard .result .w75 { width:82%; margin: 10px 0px;}
 .inboard .result .img-circle {  width: 64px; height: 64px;}
 .inboard .result h3 { text-align: left; margin-bottom: 0px;}
-
-
-
 
 
 /* ORANGE */
@@ -1023,7 +1031,10 @@ table.lodge.orange td strong {color: $orange_color; }
 
 .orange .inboard.profile .enclosure .list li a.icon:hover { color: $orange_color;} 
 .orange .inboard.profile .enclosure .list a:hover { color:$orange_color;}
-.orange .inboard.profile .enclosure .list a:hover .icon { color:$orange_color;}  
+.orange .inboard.profile .enclosure .list a:hover .icon { color:$orange_color;} 
+
+
+.orange .panel-group .panel .panel-collapse .actions a.icon, .orange .panel-group .panel .panel-collapse .actions a.icon:focus { color: $orange_color;} 
 
 
 
@@ -1130,6 +1141,9 @@ table.lodge.blue td strong {color: $blue_color; }
 .blue .inboard.profile .enclosure .list li a.icon:hover { color: $blue_color;}
 .blue .inboard.profile .enclosure .list a:hover { color:$blue_color;}
 .blue .inboard.profile .enclosure .list a:hover .icon { color:$blue_color;}   
+
+
+.blue .panel-group .panel .panel-collapse .actions a.icon, .blue .panel-group .panel .panel-collapse .actions a.icon:focus { color: $blue_color;} 
 
 
 /* RETINA */

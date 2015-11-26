@@ -11,18 +11,18 @@ class Job < ActiveRecord::Base
   has_many :comments
   geocoded_by :address_str
   after_validation :geocode
-  validates :title, presence: true, length: {maximum: 100}
-  validates :city, presence: true, length: {maximum: 50}
+  validates :title, presence: true, length: {maximum: 200}
+  validates :city, presence: true, length: {maximum: 100}
   validates_format_of :zip, presence: true,:with => /\A[0-9]{5}$\Z/ ,:message => "is mandatory and should be in 5 digits", if: 'zip.present?'
   validates_format_of :experience,:with => /\A[0-9]{1,2}(?:[\.]{1}[0-9]{1,2})?\Z/, :message => 'should be in xx.xx format', if: 'experience.present?'
-  validates :education, length: {maximum:100}, if: 'education.present?'
-  validates_format_of :salary, :with => /\A[$][0-9]{1,10}(?:[\.]{1}[0-9]{1,3})?\Z/ ,:message => "should be preceded by '$',max 10 digits before decimal, optional decimal, decimal max 3 digits" ,if: 'salary.present?'
-  validates :certification, length: {maximum: 100}, if: 'certification.present?'
-  validates :references,length: {maximum: 100}, if: 'references.present?'
-  validates :clearance,length: {maximum: 100}, if: 'clearance.present?'
+  validates :education, length: {maximum:200}, if: 'education.present?'
+  validates_format_of :salary, :with => /\A[$][0-9]{1,20}(?:[\.]{1}[0-9]{1,3})?\Z/ ,:message => "should be preceded by '$',max 20 digits before decimal, optional decimal, decimal max 3 digits" ,if: 'salary.present?'
+  validates :certification, length: {maximum: 200}, if: 'certification.present?'
+  validates :references,length: {maximum: 200}, if: 'references.present?'
+  validates :clearance,length: {maximum: 200}, if: 'clearance.present?'
   validates :country_list_id,presence: true
   validates :state_list_id,presence: true
-  validates  :description,presence: true,length: {maximum: 20000, :message => "Description is bit big, please enter approx 5000 character's only"}
+  validates  :description,presence: true,length: {maximum: 20000, :message => "Description is bit big, please enter approx 20000 character's only"}
   before_save :set_city
 
 

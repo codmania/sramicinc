@@ -1,31 +1,25 @@
+<%= form_for @faqcategory, :html => { :class => "enquiry_category" } do |f| %>
 
-<%= form_for @faqcategory, :html => { :class => "form-horizontal enquiry_category" } do |f| %>
-    <% if @faqcategory.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@faqcategory.errors.count, "error") %> prohibited this FAQ category from being saved:</h2>
-
-          <ul>
-            <% @faqcategory.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-
-
-    <div class="l-block l-block_1">
-      <label>Name<em>*</em></label><%= f.text_field :name ,:required=>true%>
+  <% if @faqcategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@faqcategory.errors.count, "error") %> prohibited this FAQ category from being saved:</h2>
+      <ul>
+        <% @faqcategory.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
+  <% end %>
 
-    <div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10">
-        <%= f.submit 'Save', :class => 'btn btn-primary' %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    faq_categories_path, :class => 'btn btn-warning' %>
-      </div>
-    </div>
+  <div class="form-group">
+    <label>Name<em>*</em></label>
+    <%= f.text_field :name ,:required=>true%>
+  </div>
+
+  <div class="actions">
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),faq_categories_path, :class => 'btn btn-ghost' %>
+    <%= f.submit 'Save', :class => 'btn btn-blue' %>
+  </div>
 
 <%end%>
 

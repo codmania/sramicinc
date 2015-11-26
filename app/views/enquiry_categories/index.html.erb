@@ -1,69 +1,35 @@
-<!--start search-container-->
-<div class="container-fluid search-container">
-  <div class="container">
-    <div class="row">
+<div class="inboard">
+  <div class="margin">
 
-      <div class="col-lg-12 no_pad ">
+    <div class="enclosure">
+      <h3>Enquiry Categories</h3>
+      <h6><%= link_to "Add", new_enquiry_category_path %></h6>
 
-        <div class="company_users">
-
-
-
-
-          <h1>Enquiry Categories
-            <%= link_to "Add", new_enquiry_category_path, :class => 'orange-btn pull-right align-orange-btn' %>
-          </h1>
-        <div id="no-more-tables">
-            <table class="col-sm-12 table-striped table-condensed cf">
-              <p id="notice"><%= flash['message']%></p>
-              <thead class="cf">
-              <tr>
-                <th style="display: none"></th>
-                <th width=550>Name</th>
-                <th width="100" class="table-last-th"></th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @enquiry_categories.each do |enquiry_category| %>
-                  <tr>
-                    <td data-title="id" style="display: none"><%= enquiry_category.id %></td>
-                    <td data-title="Name"><%= enquiry_category.try(:name) %></td>
-                    <td data-title="" class="table-last-td">
-
-                      <ul class="actions_container">
-                        <li>
-                          <%= link_to '<span class="icon icon_1"></span>'.html_safe,
-                                      edit_enquiry_category_path(enquiry_category) %>
-
-                        </li>
-                        <li>
-                          <%= link_to '<span class="icon icon_2"></span>'.html_safe,
-                                     enquiry_category_path(enquiry_category),
-                                      :method => :delete,
-                                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
-                        </li>
-                      </ul>
-
-                    </td>
-                  </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-
-
-      </div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th>Name</th>
+          <th class="last">Actions</th>
+        </tr>
+        <% @enquiry_categories.each do |enquiry_category| %>
+        <tr>
+          <td data-title="Name"><span><%= enquiry_category.try(:name) %></span></td>
+          <td class="last">
+            <%= link_to edit_enquiry_category_path(enquiry_category), class: "icon icon-edit", title: "Edit" do %><% end %>
+            <%= link_to enquiry_category_path(enquiry_category), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table> 
 
     </div>
 
+    <div class="centered">
+      <div class="paginations">
+        <%= will_paginate @enquiry_categories,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+      </div>
+    </div>
+
+
   </div>
-
-    <div class="paginations top-pagination">
-
-            <%= will_paginate @enquiry_categories,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
-            
-          </div>
-
 </div>
+

@@ -1,75 +1,48 @@
-<!--start search-container-->
-<div class="container-fluid search-container">
-  <div class="container">
-    <div class="row">
-      
-      <div class="col-lg-12 no_pad ">
-        <div class="company_users">
-          <div id="no-more-tables">
-            <table class="col-sm-12 table-striped table-condensed cf">
-              <thead class="cf">
-              <tr>
-               <th width="200"> Reason for Enquiry</th>
-               <th width="180">Name</th>
-               <th width="150">Email</th>
-               <th width="250">Description</th>
-               <th width="75">Recieved</th>
-               <th width="100"> Status</th>
-             </tr>
+<div class="inboard">
+  <div class="margin">
 
-              </thead>
-              <tbody>
-              <% @enquiries.try(:each) do |enquiry| %>
-                  <tr>
-                  <td data-title="Reason for Enquiry"><%= enquiry.try(:enquiry_category).try(:name) %></td>
-                  <td data-title="Name"><%= enquiry.try(:name) %></td>
-                  <td data-title="Email"><%= enquiry.try(:email) %></td>
-                  <td data-title="Description"><%= enquiry.try(:description) %></td>
-                  <td data-title="Recieved"><%= enquiry.created_at.strftime("%m/%d/%Y") %></td>
-                  <td data-title="Status"><span class= "enquiryresp"><%= enquiry.status%> <%if enquiry.respond_date.present? %> Date:<%=enquiry.try(:respond_date).strftime("%m/%d/%Y")%><%end%></span></td>
-                  <td data-title="" class="table-last-td">
-                  <ul class="actions_container respond_container">
-                        <li>
-                        <div class="respond" onClick="setRespondData(<%=enquiry.id%>,'<%=enquiry.try(:enquiry_category).try(:name) %>','<%= enquiry.try(:name) %>')" data-toggle="modal" data-target="#myModal" >
+    <div class="enclosure">
 
-                            Respond
-                          </div>
-                          </li>
-                        <li>
-                          <%= link_to '<span class="icon icon_2"></span>'.html_safe,
-                                      enquiry_path(enquiry),
-                                      :method => :delete,
-                                      :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))} %>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-          <%= render :partial => "respond" %>
-          <!--<p class="pagination_page_count">Results 1-6 out of 17</p>-->
-          <!--<div class="paginations top-pagination">-->
-          <!--<ul>-->
-          <!--<li> <a href="#"><img alt="" src="/assets/prev-2.png"> </a> </li>-->
-          <!--<li> <a href="#"><img alt="" src="/assets/prev-1.png"></a> </li>-->
-          <!--<li> <a href="#">1</a> </li>-->
-          <!--<li> <a href="#">2</a> </li>-->
-          <!--<li> <a href="#">3</a> </li>-->
-          <!--<li> <a href="#">4</a> </li>-->
-          <!--<li> <a href="#">5</a> </li>-->
-          <!--<li> <a href="#"><img alt="" src="/assets/next-1.png"></a> </li>-->
-          <!--<li> <a href="#"><img alt="" src="/assets/next-2.png"></a> </li>-->
-          <!--</ul>-->
-          <!--</div>-->
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th>Reason for Enquiry</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Description</th>
+          <th>Recieved</th>
+          <th>Status</th>
+          <th class="last">Actions</th>
+        </tr>
+        <% @enquiries.try(:each) do |enquiry| %>
+        <tr>
+          <td data-title="Reason for Enquiry"><span><%= enquiry.try(:enquiry_category).try(:name) %></span></td>
+          <td data-title="Name"><span><%= enquiry.try(:name) %></span></td>
+          <td data-title="Email"><span><%= enquiry.try(:email) %></span></td>
+          <td data-title="Description"><span><%= enquiry.try(:description) %></span></td>
+          <td data-title="Recieved"><span><%= enquiry.created_at.strftime("%m/%d/%Y") %></span></td>
+          <td data-title="Status">
+            <span class= "enquiryresp">
+              <%= enquiry.status%> <%if enquiry.respond_date.present? %> Date:<%=enquiry.try(:respond_date).strftime("%m/%d/%Y")%><%end%>
+            </span>
+          </td>
+          <td class="last">
 
-          <!--add new user-->
+            <a class="active" onClick="setRespondData(<%=enquiry.id%>,'<%=enquiry.try(:enquiry_category).try(:name) %>','<%= enquiry.try(:name) %>')" data-toggle="modal" data-target="#myModal" >
+            Respond
+            </a>
 
-          <!--add new user over-->
+            <%= link_to  enquiry_path(enquiry), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table> 
 
-        </div>
-      </div>
     </div>
+
+
   </div>
 </div>
+
+<%= render :partial => "respond" %>
+
+

@@ -2,8 +2,8 @@ class JobHistory < ActiveRecord::Base
 
   belongs_to :jprofile
   validate :to_date_cannot_be_less_than_from_date
-  validates :title, presence: true, length: {maximum: 100}
-  validates :organization, presence: true, length: {maximum: 100}
+  validates :title, presence: true, length: {maximum: 1000}
+  validates :organization, presence: true, length: {maximum: 1000}
 
   def to_date_cannot_be_less_than_from_date
     errors.add(:to, "date can not be lesser than from date") if

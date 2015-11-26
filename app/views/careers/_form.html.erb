@@ -1,37 +1,34 @@
-<%=form_for @career, :html => { :class => "form-horizontal skill", :method=>'post'} do |f| %>
-    <% if @career.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@career.errors.count, "error") %> prohibited this job from being saved:</h2>
-          <ul>
-            <% @career.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-<div class="single_form">
-    <div class="l-block l-block_1">
-      <label>Job Title<em>*</em></label><%= f.text_field :title,:required=>true %>
-    </div>
+<%=form_for @career, :html => { :class => "skill", :method=>'post'} do |f| %>
 
-    <div class="l-block l-block_1">
-      <label>Job Description<em>*</em></label><%= f.text_area :description,:class => 'text_area_alignment',:required=>true,:maxlength=>1000 %>
-    </div>
-
-    <h6 style="margin-left:29%">Maximum 1000 characters are allowed</h6>
-
-    <div class="l-block l-block_1">
-   <label>Job Link<em>*</em></label><%= f.text_field :link,:required=>true %>
-    </div>
-
-    <div class="form-group pro_form_group">
-      <div class="col-sm-offset-4 col-sm-10">
-        <%= f.submit 'Save', :class => 'btn btn-primary' %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    careers_path, :class => 'btn btn-warning' %>
+  <% if @career.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@career.errors.count, "error") %> prohibited this job from being saved:</h2>
+        <ul>
+          <% @career.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
       </div>
-    </div>
+  <% end %>
 
+  <div class="form-group">
+    <label>Job Title<em>*</em></label>
+    <%= f.text_field :title,:required=>true %>
   </div>
+  <div class="form-group">
+    <label>Job Description<em>*</em></label>
+    <%= f.text_area :description,:class => 'text_area_alignment',:required=>true,:maxlength=>20000 %>
+    <small>Maximum 20000 characters are allowed</small>
+  </div>
+  <div class="form-group">
+    <label>Job Link<em>*</em></label>
+    <%= f.text_field :link,:required=>true %>
+  </div>
+
+  <div class="actions">
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),careers_path, :class => 'btn btn-ghost' %>
+    <%= f.submit 'Save', :class => 'btn btn-blue' %>
+  </div>
+
 <%end%>
+

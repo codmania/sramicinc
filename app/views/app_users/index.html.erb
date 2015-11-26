@@ -1,112 +1,89 @@
-<div class="container-fluid search-container">
-  <div class="container">
-    <div class="row">
+<div class="inboard">
+  <div class="margin">
 
-      <div class="col-lg-12 no_pad ">
-      <div class="company_users employers_applications">
-      <h3 class="user_app">Users</h3>
-      <div class="create_job_sub_container container">
+    <div class="enclosure">
+      <h3>Users</h3>
 
-    <div class="row">
       <%= form_for :app_users ,:url=>{:controller=>'app_users',:action=>'index'} ,:method=>'get' do |s|%>
+        <div class="form-group">
+          <label>User Name</label>
+          <input type="text" name="name">
+        </div>
 
-      <div class="col-md-3 col-sm-6 pad-right">
-          <div class="job_input_container">
-              <label>User Name </label>
-              <input type="text" name="name">
-          </div>
-      </div>
+        <div class="form-group">
+          <label>User Type</label>
+          <select name="user_type" id="user_type" class="selectpicker">
+            <option value="">All</option>
+            <option value="3">Jobseeker</option>
+            <option value="2">Employer</option>
+          </select>
+        </div>
 
-          <div class="col-md-3 col-sm-6 pad-right">
-            <div class="job_input_container">
-              <label>User Type </label>
-              <select name="user_type" id="user_type">
-                <option value="">All</option>
-                <option value="3">Jobseeker</option>
-                <option value="2">Employer</option>
-              </select>
-            </div>
-          </div>
-
-
-
-          <div class="col-md-6 col-sm-6">
-            <div class="job_input_container">
-              <label style="visibility:hidden">dummy</label>
-              <input type="submit" class="blue-btn" value="Search"/>
-            </div>
-          </div>
+        <div class="actions">
+          <input type="submit" class="btn btn-blue" value="Search"/>
+        </div>
       <% end %>
 
     </div>
-  </div>
 
+    <div class="enclosure">
 
-  <div id="no-more-tables">
-    <table class="col-sm-12  table-striped table-condensed cf">
-      <thead class="cf">
-      <tr>
-        <th width="190">Name</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th width="250">Status</th>
-        <th width="" class="table-last-th"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% if !@users.blank? %>
-
-        <% @users.each do |user| %>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th class="last">Actions</th>
+        </tr>
+        <% if !@users.blank? %>
+          <% @users.each do |user| %>
           <tr>
-            <td data-title="Name"><%=user.try(:profile_name)%></td>
-            <td data-title="Email"> <%= user.email%></td>
-            <td data-title="Role"><%= user.role.authority%></td>
-            <!--<td data-title="Account Type"><span class="green_button button"><%#= user.user_account_status%></span></td>-->
-            <td data-title="Status"><%= user.user_account_status%></td>
+            <td data-title="Name"><span><%=user.try(:profile_name)%></span></td>
+            <td data-title="Email"><span><%= user.email%></span></td>
+            <td data-title="Role"><span><%= user.role.authority%></span></td>
+            <td data-title="Status"><span><%= user.user_account_status%></span></td>
+            <td class="last">
 
-            <td data-title="" class="table-last-td">
-
-                <%if user.active? %>
-                      <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post  do %>
-                        <span class="acct_btn"><span class="icon icon_2"></span>DeActivate</span>
-                        <%end%>
-                <%else%>
-                  <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post  do %>
-                      <span class="acct_btn"><span class="icon icon_1"></span>Active</span>
-                      <%end%>
+              <%if user.active? %>
+                <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post, class: "active" do %>
+                  Deactivate
                 <%end%>
-                <ul class="actions_container">
-                  <%if user.try(:role).try(:authority) == 'jobseeker'%>
-                      <li> <%= link_to '<span class="icon icon_1"></span>'.html_safe,
-                                        jprofile_path(user.try(:profile)) %></li>
-                      <% else %>
+              <%else%>
+                <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post, class: "active" do %>
+                  Active
+                <%end%>
+              <%end%>
 
-                      <li> <%= link_to '<span class="icon icon_1"></span>'.html_safe,
-                                       eprofile_path(user.try(:profile)) %></li>
-                  <% end %>
-                </ul>
+              <%if user.try(:role).try(:authority) == 'jobseeker'%>
+                <%= link_to jprofile_path(user.try(:profile)), class: "icon icon-edit", title: "Edit" do %><% end %>
+              <% else %>
+                <%= link_to eprofile_path(user.try(:profile)), class: "icon icon-edit", title: "Edit" do %><% end %>
+              <% end %>
             </td>
           </tr>
           <% end %>
-        </tbody>
+          <% else %>
+          <tr>
+            <td colspan="5"><span><%= "No results matched for your search!!" %></span></td>
+          </tr>
+        <% end %>
+      </table> 
 
+    </div>
 
-    <% else %>
-      <h5 style="color:red; text-align:center;"><%= "No results matched for your search!!" %></h5>
-    <% end %>
-    </table>
+    <div class="centered">
+      <div class="paginations">
+        <%= will_paginate @users,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
+      </div>
+    </div>
+
 
   </div>
- </div>
- </div>
-
 </div>
 
-</div>
-<div class="paginations top-pagination remove_pad">
-  <%= will_paginate @users,:inner_window =>2,:outer_window =>0, :renderer=> PaginationHelper::LinkRenderer%>
-</div>
-</div>
+
+
 <script type="text/javascript">
   $(document).ready(function(){
       var user_type = "<%= params[:user_type]%>";

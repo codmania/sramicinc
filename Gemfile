@@ -25,6 +25,7 @@ group :production do
 end
 group :development do
   gem 'sqlite3'
+  gem 'letter_opener'
 end
 group :doc do
   gem 'sdoc', '~> 0.4.0' #, group: :doc

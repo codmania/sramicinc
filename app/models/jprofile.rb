@@ -47,13 +47,13 @@ class Jprofile < ActiveRecord::Base
 
   has_attached_file :logo, :styles => { :medium => "200x200>", :thumb => "50x50>" }, :default_url => "medium/default_image.png"
 
-  validates_attachment :logo, :size => { :in =>0..1.megabytes,
-                                                            :message => "of photo must be less than 3MB!!" },
-                       :content_type => {:content_type => /\Aimage\/.*\Z/, :message => "Photo should be image only!!"}
+  validates_attachment :logo, :size => { :in =>0..3.megabytes,
+                                                            :message => "logo must be less than 3MB!!" },
+                       :content_type => {:content_type => /\Aimage\/.*\Z/, :message => "logo should be image only!"}
 
 
   validates_attachment :resume, :size => { :in =>0..3.megabytes,
-                                                              :message => "must be less than 3MB!!" },
+                                                              :message => "attachment must be less than 3MB!" },
                        :content_type => {:content_type => ['application/pdf' ,'application/msword' ,'application/vnd.openxmlformats-officedocument.wordprocessingml.document'], :message => "file should be pdf or word only!!"}
 
   # validates_attachment :resume, :presence => true, :size => { :in =>0..3.megabytes,

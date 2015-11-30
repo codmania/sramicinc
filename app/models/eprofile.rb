@@ -35,9 +35,9 @@ class Eprofile < ActiveRecord::Base
 
   has_attached_file :logo, :styles => { :medium => "200x200>", :thumb => "10x10#" }, :default_url => "medium/default_image.png"
 
-  validates_attachment :logo, :size => { :in =>0..1.megabytes,
-                                         :message => "must be less than 3MB are allowed" },
-                       :content_type => {:content_type => /\Aimage\/.*\Z/, :message => "file should be image only"}
+  validates_attachment :logo, :size => { :in =>0..3.megabytes,
+                                         :message => "logo must be less than 3MB allowed!" },
+                       :content_type => {:content_type => /\Aimage\/.*\Z/, :message => "logo should be image only!"}
 
 
 

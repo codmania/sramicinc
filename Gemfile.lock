@@ -303,12 +303,8 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
-<<<<<<< .merge_file_Rv3TBw
-  mysql2 (~> 0.3.20)
-=======
   letter_opener
-  mysql2
->>>>>>> .merge_file_WuwJt4
+  mysql2 (~> 0.3.20)
   omniauth-facebook
   omniauth-google-oauth2
   paperclip

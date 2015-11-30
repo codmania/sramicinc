@@ -46,9 +46,12 @@
           </div>
 
           <div class="w15 right-center">
-            <div class="btn btn-orange-ghost" onClick="SetRespondData(<%= current_user.id%>, <%= review.id%>)" data-toggle="modal" data-target="#myModal">
+            
+				<% if params[:by] !='me' %>
+				<div class="btn btn-orange-ghost" onClick="SetRespondData(<%= current_user.id%>, <%= review.id%>)" data-toggle="modal" data-target="#myModal">
               Respond
             </div>
+				<%end%>
             <div class="responses">
               Responses: <a href="/review_responses?id=<%=review.id%>"><%= review.review_responses.count %></a>         
             </div>

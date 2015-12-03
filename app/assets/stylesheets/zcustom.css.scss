@@ -140,7 +140,7 @@ textarea, textarea.form-control, textarea.form-control:focus, textarea.form-cont
 
 
 .btn-group.open .dropdown-toggle {@include box-shadow(none); }
-.btn, .btn:active, .btn:focus, .btn.active, .btn.active:active {cursor: pointer; margin: 0; padding: 14px 20px 11px 20px; background: none;  @include border-radius(2px); @include box-shadow(none); vertical-align: middle; border:0; text-transform: uppercase; font-size: 16px; font-family: 'pro-light'; line-height: 100%;  }
+.btn, .btn:active, .btn:focus, .btn.active, .btn.active:active {cursor: pointer; margin: 0; padding: 14px 20px 11px 20px; background: none;  @include border-radius(2px); @include box-shadow(none); vertical-align: middle; border:0; text-transform: uppercase; font-size: 16px; font-family: 'pro-light'; line-height: 100%; white-space: normal;  }
 .btn:hover{ cursor: pointer; padding: 14px 20px 11px 20px; background: none; font-size: 16px; font-family: 'pro-light';   @include border-radius(2px); @include box-shadow(none); border:0; line-height: 100%;  }
 
 .btn-ghost, .btn-ghost:active, .btn-ghost:focus  { color: $grey_color; border: 1px solid $grey_color; }
@@ -173,6 +173,13 @@ textarea, textarea.form-control, textarea.form-control:focus, textarea.form-cont
 .w75 { width: 74.6%;}
 .w100 { width: 100%;}
 
+
+/* ---- TABLE SWIPE ---- */
+
+table { position: relative;}
+table::before { @include font_icons;  content: "M"; font-size: 30px; position: absolute; top: 0px; left: 0px;}
+table::after { @include font_icons;  content: "M"; font-size: 30px; position: absolute; bottom: -50px; right: 0px;}
+table::before, table::after { display: none;}
 
 /* ---- HEADER ---- */
 
@@ -1198,7 +1205,7 @@ only screen and (min-device-pixel-ratio: 2),
 only screen and (min-resolution: 192dpi),
 only screen and (min-resolution: 2dppx) {
 
-  .icheckbox_flat, .iradio_flat { background-image:  image-url("flat@2x.png"); -webkit-background-size: 176px 22px;background-size: 176px 22px;}
+  .icheckbox_flat, .iradio_flat { background-image:  image-url("layout/flat@2x.png"); -webkit-background-size: 176px 22px;background-size: 176px 22px;}
 
 }
 
@@ -1232,6 +1239,8 @@ only screen and (min-resolution: 2dppx) {
   .slick-prev, .slick-prev:focus { left: 20px;}
   .slick-next, .slick-next:focus { right: 20px;}
 
+  .faqs .panel-group { width: 82%;}
+
 }
 
 
@@ -1260,6 +1269,10 @@ only screen and (min-resolution: 2dppx) {
 
   footer .w25 { width: 30.6%;}
   footer nav.w25:last-of-type { display: none;}
+
+  .faqs .filtering { width: 100%; margin-right: 0px; margin-bottom: 20px; text-align: center; padding-top: 0px;}
+  .faqs .filtering .btn { *display: inline; display: inline-block; *zoom: 1; float: none; margin: 5px; }
+  .faqs .panel-group { width: 100%;}
 
 }
 
@@ -1371,6 +1384,9 @@ only screen and (min-resolution: 2dppx) {
   footer nav.w25 { width: 100%; margin-right: 0px; text-align: center;}
   footer .social { margin-top: 20px;}
 
+
+  .nav.nav-tabs > li { padding-left: 20px; padding-right: 20px;}
+
 }
 
 /* ---- W 667 ---- */
@@ -1383,6 +1399,12 @@ only screen and (min-resolution: 2dppx) {
 
   .tabs-container { display: none;}
 
+  .about-us ul li { width: 100%; border: 0; padding-left: 0px; padding-right: 0px;}
+
+
+  .pricing table {overflow-x: auto;display: block;}
+  .pricing table::before, .pricing table::after { display: inline;}
+
 
 }
 
@@ -1392,6 +1414,8 @@ only screen and (min-resolution: 2dppx) {
 
   .full-screen { height: 640px; min-height: 640px;}
   .banner-search .form-group { width: 43.8%;}
+
+  .pricing .nav.nav-tabs > li { border: 0; padding-left: 10px; padding-right: 10px;}
 
 }
 
@@ -1419,9 +1443,12 @@ only screen and (min-resolution: 2dppx) {
 
 }
 
-/* ----  W 533 ---- */
+/* ----  W 500 ---- */
 
-@media screen and (max-width: 533px){
+@media screen and (max-width: 500px){
+
+  .session .wrapper { width: 90%;}
+  .session .nav.nav-tabs > li { padding-left: 10px; padding-right: 10px; border: 0;}
 
 }
 

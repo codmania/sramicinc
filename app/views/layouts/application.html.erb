@@ -78,9 +78,12 @@
 
     <% unless current_user %>
       <%= render '/layouts/header_guest' %>
+      <%= render '/layouts/slide_menu_guest' %>
     <% else %>
       <%= render '/layouts/header' %>
+      <%= render '/layouts/slide_menu' %>
     <% end %>
+
 
     <div class="vessel">
 

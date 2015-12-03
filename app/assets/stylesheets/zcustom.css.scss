@@ -70,6 +70,7 @@ $grey_color: #bbbbbb;
 $dark_grey_color: #404040;
 $dark_color: #27333a;
 $dark_color_fade: rgba(39, 51, 57, 0.40);
+$slide_menu_color: rgba(39, 51, 57, 0.70);
 $orange_color: #fe894f;
 $blue_color: #257fd2;
 
@@ -203,6 +204,37 @@ header .profile .dropdown-toggle:hover .img-circle {border: 1px solid $blue_colo
 header .profile .dropdown-menu { margin: 0; border: 0; padding: 15px 0px; @include border-radius(2px); @include box-shadow(0px 1px 6px 2px rgba(0, 0, 0, 0.2)); right: -80%; left: auto; text-align: center; min-width: 200px; }
 header .profile .dropdown-menu > li > a, header .profile .dropdown-menu > li > a:focus { background: none; padding: 15px 20px; line-height: normal; color: $base_color; font-family: 'pro-light'; }
 header .profile .dropdown-menu > li > a:hover { color: $blue_color}
+
+
+
+header .icon-menu { display: none; float: right; font-size: 35px; color: $dark_grey_color; margin-top: 24px;}
+header .icon-menu:hover, header .icon-menu.active { color: $orange_color; cursor: pointer;}
+
+
+/* ---- SLIDE MENU ---- */
+
+.slide-menu { background: $slide_menu_color; padding: 20px 20px 10px 20px;  position: absolute; z-index: 200; top: $header_height; right: -120%; clear: both; display: none;}
+
+.slide-menu ul {width: 100%; display: inline; float: left; text-align: right;  }
+.slide-menu ul li {  display: list-item;}
+.slide-menu ul li a { display: inline; float: right; margin-bottom: 2px;}
+.slide-menu ul li .btn, .slide-menu ul li .btn:active, .slide-menu ul li .btn.active, .slide-menu ul li .btn.active:active { margin-bottom: 10px; padding: 9px 10px 6px 10px; min-width: 180px; display: block;}
+
+.slide-menu .btn-icon { margin-left: 6px;}
+.slide-menu .btn-icon span, .slide-menu .btn-icon:focus span { color: #fff;}
+.slide-menu .btn-icon .icon, .slide-menu .btn-icon:focus .icon { color: #fff;}
+.slide-menu .btn-icon:hover .icon { color:$orange_color; }
+.slide-menu .btn-icon:hover span { color:$blue_color; }
+
+
+.slide-menu .notification {display: inline; float: right;  margin-bottom: 2px;}
+.slide-menu .notification .icon {display: inline; float: left; color: #fff; font-size: 24px; margin: 3px 2px 0px 0px; }
+.slide-menu .notification strong {display: inline; float: left; font-size: 20px; color: #fff; font-family: 'pro-regular'; margin-right: 4px;}
+.slide-menu .notification span {display: inline; float: left; font-size: 20px; color: #fff; font-family: 'pro-light';}
+.slide-menu .notification:hover span { color:#fff; }
+
+
+.slide-menu .profile a, .slide-menu .profile a:focus { font-size: 20px;  font-family: 'pro-light';  color: #fff;}
 
 
 
@@ -947,7 +979,11 @@ table.lodge td .img-circle { width: 74px; height: 74px;}
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
+.orange .slide-menu .profile a:hover { color: $orange_color;}
+
 .orange header .notification strong  { color: $orange_color;}
+.orange .slide-menu .notification:hover .icon  { color:$orange_color; }
+.orange .slide-menu .notification strong  { color: $orange_color;}
 .orange header .notification:hover .icon  { color:$orange_color; }
 .orange header .profile .dropdown-toggle:hover .img-circle {border: 1px solid $orange_color;}
 .orange header .profile .dropdown-menu > li > a:hover { color: $orange_color}
@@ -1042,8 +1078,12 @@ table.lodge.orange td strong {color: $orange_color; }
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
+.blue .slide-menu .profile a:hover { color: $blue_color;}
+
 .blue header .notification strong  { color: $blue_color;}
 .blue header .notification:hover .icon  { color:$blue_color; }
+.blue .slide-menu .notification:hover .icon  { color:$blue_color; }
+.blue .slide-menu .notification strong  { color: $blue_color;}
 .blue header .profile .dropdown-toggle:hover .img-circle {border: 1px solid $blue_color;}
 .blue header .profile .dropdown-menu > li > a:hover { color: $blue_color;}
 .blue header .profile.open .img-circle { border-color: $blue_color;}
@@ -1165,6 +1205,26 @@ only screen and (min-resolution: 2dppx) {
 /* MOBILE WIDTH */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
+
+/* ---- W 1340 ---- */
+
+@media screen and (max-width: 1340px){
+
+  header .profile .dropdown-menu { right: 10px; text-align: right; min-width: 160px;}
+
+}
+
+
+/* ---- W 1200 ---- */
+
+@media screen and (max-width: 1200px){
+
+  .margin {width:100%; padding: 0px 20px;}
+
+}
+
+
+
 /* ---- W 1024 ---- */
 
 @media screen and (max-width: 1024px){
@@ -1172,7 +1232,137 @@ only screen and (min-resolution: 2dppx) {
   html { -webkit-overflow-scrolling: touch; }
   body {-webkit-text-size-adjust: none;}
 
+
+  header { position: relative;}
+  .vessel { padding-top: 0px;}
+
 }
+
+/* ---- W 980 ---- */
+
+@media screen and (max-width: 980px){
+
+}
+
+/* ---- W 960 ---- */
+
+@media screen and (max-width: 960px){
+
+}
+
+/* ---- W 950 ---- */
+
+@media screen and (max-width: 950px){
+
+}
+
+/* ---- W 920 ---- */
+
+@media screen and (max-width: 920px){
+
+}
+
+/* ---- W 900 ---- */
+
+@media screen and (max-width: 900px){
+
+}
+
+/* ---- W 860 ---- */
+
+@media screen and (max-width: 860px){
+
+  header .icon-menu { display: inline;}
+  header nav.pull-right { display: none;}
+  header nav.inline-block{ display: none;}
+  .slide-menu { display: inline;}
+
+}
+/* ---- W 800 ---- */
+
+@media screen and (max-width: 800px){
+
+}
+
+/* ---- W 768 ---- */
+
+@media screen and (max-width: 768px){
+
+}
+
+/* ---- W 736 ---- */
+
+@media screen and (max-width: 736px){
+
+}
+
+/* ---- W 667 ---- */
+
+@media screen and (max-width: 667px){
+
+}
+
+/* ----  W 640 ---- */
+
+@media screen and (max-width: 640px){
+
+}
+
+/* ----  W 600 ---- */
+
+@media screen and (max-width: 600px){
+
+}
+
+/* ----  W 568 ---- */
+
+@media screen and (max-width: 568px){
+
+}
+
+/* ----  W 533 ---- */
+
+@media screen and (max-width: 533px){
+
+}
+
+/* ---- W 480  ---- */
+
+@media screen and (max-width: 480px){
+
+}
+
+/* ---- W 414 ---- */
+
+@media screen and (max-width: 414px){
+
+}
+
+/* ---- W 384 ---- */
+
+@media screen and (max-width: 384px){
+
+}
+
+/* ---- W 375 ---- */
+
+@media screen and (max-width: 375px){
+
+}
+
+/* ---- W 360 ---- */
+
+@media screen and (max-width: 360px){
+
+}
+
+/* ---- W 320 ---- */
+
+@media screen and (max-width: 320px){
+
+}
+
+
 
 /* MOBILE HEIGHT */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -1186,13 +1376,25 @@ only screen and (min-resolution: 2dppx) {
 }
 
 
-/* ---- H 740 ---- */
+/* ---- H 800 ---- */
 
-@media screen and (max-height: 740px){
+@media screen and (max-height: 800px){
 
-  .full-screen .centered { display: none;}
+  .full-screen .middle { top: 15%;}
+
 }
 
+
+/* ---- H 667 ---- */
+
+@media screen and (max-height: 667px){
+
+  .full-screen .centered { display: none;}
+
+  header { position: relative;}
+  .vessel { padding-top: 0px;}
+
+}
 
 /* PRINT */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */

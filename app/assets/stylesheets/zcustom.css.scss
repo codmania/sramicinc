@@ -1221,8 +1221,24 @@ only screen and (min-resolution: 2dppx) {
 
   .margin {width:100%; padding: 0px 20px;}
 
+
+  footer .w25 { width: 22.7%;}
+  footer nav em.icon { font-size: 60px;}
+
+  footer nav a.icon.icon-apple { margin-right: 5px; font-size: 121px;}
+  footer nav a.icon.icon-play { font-size: 108px;}
+
 }
 
+
+/* ---- W 1100 ---- */
+
+@media screen and (max-width: 1100px){
+
+  footer .w25 { width: 22.6%;}
+  footer nav em.icon { font-size: 50px;}
+
+}
 
 
 /* ---- W 1024 ---- */
@@ -1235,6 +1251,9 @@ only screen and (min-resolution: 2dppx) {
 
   header { position: relative;}
   .vessel { padding-top: 0px;}
+
+  footer .w25 { width: 30.6%;}
+  footer nav.w25:last-of-type { display: none;}
 
 }
 
@@ -1282,11 +1301,19 @@ only screen and (min-resolution: 2dppx) {
 
 @media screen and (max-width: 800px){
 
+  footer .copy { display: none;}
+  footer .social { width: 100%; display: block; text-align: center;}
+  footer .social li { *display: inline; display: inline-block; *zoom: 1; float: none;}
+  footer .social li a, footer .social li a:focus { margin: 0px 10px;}
+
 }
 
 /* ---- W 768 ---- */
 
 @media screen and (max-width: 768px){
+
+  footer{ padding-top: 40px; padding-bottom: 20px;}
+  footer .w25 { width: 29.6%;}
 
 }
 
@@ -1305,6 +1332,9 @@ only screen and (min-resolution: 2dppx) {
 /* ----  W 640 ---- */
 
 @media screen and (max-width: 640px){
+
+  footer nav.w25:nth-of-type(1), footer nav.w25:nth-of-type(2) { display: none;}
+  footer nav.w25 { width: 100%; margin-right: 0px; text-align: center;}
 
 }
 
@@ -1353,6 +1383,8 @@ only screen and (min-resolution: 2dppx) {
 /* ---- W 360 ---- */
 
 @media screen and (max-width: 360px){
+
+  footer .social li a, footer .social li a:focus { margin: 0px 5px;}
 
 }
 

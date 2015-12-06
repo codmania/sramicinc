@@ -1,76 +1,55 @@
-<script type="text/javascript">
+<div class="inboard">
+  <div class="margin">
 
+    <div class="enclosure">
+      <h3>Job application</h3>
 
-</script>
-<div class="company_users employers_applications">
-  <h3>Job application</h3>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
+        <tr>
+          <th>Job ID</th>
+          <th>Title</th>
+          <th>Location</th>
+          <th>Resource Name</th>
+          <th>Account Type</th>
+          <th>Status</th>
+          <th class="last">Action</th>
+        </tr>
+        <% @jobapp.each do |f| %>
+        <tr>
+          <td data-title="Job ID"><span><%= f.job.id %></span></td>
+          <td data-title="Title"><a href="<%= job_path(@job.id) %>" target="_blank"><%= f.job.title %></a></td>
+          <td data-title="Location"><span><%= f.job.try(:city) %>  <%= f.job.try(:state_list).try(:name) %>  <%= f.job.try(:zip) %></span></td>
+          <td data-title="Resource Name">
+            <%= f.jobseeker.jprofile.name %>
+            <em class="icon icon-review"></em><span><%=Review.where(to: f.try(:jobseeker).user.id).count%>  Reviews</span>
+          </td>
+          <td data-title="Account Type"><span>Premium</span></td>
+          <td data-title="Status"><span class="status_<%= f.id %>"><%= f.status %></span></td>
+          <td data-title="Action" class="last">
 
-  <div id="no-more-tables">
-    <table class="col-sm-12 table-bordered table-striped table-condensed cf">
-      <thead class="cf">
-      <tr>
-        <th width="90">Job ID</th>
-        <th>Title</th>
-        <th>Location</th>
-        <th width="250">Resource Name</th>
-        <th>Account Type</th>
-        <th>Status</th>
-        <th width="290">Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @jobapp.each do |f| %>
+            <% if f.status=='pending' %>
+              <a href="#" onclick="accept(<%=f.id%>,'accepted')">Accept</a>&nbsp;
+              <a href="#" onclick="accept(<%=f.id%>,'rejected')">Reject</a>&nbsp;
+            <% else %>
+            <% end %>
+              <a href="#" onclick="setJcontactData(<%= f.id%>)" data-toggle="modal" data-target="#myModal">Contact</a>
 
-          <tr>
-            <td data-title="Job ID"><%= f.job.id %></td>
-            <td data-title="Title"><a href="<%= job_path(@job.id) %>" target="_blank"><%= f.job.title %></td>
-            <td data-title="Location"><%= f.job.try(:city) %>  <%= f.job.try(:state_list).try(:name) %>  <%= f.job.try(:zip) %></td>
-            <td data-title="Resource Name"><a href="employer/talents?id=<%= f.jobseeker.id %>">
-              <div><%= f.jobseeker.jprofile.name %></div>
-              <div class="review_container"><span class="icon"></span><%=Review.where(to: f.try(:jobseeker).user.id).count%>  Reviews</div></td>
-            <td data-title="Account Type"><span class="green_button button">Premium</span></td>
-            <td data-title="Status"><span class="green_button button status_<%= f.id %>"><%= f.status %></span></td>
-            <td data-title="Action">
-              <% if f.status=='pending' %>
-                            <span class="stat<%= f.id %>">
-                             <span class="acct_btn acct_btn_<%= f.id %>" onclick="accept(<%=f.id%>,'accepted')"><span class="icon icon_1"></span>Accept</span>
-                            <span class="acct_btn acct_btn_<%= f.id %>" onclick="accept(<%=f.id%>,'rejected')"><span class="icon icon_2"></span>Reject</span>
+          </td>
+        </tr>
+        <% end %>
+      </table> 
 
-                            </span>
-              <% else %>
-                  <span></span>
-              <% end %>
-              <span class="acct_btn" onclick="setJcontactData(<%= f.id%>)" data-toggle="modal" data-target="#myModal"><span class="icon icon_3"></span>Contact</span>
-            </td>
-          </tr>
-      <% end %>
+    </div>
 
-      </tbody>
-    </table>
+    <div class="centered">
+      <div class="paginations">
+        <%= will_paginate @jobapp, :inner_window => 2, :outer_window => 0, :renderer => PaginationHelper::LinkRenderer %>
+      </div>
+    </div>
 
-
-  </div>
-  <!--<p class="pagination_page_count">Results 1-6 out of 17</p>
-  <div class="paginations top-pagination">-->
-
-  <!--<ul>-->
-  <!--<li> <a href="#"><img alt="" src="/assets/prev-2.png"> </a> </li>-->
-  <!--<li> <a href="#"><img alt="" src="/assets/prev-1.png"></a> </li>-
-  <!--<li> <a href="#">1</a> </li>-->
-  <!--<li> <a href="#">2</a> </li>-->
-  <!--<li> <a href="#">3</a> </li>-->
-  <!--<li> <a href="#">4</a> </li>-->
-  <!--<li> <a href="#">5</a> </li>-->
-  <!--<li> <a href="#"><img alt="" src="/assets/next-1.png"></a> </li>-->
-  <!--<li> <a href="#"><img alt="" src="/assets/next-2.png"></a> </li>-->
-  <!--</ul>-->
-  <!--</div>-->
-
-
-  <div class="paginations top-pagination">
-
-    <%= will_paginate @jobapp, :inner_window => 2, :outer_window => 0, :renderer => PaginationHelper::LinkRenderer %>
 
   </div>
 </div>
+
 <%= render 'jcontact_popover' %>
+

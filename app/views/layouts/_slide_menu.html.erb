@@ -1,0 +1,42 @@
+<div class="slide-menu">
+  <ul>
+
+    <% if current_user.try(:role).try(:authority) != 'admin'%>
+      <li>
+        <a rel="nofollow" data-method="get" href="<%= notifications_path %>" class="notification">
+          <em class="icon icon-notification"></em>
+          <strong><%= Notification.where(user_id: current_user.id).count%></strong>
+          <span>Notifications</span>
+        </a>
+      </li>
+    <% end %>
+
+    <%if current_user.role.id==2%>
+      <li class="profile"><a rel="nofollow" data-method="get" href="<%= eprofiles_path %>">My Profile</a></li>
+    <% elsif current_user.role.id==3%>
+      <li class="profile"><a rel="nofollow" data-method="get" href="<%= jprofiles_path %>">My Profile</a></li>
+    <% end %>
+    <%if session[:staff_user].nil?%>
+      <li class="profile"><a rel="nofollow" data-method="get" href="<%= edit_user_registration_path %>">Change Password</a></li>
+    <% end %>
+      <li class="profile"><a rel="nofollow" data-method="delete" href="<%= destroy_user_session_path %>">Log out</a></li>
+
+   
+    <% if current_user.role.authority=='employer'%>
+      <li>
+        <%= link_to "Post a Job", new_job_path, class: "btn btn-orange-ghost" %>
+        <form action="/search/profiles"><input type="submit" value="Search" class="btn btn-ghost"></form>
+      </li>
+      <% elsif current_user.role.authority == 'jobseeker' %>
+        <li><form action="/search/jobs"><input type="submit" value="Search" class="btn btn-ghost"></form></li>
+      <% end %>
+
+    <% if PaymentModule.first.active? %>
+      <% if current_user.try(:subscription).try(:plan_id)==1 || current_user.try(:subscription).try(:plan_id)== 6%>
+         <li><%= link_to "Upgrade Account", payments_path, class: "btn btn-ghost" %></li>
+      <% end %>
+    <% end%> 
+
+
+  </ul>
+</div>

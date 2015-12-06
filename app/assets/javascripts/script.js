@@ -66,6 +66,39 @@ $(document).ready(function(){
     $('.alert').animate({right: '0%'}, 1000, 'easeOutExpo');
 
 
+    /* menu mobile */  
+    var showMenuMobile = false;
+
+    $('header .icon-menu').click(function(){
+      $( this ).toggleClass( 'active' );
+
+       if(!showMenuMobile){
+          $('.slide-menu').animate({
+            right: "0%",
+          }, 300);
+       } else {
+          $('.slide-menu').animate({
+            right: "-120%",
+          }, 300);
+       }
+       showMenuMobile = !showMenuMobile;
+    });
+
+
+   /* reload on orientation */  
+   window.onorientationchange = function() {
+    var orientation = window.orientation;
+      switch(orientation) {
+        case 0: window.location.reload();
+        break;
+        case 90: window.location.reload();
+        break;
+        case -90: window.location.reload();
+        break;
+      }
+    };
+
+
     var hash = window.location.hash;
     hash && $('.pricing ul.nav-tabs a[href="' + hash + '"]').tab('show');
 

@@ -62,6 +62,15 @@ $(document).ready(function(){
       $(this).tab('show');
     });
 
+    if( $('.nav.nav-tabs li').size() >= 4 ) {
+      $( '.nav.nav-tabs li' ).addClass( 'full' );
+    }
+
+    if( $('.inboard-menu .nav li').size() >= 4 ) {
+      $( '.inboard-menu .nav li' ).addClass( 'full' );
+    }
+
+
     /* alert */
     $('.alert').animate({right: '0%'}, 1000, 'easeOutExpo');
 
@@ -113,9 +122,6 @@ $(document).ready(function(){
       var changedHash = window.location.hash;
       changedHash && $('.pricing ul.nav-tabs a[href="' + changedHash + '"]').tab('show');
     }, false);
-
-
-
 
 
     /* custom checkbox and radio buttons */

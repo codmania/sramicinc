@@ -336,7 +336,7 @@ footer .social li a::before {line-height: 0% !important;}
 .bootstrap-select.btn-group .dropdown-toggle .caret::before { @include font_icons;  content: "g"; font-size: 20px;}
 .bootstrap-select.btn-group.open .dropdown-toggle .caret::before { @include font_icons;  content: "j"; font-size: 20px;}  
 
-.bootstrap-select.btn-group .dropdown-toggle .filter-option { vertical-align: middle;}
+.bootstrap-select.btn-group .dropdown-toggle .filter-option { vertical-align: middle; width: auto;}
 
 
 .bootstrap-select.btn-group .dropdown-menu { border:1px solid $line_color; background: #fff; @include border-radius(2px); @include box-shadow(none);  }
@@ -408,6 +408,7 @@ section { @extend .block; padding: 80px 0px; clear: both;}
 
 .nav.nav-tabs { padding: 0px; margin: 0px; border: 0; text-align: center;}
 .nav.nav-tabs  > li { float: none;@extend .inline-block; margin: 0px; border: 0; border-right: 1px solid $line_color; padding: 20px 40px 10px 40px;}
+.nav.nav-tabs  > li.full { padding-right: 10px !important; padding-left: 10px !important;}
 .nav.nav-tabs  > li:last-of-type { border:0;}
 .nav.nav-tabs  > li a, .nav.nav-tabs  > li a:focus {@include border-radius(0px); background: none; font-family: 'pro-regular'; font-size: 28px; color: $grey_color; border: 0; clear: both; }
 
@@ -675,6 +676,7 @@ table.lodge td .img-circle { width: 74px; height: 74px;}
 
 .inboard-menu .nav{ @extend .block;  padding: 0px; margin: 0px; border: 0; text-align: center;}
 .inboard-menu .nav > li { float: none;@extend .inline-block; margin: 0px; border: 0; border-right: 1px solid $line_color; padding: 20px 40px;}
+.inboard-menu .nav > li.full { padding-left: 10px; padding-right: 10px;}
 .inboard-menu .nav > li:last-of-type { border:0;}
 .inboard-menu .nav > li a, .inboard-menu .nav > li a:focus {@include border-radius(0px); background: none; font-family: 'pro-regular'; font-size: 28px; color: $grey_color; border: 0; clear: both; }
 
@@ -840,7 +842,7 @@ table.lodge td .img-circle { width: 74px; height: 74px;}
 
 .present .nav.nav-tabs > li { padding: 20px 40px;}
 
-.present .heading {@extend .block; position: relative;}
+.present .heading {@extend .block; position: relative; top: 50px;}
 .present .heading .back-link, .present .heading .back-link:focus { position: absolute; top: 20px; left: 0px; font-size: 16px; text-decoration: none;}
 .present .heading .back-link:hover { text-decoration: underline;}
 .present .heading .arrow-box {position: absolute; top: 10px; right: 0px; display: inline; float: none;}
@@ -1241,6 +1243,11 @@ only screen and (min-resolution: 2dppx) {
 
   .faqs .panel-group { width: 82%;}
 
+  .comment h4, .comment .time { width: 50%;}
+  .reviews h4, .reviews .time { width: 50%;}
+
+  .nav.nav-tabs > li, .present .nav.nav-tabs > li { padding-left: 20px; padding-right: 20px;}
+
 }
 
 
@@ -1252,6 +1259,17 @@ only screen and (min-resolution: 2dppx) {
   footer nav em.icon { font-size: 50px;}
 
   .amount li { padding-left: 30px; padding-right: 30px;}
+
+  .comment h4, .comment .time { width: 100%;}
+  .reviews h4, .reviews .time { width: 100%;}
+
+  .present .tab-pane .profile .w75 { width: 60%;}
+  .present .tab-pane .profile .w25 { width: 40%;}
+  .present .include .btn, .present .include .btn:last-of-type { margin-bottom: 20px;}
+
+  .reviews .w25 { width: 100%; display: inline; float: left; padding-right: 10px !important; height: auto;}
+  .reviews .w50 { width: 100%; display: inline; float: left; padding-right: 10px; padding-left: 10px; border: 0 !important;  height: auto;}
+  .reviews .w15 { width: 100%; display: inline; float: left; padding: 0px !important; height: auto; position: static !important; top: auto !important; left: auto !important; margin-top: 20px; }
 
 }
 
@@ -1274,6 +1292,19 @@ only screen and (min-resolution: 2dppx) {
   .faqs .filtering .btn { *display: inline; display: inline-block; *zoom: 1; float: none; margin: 5px; }
   .faqs .panel-group { width: 100%;}
 
+  .search .result .w75 { width: 80%;}
+  .present .similar .result .w75 { width: 88%;}
+
+  .modal-box { width: 90%;}
+
+  .present .tab-pane .actions .pull-left { display: none;}
+  .present .tab-pane .actions .pull-right .icon.icon-print { display: none;} 
+
+  .present .tab-pane .actions .pull-right { text-align: left;}
+  .present .tab-pane .actions .pull-right .btn { margin-left: 0px; margin-right: 20px; margin-bottom: 10px;}
+  .present .tab-pane .actions .pull-right .btn:last-of-type { margin-right: 0px;} 
+  .present .tab-pane .actions .pull-right .icon { margin-right: 20px;}
+
 }
 
 /* ---- W 980 ---- */
@@ -1283,6 +1314,11 @@ only screen and (min-resolution: 2dppx) {
   .banner-search { padding-right: 20px; padding-left: 20px;}
   .banner-search .margin { width: 100%;}
   .banner-search .form-group { width: 26.8%;}
+
+  .modal-box { padding: 20px;}
+
+
+  .nav.nav-tabs > li.full, .inboard-menu .nav > li.full { border: 0 !important;}
 
 
 
@@ -1294,6 +1330,11 @@ only screen and (min-resolution: 2dppx) {
 
   .exhibit article { padding: 20px 20px;}
   .exhibit article .btn { margin: 0px 10px;}
+
+
+  .present .tab-pane .w25 { width: 30%;}
+  .present .tab-pane .w75 { width: 70%;}
+
 
 }
 
@@ -1320,6 +1361,18 @@ only screen and (min-resolution: 2dppx) {
 
   .form-field { width: 80%;}
 
+  .search aside { width: 100%;}
+  .search .search-results { width: 100%;}
+
+  .search .result .w25 { display: none;}
+  .search .result .w75 { width: 100%;}
+  .present .similar .result .w25 { display: none;}
+  .present .similar .result .w75 { width: 100%;}
+
+  .present .heading { display: none;}
+
+
+
 }
 
 /* ---- W 860 ---- */
@@ -1342,6 +1395,11 @@ only screen and (min-resolution: 2dppx) {
   footer .social { width: 100%; display: block; text-align: center;}
   footer .social li { *display: inline; display: inline-block; *zoom: 1; float: none;}
   footer .social li a, footer .social li a:focus { margin: 0px 10px;}
+
+
+  .modal-box .modal-body .form-group { width: 43%;}
+
+  
 
 }
 
@@ -1371,6 +1429,8 @@ only screen and (min-resolution: 2dppx) {
 
   .tabs-container .nav.nav-tabs.sub > li, .tabs-container .nav.nav-tabs.sub > li:last-of-type { margin: 0px 10px;}
 
+  .result .details .pull-left, .result .details .pull-right { width: 100%; text-align: left;}
+
 }
 
 /* ---- W 736 ---- */
@@ -1385,7 +1445,21 @@ only screen and (min-resolution: 2dppx) {
   footer .social { margin-top: 20px;}
 
 
-  .nav.nav-tabs > li { padding-left: 20px; padding-right: 20px;}
+
+  .present .tab-pane .w25 { width: 100%; border: 0; display: inline; height: auto; float: left; padding-right: 0px;}
+  .present .tab-pane .w75 { width: 100%; display: inline; height: auto; display: inline; float: left; padding-left: 0px;}
+  .present .tab-pane .actions {  position: relative; display: inline; float: left; padding-left: 0px;}
+
+
+  .present .tab-pane .profile .w75 { width: 100%; border: 0; display: inline; height: auto; float: left; padding-right: 0px;}
+  .present .tab-pane .profile .w25 { width: 100%;  display: inline; height: auto; display: inline; float: left; padding-left: 0px;}
+
+  .reviews .w75 { border: 0px !important;}
+
+
+  .comment .w25{ width: 100%; border: 0; display: inline; height: auto; float: left; padding-right: 0px;}
+  .comment .w75 { width: 100%; display: inline; height: auto; display: inline; float: left; padding-left: 0px;}
+
 
 }
 
@@ -1415,7 +1489,7 @@ only screen and (min-resolution: 2dppx) {
   .full-screen { height: 640px; min-height: 640px;}
   .banner-search .form-group { width: 43.8%;}
 
-  .pricing .nav.nav-tabs > li { border: 0; padding-left: 10px; padding-right: 10px;}
+  .pricing .nav.nav-tabs > li, .present .nav.nav-tabs > li { border: 0; padding-left: 10px; padding-right: 10px;}
 
 }
 
@@ -1440,6 +1514,7 @@ only screen and (min-resolution: 2dppx) {
   .full-screen { height: 420px; min-height: 420px;}
 
   .banner-search { padding-right: 0px; padding-left: 0px;}
+  .search .banner-search { padding-right: 10px; padding-left: 10px;}
 
 }
 
@@ -1455,6 +1530,10 @@ only screen and (min-resolution: 2dppx) {
 /* ---- W 480  ---- */
 
 @media screen and (max-width: 480px){
+
+  .modal-box a.close, .modal-box a.close:focus { right: 5px;}
+  .modal-box .modal-body .form-group { width: 100%; margin-left: 0px; margin-right: 0px;}
+
 
 }
 

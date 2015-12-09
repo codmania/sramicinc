@@ -1737,3 +1737,12 @@ only screen and (min-resolution: 2dppx) {
   .present section { padding:0px;}   
 }
 
+
+/* IE 10  */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+@media screen and (min-width:0\0) { 
+
+ input[type="text"], input[type="password"], input[type="search"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"]  { height: 46px;}
+
+}

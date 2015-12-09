@@ -115,6 +115,7 @@ a:hover, a:active, a:focus { outline: 0 !important;}
 .nav > li > a:hover, .nav > li > a:focus { background-color: transparent;}
 
 form { display: inline; @include reset_space; }
+.form-horizontal .form-group { margin-right: 0px; margin-left: 0px;}
 .form-group { margin: 0px;}
 label { color: $dark_color; font-size: 20px; font-family: 'pro-light'; @extend .block; margin-bottom: 6px; font-weight: normal;}
 label em { color: $orange_color; font-style: normal; font-size: 22px; font-family: 'pro-semi'; padding-left: 5px;}
@@ -180,6 +181,11 @@ table { position: relative;}
 table::before { @include font_icons;  content: "M"; font-size: 30px; position: absolute; top: 0px; left: 0px;}
 table::after { @include font_icons;  content: "M"; font-size: 30px; position: absolute; bottom: -50px; right: 0px;}
 table::before, table::after { display: none;}
+
+
+.icon.icon-swipe.left, .icon.icon-swipe.right { font-size: 30px; color: $base_color; width: 100%; display: none;}
+.icon.icon-swipe.left { text-align: left;}
+.icon.icon-swipe.right{ text-align: right;}
 
 /* ---- HEADER ---- */
 
@@ -257,6 +263,7 @@ footer nav h4.payment { margin-top: -40px;}
 footer nav a, footer nav a:focus  {@extend .block; color: $light_grey_color; text-decoration: none; margin-bottom: 20px; line-height: 100%; float: left; text-decoration: none;}
 footer nav a:hover {color: $light_grey_color; text-decoration: underline;}
 footer nav a:last-of-type { margin-bottom: 0px;}
+footer nav a.occult { display: none;}
 
 footer nav a.icon, footer nav a.icon:focus { display: inline; width: auto;}
 footer nav a.icon:hover { color: $orange_color; text-decoration: none;}
@@ -688,7 +695,7 @@ table.lodge td .img-circle { width: 74px; height: 74px;}
 
 .inboard-menu .sub-nav { width: 100%; margin: 40px 0px 0px 0px; text-align: center; display: none;}
 .inboard-menu .sub-nav.active { display: block;}
-.inboard-menu .sub-nav > li { @extend .inline-block; margin: 0px 10px; padding: 0px !important; border: 0;}
+.inboard-menu .sub-nav > li { @extend .inline-block; margin: 0px 10px 10px 10px; padding: 0px !important; border: 0;}
 .inboard-menu .sub-nav > li .detail, .inboard-menu .sub-nav > li .detail:focus {@include border-radius(2px); font-family: 'pro-light';  text-transform: uppercase; line-height: 100%;  vertical-align: middle;  font-size: 14px; font-family: 'pro-light';  margin: 0px; border: 1px solid $line_color; padding: 8px 20px 6px 20px; color: $grey_color;}
 
 
@@ -1248,6 +1255,9 @@ only screen and (min-resolution: 2dppx) {
 
   .nav.nav-tabs > li, .present .nav.nav-tabs > li { padding-left: 20px; padding-right: 20px;}
 
+
+  .form-group.tripartite select { width: 28%;}
+
 }
 
 
@@ -1270,6 +1280,11 @@ only screen and (min-resolution: 2dppx) {
   .reviews .w25 { width: 100%; display: inline; float: left; padding-right: 10px !important; height: auto;}
   .reviews .w50 { width: 100%; display: inline; float: left; padding-right: 10px; padding-left: 10px; border: 0 !important;  height: auto;}
   .reviews .w15 { width: 100%; display: inline; float: left; padding: 0px !important; height: auto; position: static !important; top: auto !important; left: auto !important; margin-top: 20px; }
+
+
+  .inboard table .result .w75 { width: 100%; }
+  .inboard table .result .w25 { display: none;}
+  .inboard table .result .details {  display: none;}
 
 }
 
@@ -1319,6 +1334,8 @@ only screen and (min-resolution: 2dppx) {
 
 
   .nav.nav-tabs > li.full, .inboard-menu .nav > li.full { border: 0 !important;}
+
+  .inboard .enclosure.w50 { width: 100%;}
 
 
 
@@ -1372,6 +1389,9 @@ only screen and (min-resolution: 2dppx) {
   .present .heading { display: none;}
 
 
+  .inboard-menu .sub-nav > li  { margin-right: 5px; margin-left: 5px;}
+
+
 
 }
 
@@ -1385,6 +1405,8 @@ only screen and (min-resolution: 2dppx) {
   .slide-menu { display: inline;}
 
   .banner-search .form-group { width: 25.8%;}
+
+  .enclosure { overflow-x: auto; }
 
 }
 /* ---- W 800 ---- */
@@ -1414,6 +1436,12 @@ only screen and (min-resolution: 2dppx) {
   section { padding: 40px 0px;}
   footer{ padding-top: 40px; padding-bottom: 20px;}
 
+  table {overflow-x: auto;}
+  .icon.icon-swipe.left { display: block;}
+
+  .pricing table { display: block;}
+  .pricing table::before, .pricing table::after { display: inline;}
+
 }
 
 /* ---- W 768 ---- */
@@ -1431,6 +1459,11 @@ only screen and (min-resolution: 2dppx) {
 
   .result .details .pull-left, .result .details .pull-right { width: 100%; text-align: left;}
 
+
+  .inboard .enclosure .form-group.w75 {width:100%; margin-right: 0px; }
+  .inboard .enclosure .form-group.w50 {width:100%; margin-right: 0px; }
+  .inboard .enclosure .form-group.w25 {width:100%; margin-right: 0px; }
+
 }
 
 /* ---- W 736 ---- */
@@ -1443,6 +1476,7 @@ only screen and (min-resolution: 2dppx) {
   footer nav.w25:nth-of-type(1), footer nav.w25:nth-of-type(2) { display: none;}
   footer nav.w25 { width: 100%; margin-right: 0px; text-align: center;}
   footer .social { margin-top: 20px;}
+  footer nav a.occult { display: block;}
 
 
 
@@ -1476,8 +1510,12 @@ only screen and (min-resolution: 2dppx) {
   .about-us ul li { width: 100%; border: 0; padding-left: 0px; padding-right: 0px;}
 
 
-  .pricing table {overflow-x: auto;display: block;}
-  .pricing table::before, .pricing table::after { display: inline;}
+
+  .inboard.profile .enclosure .w25{  display: inline; float: left; width: 100%; border: 0; padding-right: 10px; height: auto;}
+  .inboard.profile .enclosure .w50{  display: inline; float: left; width: 100%;  padding-left: 10px; height: auto;}
+
+  .inboard.edit .enclosure .w50 { width: 100%; margin-left: 0px; margin-right: 0px;}
+  .inboard.edit .enclosure .w100 { width: 100%; margin-left: 0px; margin-right: 0px;}
 
 
 }
@@ -1490,6 +1528,9 @@ only screen and (min-resolution: 2dppx) {
   .banner-search .form-group { width: 43.8%;}
 
   .pricing .nav.nav-tabs > li, .present .nav.nav-tabs > li { border: 0; padding-left: 10px; padding-right: 10px;}
+
+  .form-group.tripartite select { width: 100%; margin-bottom: 10px;}
+  .form-group.tripartite select:last-of-type { margin-bottom: 0px;}
 
 }
 
@@ -1522,7 +1563,7 @@ only screen and (min-resolution: 2dppx) {
 
 @media screen and (max-width: 500px){
 
-  .session .wrapper { width: 90%;}
+  .session .wrapper { width: 90%; padding-left: 20px; padding-right: 20px;}
   .session .nav.nav-tabs > li { padding-left: 10px; padding-right: 10px; border: 0;}
 
 }
@@ -1531,7 +1572,8 @@ only screen and (min-resolution: 2dppx) {
 
 @media screen and (max-width: 480px){
 
-  .modal-box a.close, .modal-box a.close:focus { right: 5px;}
+  .modal-box a.close, .modal-box a.close:focus { display: none;}
+  .modal .close, .modal .close:focus { display: none;}
   .modal-box .modal-body .form-group { width: 100%; margin-left: 0px; margin-right: 0px;}
 
 
@@ -1540,6 +1582,8 @@ only screen and (min-resolution: 2dppx) {
 /* ---- W 414 ---- */
 
 @media screen and (max-width: 414px){
+
+
 
 }
 
@@ -1589,19 +1633,14 @@ only screen and (min-resolution: 2dppx) {
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
-/* ---- H 1024 ---- */
 
-@media screen and (max-height: 1024px){
+/* ---- H 900 ---- */
+
+@media screen and (max-height: 900px){
 
   .full-screen { height: 640px; min-height: 640px; overflow: visible;}
   .full-screen .middle { top: 15%;}
   .full-screen .centered { display: none;}
-
-}
-
-/* ---- H 960 ---- */
-
-@media screen and (max-height: 960px){
 
   header { position: relative;}
   .vessel { padding-top: 0px;}
@@ -1635,6 +1674,16 @@ only screen and (min-resolution: 2dppx) {
 /* MOBILE WIDTH AND HEIGHT */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
+
+/* ---- W 768 x H 1024 ---- */
+
+@media only screen and (width: 768px) and (height: 1024px) {
+
+  .full-screen { height: 640px; min-height: 640px; overflow: visible;}
+  .full-screen .middle { top: 15%;}
+  .full-screen .centered { display: none;}
+
+}
 
 
 /* ---- W 568 x H 320 ---- */

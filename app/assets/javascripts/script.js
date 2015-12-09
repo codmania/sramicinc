@@ -71,6 +71,7 @@ $(document).ready(function(){
     }
 
 
+
     /* alert */
     $('.alert').animate({right: '0%'}, 1000, 'easeOutExpo');
 
@@ -122,6 +123,13 @@ $(document).ready(function(){
       var changedHash = window.location.hash;
       changedHash && $('.pricing ul.nav-tabs a[href="' + changedHash + '"]').tab('show');
     }, false);
+
+
+
+    /* table mobile */  
+    $( '.enclosure table' ).before( '<em class="icon icon-swipe left"></em>' );
+    $( '.enclosure' ).has( 'table' ).css( 'display', 'block' );
+
 
 
     /* custom checkbox and radio buttons */

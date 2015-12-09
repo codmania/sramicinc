@@ -13,7 +13,7 @@
 
     <div class="form-group">
       <label>Job Title<em>*</em></label>
-      <%= f.text_field :title, :required => true, :maxlength => 100 %>
+      <%= f.text_field :title, :required => true, :maxlength => 200 %>
     </div>
     <div class="form-group">
       <label>Country<em>*</em></label>
@@ -26,7 +26,7 @@
     </div>
     <div class="form-group">
       <label>City<em>*</em></label>
-      <%= f.text_field :city, :required => true, :maxlength => 50 %>
+      <%= f.text_field :city, :required => true, :maxlength => 100 %>
     </div>
     <div class="form-group">
       <label>Zip Code<em>*</em></label>
@@ -45,7 +45,7 @@
     <div class="form-group">
       <label>Job Description<em>*</em></label>
       <%= f.cktext_area :description,:class => 'text_area_alignment'%>
-      <small>Maximum 5000 characters are allowed</small>
+      <small>Maximum 20000 characters are allowed</small>
     </div>
 
   </div>
@@ -78,7 +78,7 @@
 
             <div class="form-group">
               <label>Education</label>
-              <%= f.text_field :education, :maxlength => 100 %>
+              <%= f.text_field :education, :maxlength => 200 %>
             </div>
 
             <div class="form-group">
@@ -93,7 +93,7 @@
 
             <div class="form-group">
               <label>Salary</label>
-              <%= f.text_field :salary,:pattern => "[$][0-9]{1,10}(?:[\.]{1}[0-9]{1,3})?",:title => "Salary should be preceded by '$',max 10 digits before decimal, optional decimal, decimal max 3 digits",:maxlength=>15%>
+              <%= f.text_field :salary,:pattern => "[$][0-9]{1,20}(?:[\.]{1}[0-9]{1,3})?",:title => "Salary should be preceded by '$',max 10 digits before decimal, optional decimal, decimal max 3 digits",:maxlength=>25%>
             </div>
 
           </div>
@@ -107,12 +107,12 @@
 
             <div class="form-group">
               <label>Certification</label>
-              <%= f.text_field :certification, :maxlength => 100 %>
+              <%= f.text_field :certification, :maxlength => 200 %>
             </div>
 
             <div class="form-group">
               <label>Reference</label>
-              <%= f.text_field :references, :maxlength => 100 %>
+              <%= f.text_field :references, :maxlength => 200 %>
             </div>
 
             <div class="form-group">
@@ -122,7 +122,7 @@
 
             <div class="form-group">
               <label>Clearance</label>
-              <%= f.text_field :clearance, :maxlength => 100 %>
+              <%= f.text_field :clearance, :maxlength => 200 %>
             </div>
 
           </div>
@@ -160,12 +160,12 @@
 
 //$('#job_plain_description').get(0).setCustomValidity('desc');
         console.log(CKEDITOR.instances.job_description.document.getBody().getText().length);
-        if(CKEDITOR.instances.job_description.document.getBody().getText().length > 0 && CKEDITOR.instances.job_description.document.getBody().getText().length <= 5000){
+        if(CKEDITOR.instances.job_description.document.getBody().getText().length > 0 && CKEDITOR.instances.job_description.document.getBody().getText().length <= 20000){
             var plain_desc = CKEDITOR.instances.job_description.document.getBody().getText();
             $('#job_plain_description').val(plain_desc);
             return true;
         }
-        alert('Please enter description and max 5000 character');
+        alert('Please enter description and max 20000 character');
         return false;
 
 

@@ -344,7 +344,7 @@ if !Faq.exists?
   Faq.create(faq_category_id:@cate_3.id,question:'Why havent I had a response to my application?',
              answer:'When you apply for a job advertised on SRAMIC.com, you are effectively emailing the advertiser. SRAMIC.com does encourage our advertisers to respond to all applications, but unfortunately this does not always happen. It is always a good idea to follow up your application with an email or phone call. ')
   Faq.create(faq_category_id:@cate_4.id,question:'What are Job Postings? What all can I do with your Job Postings solution?',
-             answer:'When you need to fill a position, time is money. And every minute counts. You need to get your job in front of the most qualified job seekers. You need an easy and reliable way to manage incoming CVs and select the right person for the job. And thats what posting your job on Sramic delivers - the most efficient and cost-effective way to hire online.')
+             answer:'When you need to fill a position, time is money. And every minute counts. You need to get your job in front of the most qualified job seekers. You need an easy and reliable way to manage incoming CVs and select the right person for the job. And thats what posting your job on sramic delivers - the most efficient and cost-effective way to hire online.')
   Faq.create(faq_category_id:@cate_5.id,question:'What is search?',answer:'Search gives you an option to look for relevant jobs based on your specific requirements. To search for a job, you can use the given search window. You may use the following criteria to look for relevant jobs.')
 end
 

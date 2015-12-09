@@ -21,7 +21,7 @@ gem 'will_paginate-bootstrap'
 gem 'ckeditor'
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.20'
 end
 group :development do
   gem 'sqlite3'

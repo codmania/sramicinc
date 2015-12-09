@@ -6,6 +6,7 @@
 
       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
         <tr>
+			 <th>Id</th>
           <th>Title</th>
           <th>Location</th>
           <th>Posted Date</th>
@@ -14,8 +15,9 @@
           <th>Status</th>
           <th class="last">Actions</th>
         </tr>
-        <% @jobs.each do |job| %>
+        <% @jobs.order('created_at DESC').each do |job| %>
         <tr>
+			 <td data-title="Id"><a href="<%= job_path(job.id) %>" target="_blank"><%= job.id%></a></td>
           <td data-title="Title"><a href="<%= job_path(job.id) %>" target="_blank"><%= job.title%></a></td>
           <td data-title="Location"><span><%=job.try(:city)%>  <%=job.try(:state_list).try(:name)%>   <%=job.try(:zip)%></span></td>
           <td data-title="Posted Date"><span><%=job.created_at.strftime("%m/%d/%Y")%></span></td>

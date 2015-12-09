@@ -11,15 +11,15 @@ class Jprofile < ActiveRecord::Base
   belongs_to :state_list
   belongs_to :country_list
 
-  validates :title, presence: true, length: {maximum: 100}
-  validates :name, presence: true, length: {maximum: 60}
+  validates :title, presence: true, length: {maximum: 200}
+  validates :name, presence: true, length: {maximum: 200}
   validates :address1, presence: true, length: {maximum: 1000}
   validates :address2, length: {maximum: 1000}, if: 'address2.present?'
-  validates :city, presence: true, length: {maximum: 50}
+  validates :city, presence: true, length: {maximum: 100}
   validates_format_of :zip, presence: true,:with => /\A[0-9]{5}$\Z/ ,:message => "is mandatory and should be in 5 digits"
   validates_format_of :phone, presence: true,:with => /\A([\+]?[1]{1})?(?:[\(][0-9]{3}[\)]|[0-9]{3})[\-]?[0-9]{3}[\-]?[0-9]{4}\Z/, :message => 'Number Format:Any 10 digit numbers, 123-456-7890 ,(123)456-7890,+11234567890'
-  validates_format_of :salary, :with => /\A[0-9]{1,10}(?:[\.]{1}[0-9]{1,3})?\Z/ ,:message => "max 10 digits before decimal, optional decimal, decimal max 3 digits" ,if: 'salary.present?'
-  validates  :summary,presence: true,length: {maximum: 1000}
+  validates_format_of :salary, :with => /\A[0-9]{1,20}(?:[\.]{1}[0-9]{1,3})?\Z/ ,:message => "max 20 digits before decimal, optional decimal, decimal max 3 digits" ,if: 'salary.present?'
+  validates  :summary,presence: true,length: {maximum: 20000}
 
 
   before_save :set_city
@@ -47,13 +47,13 @@ class Jprofile < ActiveRecord::Base
 
   has_attached_file :logo, :styles => { :medium => "200x200>", :thumb => "50x50>" }, :default_url => "medium/default_image.png"
 
-  validates_attachment :logo, :size => { :in =>0..1.megabytes,
-                                                            :message => "of photo must be less than 3MB!!" },
-                       :content_type => {:content_type => /\Aimage\/.*\Z/, :message => "Photo should be image only!!"}
+  validates_attachment :logo, :size => { :in =>0..3.megabytes,
+                                                            :message => "logo must be less than 3MB!!" },
+                       :content_type => {:content_type => /\Aimage\/.*\Z/, :message => "logo should be image only!"}
 
 
   validates_attachment :resume, :size => { :in =>0..3.megabytes,
-                                                              :message => "must be less than 3MB!!" },
+                                                              :message => "attachment must be less than 3MB!" },
                        :content_type => {:content_type => ['application/pdf' ,'application/msword' ,'application/vnd.openxmlformats-officedocument.wordprocessingml.document'], :message => "file should be pdf or word only!!"}
 
   # validates_attachment :resume, :presence => true, :size => { :in =>0..3.megabytes,

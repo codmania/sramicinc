@@ -1,8 +1,8 @@
 class Education < ActiveRecord::Base
 
   belongs_to :jprofile
-  validates :degree, presence: true, length: {maximum: 100}
-  validates :field, length: {maximum: 100}
+  validates :degree, presence: true, length: {maximum: 200}
+  validates :field, length: {maximum: 200}
   validates :institution, length: {maximum: 200}
   validates :location, length: {maximum: 1000}
   validates :completion, presence: true, length: {maximum: 20}

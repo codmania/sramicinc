@@ -26,18 +26,21 @@
 
               <div class="w75">
                 <ul class="list">
-                  <li><strong>Industry:</strong><span><%= @eprofile.try(:industry).try(:name) %></span></li>
-                  <li><strong>Services:</strong><span><%= @eprofile.services %></span></li>
+						<li><strong>Overview:</strong><span></span><%= @eprofile.overview %></li>
+						<li><strong>Industry:</strong><span></span><%= @eprofile.try(:industry).try(:name) %></li>
+                  <li><strong>Services:</strong><span></span><%= @eprofile.services %></li>
                   <li><strong>Products:</strong><span></span><%= @eprofile.products %></li>
                   <li><strong>Location:</strong><span></span><%= @eprofile.address1 %><%if @eprofile.address1.present? %>, <%end%><%= @eprofile.address2 %><%if @eprofile.address2.present? %>, <%end%><%= @eprofile.try(:city) %><%if @eprofile.city.present? %>, <%end%><%= @eprofile.try(:state_list).try(:name) %><%if @eprofile.country_list.present? %>, <%end%><%= @eprofile.try(:country_list).try(:name) %></li>
                   <% if current_user.try(:role).try(:authority)=='employer' ||  current_user.try(:role).try(:authority)=='jobseeker' ||  current_user.try(:role).try(:authority)=='jobseeker'%>
-                    <li><strong>Phone:</strong><span><%= @eprofile.phone %></span></li>
+                  <li><strong>Phone:</strong><span></span><%= @eprofile.phone %></li>
                   <% end%>
-                  <li><strong>Fax:</strong><span><%= @eprofile.fax %></span></li>
+						<% if current_user.try(:role).try(:authority)=='employer' ||  current_user.try(:role).try(:authority)=='jobseeker' ||  current_user.try(:role).try(:authority)=='jobseeker'%>
+                  <li><strong>Fax:</strong><span></span><%= @eprofile.fax %></li>
+						<%end%>
                   <% if current_user.try(:role).try(:authority)=='employer' ||  current_user.try(:role).try(:authority)=='jobseeker' ||  current_user.try(:role).try(:authority)=='jobseeker'%>
                     <li><strong>Email:</strong><a href="mailto:<%= @eprofile.email %>"><span><%= @eprofile.email %></span><em class="icon icon-link"></em></a></li>
                   <% end%>
-                  <li><strong>Website:</strong><a href="<%=@eprofile.website%>" target="_blank"><span><%= @eprofile.website %></span><em class="icon icon-link"></em></a></li> 
+                  <li><strong>Website:</strong><a href="<%=@eprofile.website%>" target="_blank"><span><%= @eprofile.website %></span><em class="icon icon-link"></em></a></li>
                 </ul> 
               </div>
 

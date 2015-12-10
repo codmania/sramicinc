@@ -1320,6 +1320,10 @@ only screen and (min-resolution: 2dppx) {
   .present .tab-pane .actions .pull-right .btn:last-of-type { margin-right: 0px;} 
   .present .tab-pane .actions .pull-right .icon { margin-right: 20px;}
 
+
+  .search aside { display: none;}
+  .search .search-results { width: 100%;}
+
 }
 
 /* ---- W 980 ---- */
@@ -1378,8 +1382,6 @@ only screen and (min-resolution: 2dppx) {
 
   .form-field { width: 80%;}
 
-  .search aside { width: 100%;}
-  .search .search-results { width: 100%;}
 
   .search .result .w25 { display: none;}
   .search .result .w75 { width: 100%;}

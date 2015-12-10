@@ -13,6 +13,16 @@
   <section>
     <div class="margin">
 
+      <%# if params['what'] %>
+        <div class="heading">
+          <a href="#" class="back-link">back to search results</a>
+          <div class="arrow-box">
+            <a href="#" class="icon icon-arrow-circle-left prev_page"> </a>
+            <a href="#" class="icon icon-arrow-circle-right nxt_page"> </a>
+          </div>
+        </div>
+      <%#end%>
+
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
@@ -25,16 +35,7 @@
         <li role="presentation" class="blue"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><strong>Reviews<strong></a></li>
       </ul>
 
-      <%# if params['what'] %>
-        <div class="heading">
-          <a href="#" class="back-link">back to search results</a>
-          <div class="arrow-box">
-            <a href="#" class="icon icon-arrow-circle-left prev_page"> </a>
-            <a href="#" class="icon icon-arrow-circle-right nxt_page"> </a>
-          </div>
-			 <br /> 
-        </div>
-      <%#end%>
+      
 
       <!-- Tab panes -->
       <div class="tab-content">

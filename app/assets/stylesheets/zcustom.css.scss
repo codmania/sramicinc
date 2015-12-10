@@ -1089,6 +1089,8 @@ table.lodge.orange td strong {color: $orange_color; }
 .orange .panel-group .panel .panel-collapse .actions a.icon, .orange .panel-group .panel .panel-collapse .actions a.icon:focus { color: $orange_color;} 
 
 
+.inboard.profile .enclosure .list li a.btn-orange-ghost, .inboard.profile .enclosure .list li a.btn-orange-ghost:focus { color:$orange_color;}
+.inboard.profile .enclosure .list li a.btn-orange-ghost:hover { color:#fff;}
 
 /* BLUE */
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -1200,6 +1202,10 @@ table.lodge.blue td strong {color: $blue_color; }
 
 
 .blue .panel-group .panel .panel-collapse .actions a.icon, .blue .panel-group .panel .panel-collapse .actions a.icon:focus { color: $blue_color;} 
+
+
+.inboard.profile .enclosure .list li a.btn-blue-ghost, .inboard.profile .enclosure .list li a.btn-blue-ghost:focus { color:$blue_color;}
+.inboard.profile .enclosure .list li a.btn-blue-ghost:hover { color:#fff;}
 
 
 /* RETINA */

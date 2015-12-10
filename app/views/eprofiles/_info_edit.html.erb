@@ -58,10 +58,6 @@
       <%= f.text_field :city,:class => "form-control",:maxlength=>100%>
     </div>
 
-  </div>
-
-  <div class="w50">
-
     <div class="form-group">
       <label for = "phone">Phone</label>
       <%= f.text_field :phone,:class => "form-control",:pattern=>"([\+]?[1]{1})?(?:[\(][0-9]{3}[\)]|[0-9]{3})[\-]?[0-9]{3}[\-]?[0-9]{4}",:title=>'Phone Number Format:Any 10 digit numbers, 123-456-7890 ,(123)456-7890,+11234567890' %>
@@ -71,6 +67,10 @@
       <label for = "fax">Fax</label>
       <%= f.text_field :fax,:class => "form-control" ,:pattern=>"([\+]?[1]{1})?(?:[\(][0-9]{3}[\)]|[0-9]{3})[\-]?[0-9]{3}[\-]?[0-9]{4}",:title=>'Fax should be in format like Any 10 digit numbers, 123-456-7890 ,(123)456-7890,+11234567890'%>
     </div>
+
+  </div>
+
+  <div class="w50">
 
     <div class="form-group">
       <label for = "overview">Overview</label>
@@ -108,8 +108,25 @@
       <%= f.text_field :linkedin_url,:class => "form-control", :pattern =>"^(https?:\/\/)?((w{3}\.)?)linkedin\.com\/(#!\/)?[a-z0-9_]+$", :title => "Format Should be anything that starts with http(s)://www.linkedin.com/",:maxlength=>1000%>
     </div>
 
+    <div class="form-group">
+      <label>Public viewing</label>
+      <div class="iradio">
+        <input type="radio" name="publicviewing" value="true" checked ><label>Enabled</label>  
+        <input type="radio" name="publicviewing" value="false"><label>Disabled</label>  
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Profile status</label>
+      <div class="iradio">
+        <input type="radio" name="profilestatus" value="true" checked ><label>Enabled</label>  
+        <input type="radio" name="profilestatus" value="false"><label>Disabled</label>  
+      </div>
+    </div>
+
     <div class="actions">
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),eprofile_path, :class => 'btn btn-ghost' %>
+      <%= link_to "DELETE PROFILE", "#", :class => 'btn btn-orange-ghost' %>
       <%= f.submit "Save" ,:class => "btn btn-orange" %>
     </div>
 

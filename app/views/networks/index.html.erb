@@ -10,22 +10,20 @@
 		  	<tr>
           <!-- <th></th> -->
           <!-- <th>ID</th> -->
-			 <th>Company Name</th>
+			    <th>Company Name</th>
           <th>Industry</th>
           <th>Address</th>
-			 <th width="" class="last"></th>
-			 
-        	</tr>
+			    <th class="last">Actions</th> 
+        </tr>
 		  <%else%>
 		  	<tr>
           <!-- <th></th> -->
           <!-- <th>ID</th> -->
-			 <th>Name</th>
+			    <th>Name</th>
           <th>Title</th>
           <th>Skills</th>
-			 <th width="" class="last"></th>
-			 
-        	</tr>
+			   <th class="last">Actions</th>		 
+        </tr>
 		  <%end%>
 		  
         <% @networks.each do |network| %>
@@ -49,10 +47,16 @@
 					<!-- <td data-title="CompanyName"><%= ep.try(:company_name) %></td> -->
             	<td data-title="Industry"><%= ep.try(:industry).try(:name) %></td>
             	<td data-title="Address" class="last"><%= ep.try(:city) %><%if ep.city.present? %>, <% end %><%= ep.try(:state_list).try(:name) %><%if ep.country_list.present? %>, <% end %><%= ep.try(:country_list).try(:name) %></td>
+              <td class="last">
+                <%= link_to "#", class: "icon icon-trash", title: "Delete" do %><% end %>
+              </td>
           	<% else %>
 					<!-- <td data-title="Name"><%= jp.try(:name) %></td> -->
             	<td data-title="Title"><%= jp.try(:title) %></td>
-            	<td data-title="Email" class="last"><%= jp.skills.map { |s| s.name }.join(", ")  %></td>
+            	<td data-title="Email"><%= jp.skills.map { |s| s.name }.join(", ")  %></td>
+              <td class="last">
+                <%= link_to "#", class: "icon icon-trash", title: "Delete" do %><% end %>
+              </td>
 				<% end %>
 			 </tr>
         <% end %>

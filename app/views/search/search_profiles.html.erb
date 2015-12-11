@@ -7,12 +7,12 @@
 
       <div class="results">
         <% if @res != nil && @res.results.length > 0 %>
-            <%=@res.results.length+@res.results.offset%> <small>of</small> <%= @res.try(:total) %>
-            <%= params[:keywords]!=nil ?  params[:keywords]: params[:what]  %> <small>Profiles</small>
+            <%= (@res.results.offset)+1 %>-<%=@res.results.length+@res.results.offset%> <small>of</small> <%= @res.try(:total) %>
+            <%= params[:keywords]!=nil ?  params[:keywords]: params[:what]  %> Profiles
             <%= 'in ' if params[:location].present? || params[:where].present? %>
             <%= params[:location]!=nil ?  params[:location]: params[:where]  %>
         <%else %>
-          0 <small>Profile</small>
+            0 <small>Profile</small>
         <% end %>
       </div>
 

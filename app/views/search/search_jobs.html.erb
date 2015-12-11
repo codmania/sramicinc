@@ -7,8 +7,8 @@
 
       <div class="results">
         <% if @res != nil && @res.results.length > 0 %>
-            <%=@res.results.length+@res.results.offset%> <small>of</small> <%= @res.try(:total) %>
-            <%= params[:keywords]!=nil ?  params[:keywords]: params[:what]  %> <small>Jobs</small>
+            <%= (@res.results.offset)+1 %>-<%=@res.results.length+@res.results.offset%> <small>of</small> <%= @res.try(:total) %>
+            <%= params[:keywords]!=nil ?  params[:keywords]: params[:what]  %> Jobs
             <%= 'in ' if params[:location].present? || params[:where].present? %>
             <%= params[:location]!=nil ?  params[:location]: params[:where]  %>
         <%else %>
@@ -16,7 +16,6 @@
         <% end %>
       </div>
 
-      
 
       <div class="search-results w75">
         <%=render 'job_results'%>

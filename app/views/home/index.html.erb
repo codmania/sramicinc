@@ -54,7 +54,7 @@
 
           <!-- Sub Nav tabs -->
           <ul class="nav nav-tabs sub" role="tablist">
-            <li role="presentation" class="orange active"><a href="#jobs-tab1" aria-controls="jobs-tab1" role="tab" data-toggle="tab">By Category </a></li>
+            <li role="presentation" class="orange active"><a href="#jobs-tab1" aria-controls="jobs-tab1" role="tab" data-toggle="tab">By Job Type </a></li>
             <li role="presentation" class="orange"><a href="#jobs-tab2" aria-controls="jobs-tab2" role="tab" data-toggle="tab">By Location</a></li>
             <li role="presentation" class="orange"><a href="#jobs-tab3" aria-controls="jobs-tab3" role="tab" data-toggle="tab">By Company</a></li>
             <li role="presentation" class="orange"><a href="#jobs-tab4" aria-controls="jobs-tab4" role="tab" data-toggle="tab">By Industry</a></li>
@@ -66,44 +66,44 @@
             <div role="tabpanel" class="tab-pane active" id="jobs-tab1">
               <ul class="item">
                 <%if @res != nil %>
-                  <% @res.facet(:categoryname).rows.each do |facet| %>
-                    <li class="orange"><a href="/search/jobs?&category=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
-                  <%end%>  
+                  <% @res.facet(:job_type).rows.each do |facet| %>
+                    <li class="orange"><a href="/search/jobs?&job_type=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                  <%end%>
                 <%end%>
-              </ul> 
+              </ul>
             </div>
             <div role="tabpanel" class="tab-pane" id="jobs-tab2">
               <ul class="item">
                 <%if @res != nil %>
                   <% @res.facet(:city).rows.each do |facet| %>
                     <li class="orange"><a href="/search/jobs?&city=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
-                  <%end%>  
+                  <%end%>
                 <%end%>
-              </ul> 
+              </ul>
             </div>
             <div role="tabpanel" class="tab-pane" id="jobs-tab3">
               <ul class="item">
                 <%if @res != nil %>
                   <% @res.facet(:companyname).rows.each do |facet| %>
                     <li class="orange"><a href="/search/jobs?&company=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
-                  <%end%>  
+                  <%end%>
                 <%end%>
-              </ul> 
+              </ul>
             </div>
             <div role="tabpanel" class="tab-pane" id="jobs-tab4">
               <ul class="item">
                 <%if @res != nil %>
                   <% @res.facet(:industry).rows.each do |facet| %>
                     <li class="orange"><a href="/search/jobs?&industry=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
-                  <%end%>  
+                  <%end%>
                 <%end%>
-              </ul> 
+              </ul>
             </div>
           </div>
 
         </div>
         <div role="tabpanel" class="tab-pane" id="talent-tab">
-          
+
           <!-- Sub Nav tabs -->
           <ul class="nav nav-tabs sub" role="tablist">
             <li role="presentation" class="blue active"><a href="#talent-tab1" aria-controls="talent-tab1" role="tab" data-toggle="tab">By Location </a></li>
@@ -118,18 +118,18 @@
                 <%if @res1 != nil %>
                   <% @res1.facet(:city).rows.each do |facet| %>
                     <li class="blue"><a href="/search/profiles?&city=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
-                  <%end%>  
+                  <%end%>
                 <%end%>
-              </ul> 
+              </ul>
             </div>
             <div role="tabpanel" class="tab-pane" id="talent-tab2">
               <ul class="item">
                 <%if @res1 != nil %>
                   <% @res1.facet(:skills).rows.each do |facet| %>
                     <li class="blue"><a href="/search/profiles?&skills=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
-                  <%end%>  
+                  <%end%>
                 <%end%>
-              </ul> 
+              </ul>
             </div>
           </div>
 
@@ -175,11 +175,11 @@
               <div class="mask">
                 <% if testimonial.logo? %>
                   <%= image_tag testimonial.logo.url(:medium), title: "", alt: "" %>
-                <% end %>   
+                <% end %>
               </div>
               <div class="commas"><span>“</span></div>
             </div>
-            
+
             <article>
               <h3><%= testimonial.try(:name)%></h3>
               <h4><%= testimonial.try(:company)%></h4>
@@ -188,7 +188,7 @@
           </li>
         <% end %>
       </ul>
-      
+
     </div>
   </section>
   <% end %>

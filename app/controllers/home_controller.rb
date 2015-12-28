@@ -40,8 +40,8 @@ class HomeController < ApplicationController
 
      @res= Sunspot.search(Job) do
 
-    with(:categoryname, params[:category].downcase) if params['category'].present?
-    facet(:categoryname)
+    with(:job_type, params[:job_type].downcase) if params['job_type'].present?
+    facet(:job_type)
     with(:companyname, params[:company].downcase) if params['company'].present?
     facet(:companyname)
     with(:industry, params[:industry].downcase) if params['industry'].present?
@@ -57,9 +57,7 @@ class HomeController < ApplicationController
     facet(:skills)
     with(:educations, params[:education].downcase) if params['education'].present?
     facet(:educations)
-    
+
     end
     end
   end
-
-

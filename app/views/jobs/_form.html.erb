@@ -32,7 +32,7 @@
       <label>Zip Code<em>*</em></label>
       <%= f.text_field :zip, :required => true, :pattern => "[0-9]{5}$", :title => 'Zip code Should be in digits and 5 digits' %>
     </div>
- 
+
   </div>
 
   <div class="w50">
@@ -54,7 +54,7 @@
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
       <div class="panel panel-default">
-          
+
         <div class="panel-heading" role="tab">
         <%= link_to "#optional", class: "collapsed", :"role" => 'button', :"data-toggle" => 'collapse', :"data-parent" => '#accordion', :"aria-expanded" => 'false', :"aria-controls" => "optional" do %>
             <span>Optional fields</span>
@@ -63,13 +63,8 @@
           <% end %>
         </div>
         <div id="optional" class="panel-collapse collapse" role="tabpanel">
-          
-          <div class="w50">
 
-            <div class="form-group">
-              <label>Category</label>
-              <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: 'selectpicker'} %>
-            </div>
+          <div class="w50">
 
             <div class="form-group">
               <label>Experience</label>
@@ -128,7 +123,7 @@
           </div>
 
         </div>
-          
+
       </div>
 
 
@@ -137,7 +132,7 @@
 
 
   <div class="w100">
-  
+
     <div class="actions">
       <% if current_user.try(:role).try(:authority) == 'employer' %>
         <%= link_to t('.cancel', :default => t("helpers.links.cancel")),my_jobs_path, :class => 'btn btn-ghost', :id => 'can' %>

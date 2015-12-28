@@ -64,7 +64,7 @@
 
             <% @res.facet(:job_type).rows.each do |facet| %>
             <option value="<%=facet.value %>"
-                                <%if params[:category]==facet.value %>
+                                <%if params[:job_type]==facet.value %>
                                 selected
                                 <%end%>>
               <%= facet.value%>

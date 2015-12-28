@@ -38,7 +38,7 @@
     <a href="#" class="js-modal-close close">×</a>
     <h3>Advanced Job Search</h3>
   </header>
- 
+
   <div class="modal-body">
 
     <div class="advance-job-container">
@@ -99,10 +99,10 @@
       </div>
 
       <div class="advance-job" >
-        <label>Job Category</label>
-    <div style="color:#0000FF"><%= select_tag "categoryname", options_from_collection_for_select(Category.all, "name", "name")%></div>
-        
-       
+        <label>Job Type</label>
+    <div style="color:#0000FF"><%= select_tag "job_type", options_from_collection_for_select(JobType.all, "name", "name")%></div>
+
+
       </div>
 
       <div class="advance-job">
@@ -170,4 +170,3 @@
 <!--End advance search popup-->
 
 <% end %>
-

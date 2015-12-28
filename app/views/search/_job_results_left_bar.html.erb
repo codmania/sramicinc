@@ -57,12 +57,12 @@
     </div>
 
     <div class="form-group">
-      <label>Category</label>
-      <select class="selectpicker" name="category">
+      <label>Job type</label>
+      <select class="selectpicker" name="job_type">
         <option value=''>Select</option>
         <%if @res != nil %>
 
-            <% @res.facet(:categoryname).rows.each do |facet| %>
+            <% @res.facet(:job_type).rows.each do |facet| %>
             <option value="<%=facet.value %>"
                                 <%if params[:category]==facet.value %>
                                 selected

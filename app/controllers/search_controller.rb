@@ -42,7 +42,6 @@ class SearchController < ApplicationController
         fulltext params[:company].downcase.split(',').map { |x| x.downcase }, :fields => :companyname if params[:company].present?
         with :created_at, pdate_end..pdate_start if params[:postingdate].present?
         with(:job_type, params[:job_type].downcase) if params['job_type'].present?
-        with(:categoryname, params[:category].downcase) if params['category'].present?
         with(:salary_type, params[:salary_type].downcase) if params['salary_type'].present?
         with(:salary, params[:salary].downcase) if params['salary'].present?
         with(:industry, params[:industry].downcase) if params['industry'].present?
@@ -93,7 +92,7 @@ class SearchController < ApplicationController
             with :created_at, (bod - 30.days)..bod
           end
         end
-        facet :companyname, :categoryname, :industry, :state, :city
+        facet :companyname, :job_type, :industry, :state, :city
       end
 
     end

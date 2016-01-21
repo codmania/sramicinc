@@ -293,7 +293,8 @@ class JobsController < ApplicationController
         :address, :city, :state_list_id,
         :country_list_id, :zip, :salary_type_id,
         :salary,  :relocation, :job_type_id,
-        :certification, :clearance, :references, :category_id, :status, :file,:plain_description
+        #:certification, :clearance, :references, :category_id, :status, :file,:plain_description
+        :certification, :clearance, :references, :status, :file,:plain_description
         #:job_length
     )
 

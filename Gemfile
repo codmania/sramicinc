@@ -19,6 +19,7 @@ gem 'sunspot_rails'
 #gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
 gem 'ckeditor'
+gem 'progress_bar'
 
 group :production do
   gem 'mysql2', '~> 0.3.20'

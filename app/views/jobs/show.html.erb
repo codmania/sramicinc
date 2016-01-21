@@ -40,7 +40,7 @@
             <div class="w25">
               <ul class="list">
                 <li><strong>Job ID:</strong><span><%= @job.id %></span></li>
-                <li><strong>Location:</strong><span><%= @job.try(:city) %> <%= @job.try(:state_list).try(:name) %>  <%= @job.try(:country_list).try(:name) %></span></li>
+                <li><strong>Location:</strong><span><%= @job.try(:city) %>, <%= @job.try(:state_list).try(:name) %>, <%= @job.try(:country_list).try(:name) %></span></li>
                 <li>
                   <strong>Company:</strong>
                   <%= link_to jobs_job_eprofile_path(:id => @job.employer.eprofile), :method => 'get' do %>
@@ -48,8 +48,9 @@
                     <em class="icon icon-link"></em>
                   <% end %>
                 </li>
+                <li><strong>Job Type:</strong><span><%= @job.try(:job_type).try(:name) %></span></li>
                 <li><strong>Industry:</strong><span><%= @job.try(:industry).try(:name) %></span></li>
-                <li><strong>Category:</strong><span><%= @job.try(:category).try(:name) %></span></li>
+					 <!-- <li><strong>Category:</strong><span><%= @job.try(:category).try(:name) %></span></li> -->
                 <li><strong>Experience:</strong><span><%= @job.try(:experience) %></span></li>
                 <li><strong>Education:</strong><span><%= @job.try(:education) %></span></li>
                 <li><strong>Salary:</strong><span><%= @job.try(:salary) %></span></li>
@@ -80,11 +81,18 @@
                 <div class="pull-right">
                   <a href="#" onclick="window.print();" class="icon icon-print"></a>
                   <a data-method="post" href=<%= jobs_add_to_watchlist_path(:id => @job) %> class="icon icon-save"></a>
-                    <%= link_to "Add to WatchList", jobs_add_to_watchlist_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_watchlist_Action" %>
-                    <% if current_user.try(:role).try(:authority)=='jobseeker' %>
+                  
+						<% if current_user.try(:role).try(:authority)!='employer' %>
+						
+						  <%= link_to "Add to WatchList", jobs_add_to_watchlist_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_watchlist_Action" %>
+                     <% if current_user.try(:role).try(:authority)=='jobseeker' %>
                       <%= link_to "Add to Cart", jobs_addtocart_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_cart_action" %>
-                    <% end %>
-                    <%= link_to "Apply", jobs_apply_job_path(:id => @job), :method => 'post', :class => "btn btn-orange apply_action" %>                
+						   <% end %>	 
+                    
+                    <%= link_to "Apply", jobs_apply_job_path(:id => @job), :method => 'post', :class => "btn btn-orange apply_action" %>      
+						    
+						<% end %>
+							         
                 </div>
 
               </div>

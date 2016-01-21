@@ -1,7 +1,7 @@
 class Job < ActiveRecord::Base
   belongs_to :employer
   belongs_to :industry
-  belongs_to :category
+  #belongs_to :category
   belongs_to :state_list
   belongs_to :country_list
   belongs_to :salary_type
@@ -93,9 +93,9 @@ class Job < ActiveRecord::Base
    string :companyname  do
      employer.try(:eprofile).try(:company_name).try(:downcase)
    end
-   string :categoryname do
-     category.try(:name).try(:downcase)
-   end
+   # string :categoryname do
+   #   category.try(:name).try(:downcase)
+   # end
    string :industry  do
      employer.try(:eprofile).try(:company_name).try(:downcase)
    end

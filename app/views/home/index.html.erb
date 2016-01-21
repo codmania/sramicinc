@@ -67,7 +67,7 @@
               <ul class="item">
                 <%if @res != nil %>
                   <% @res.facet(:job_type).rows.each do |facet| %>
-                    <li class="orange"><a href="/search/jobs?&job_type=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                    <li class="orange"><a href="/search/jobs?&job_type=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value.camelize%><span class="count">( <%=facet.count%> )</span></a></li>
                   <%end%>
                 <%end%>
               </ul>
@@ -76,7 +76,7 @@
               <ul class="item">
                 <%if @res != nil %>
                   <% @res.facet(:city).rows.each do |facet| %>
-                    <li class="orange"><a href="/search/jobs?&city=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                    <li class="orange"><a href="/search/jobs?&city=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value.camelize%><span class="count">( <%=facet.count%> )</span></a></li>
                   <%end%>
                 <%end%>
               </ul>
@@ -85,7 +85,7 @@
               <ul class="item">
                 <%if @res != nil %>
                   <% @res.facet(:companyname).rows.each do |facet| %>
-                    <li class="orange"><a href="/search/jobs?&company=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                    <li class="orange"><a href="/search/jobs?&company=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value.camelize%><span class="count">( <%=facet.count%> )</span></a></li>
                   <%end%>
                 <%end%>
               </ul>
@@ -94,7 +94,7 @@
               <ul class="item">
                 <%if @res != nil %>
                   <% @res.facet(:industry).rows.each do |facet| %>
-                    <li class="orange"><a href="/search/jobs?&industry=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                    <li class="orange"><a href="/search/jobs?&industry=<%=CGI.escape(facet.value)%>&distance=500"> <%= facet.value.camelize%><span class="count">( <%=facet.count%> )</span></a></li>
                   <%end%>
                 <%end%>
               </ul>
@@ -117,7 +117,7 @@
               <ul class="item">
                 <%if @res1 != nil %>
                   <% @res1.facet(:city).rows.each do |facet| %>
-                    <li class="blue"><a href="/search/profiles?&city=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value%><span class="count">( <%=facet.count%> )</span></a></li>
+                    <li class="blue"><a href="/search/profiles?&city=<%=CGI.escape(facet.value)%>&distance=500"><%= facet.value.camelize%><span class="count">( <%=facet.count%> )</span></a></li>
                   <%end%>
                 <%end%>
               </ul>

@@ -13,48 +13,82 @@
       </p>
     </article>
 
-    <aside class="filtering">
-      <%= link_to "Registration", "#", class: "btn btn-ghost active" %>
-      <%= link_to "Job Seeker", "#", class: "btn btn-ghost" %>
-      <%= link_to "Talent", "#", class: "btn btn-ghost" %>
-      <%= link_to "Search", "#", class: "btn btn-ghost" %>
-      <%= link_to "Pricing", "#", class: "btn btn-ghost" %>
-
+    <aside class="filtering" role="tablist">
+      <% @fc.each_with_index do |fc, index|%>
+          <%= link_to fc.name, "#" + fc.name.parameterize('-'), class: index == 0 ? "btn btn-ghost faq-nav active" : "btn btn-ghost faq-nav", role:"tab", data: {toggle: "tab"} %>
+      <% end %>
     </aside>
 
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
+    <div class="tab-content panel-group-wrapper">
       <% @fc.each_with_index do |fc, index|%>
-        <%if  !@faqs[fc.id].nil?%>
-          <% @faqs[fc.id].each_with_index do |faq, faq_index|%> 
-            <div class="panel panel-default">
-                
-              <div class="panel-heading" role="tab">
-              <%= link_to "#faq#{index}#{faq_index}", class: "collapsed", :"role" => 'button', :"data-toggle" => 'collapse', :"data-parent" => '#accordion', :"aria-expanded" => 'false', :"aria-controls" => "faq#{index}#{faq_index}" do %>
-                  <span><%= faq.question %></span>
-                  <em class="icon icon-arrow-down"></em>
-                  <em class="icon icon-arrow-up"></em>
-                <% end %>
-              </div>
-              <div id="faq<%= index %><%= faq_index %>" class="panel-collapse collapse" role="tabpanel">
-                <p>
-                  <%= faq.answer %>
-                </p>
-                <div class="actions">
-                  <% if current_user.try(:role).try(:authority) =='admin'%>
-                    <%= link_to edit_faq_path(faq), class: "icon icon-edit", title: "Edit" do %><% end %>
-                    <%= link_to faq_path(faq), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
-                  <%end%>
-                </div>
+        <div role="tabpanel" class="orange tab-pane <%= "active" if index == 0 %>" id="<%= fc.name.parameterize('-') %>">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-              </div>
-                
-            </div>
-          <% end %>
-        <% end %>
+              <%if  !@faqs[fc.id].nil?%>
+                  <% @faqs[fc.id].each_with_index do |faq, faq_index|%>
+                      <div class="panel panel-default">
+
+                      <div class="panel-heading" role="tab">
+                      <%= link_to "#faq#{index}#{faq_index}", class: "collapsed", :"role" => 'button', :"data-toggle" => 'collapse', :"data-parent" => '#accordion', :"aria-expanded" => 'false', :"aria-controls" => "faq#{index}#{faq_index}" do %>
+                          <span><%= faq.question %></span>
+                          <em class="icon icon-arrow-down"></em>
+                          <em class="icon icon-arrow-up"></em>
+                          <% end %>
+                      </div>
+                      <div id="faq<%= index %><%= faq_index %>" class="panel-collapse collapse" role="tabpanel">
+                      <p>
+                      <%= faq.answer %>
+                      </p>
+                      <div class="actions">
+                        <% if current_user.try(:role).try(:authority) =='admin'%>
+                          <%= link_to edit_faq_path(faq), class: "icon icon-edit", title: "Edit" do %><% end %>
+                          <%= link_to faq_path(faq), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
+                        <%end%>
+                      </div>
+
+                      </div>
+
+                      </div>
+
+                  <% end %>
+              <% end %>
+
+          </div>
+        </div>
       <% end %>
-
     </div>
+    <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">-->
+      <!--<% @fc.each_with_index do |fc, index|%>-->
+        <!--<%if  !@faqs[fc.id].nil?%>-->
+          <!--<% @faqs[fc.id].each_with_index do |faq, faq_index|%> -->
+            <!--<div class="panel panel-default">-->
+                <!---->
+              <!--<div class="panel-heading" role="tab">-->
+              <!--<%= link_to "#faq#{index}#{faq_index}", class: "collapsed", :"role" => 'button', :"data-toggle" => 'collapse', :"data-parent" => '#accordion', :"aria-expanded" => 'false', :"aria-controls" => "faq#{index}#{faq_index}" do %>-->
+                  <!--<span><%= faq.question %></span>-->
+                  <!--<em class="icon icon-arrow-down"></em>-->
+                  <!--<em class="icon icon-arrow-up"></em>-->
+                <!--<% end %>-->
+              <!--</div>-->
+              <!--<div id="faq<%= index %><%= faq_index %>" class="panel-collapse collapse" role="tabpanel">-->
+                <!--<p>-->
+                  <!--<%= faq.answer %>-->
+                <!--</p>-->
+                <!--<div class="actions">-->
+                  <!--<% if current_user.try(:role).try(:authority) =='admin'%>-->
+                    <!--<%= link_to edit_faq_path(faq), class: "icon icon-edit", title: "Edit" do %><% end %>-->
+                    <!--<%= link_to faq_path(faq), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>-->
+                  <!--<%end%>-->
+                <!--</div>-->
+
+              <!--</div>-->
+                <!---->
+            <!--</div>-->
+          <!--<% end %>-->
+        <!--<% end %>-->
+      <!--<% end %>-->
+
+    <!--</div>-->
 
     <div class="centered">
       <%= will_paginate @faqs1,:inner_window =>2,:outer_window =>0,:renderer=> PaginationHelper::LinkRenderer%>

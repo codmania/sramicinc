@@ -776,7 +776,8 @@ table.lodge td .img-circle { width: 74px; height: 74px;}
 .faqs .centered {@extend .block;}
 .faqs article { margin-bottom: 40px;}
 .faqs .filtering {@extend .inline-block; vertical-align: top;  width: 12%; margin-right: 40px; padding-top: 18px;}
-.faqs .panel-group {@extend .inline-block; vertical-align: top;  width: 84%;}
+.faqs .panel-group-wrapper {@extend .inline-block; vertical-align: top;  width: 84%;}
+.faqs .panel-group {@extend .inline-block; vertical-align: top;  width: 100%;}
 
 
 /* ---- PRICING ---- */
@@ -1254,7 +1255,8 @@ only screen and (min-resolution: 2dppx) {
   .slick-prev, .slick-prev:focus { left: 20px;}
   .slick-next, .slick-next:focus { right: 20px;}
 
-  .faqs .panel-group { width: 82%;}
+  .faqs .panel-group-wrapper { width: 82%;}
+  .faqs .panel-group { width: 100%;}
 
   .comment h4, .comment .time { width: 50%;}
   .reviews h4, .reviews .time { width: 50%;}
@@ -1311,7 +1313,7 @@ only screen and (min-resolution: 2dppx) {
 
   .faqs .filtering { width: 100%; margin-right: 0px; margin-bottom: 20px; text-align: center; padding-top: 0px;}
   .faqs .filtering .btn { *display: inline; display: inline-block; *zoom: 1; float: none; margin: 5px; }
-  .faqs .panel-group { width: 100%;}
+  .faqs .panel-group-wrapper { width: 100%;}
 
   .search .result .w75 { width: 80%;}
   .present .similar .result .w75 { width: 88%;}

@@ -54,5 +54,10 @@ $(document).ready(function(){
 
         $(window).resize();
 
+        $('.faq-nav').click(function(e){
+            $('.faq-nav').removeClass('active');
+            $(this).addClass('active');
+        });
+
     });
 });

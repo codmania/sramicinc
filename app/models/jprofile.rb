@@ -24,7 +24,6 @@ class Jprofile < ActiveRecord::Base
 
   before_save :set_city
 
-
   def set_city
     if self.city.present?
     self.city = self.city.split.map(&:capitalize).join(' ')
@@ -86,7 +85,14 @@ class Jprofile < ActiveRecord::Base
     end
   end
 
+  def jobseeker_active
+    return self.jobseeker.active
+  end
+
   searchable do
+
+   boolean :jobseeker_active
+
    text :title do
      title.try(:downcase)
    end

@@ -159,7 +159,8 @@ class SearchController < ApplicationController
       params[:sort] = 'created_at' if params[:sort] == 'date'
       params[:per_page]=params[:offset].nil? ? PER_PAGE_COUNT : params[:offset]
 
-      @res = Sunspot.search(Jprofile) do
+      # @res = Sunspot.search(Jprofile) do
+      @res =  Sunspot.search(Jprofile) do
         fulltext params[:what].downcase if params[:what].present?
         fulltext params[:title].downcase.split(',').map { |x| x.downcase }, :fields => :title if params[:title].present?
         #with(:title, params[:title].downcase) if params['title'].present?
@@ -176,6 +177,7 @@ class SearchController < ApplicationController
         with(:city, params[:city].split.map(&:capitalize).join(' ')) if params['city'].present?
         with(:state, params[:state].downcase) if params['state'].present?
         with(:location_latlon).in_radius(lat, lon, params[:distance]) if params['where'].present? && !latlon.nil?
+        # with(:jobseeker_active, true)
         order_by params[:sort], :desc
         paginate(page: params[:page], per_page: params[:per_page])
         #loc_filter= with(:location_latlon).in_radius(lat, lon, params[:distance])

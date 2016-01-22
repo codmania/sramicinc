@@ -27,71 +27,96 @@
           <td class="highlight noline">&nbsp;</td>
           <td class="highlight">MOST POPULAR</td>
           <td class="highlight noline">&nbsp;</td>
+          <td class="highlight noline">&nbsp;</td>
         </tr>
         <tr>
-          <th>Your Package</th>
-          <th>
-            <h4>FREE</h4>
-          </th>
-          <th>
-            <h4>GOLD</h4>
-            <div class="wrap">
-              <em>$</em>
-              <h5>40</h5>
-              <small>/ month</small>
-            </div>
-          </th>
-          <th>
-            <h4>Platinum</h4>
-            <div class="wrap">
-              <em>$</em>
-              <h5>60</h5>
-              <small>/ month</small>
-            </div>
-          </th>
-          <th>
-            <h4>API</h4>
-            <div class="wrap">
-              <em>$</em>
-              <h5>80</h5>
-              <small>/ month</small>
-            </div>
-          </th>
+            <th>Your Package</th>
+            <% @employer_plans.each do |plan| %>
+                <th>
+                    <h4><%= plan.name %></h4>
+                    <% if(plan.price > 0) %>
+                        <div class="wrap">
+                            <em>$</em>
+                            <h5><%= plan.price %></h5>
+                            <small></small>
+                        </div>
+                    <% end %>
+                </th>
+            <% end %>
+
+        </tr>
+
+        <tr>
+          <td>Jobs Post</td>
+          <% @employer_plans.each do |plan| %>
+              <td>
+                <% if(plan.job_post > 0) %>
+                  <strong><%= plan.job_post %></strong>
+                <% else %>
+                  <strong>Unlimited</strong>
+                <% end %>
+              </td>
+          <% end %>
         </tr>
         <tr>
-          <td>Proin ac nibh justo</td>
-          <td><strong>1</strong></td>
-          <td><strong>20</strong></td>
-          <td><strong>Unlimited</strong></td>
-          <td><strong>Unlimited</strong></td>
+          <td>User Account</td>
+          <% @employer_plans.each do |plan| %>
+              <td>
+                <% if(plan.user_account != -1) %>
+                    <strong><%= plan.user_account %></strong>
+                <% else %>
+                    <strong>Unlimited</strong>
+                <% end %>
+              </td>
+          <% end %>
         </tr>
         <tr>
-          <td>Morbi justo mauris</td>
-          <td><strong>1</strong></td>
-          <td><strong>20</strong></td>
-          <td><strong>Unlimited</strong></td>
-          <td><strong>Unlimited</strong></td>
+          <td>Analytics</td>
+          <% @employer_plans.each do |plan| %>
+              <td>
+                <strong><%= plan.analytics.to_s.humanize %></strong>
+              </td>
+          <% end %>
         </tr>
         <tr>
-          <td>Aliquam in velit</td>
-          <td><strong>No</strong></td>
-          <td><strong>5</strong></td>
-          <td><strong>Unlimited</strong></td>
-          <td><strong>Unlimited</strong></td>
+          <td>Email Support</td>
+          <% @employer_plans.each do |plan| %>
+              <td>
+                <strong><%= plan.email_support.to_s.humanize %></strong>
+              </td>
+          <% end %>
         </tr>
         <tr>
-          <td>Quisque vitae</td>
-          <td><strong>No</strong></td>
-          <td><strong>Included</strong></td>
-          <td><strong>Included</strong></td>
-          <td><strong>Included</strong></td>
+          <td>Phone Support</td>
+          <% @employer_plans.each do |plan| %>
+              <td>
+                <strong><%= plan.phone_support.to_s.humanize %></strong>
+              </td>
+          <% end %>
         </tr>
         <tr>
-          <td class="noline">&nbsp;</td>
-          <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
-          <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
-          <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
-          <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+          <td>API</td>
+          <% @employer_plans.each do |plan| %>
+              <td>
+                <strong><%= plan.api.to_s.humanize %></strong>
+              </td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>Profile Alert</td>
+          <% @employer_plans.each do |plan| %>
+              <td>
+                <strong><%= plan.profile_alert.to_s.humanize %></strong>
+              </td>
+          <% end %>
+        </tr>
+        <tr>
+            <td class="noline">&nbsp;</td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
         </tr>
       </table>
 
@@ -103,74 +128,99 @@
           <tr>
             <td class="highlight noline">&nbsp;</td>
             <td class="highlight noline">&nbsp;</td>
+            <td class="highlight noline">&nbsp;</td>
             <td class="highlight">MOST POPULAR</td>
             <td class="highlight noline">&nbsp;</td>
             <td class="highlight noline">&nbsp;</td>
           </tr>
           <tr>
             <th>Your Package</th>
-            <th>
-              <h4>FREE</h4>
-            </th>
-            <th>
-              <h4>GOLD</h4>
-              <div class="wrap">
-                <em>$</em>
-                <h5>40</h5>
-                <small>/ month</small>
-              </div>
-            </th>
-            <th>
-              <h4>Platinum</h4>
-              <div class="wrap">
-                <em>$</em>
-                <h5>60</h5>
-                <small>/ month</small>
-              </div>
-            </th>
-            <th>
-              <h4>API</h4>
-              <div class="wrap">
-                <em>$</em>
-                <h5>80</h5>
-                <small>/ month</small>
-              </div>
-            </th>
+            <% @jobseeker_plans.each do |plan| %>
+                <th>
+                  <h4><%= plan.name %></h4>
+                  <% if(plan.price != 0) %>
+                      <div class="wrap">
+                        <em>$</em>
+                        <h5><%= plan.price %></h5>
+                        <small></small>
+                      </div>
+                  <% end %>
+                </th>
+            <% end %>
+
+          </tr>
+
+          <tr>
+            <td>Jobs Post</td>
+            <% @jobseeker_plans.each do |plan| %>
+                <td>
+                  <% if(plan.job_post > 0) %>
+                      <strong><%= plan.job_post %></strong>
+                  <% else %>
+                      <strong>Unlimited</strong>
+                  <% end %>
+                </td>
+            <% end %>
           </tr>
           <tr>
-            <td>Proin ac nibh justo</td>
-            <td><strong>1</strong></td>
-            <td><strong>20</strong></td>
-            <td><strong>Unlimited</strong></td>
-            <td><strong>Unlimited</strong></td>
+            <td>User Account</td>
+            <% @jobseeker_plans.each do |plan| %>
+                <td>
+                  <% if(plan.user_account > 0) %>
+                      <strong><%= plan.user_account %></strong>
+                  <% else %>
+                      <strong>Unlimited</strong>
+                  <% end %>
+                </td>
+            <% end %>
           </tr>
           <tr>
-            <td>Morbi justo mauris</td>
-            <td><strong>1</strong></td>
-            <td><strong>20</strong></td>
-            <td><strong>Unlimited</strong></td>
-            <td><strong>Unlimited</strong></td>
+            <td>Analytics</td>
+            <% @jobseeker_plans.each do |plan| %>
+                <td>
+                  <strong><%= plan.analytics.to_s.humanize %></strong>
+                </td>
+            <% end %>
           </tr>
           <tr>
-            <td>Aliquam in velit</td>
-            <td><strong>No</strong></td>
-            <td><strong>5</strong></td>
-            <td><strong>Unlimited</strong></td>
-            <td><strong>Unlimited</strong></td>
+            <td>Email Support</td>
+            <% @jobseeker_plans.each do |plan| %>
+                <td>
+                  <strong><%= plan.email_support.to_s.humanize %></strong>
+                </td>
+            <% end %>
           </tr>
           <tr>
-            <td>Quisque vitae</td>
-            <td><strong>No</strong></td>
-            <td><strong>Included</strong></td>
-            <td><strong>Included</strong></td>
-            <td><strong>Included</strong></td>
+            <td>Phone Support</td>
+            <% @jobseeker_plans.each do |plan| %>
+                <td>
+                  <strong><%= plan.phone_support.to_s.humanize %></strong>
+                </td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>API</td>
+            <% @jobseeker_plans.each do |plan| %>
+                <td>
+                  <strong><%= plan.api.to_s.humanize %></strong>
+                </td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Profile Alert</td>
+            <% @jobseeker_plans.each do |plan| %>
+                <td>
+                  <strong><%= plan.profile_alert.to_s.humanize %></strong>
+                </td>
+            <% end %>
           </tr>
           <tr>
             <td class="noline">&nbsp;</td>
-            <td><%= link_to "SIGN UP", "#", class: "btn btn-blue" %></td>
-            <td><%= link_to "SIGN UP", "#", class: "btn btn-blue" %></td>
-            <td><%= link_to "SIGN UP", "#", class: "btn btn-blue" %></td>
-            <td><%= link_to "SIGN UP", "#", class: "btn btn-blue" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
+            <td><%= link_to "SIGN UP", "#", class: "btn btn-orange" %></td>
           </tr>
         </table>
 

@@ -5,6 +5,8 @@ class PageController < ApplicationController
   end
 
   def pricing
+    @employer_plans = Plan.where(plan_type: 'Employer').order(:days);
+    @jobseeker_plans = Plan.where(plan_type: 'Jobseeker').order(:days);
   end
 
   def terms

@@ -86,7 +86,8 @@ class Jprofile < ActiveRecord::Base
   end
 
   def jobseeker_active
-    return self.jobseeker.active
+    return jobseeker.try(:active)
+
   end
 
   searchable do

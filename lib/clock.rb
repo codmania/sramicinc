@@ -14,6 +14,7 @@ module Clockwork
  #   every(10.seconds, 'Subscription  Validator') { AlertsHelper.subscription_checker}
  # end
 
+  every(1.day, 'Job Status Change Alert', :at => '00:00') {AlertsHelper.job_status_change_alert}
    every(1.day, 'Job Alert', :at => '00:00') {AlertsHelper.job_alert}
    every(1.day, 'Talent Alert', :at => '00:00') {AlertsHelper.talent_alert}
 

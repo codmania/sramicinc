@@ -85,6 +85,19 @@ module AlertsHelper
 
     end
 
+    def self.job_status_change_alert
+      @jobs_to_be_closed = Job.where(status: true).where("created_at < ?", 1.months.ago)
+      @jobs_to_be_archived = Job.where(deleted: false).where("created_at < ?", 3.months.ago)
+      begin
+        @jobs_to_be_closed.update_all(status: false)
+        @jobs_to_be_archived.update_all(deleted: true)
+      rescue => ex
+        puts '##########################'
+        puts "Exception in Job Status Change Alert:    #{e}"
+        puts '##########################'
+      end
+    end
+
 
     def self.subscription_checker
 

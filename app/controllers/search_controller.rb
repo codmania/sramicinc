@@ -178,6 +178,8 @@ class SearchController < ApplicationController
         with(:state, params[:state].downcase) if params['state'].present?
         with(:location_latlon).in_radius(lat, lon, params[:distance]) if params['where'].present? && !latlon.nil?
         with(:user_active, true)
+        with(:profile_searchable, true)
+        with(:publicviewing, true) if current_user.nil?
         order_by params[:sort], :desc
         paginate(page: params[:page], per_page: params[:per_page])
         #loc_filter= with(:location_latlon).in_radius(lat, lon, params[:distance])

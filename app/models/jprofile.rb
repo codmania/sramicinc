@@ -87,12 +87,23 @@ class Jprofile < ActiveRecord::Base
 
   def user_active
     return jobseeker.user.try(:active)
+  end
 
+  def profile_searchable
+    if deleted || !active
+       return false
+    end
+
+    return true
   end
 
   searchable do
 
    boolean :user_active
+   boolean :active
+   boolean :publicviewing
+   boolean :deleted
+   boolean :profile_searchable
 
    text :title do
      title.try(:downcase)

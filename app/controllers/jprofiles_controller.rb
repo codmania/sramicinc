@@ -88,7 +88,8 @@ class JprofilesController < ApplicationController
   # DELETE /jprofiles/1
   # DELETE /jprofiles/1.json
   def destroy
-    @jprofile.destroy
+    @jprofile.deleted = true
+    @jprofile.save
     respond_to do |format|
       format.html { redirect_to jprofiles_url, notice: 'Profile was successfully destroyed.' }
       format.json { head :no_content }
@@ -119,7 +120,7 @@ class JprofilesController < ApplicationController
   def jprofile_params
 
     params.require(:jprofile).permit(:name, :title, :logo, :resume, :phone, :city, :state_list_id, :country_list_id, :zip, :summary, :date_of_birth,
-                                     :marital_status, :resume_headline, :salary_type_id, :salary, :address1, :address2)
+                                     :marital_status, :resume_headline, :salary_type_id, :salary, :address1, :address2, :active, :publicviewing)
 
 
   end

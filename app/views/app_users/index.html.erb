@@ -55,6 +55,10 @@
                 <%end%>
               <%end%>
 
+              <%= link_to app_user_path(user), :method=> :delete, class: "active" do %>
+                  Delete
+              <%end%>
+
               <%if user.try(:role).try(:authority) == 'jobseeker'%>
                 <%= link_to jprofile_path(user.try(:profile)), class: "icon icon-edit", title: "Edit" do %><% end %>
               <% else %>

@@ -77,7 +77,18 @@ class AppUsersController < ApplicationController
     @u = User.find(params[:id])
     @u.update_attribute(:active, params[:flag])
 
-     redirect_to app_users_url, notice: 'User was successfully updated.'
+    begin
+      if @u.role.authority == 'employer'
+        employer = Employer.find_by_user_id(@u.id)
+        employer.eprofile.update_attribute(:active, params[:flag])
+      elsif @u.role.authority == 'jobseeker'
+        jobseeker = Jobseeker.find_by_user_id(@u.id)
+        jobseeker.jprofile.update_attribute(:active, params[:flag])
+      end
+    rescue => ex
+
+    end
+    redirect_to app_users_url, notice: 'User was successfully updated.'
   end
 
   private

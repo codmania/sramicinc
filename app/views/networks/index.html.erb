@@ -48,14 +48,14 @@
             	<td data-title="Industry"><%= ep.try(:industry).try(:name) %></td>
             	<td data-title="Address" class="last"><%= ep.try(:city) %><%if ep.city.present? %>, <% end %><%= ep.try(:state_list).try(:name) %><%if ep.country_list.present? %>, <% end %><%= ep.try(:country_list).try(:name) %></td>
               <td class="last">
-                <%= link_to "#", class: "icon icon-trash", title: "Delete" do %><% end %>
+                <%= link_to network_path(network), :method => :delete, class: "icon icon-trash", title: "Delete" do %><% end %>
               </td>
           	<% else %>
 					<!-- <td data-title="Name"><%= jp.try(:name) %></td> -->
             	<td data-title="Title"><%= jp.try(:title) %></td>
             	<td data-title="Email"><%= jp.skills.map { |s| s.name }.join(", ")  %></td>
               <td class="last">
-                <%= link_to "#", class: "icon icon-trash", title: "Delete" do %><% end %>
+                <%= link_to network_path(network), :method => :delete, class: "icon icon-trash", title: "Delete" do %><% end %>
               </td>
 				<% end %>
 			 </tr>

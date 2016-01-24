@@ -111,6 +111,14 @@ class Jprofile < ActiveRecord::Base
    string :title do
      title.try(:downcase)
    end
+
+   text :summary do
+     summary.try(:downcase)
+   end
+   string :summary do
+     summary.try(:downcase)
+   end
+
 =begin
    string :city do
      city.try(:downcase)

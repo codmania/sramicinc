@@ -177,7 +177,7 @@ class SearchController < ApplicationController
         with(:city, params[:city].split.map(&:capitalize).join(' ')) if params['city'].present?
         with(:state, params[:state].downcase) if params['state'].present?
         with(:location_latlon).in_radius(lat, lon, params[:distance]) if params['where'].present? && !latlon.nil?
-        with(:jobseeker_active, true)
+        with(:user_active, true)
         order_by params[:sort], :desc
         paginate(page: params[:page], per_page: params[:per_page])
         #loc_filter= with(:location_latlon).in_radius(lat, lon, params[:distance])

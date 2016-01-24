@@ -85,14 +85,14 @@ class Jprofile < ActiveRecord::Base
     end
   end
 
-  def jobseeker_active
-    return jobseeker.try(:active)
+  def user_active
+    return jobseeker.user.try(:active)
 
   end
 
   searchable do
 
-   boolean :jobseeker_active
+   boolean :user_active
 
    text :title do
      title.try(:downcase)

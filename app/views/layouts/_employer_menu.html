@@ -5,7 +5,7 @@
     <ul class="nav">
       <li class="orange <%= 'active' if request.path == '/employer/summary' %>"><a href="/employer/summary"><strong>Summary</strong></a></li>
       <li id="nav-company" class="orange <%= 'active' if eprofiles_path.in?(request.path) || request.path == staffs_path || request.path == job_api_index_path || request.path == email_templates_path || request.path == reviews_path || request.path == reviews_path(:by => 'me') %>"><a href="<%= eprofiles_path %>"><strong>Company</strong></a></li>
-      <li id="nav-jobs" class="orange <%= 'active' if request.path == '/my_jobs' || request.path == new_job_path || request.path == bookmarks_path || request.path == talent_alerts_path %>"><a href="/my_jobs"><strong>Jobs</strong></a></li>
+      <li id="nav-jobs" class="orange <%= 'active' if request.path == '/my_jobs' || request.path == new_job_path || request.path == bookmarks_path || request.path == talent_alerts_path || request.path == my_archives_path %>"><a href="/my_jobs"><strong>Jobs</strong></a></li>
       <li class="orange <%= 'active' if request.path == networks_path %>"><a href="<%= networks_path %>"><strong>Network</strong></a></li>
     </ul>
 
@@ -23,6 +23,7 @@
     <ul class="sub-nav" id="sub-jobs">
       <li class="<%= 'active' if request.path == new_job_path %>"><a rel="nofollow" data-method="get" href="<%= new_job_path %>" class="detail">New</a></li>
       <li class="<%= 'active' if request.path == '/my_jobs' %>"><a rel="nofollow" data-method="get" href="/my_jobs" class="detail">My Jobs</a></li>
+      <li class="<%= 'active' if request.path == my_archives_path %>"><a rel="nofollow" data-method="get" href="<%= my_archives_path %>" class="detail">My Archives</a></li>
       <li class="<%= 'active' if request.path == bookmarks_path %>"><a rel="nofollow" data-method="get" href="<%= bookmarks_path %>" class="detail">My Bookmarks</a></li>
       <li class="<%= 'active' if request.path == talent_alerts_path %>"><a rel="nofollow" data-method="get" href="<%= talent_alerts_path %>" class="detail">Talent Alert</a></li>
     </ul>

@@ -134,6 +134,9 @@ Rails.application.routes.draw do
   post 'search/delete_search_criteria' => 'search#delete_search_criteria'
 
   get 'my_jobs'=>'employer#my_jobs'
+  get 'my_archives'=>'employer#my_archives', as: :my_archives
+  get 'close_job/:id'=>'employer#close_job', as: :close_job
+  get 'clone_job/:job_id'=>'employer#clone_job', as: :clone_job
   get 'applications'=>'employer#job_applications'
   get 'employer/talents'=>'employer#talents'
   get 'enquiries_list_enquiries'=>'enquiries#enquiries_list'

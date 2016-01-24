@@ -11,10 +11,43 @@ class EmployerController < ApplicationController
    @jobs=Employer.find(session[:employer]).jobs.where(deleted: false).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
  end
 
-  def job_applications
-  	@job=Job.find(params[:id])
-    @jobapp=JobApplication.where(:job_id=>@job).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+  def my_archives
+    @jobs=Employer.find(session[:employer]).jobs.where(deleted: true).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
   end
+
+ def close_job
+   @job = Job.find(params[:id])
+   @job.status = false
+   @job.save
+
+   respond_to do |format|
+     format.html { redirect_to my_jobs_path, flash: { notice: 'Job closed successfully!' } }
+   end
+ end
+
+  def clone_job
+    @job_from = Job.find(params[:job_id])
+
+    @job_params = @job_from.attributes
+    @job_params.delete("id")
+    @job_params.delete("created_at")
+    @job_params.delete("updated_at")
+    @job_params["deleted"] = false
+    @job_params["status"] = true
+    puts @job_params.inspect
+
+    @job = Job.new(@job_params)
+    @job.save
+
+    respond_to do |format|
+      format.html { redirect_to my_jobs_path, flash: { notice: 'New job cloned successfully!' } }
+    end
+  end
+
+ def job_applications
+   @job=Job.find(params[:id])
+   @jobapp=JobApplication.where(:job_id=>@job).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+ end
 
  def talents
    @jprofile=Jprofile.find(params[:id])

@@ -8,7 +8,16 @@ class EmployerController < ApplicationController
  end
 
  def my_jobs
-   @jobs=Employer.find(session[:employer]).jobs.where(deleted: false).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+   if params[:status] == 'archived'
+     @jobs=Employer.find(session[:employer]).jobs.where(deleted: true).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+   elsif params[:status] == 'opened'
+     @jobs=Employer.find(session[:employer]).jobs.where(deleted: false).where(status: true).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+   elsif params[:status] == 'closed'
+     @jobs=Employer.find(session[:employer]).jobs.where(deleted: false).where(status: false).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+   else
+     @jobs=Employer.find(session[:employer]).jobs.paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+   end
+
  end
 
   def my_archives

@@ -3,6 +3,26 @@
 
     <div class="enclosure">
       <h3>My Jobs</h3>
+      <%= form_for :jobs ,:url=>{:controller=>'employer',:action=>'my_jobs'} ,:method=>'get' do |s|%>
+          <div class="form-group w25">
+            <label>Job Status</label>
+            <select class="small-drp" name = "status" class="selectpicker">
+              <option value = ""  <%if params[:status]=='' %>selected<%end%>>
+                Any </option>
+              <option value = "opened" <%if params[:status]=='opened' %>selected<%end%>>
+                Opened</option>
+              <option value = "closed"  <%if params[:status]=='closed' %>selected<%end%>>
+                Closed</option>
+              <option value = "archived" <%if params[:status]=='archived' %>selected<%end%>>
+                Archived</option>
+            </select>
+          </div>
+          <div class="actions w25">
+            <input type="submit" class="btn btn-blue" value="Search"/>
+          </div>
+      <% end %>
+    </div>
+    <div class="enclosure">
 
       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lodge">
         <tr>
@@ -25,20 +45,26 @@
           <td data-title="Comments"><span><%=job.try(:comments).try(:count) %></span></td>
           <td data-title="Status">
             <span>
-              <%if job.status %>
-                Opened
+              <%if job.deleted %>
+                Archived
               <% else %>
-                Closed
-              <%end%>
+                  <%if job.status %>
+                    Opened
+                  <% else %>
+                    Closed
+                  <%end%>
+              <% end %>
             </span>
           </td>
           <td class="last">
             <%= link_to clone_job_path(job_id: job.id), title: "Clone Job" do %>Clone<% end %>&nbsp;&nbsp;
-            <% if job.status == true %>
-                <%= link_to close_job_path(id: job.id), title: "Close" do %>Close<% end %>&nbsp;&nbsp;
+            <% if job.deleted == false %>
+                <% if job.status == true %>
+                    <%= link_to close_job_path(id: job.id), title: "Close" do %>Close<% end %>&nbsp;&nbsp;
+                <% end %>
+                <%= link_to edit_job_path(job), class: "icon icon-edit", title: "Edit" do %><% end %>
+                <%= link_to job_path(job), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
             <% end %>
-            <%= link_to edit_job_path(job), class: "icon icon-edit", title: "Edit" do %><% end %>
-            <%= link_to job_path(job), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
            </td>
         </tr>
         <% end %>

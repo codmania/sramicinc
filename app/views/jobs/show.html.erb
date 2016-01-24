@@ -82,16 +82,16 @@
                   <a href="#" onclick="window.print();" class="icon icon-print"></a>
                   <a data-method="post" href=<%= jobs_add_to_watchlist_path(:id => @job) %> class="icon icon-save"></a>
                   
-						<% if current_user.try(:role).try(:authority)!='employer' %>
+                    <% if current_user.try(:role).try(:authority)!='employer' && !@job.try(:deleted) %>
 						
-						  <%= link_to "Add to WatchList", jobs_add_to_watchlist_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_watchlist_Action" %>
-                     <% if current_user.try(:role).try(:authority)=='jobseeker' %>
-                      <%= link_to "Add to Cart", jobs_addtocart_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_cart_action" %>
-						   <% end %>	 
+                      <%= link_to "Add to WatchList", jobs_add_to_watchlist_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_watchlist_Action" %>
+                      <% if current_user.try(:role).try(:authority)=='jobseeker' %>
+                        <%= link_to "Add to Cart", jobs_addtocart_path(:id => @job), :method => 'post', :class => "btn btn-orange-ghost add_cart_action" %>
+                      <% end %>
                     
-                    <%= link_to "Apply", jobs_apply_job_path(:id => @job), :method => 'post', :class => "btn btn-orange apply_action" %>      
+                      <%= link_to "Apply", jobs_apply_job_path(:id => @job), :method => 'post', :class => "btn btn-orange apply_action" %>
 						    
-						<% end %>
+                    <% end %>
 							         
                 </div>
 

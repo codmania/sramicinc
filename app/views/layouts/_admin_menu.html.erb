@@ -22,6 +22,7 @@
 
     <ul class="sub-nav" id="sub-jobs">
       <li class="<%= 'active' if request.path == jobs_path %>"><a rel="nofollow" data-method="get" href="<%= jobs_path %>" class="detail">Jobs</a></li>
+      <li class="<%= 'active' if request.path == jobs_archives_path %>"><a rel="nofollow" data-method="get" href="<%= jobs_archives_path %>" class="detail">Archives</a></li>
       <li class="<%= 'active' if request.path == categories_path %>"><a rel="nofollow" data-method="get" href="<%= categories_path %>" class="detail">Job Category</a></li>
       <li class="<%= 'active' if request.path == industries_path %>"><a rel="nofollow" data-method="get" href="<%= industries_path %>" class="detail">Industry</a></li>
       <li class="<%= 'active' if request.path == job_types_path %>"><a rel="nofollow" data-method="get" href="<%= job_types_path %>" class="detail">Job Type</a></li>

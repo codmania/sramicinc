@@ -138,6 +138,7 @@ Rails.application.routes.draw do
   get 'employer/talents'=>'employer#talents'
   get 'enquiries_list_enquiries'=>'enquiries#enquiries_list'
 
+  get 'jobs/archives'=>'jobs#archives', as: :jobs_archives
 
   captcha_route
   resources :jobseeker
@@ -154,6 +155,7 @@ Rails.application.routes.draw do
   get 'jobseeker'=>'jobseeker#index', as: :j_home
   get 'employer'=>'employer#index', as: :e_home
   get 'admin'=>'admin#index', as: :a_home
+
 
   get "forgot_password" => "passwords#forgot"
   match "forgot_password/email_check" => "passwords#email_check", via: [:get, :post]

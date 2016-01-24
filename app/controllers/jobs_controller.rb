@@ -88,7 +88,8 @@ class JobsController < ApplicationController
 
   def destroy
     @job=Job.find params[:id]
-    @job.destroy
+    @job.deleted = true
+    @job.save
     respond_to do |format|
       format.html { redirect_to my_jobs_path, notice: 'Job Was Successfully Deleted.' }
       format.json { head :no_content }
@@ -151,6 +152,47 @@ class JobsController < ApplicationController
         with(:created_at, pdate_end..pdate_start) if params[:postingdate].present?
         with(:id,params[:id]) if params[:id].present?
         with(:location_latlon).in_radius(lat, lon, 10) if params['where'].present?
+        with(:deleted, false)
+        paginate(page: params[:page], per_page: params[:per_page])
+        order_by(:created_at, :desc)
+      end
+      #@jobs = Job.all.order('created_at DESC').paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: @jobs }
+    end
+  end
+
+  def archives
+    @jobs = []
+    if current_user.role.authority == 'employer'
+      @jobs = @employer.jobs
+    elsif current_user.role.authority == 'admin'
+      if  params['where'].present?
+        latlon = Geocoder.coordinates(params[:where])
+        lat = latlon[0]
+        lon = latlon[1]
+      else
+        lat = 0
+        lon = 0
+      end
+      pdate_start = Time.now
+      pdate_end = pdate_start - 1.days
+      if params[:postingdate].present?
+        pdate_end=pdate_start-1.days  if params[:postingdate]=='Last 24 hours'
+        pdate_end=pdate_start-3.days  if params[:postingdate]=='Last 3 days'
+        pdate_end=pdate_start-7.days  if params[:postingdate]=='Last 7 days'
+        pdate_end=pdate_start-15.days  if params[:postingdate]=='Last 15 days'
+        pdate_end=pdate_start-30.days  if params[:postingdate]=='Last 30 days'
+      end
+      params[:page] = 1 unless params[:page].present?
+      params[:per_page]=params[:offset].nil? ? PER_PAGE_COUNT : params[:offset]
+      @jobs = Sunspot.search(Job) do
+        with(:created_at, pdate_end..pdate_start) if params[:postingdate].present?
+        with(:id,params[:id]) if params[:id].present?
+        with(:location_latlon).in_radius(lat, lon, 10) if params['where'].present?
+        with(:deleted, true)
         paginate(page: params[:page], per_page: params[:per_page])
         order_by(:created_at, :desc)
       end

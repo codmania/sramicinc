@@ -75,6 +75,7 @@ class Job < ActiveRecord::Base
 
     boolean :job_searchable
     boolean :publicviewing
+    boolean :deleted
 
    # fulltext search
    string :id

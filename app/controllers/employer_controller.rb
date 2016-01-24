@@ -8,7 +8,7 @@ class EmployerController < ApplicationController
  end
 
  def my_jobs
-   @jobs=Employer.find(session[:employer]).jobs.paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
+   @jobs=Employer.find(session[:employer]).jobs.where(deleted: false).paginate(:page => params[:page], :per_page => PER_PAGE_COUNT)
  end
 
   def job_applications

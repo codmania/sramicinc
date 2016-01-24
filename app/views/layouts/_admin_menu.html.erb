@@ -4,7 +4,7 @@
     <ul class="nav">
       <li id="nav-home" class="blue <%= 'active' if request.path == '/admin/index' ||  request.path == news_letters_path || request.path == admin_cms_pages_path || request.path == careers_path  %>"><a href="/home/index"><strong>Home</strong></a></li>
       <li class="blue <%= 'active' if request.path == app_users_path %>"><a href="<%= app_users_path %>"><strong>Users</strong></a></li>
-      <li id="nav-jobs" class="blue <%= 'active' if request.path == jobs_path || request.path == categories_path || request.path == industries_path || request.path == job_types_path || request.path == salary_types_path  %>"><a href="<%= jobs_path %>"><strong>Jobs</strong></a></li>
+      <li id="nav-jobs" class="blue <%= 'active' if request.path == jobs_path || request.path == jobs_archives_path || request.path == categories_path || request.path == industries_path || request.path == job_types_path || request.path == salary_types_path  %>"><a href="<%= jobs_path %>"><strong>Jobs</strong></a></li>
       <li id="nav-location" class="blue <%= 'active' if request.path == state_lists_path || request.path == country_lists_path  %>"><a href="<%= state_lists_path %>"><strong>Location</strong></a></li>
       <li id="nav-billing" class="blue <%= 'active' if request.path == subscriptions_path || request.path == plans_path || request.path == payment_modules_edit_path  %>"><a href="<%= subscriptions_path %>"><strong>Billing</strong></a></li>
       <li class="blue <%= 'active' if request.path == testimonials_path %>"><a href="<%= testimonials_path %>"><strong>Testimonials</strong></a></li>

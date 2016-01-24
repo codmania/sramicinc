@@ -60,7 +60,22 @@ class Job < ActiveRecord::Base
     end
   end
 
+  def job_searchable
+    if !employer.eprofile.active || employer.eprofile.deleted
+      return false
+    end
+    return true
+  end
+
+  def publicviewing
+    return employer.eprofile.publicviewing
+  end
+
   searchable do
+
+    boolean :job_searchable
+    boolean :publicviewing
+
    # fulltext search
    string :id
    text :title do

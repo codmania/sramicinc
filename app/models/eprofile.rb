@@ -7,6 +7,7 @@ class Eprofile < ActiveRecord::Base
   has_many :bookmarks
   has_many :questionaires
   has_many :shares
+  has_many :jobs, through: :employer
   validates :company_name, presence: true, length: {maximum: 200}
   validates :services, length: {maximum: 10000}, if: 'services.present?'
   validates :products, length: {maximum: 10000}, if: 'products.present?'
@@ -24,7 +25,11 @@ class Eprofile < ActiveRecord::Base
 
 
   before_save :set_city
+  after_save :sunspot_reindex
 
+  def sunspot_reindex
+      Sunspot.index(jobs)
+  end
 
   def set_city
     if self.city.present?

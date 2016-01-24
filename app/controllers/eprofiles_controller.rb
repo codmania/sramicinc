@@ -68,10 +68,20 @@ class EprofilesController < ApplicationController
   end
 
   def destroy
-    @eprofile.destroy
+    @jobs = Job.where(:employer_id=>@eprofile.employer_id)
+
+    if @jobs.count == 0
+      @eprofile.deleted = true
+      @eprofile.save
+    end
     respond_to do |format|
-      format.html { redirect_to eprofiles_url, notice: 'Employer was successfully destroyed.' }
-      format.json { head :no_content }
+      if @jobs.count == 0
+        format.html { redirect_to eprofiles_url, notice: 'Employer was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to edit_eprofile_url(@eprofile), notice: 'Can not delete your profile with any jobs!' }
+        format.json { render json: {msg: 'Can not delete your profile with any jobs!'}, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -87,6 +97,6 @@ class EprofilesController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def eprofile_params
-	  params.require(:eprofile).permit(:name,:company_name,:company_type,:industry_id,:address1,:address2,:city,:state_list_id,:country_list_id,:zip,:phone,:website,:overview,:products,:services,:employer_id, :logo, :fb_url, :twitter_url, :gplus_url, :linkedin_url,:fax)
+	  params.require(:eprofile).permit(:name,:company_name,:company_type,:industry_id,:address1,:address2,:city,:state_list_id,:country_list_id,:zip,:phone,:website,:overview,:products,:services,:employer_id, :logo, :fb_url, :twitter_url, :gplus_url, :linkedin_url,:fax, :publicviewing, :active)
 	end
 end

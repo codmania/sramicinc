@@ -49,6 +49,8 @@ class SearchController < ApplicationController
         with(:city, params[:city].split.map(&:capitalize).join(' ')) if params['city'].present?
         with(:state, params[:state].downcase) if params['state'].present?
         with(:status, true)
+        with(:job_searchable, true)
+        with(:publicviewing, true) if current_user.nil?
         with(:location_latlon).in_radius(lat, lon, params[:distance]) if params[:where].present? && !latlon.nil?
         order_by params[:sort], :desc
         with(:salary_type, params[:salary_type].downcase) if params['salary_type'].present?

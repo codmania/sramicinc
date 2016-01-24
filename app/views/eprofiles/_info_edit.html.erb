@@ -111,22 +111,22 @@
     <div class="form-group">
       <label>Public viewing</label>
       <div class="iradio">
-        <input type="radio" name="publicviewing" value="true" checked ><label>Enabled</label>  
-        <input type="radio" name="publicviewing" value="false"><label>Disabled</label>  
+        <input type="radio" name="eprofile[publicviewing]" value="true" <%= "checked" if @eprofile.publicviewing %> ><label>Enabled</label>
+        <input type="radio" name="eprofile[publicviewing]" value="false" <%= "checked" if not @eprofile.publicviewing %> ><label>Disabled</label>
       </div>
     </div>
 
     <div class="form-group">
       <label>Profile status</label>
       <div class="iradio">
-        <input type="radio" name="profilestatus" value="true" checked ><label>Enabled</label>  
-        <input type="radio" name="profilestatus" value="false"><label>Disabled</label>  
+        <input type="radio" name="eprofile[active]" value="true"  <%= "checked" if @eprofile.active %> ><label>Enabled</label>
+        <input type="radio" name="eprofile[active]" value="false"  <%= "checked" if not @eprofile.active %> ><label>Disabled</label>
       </div>
     </div>
 
     <div class="actions">
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),eprofile_path, :class => 'btn btn-ghost' %>
-      <%= link_to "DELETE PROFILE", "#", :class => 'btn btn-orange-ghost' %>
+      <%= link_to "DELETE PROFILE", eprofile_path(@eprofile), method: "delete", :class => 'btn btn-orange-ghost' %>
       <%= f.submit "Save" ,:class => "btn btn-orange" %>
     </div>
 

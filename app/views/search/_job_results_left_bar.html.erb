@@ -23,18 +23,18 @@
       <label>Distance in Miles</label>
       <select class="selectpicker" name="distance">
         <option value=500>Select</option>
-        <% if params[:where].present? %>
-        <% @res.facet(:distance_facet).try(:rows).try(:each) do |facet| %>
-        <option value="<%=facet.value %>"
-          <%if params[:distance]==facet.value %>
-          selected
-          <%end%>>
-          <%= facet.value%>
-          <%= 'Mile'.pluralize(facet.value)%>
-          (<%=facet.count%>)
-        </option>
-        <%end%>
-        <% end%>
+        <% if not @res.nil? %>
+            <% @res.facet(:distance_facet).try(:rows).try(:each) do |facet| %>
+                <option value="<%=facet.value %>"
+                  <%if params[:distance]==facet.value %>
+                  selected
+                  <%end%>>
+                  <%= facet.value%>
+                  <%= 'Mile'.pluralize(facet.value)%>
+                  (<%=facet.count%>)
+                </option>
+            <%end%>
+        <% end %>
       </select>
     </div>
 

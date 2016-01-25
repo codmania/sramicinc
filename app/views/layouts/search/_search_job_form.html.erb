@@ -4,7 +4,8 @@
       <em class="icon icon-tie"></em>
     </div>
     <form action="/search/jobs" class="search-panel">
-
+      <input type="hidden" name="latitude" id="latitude_1">
+      <input type="hidden" name="longitude" id="longitude_1">
        <div class="form-group">
         <label>What</label>
         <input type="text" value="<%= params[:what]%>" placeholder="Keywords, Job title, or Company" class="search" name="what"/>
@@ -18,7 +19,7 @@
       <div class="form-group">
         <label>Within</label>
         <select class="selectpicker" name="distance" value="<%= params[:distance]%>" >
-            <option value="500" selected="<%= params[:distance]==500 %>"  >Any Where</option>
+            <option value="" selected="<%= params[:distance]=='' %>"  >Any Where</option>
 
             <option value="5"  <%if params[:distance]=='5' %>
                     selected

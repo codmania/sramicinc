@@ -6,12 +6,22 @@ class SearchController < ApplicationController
     if params['where'].nil? && params[:what].nil? && params[:distance].nil?
       @res = nil
     else
+      location_searchable = false
+      if params['distance'].present?
+        location_searchable = true
+      end
       if params['where'].present?
         latlon = Geocoder.coordinates(params[:where])
-
         # latlon = [12.8845097, 77.6035522]
         lat = latlon[0] if !latlon.nil?
         lon = latlon[1] if !latlon.nil?
+      else
+        if params['latitude'].present?
+          lat = params[:latitude]
+          lon = params[:longitude]
+        else
+          location_searchable = false
+        end
       end
       pdate_start = Time.now
       pdate_end = pdate_start - 1.day
@@ -52,31 +62,52 @@ class SearchController < ApplicationController
         with(:job_searchable, true)
         with(:publicviewing, true) if current_user.nil?
         with(:deleted, false)
-        with(:location_latlon).in_radius(lat, lon, params[:distance]) if params[:where].present? && !latlon.nil?
+        with(:location_latlon).in_radius(lat, lon, params[:distance]) if location_searchable #if params[:where].present? && !latlon.nil?
         order_by params[:sort], :desc
         with(:salary_type, params[:salary_type].downcase) if params['salary_type'].present?
         paginate(page: params[:page], per_page: params[:per_page])
 
         # loc_filter= with(:location_latlon).in_radius(lat, lon, params[:distance])
-        if params['where'].present? && !latlon.nil?
-          facet(:distance_facet) do
-            row('1') do
-              with(:location_latlon).in_radius(lat, lon, 1)
-            end
-            row('5') do
-              with(:location_latlon).in_radius(lat, lon, 5)
-            end
-            row('10') do
-              with(:location_latlon).in_radius(lat, lon, 10)
-            end
-            row('15') do
-              with(:location_latlon).in_radius(lat, lon, 15)
-            end
-            row('20') do
-              with(:location_latlon).in_radius(lat, lon, 20)
-            end
+        # if params['where'].present? && !latlon.nil?
+        facet(:distance_facet) do
+          row('1') do
+            with(:location_latlon).in_radius(lat, lon, 1)
+          end
+          row('5') do
+            with(:location_latlon).in_radius(lat, lon, 5)
+          end
+          row('10') do
+            with(:location_latlon).in_radius(lat, lon, 10)
+          end
+          row('15') do
+            with(:location_latlon).in_radius(lat, lon, 15)
+          end
+          row('20') do
+            with(:location_latlon).in_radius(lat, lon, 20)
+          end
+          row('50') do
+            with(:location_latlon).in_radius(lat, lon, 50)
+          end
+          row('100') do
+            with(:location_latlon).in_radius(lat, lon, 100)
+          end
+          row('500') do
+            with(:location_latlon).in_radius(lat, lon, 500)
+          end
+          row('1000') do
+            with(:location_latlon).in_radius(lat, lon, 1000)
+          end
+          row('5000') do
+            with(:location_latlon).in_radius(lat, lon, 5000)
+          end
+          row('10000') do
+            with(:location_latlon).in_radius(lat, lon, 10000)
+          end
+          row('50000') do
+            with(:location_latlon).in_radius(lat, lon, 50000)
           end
         end
+        # end
         facet :job_age do
           bod = Time.now
           row :'Last 24 hours' do
@@ -137,11 +168,22 @@ class SearchController < ApplicationController
       @res = nil
 
     else
+      location_searchable = false
+      if params['distance'].present?
+        location_searchable = true
+      end
       if params['where'].present?
         latlon = Geocoder.coordinates(params[:where])
         # latlon = [12.8845097, 77.6035522]
         lat = latlon[0] if !latlon.nil?
         lon = latlon[1] if !latlon.nil?
+      else
+        if params['latitude'].present?
+          lat = params[:latitude]
+          lon = params[:longitude]
+        else
+          location_searchable = false
+        end
       end
       puts 'latlo ' + latlon.to_s
 
@@ -179,7 +221,7 @@ class SearchController < ApplicationController
         #with(:city, params[:city].downcase) if params['city'].present?
         with(:city, params[:city].split.map(&:capitalize).join(' ')) if params['city'].present?
         with(:state, params[:state].downcase) if params['state'].present?
-        with(:location_latlon).in_radius(lat, lon, params[:distance]) if params['where'].present? && !latlon.nil?
+        with(:location_latlon).in_radius(lat, lon, params[:distance]) if location_searchable and !lat.nil? #if params['where'].present? && !latlon.nil?
         with(:user_active, true)
         with(:profile_searchable, true)
         with(:publicviewing, true) if current_user.nil?
@@ -187,25 +229,46 @@ class SearchController < ApplicationController
         paginate(page: params[:page], per_page: params[:per_page])
         #loc_filter= with(:location_latlon).in_radius(lat, lon, params[:distance])
 
-        if params['where'].present? && !latlon.nil?
-          facet(:distance_facet) do
-            row('1') do
-              with(:location_latlon).in_radius(lat, lon, 1)
-            end
-            row('5') do
-              with(:location_latlon).in_radius(lat, lon, 5)
-            end
-            row('10') do
-              with(:location_latlon).in_radius(lat, lon, 10)
-            end
-            row('15') do
-              with(:location_latlon).in_radius(lat, lon, 15)
-            end
-            row('20') do
-              with(:location_latlon).in_radius(lat, lon, 20)
-            end
+        # if params['where'].present? && !latlon.nil?
+        facet(:distance_facet) do
+          row('1') do
+            with(:location_latlon).in_radius(lat, lon, 1) if not lat.nil?
+          end
+          row('5') do
+            with(:location_latlon).in_radius(lat, lon, 5) if not lat.nil?
+          end
+          row('10') do
+            with(:location_latlon).in_radius(lat, lon, 10) if not lat.nil?
+          end
+          row('15') do
+            with(:location_latlon).in_radius(lat, lon, 15) if not lat.nil?
+          end
+          row('20') do
+            with(:location_latlon).in_radius(lat, lon, 20) if not lat.nil?
+          end
+          row('50') do
+            with(:location_latlon).in_radius(lat, lon, 50) if not lat.nil?
+          end
+          row('100') do
+            with(:location_latlon).in_radius(lat, lon, 100) if not lat.nil?
+          end
+          row('500') do
+            with(:location_latlon).in_radius(lat, lon, 500) if not lat.nil?
+          end
+          row('1000') do
+            with(:location_latlon).in_radius(lat, lon, 1000) if not lat.nil?
+          end
+          row('5000') do
+            with(:location_latlon).in_radius(lat, lon, 5000) if not lat.nil?
+          end
+          row('10000') do
+            with(:location_latlon).in_radius(lat, lon, 10000) if not lat.nil?
+          end
+          row('50000') do
+            with(:location_latlon).in_radius(lat, lon, 50000) if not lat.nil?
           end
         end
+        # end
         facet :jprofile_age do
           bod = Time.now
           row :'Last 24 hours' do

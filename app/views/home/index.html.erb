@@ -195,3 +195,27 @@
 
 
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+
+                $('#latitude').val(latitude);
+                $('#longitude').val(longitude);
+
+                $('#latitude_1').val(latitude);
+                $('#longitude_1').val(longitude);
+
+            }, function () {
+                alert('We couldn\'t find your position.');
+            });
+        } else {
+            alert('Your browser doesn\'t support geolocation.');
+        }
+    });
+</script>

@@ -259,15 +259,15 @@ class SearchController < ApplicationController
           row('1000') do
             with(:location_latlon).in_radius(lat, lon, 1000) if not lat.nil?
           end
-          row('5000') do
-            with(:location_latlon).in_radius(lat, lon, 5000) if not lat.nil?
-          end
-          row('10000') do
-            with(:location_latlon).in_radius(lat, lon, 10000) if not lat.nil?
-          end
-          row('50000') do
-            with(:location_latlon).in_radius(lat, lon, 50000) if not lat.nil?
-          end
+          # row('5000') do
+          #   with(:location_latlon).in_radius(lat, lon, 5000) if not lat.nil?
+          # end
+          # row('10000') do
+          #   with(:location_latlon).in_radius(lat, lon, 10000) if not lat.nil?
+          # end
+          # row('50000') do
+          #   with(:location_latlon).in_radius(lat, lon, 50000) if not lat.nil?
+          # end
         end
         # end
         facet :jprofile_age do

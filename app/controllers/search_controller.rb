@@ -224,6 +224,7 @@ class SearchController < ApplicationController
         with(:location_latlon).in_radius(lat, lon, params[:distance]) if location_searchable and !lat.nil? #if params['where'].present? && !latlon.nil?
         with(:user_active, true)
         with(:profile_searchable, true)
+        without(:user_confirmed_at, nil)
         with(:publicviewing, true) if current_user.nil?
         order_by params[:sort], :desc
         paginate(page: params[:page], per_page: params[:per_page])

@@ -89,6 +89,10 @@ class Jprofile < ActiveRecord::Base
     return jobseeker.user.try(:active)
   end
 
+  def user_confirmed_at
+    return jobseeker.user.try(:confirmed_at)
+  end
+
   def profile_searchable
     if deleted || !active
        return false
@@ -104,6 +108,8 @@ class Jprofile < ActiveRecord::Base
    boolean :publicviewing
    boolean :deleted
    boolean :profile_searchable
+
+   string :user_confirmed_at
 
    text :title do
      title.try(:downcase)

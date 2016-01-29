@@ -37,32 +37,50 @@
           <th class="last">Actions</th>
         </tr>
         <% if !@users.blank? %>
-          <% @users.each do |user| %>
+          <% @users.each do |user|
+                if user.role.authority == 'employer'
+                  user_profile = Employer.find_by_user_id(user.id).eprofile
+                else
+                  user_profile = Jobseeker.find_by_user_id(user.id).jprofile
+                end
+
+                user_account_status = 'Inactive'
+                if user.active && user_profile.active
+                  user_account_status = 'Active'
+                end
+
+                if user_profile.deleted
+                  user_account_status = 'Deleted'
+                end
+          %>
           <tr>
             <td data-title="Name"><span><%=user.try(:profile_name)%></span></td>
             <td data-title="Email"><span><%= user.email%></span></td>
             <td data-title="Role"><span><%= user.role.authority%></span></td>
-            <td data-title="Status"><span><%= user.user_account_status%></span></td>
+            <td data-title="Status"><span><%= user_account_status %></span></td>
             <td class="last">
+              <% if user_account_status != 'Deleted' %>
+                  <%if user.active? %>
+                    <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post, class: "active" do %>
+                      Deactivate
+                    <%end%>
+                  <%else%>
+                    <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post, class: "active" do %>
+                      Active
+                    <%end%>
+                  <%end%>
 
-              <%if user.active? %>
-                <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post, class: "active" do %>
-                  Deactivate
-                <%end%>
-              <%else%>
-                <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post, class: "active" do %>
-                  Active
-                <%end%>
-              <%end%>
 
-              <%= link_to app_user_path(user), :method=> :delete, class: "active" do %>
-                  Delete
-              <%end%>
+                  <%= link_to app_user_path(user), :method=> :delete, class: "active" do %>
+                      Delete
+                  <%end%>
 
-              <%if user.try(:role).try(:authority) == 'jobseeker'%>
-                <%= link_to jprofile_path(user.try(:profile)), class: "icon icon-edit", title: "Edit" do %><% end %>
-              <% else %>
-                <%= link_to eprofile_path(user.try(:profile)), class: "icon icon-edit", title: "Edit" do %><% end %>
+
+                  <%if user.try(:role).try(:authority) == 'jobseeker'%>
+                    <%= link_to jprofile_path(user.try(:profile)), class: "icon icon-edit", title: "Edit" do %><% end %>
+                  <% else %>
+                    <%= link_to eprofile_path(user.try(:profile)), class: "icon icon-edit", title: "Edit" do %><% end %>
+                  <% end %>
               <% end %>
             </td>
           </tr>

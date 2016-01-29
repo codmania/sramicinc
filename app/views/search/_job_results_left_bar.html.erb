@@ -18,11 +18,13 @@
     <input name="location" type="hidden" value="<%= params[:location]%>"/>
     <input name="salary_type" type="hidden" value="<%= params[:salary_type]%>"/>
     <input name="salary" type="hidden" value="<%= params[:salary]%>"/>
+    <input name="latitude" type="hidden" value="<%= params[:latitude]%>"/>
+    <input name="longitude" type="hidden" value="<%= params[:longitude]%>"/>
 
     <div class="form-group">
       <label>Distance in Miles</label>
       <select class="selectpicker" name="distance">
-        <option value=500>Select</option>
+        <option value="">Select</option>
         <% if not @res.nil? %>
             <% @res.facet(:distance_facet).try(:rows).try(:each) do |facet| %>
                 <option value="<%=facet.value %>"

@@ -60,6 +60,15 @@ class EmployerController < ApplicationController
 
  def talents
    @jprofile=Jprofile.find(params[:id])
+
+   if current_user.nil? || current_user.role.authority != 'admin'
+     if @jprofile.deleted || !@jprofile.active || !@jprofile.jobseeker.user.active
+       redirect_to home_index_path
+     elsif current_user.nil? && !@jprofile.publicviewing
+       redirect_to home_index_path
+     end
+   end
+
    @educations = Education.where(jprofile_id: @jprofile.id)
    @job_histories = JobHistory.where(jprofile_id: @jprofile.id)
    @certifications = Certification.where(jprofile_id: @jprofile.id)

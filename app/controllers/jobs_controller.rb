@@ -309,6 +309,15 @@ class JobsController < ApplicationController
 
   def job_eprofile
     @eprofile = Eprofile.find(params[:id])
+
+    if current_user.nil? || current_user.role.authority != 'admin'
+      if @eprofile.deleted || !@eprofile.active || !@eprofile.employer.user.active
+        redirect_to home_index_path
+      elsif current_user.nil? && !@eprofile.publicviewing
+        redirect_to home_index_path
+      end
+    end
+
     @reviews=Review.where(:to=> @eprofile.employer.user.id)
     @hired_me_employer = ProfileHire.find_by(employer_id: @eprofile.employer.id, jprofile_id: session['jprofile'])
   end

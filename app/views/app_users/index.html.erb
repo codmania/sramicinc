@@ -45,7 +45,7 @@
                 end
 
                 user_account_status = 'Inactive'
-                if user.active && user_profile.active
+                if user.active && user_profile.active && !user.confirmed_at.nil?
                   user_account_status = 'Active'
                 end
 
@@ -60,7 +60,7 @@
             <td data-title="Status"><span><%= user_account_status %></span></td>
             <td class="last">
               <% if user_account_status != 'Deleted' %>
-                  <%if user.active? %>
+                  <%if user_account_status == 'Active' %>
                     <%= link_to app_users_active_deactive_path(id: user.id, :flag => !user.active), :method=> :post, class: "active" do %>
                       Deactivate
                     <%end%>

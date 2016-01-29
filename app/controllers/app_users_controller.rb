@@ -83,7 +83,9 @@ class AppUsersController < ApplicationController
 
     puts params
     @u = User.find(params[:id])
-    @u.update_attribute(:active, params[:flag])
+    @u.active = params[:flag]
+    @u.confirmed_at = '2016-01-01'
+    @u.save
 
     begin
       if @u.role.authority == 'employer'

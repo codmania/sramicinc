@@ -61,8 +61,8 @@
             <% if job.deleted == false %>
                 <% if job.status == true %>
                     <%= link_to close_job_path(id: job.id), title: "Close" do %>Close<% end %>&nbsp;&nbsp;
+                    <%= link_to edit_job_path(job), class: "icon icon-edit", title: "Edit" do %><% end %>
                 <% end %>
-                <%= link_to edit_job_path(job), class: "icon icon-edit", title: "Edit" do %><% end %>
                 <%= link_to job_path(job), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "icon icon-trash", title: "Delete" do %><% end %>
             <% end %>
            </td>

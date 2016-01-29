@@ -74,7 +74,9 @@
               </span>
             </td>
             <td class="last">
-              <%= link_to edit_job_path(job), class: "icon icon-edit", title: "Edit" do %><% end %>
+              <%if job.status %>
+                <%= link_to edit_job_path(job), class: "icon icon-edit", title: "Edit" do %><% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>

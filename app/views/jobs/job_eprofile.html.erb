@@ -116,14 +116,6 @@
 
               <%end%>
             <%end%>
-
-          <script>
-              $('.stars').raty({readOnly: true,
-                  score: function() {
-                      return $(this).attr('data-score');
-                  }
-              });
-          </script>
             
 
           </div>
@@ -176,6 +168,14 @@
             $(this).addClass('current');
             $("#"+tab_id).addClass('current');
         })
+
+
+        $('.stars').raty({readOnly: true,
+            score: function() {
+                return $(this).attr('data-score');
+            }
+        });
+
 
     });
 

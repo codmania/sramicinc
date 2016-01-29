@@ -18,8 +18,12 @@
               <em class="icon icon-location"></em><span><%= jprofile.try(:city)  %> <%= jprofile.try(:state_list).try(:name)%> <%= jprofile.try(:zip)%></span>
             </div>
             <div class="pull-right">
-              <em class="icon icon-review"></em><span><%=Review.where(to: jprofile.try(:jobseeker).user.id).count%> reviews</span>           
-              <em class="icon icon-clock"></em><span><%=distance_of_time_in_words(Time.now, jprofile.created_at.to_time) %></span>
+              <% if jprofile.try(:jobseeker).user.nil? %>
+                  <em class="icon icon-review"></em><span>0 reviews</span>
+              <% else %>
+                <em class="icon icon-review"></em><span><%= Review.where(to: jprofile.try(:jobseeker).user.id).count%> reviews</span>
+              <% end %>
+              <em class="icon icon-clock"></em><span><%= distance_of_time_in_words(Time.now, jprofile.created_at.to_time) %></span>
             </div>
           </div>
 

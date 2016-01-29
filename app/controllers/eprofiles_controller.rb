@@ -69,19 +69,13 @@ class EprofilesController < ApplicationController
 
   def destroy
     @jobs = Job.where(:employer_id=>@eprofile.employer_id)
+    @jobs.update_all(deleted: true)
+    @eprofile.deleted = true
+    @eprofile.save
 
-    if @jobs.count == 0
-      @eprofile.deleted = true
-      @eprofile.save
-    end
     respond_to do |format|
-      if @jobs.count == 0
-        format.html { redirect_to eprofiles_url, notice: 'Employer was successfully destroyed.' }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to edit_eprofile_url(@eprofile), notice: 'Can not delete your profile with any jobs!' }
-        format.json { render json: {msg: 'Can not delete your profile with any jobs!'}, status: :unprocessable_entity }
-      end
+      format.html { redirect_to eprofiles_url, notice: 'Employer was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

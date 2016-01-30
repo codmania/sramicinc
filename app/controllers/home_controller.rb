@@ -32,8 +32,9 @@ class HomeController < ApplicationController
 
     @testimonials = Testimonial.all.limit(4).order('created_at desc')
 
-  @jobs = Job.all
+  @jobs = Job.where(deleted: false, status: true)
   @jprofiles = Jprofile.all
+  #@jprofiles = Jprofile.where(deleted: false, active: true)
   @eprofiles = Eprofile.all
   @users=User.all
 
@@ -46,13 +47,14 @@ class HomeController < ApplicationController
     facet(:companyname)
     with(:industry, params[:industry].downcase) if params['industry'].present?
     facet(:industry)
-    with(:city, params[:city].downcase) if params['city'].present?
-    facet(:city)
+    with(:state, params[:state].downcase) if params['state'].present?
+    facet(:state)
 
     end
 
     @res1= Sunspot.search(Jprofile) do
-    facet(:city)
+    with(:state, params[:state].downcase) if params['state'].present?
+    facet(:state)
     with(:skills, params[:skills].downcase) if params['skills'].present?
     facet(:skills)
     with(:educations, params[:education].downcase) if params['education'].present?

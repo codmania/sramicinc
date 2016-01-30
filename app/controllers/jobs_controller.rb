@@ -318,6 +318,14 @@ class JobsController < ApplicationController
       end
     end
 
+    @jobs = Sunspot.search(Job) do
+      with(:job_eprofile_id, params[:id])
+      with(:status, true)
+      with(:job_searchable, true)
+      with(:publicviewing, true) if current_user.nil?
+      with(:deleted, false)
+    end
+
     @reviews=Review.where(:to=> @eprofile.employer.user.id)
     @hired_me_employer = ProfileHire.find_by(employer_id: @eprofile.employer.id, jprofile_id: session['jprofile'])
   end

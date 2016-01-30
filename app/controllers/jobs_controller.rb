@@ -102,6 +102,14 @@ class JobsController < ApplicationController
     @eprofile = Eprofile.find_by(employer_id: @job.employer_id)
     @job.employer_id
 
+    if current_user.nil? || current_user.role.authority != 'admin' || current_user.id != @eprofile.employer.user.id
+      if @job.status == false || @job.deleted || @eprofile.deleted || !@eprofile.active || !@eprofile.employer.user.active || @eprofile.employer.user.confirmed_at.nil?
+        redirect_to home_index_path
+      elsif current_user.nil? && !@eprofile.publicviewing
+        redirect_to home_index_path
+      end
+    end
+
     place=nil
     @keywords=@job.keywords
     if @job.city.present?
@@ -311,7 +319,7 @@ class JobsController < ApplicationController
     @eprofile = Eprofile.find(params[:id])
 
     if current_user.nil? || current_user.role.authority != 'admin'
-      if @eprofile.deleted || !@eprofile.active || !@eprofile.employer.user.active
+      if @eprofile.deleted || !@eprofile.active || !@eprofile.employer.user.active || @eprofile.employer.user.confirmed_at.nil?
         redirect_to home_index_path
       elsif current_user.nil? && !@eprofile.publicviewing
         redirect_to home_index_path

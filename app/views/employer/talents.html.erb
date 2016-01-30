@@ -11,6 +11,7 @@
   </section>
 
   <section>
+	 <% if @jprofile != nil%>
     <div class="margin">
 
       <%# if params['what'] %>
@@ -263,6 +264,11 @@
 
 
     </div>
+    <%else%>	 
+
+  		<h5 align="center"><%= "No results matched for your search!" %></h5>
+    <%end%>
+	 
   </section>
 
 

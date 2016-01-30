@@ -6,7 +6,8 @@ include Clockwork
 
 module Clockwork
 
-  ##  bundle exec clockwork lib/clock.rb
+  ## Run below command to setup cron job 
+  ## bundle exec clockwork lib/clock.rb
 
  #   every(10.seconds, 'Job Alert') { AlertsHelper.job_alert}
  #  every(10.seconds, 'Talent Alert') { AlertsHelper.talent_alert}

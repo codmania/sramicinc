@@ -97,7 +97,9 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job = Job.find(params[:id]) rescue @job=nil
+    
+    if !@job.nil?
     puts 'job....'+@job.to_s
     @eprofile = Eprofile.find_by(employer_id: @job.employer_id)
     @job.employer_id
@@ -121,7 +123,7 @@ class JobsController < ApplicationController
     end
     @place=place
     @similarjobs=@sus.results
-
+    end
   end
 
   def index

@@ -59,29 +59,30 @@ class EmployerController < ApplicationController
  end
 
  def talents
-   @jprofile=Jprofile.find(params[:id])
+   @jprofile=Jprofile.find(params[:id]) rescue @jprofile=nil
 
-   if current_user.nil? || current_user.role.authority != 'admin'
-     if @jprofile.deleted || !@jprofile.active || !@jprofile.jobseeker.user.active
-       redirect_to home_index_path
-     elsif current_user.nil? && !@jprofile.publicviewing
-       redirect_to home_index_path
-     end
-   end
+   if !@jprofile.nil?
+    if current_user.nil? || current_user.role.authority != 'admin'
+      if @jprofile.deleted || !@jprofile.active || !@jprofile.jobseeker.user.active
+        redirect_to home_index_path
+      elsif current_user.nil? && !@jprofile.publicviewing
+        redirect_to home_index_path
+      end
+    end
 
-   @educations = Education.where(jprofile_id: @jprofile.id)
-   @job_histories = JobHistory.where(jprofile_id: @jprofile.id)
-   @certifications = Certification.where(jprofile_id: @jprofile.id)
-   @journals= Journal.where(jprofile_id: @jprofile.id)
-   @skills = Skill.where(jprofile_id: @jprofile.id)
-   @hired_profile = ProfileHire.find_by(employer_id: session['employer'],jprofile_id: params[:id])
-   @reviews=Review.where(:to=> @jprofile.jobseeker.user.id)
-     
+    @educations = Education.where(jprofile_id: @jprofile.id)
+    @job_histories = JobHistory.where(jprofile_id: @jprofile.id)
+    @certifications = Certification.where(jprofile_id: @jprofile.id)
+    @journals= Journal.where(jprofile_id: @jprofile.id)
+    @skills = Skill.where(jprofile_id: @jprofile.id)
+    @hired_profile = ProfileHire.find_by(employer_id: session['employer'],jprofile_id: params[:id])
+    @reviews=Review.where(:to=> @jprofile.jobseeker.user.id)
+   end 
 
   end
 
 
-    def hire_candidate
+ def hire_candidate
     p=ProfileHire.new
     p.employer_id=session['employer']
     p.jprofile_id=params[:jprofile_id]

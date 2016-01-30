@@ -6,12 +6,14 @@
 
   <section class="stratum">
     <div class="margin">
-      <h1><%= @job.title %></h1>
-      <em class="icon icon-clock"></em><% t = @job.created_at %><span><%= t.strftime("%m / %d / %Y") %></span>              
+		<% if @job != nil%>
+      	<h1><%= @job.title %></h1>
+      	<em class="icon icon-clock"></em><% t = @job.created_at %><span><%= t.strftime("%m / %d / %Y") %></span>           <%end%>
     </div>
   </section>
 
   <section>
+	 <% if @job != nil%>
     <div class="margin">
 
       <%# if params['what'] %>
@@ -184,6 +186,11 @@
   
 
     </div>
+  
+  <%else%>	 
+
+		<h5 align="center"><%= "No results matched for your search!" %></h5>
+  <%end%>
   </section>
 
 

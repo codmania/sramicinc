@@ -66,6 +66,7 @@ class AppUsersController < ApplicationController
     # @user.destroy
     if @user.role.authority == 'employer'
       user_profile = Employer.find_by_user_id(@user.id).eprofile
+      user_profile.jobs.update_all(deleted: true)
     else
       user_profile = Jobseeker.find_by_user_id(@user.id).jprofile
     end

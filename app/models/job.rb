@@ -71,11 +71,16 @@ class Job < ActiveRecord::Base
     return employer.eprofile.publicviewing
   end
 
+  def job_eprofile_id
+    return employer.eprofile.id
+  end
+
   searchable do
 
     boolean :job_searchable
     boolean :publicviewing
     boolean :deleted
+    integer :job_eprofile_id
 
    # fulltext search
    string :id

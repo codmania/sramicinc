@@ -13,13 +13,14 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="orange active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><strong>Profile</strong></a></li>
-        <li role="presentation" class="orange"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><strong>Reviews<strong></a></li>
+        <li role="presentation" class="orange"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><strong>Reviews</strong></a></li>
+        <li role="presentation" class="orange"><a href="#jobs" aria-controls="jobs" role="tab" data-toggle="tab"><strong>Jobs</strong></a></li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="profile">
-          
+
           <div class="enclosure">
 
             <div class="profile">
@@ -127,6 +128,42 @@
             </div>
           </div>     
           <% end %>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="jobs">
+
+          <div class="enclosure">
+            <% if @jobs != nil && @jobs.results.length > 0 %>
+
+                <% @jobs.try(:results).try(:each_with_index) do |rest,ind| %>
+
+                    <article class="result orange">
+                      <a href="<%= job_path(rest.id) %>" data-index="<%= ((params['page'].to_i-1)*PER_PAGE_COUNT) +(ind+1) %>">
+                        <div class="w100">
+                          <h2><%= rest.title %></h2>
+
+                          <div class="details">
+                            <div class="pull-left">
+                              <em class="icon icon-location"></em><span><%=  rest.addr %></span>
+                              <em class="icon icon-review"></em><span><%=Review.where(to: rest.try(:employer).user.id).count%> reviews</span>
+
+                            </div>
+                            <div class="pull-right">
+                              <em class="icon icon-comment"></em><span><%= Comment.where(job_id: rest.id).count%> comments</span>
+                              <em class="icon icon-clock"></em><span><%=distance_of_time_in_words(Time.now, rest.created_at.to_time) %></span>
+                            </div>
+                          </div>
+
+                        </div>
+                      </a>
+                    </article>
+
+                <% end %>
+            <% else %>
+                <h6><%= "No results!" %></h6>
+            <% end %>
+          </div>
 
         </div>
 

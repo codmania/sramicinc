@@ -3,10 +3,16 @@ if !Role.exists?
   admin_role=Role.create authority:'admin'
   employer_role=Role.create authority:'employer'
   jobseeker_role=Role.create authority:'jobseeker'
+else
+  admin_role = Role.find_by_authority('admin')
+  employer_role = Role.find_by_authority('employer')
+  jobseeker_role = Role.find_by_authority('jobseeker')
 end
 
 if Role.find_by(authority: 'staff').nil?
   staff_role=Role.create authority:'staff'
+else
+  staff_role=Role.find_by_authority('staff')
 end
 
 
@@ -43,23 +49,29 @@ if !JobType.exists?
 end
 
 if !User.find_by(email: 'bindas@sramic.com', role_id: 1).present?
-  admin = User.create email:'bindas@sramic.com', password:'Ebindas@1979',password_confirmation:'Ebindas@1979',role_id:1,confirmed_at:Date.today,name:'admin user'
+  #admin = User.create email:'bindas@sramic.com', password:'Ebindas@1979',password_confirmation:'Ebindas@1979',role_id:1,confirmed_at:Date.today,name:'admin user'
+  admin = User.create email:'bindas@sramic.com', password:'Ebindas@1979',password_confirmation:'Ebindas@1979',role_id:admin_role.id,confirmed_at:Date.today,name:'admin user'
+
 end
 
 if !User.find_by(email: 'employer@gmail.com').present?
-  emp=User.create email:'employer@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:2,confirmed_at:Date.today,name:'employer1'
+  #emp=User.create email:'employer@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:2,confirmed_at:Date.today,name:'employer1'
+  emp=User.create email:'employer@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:employer_role.id,confirmed_at:Date.today,name:'employer1'
 end
 
 if !User.find_by(email: 'employer2@gmail.com').present?
-  emp=User.create email:'employer2@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:2,confirmed_at:Date.today,name:'employer2'
+  #emp=User.create email:'employer2@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:2,confirmed_at:Date.today,name:'employer2'
+  emp=User.create email:'employer2@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:employer_role.id,confirmed_at:Date.today,name:'employer2'
 end
 
 if !User.find_by(email: 'jobseeker1@gmail.com').present?
-  jobseeker_user1=User.create email:'jobseeker1@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:3,confirmed_at:Date.today,name:'jobseeker 1'
+  #jobseeker_user1=User.create email:'jobseeker1@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:3,confirmed_at:Date.today,name:'jobseeker 1'
+  jobseeker_user1=User.create email:'jobseeker1@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:jobseeker_role.id,confirmed_at:Date.today,name:'jobseeker 1'
 end
 
 if !User.find_by(email: 'jobseeker2@gmail.com').present?
-  jobseeker_user1=User.create email:'jobseeker2@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:3,confirmed_at:Date.today,name:'jobseeker 2'
+  #jobseeker_user1=User.create email:'jobseeker2@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:3,confirmed_at:Date.today,name:'jobseeker 2'
+  jobseeker_user1=User.create email:'jobseeker2@gmail.com', password:'Sigma@123',password_confirmation:'Sigma@123',role_id:jobseeker_role.id,confirmed_at:Date.today,name:'jobseeker 2'
 end
 
 

@@ -23,6 +23,7 @@ gem 'progress_bar'
 
 group :production do
   gem 'mysql2', '~> 0.3.20'
+  gem 'rails_12factor'
 end
 group :development do
   gem 'sqlite3'

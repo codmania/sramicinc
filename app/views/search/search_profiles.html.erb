@@ -23,7 +23,7 @@
       <aside class="w25 blue">
         <%= render 'profile_results_left_bar' %>
 
-        <article>
+        <!-- <article>
           <h3>Save Last Search</h3>
           <form id="save_filer_form">
             <div class="form-group">
@@ -36,13 +36,13 @@
 
         <article>
           <h3>Search Criteria</h3>
-          <% @saved_searched_filer.each do |filter|%>  
+          <% @saved_searched_filer.each do |filter|%>
           <div class="criteria-bx">
               <a href="/search/jobs<%=filter.criteria%>"><%= filter.name %></a>
-              <a href="javascript:deleteSearchFilter(<%= filter.id%>)" class="icon icon-cross"></a> 
+              <a href="javascript:deleteSearchFilter(<%= filter.id%>)" class="icon icon-cross"></a>
           </div>
           <%end%>
-        </article>
+        </article> -->
  
         
       </aside>

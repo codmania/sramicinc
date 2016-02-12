@@ -120,7 +120,7 @@ class JprofilesController < ApplicationController
   def jprofile_params
 
     params.require(:jprofile).permit(:name, :title, :logo, :resume, :phone, :city, :state_list_id, :country_list_id, :zip, :summary, :date_of_birth,
-                                     :marital_status, :resume_headline, :salary_type_id, :salary, :address1, :address2, :active, :publicviewing)
+                                     :marital_status, :resume_headline, :salary_type_id, :salary, :address1, :address2, :active, :publicviewing, :deleted)
 
 
   end

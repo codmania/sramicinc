@@ -2,8 +2,14 @@
 
   <section class="stratum">
     <div class="margin">
-      <%= image_tag "layout/employer.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
-      <h1><%= @eprofile.try(:company_name) %></h1>         
+      
+		<%if @eprofile.try(:logo_file_name) != nil%>
+			<%= image_tag Eprofile.find(@eprofile).logo.url(:medium), title: "", alt: "", size: "94x94", class: "img-circle"  %>
+		<%else%>
+			<%= image_tag "layout/employer.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
+      <%end%>
+		
+		<h1><%= @eprofile.try(:company_name) %></h1>         
     </div>
   </section>
 
@@ -135,7 +141,6 @@
 
           <div class="enclosure">
             <% if @jobs != nil && @jobs.results.length > 0 %>
-
                 <% @jobs.try(:results).try(:each_with_index) do |rest,ind| %>
 
                     <article class="result orange">
@@ -146,7 +151,7 @@
                           <div class="details">
                             <div class="pull-left">
                               <em class="icon icon-location"></em><span><%=  rest.addr %></span>
-                              <em class="icon icon-review"></em><span><%=Review.where(to: rest.try(:employer).user.id).count%> reviews</span>
+                              <!-- <em class="icon icon-review"></em><span><%=Review.where(to: rest.try(:employer).user.id).count%> reviews</span> -->
 
                             </div>
                             <div class="pull-right">
@@ -181,7 +186,19 @@
 <%= render :partial => 'review_popover' %>
 
 
-
+<script>
+  jQuery('.result').each(function(){
+      a=window.location.search
+      p=a.indexOf('page')
+      b=window.location.search
+      if(p!=-1)
+      {
+        p1=a.indexOf('&',p)
+        b=a.substring(0,p)+a.substring(p1+1,a.length)
+      }
+      $(this).attr('href',$(this).attr('href')+b+'&offset=1&page='+$(this).attr('data-index')+'&total='+$('#total').val());
+  });
+</script>
 
 
 <script type="text/javascript">

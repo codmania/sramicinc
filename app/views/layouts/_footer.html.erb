@@ -4,20 +4,21 @@
     <nav class="w25">
       <h4>Employers</h4>
       <%= link_to "Post a Job", new_job_path %>
-      <%= link_to "Pricing", page_pricing_path %>
+		 <%= link_to "Search Profiles", search_profiles_path %>
+      <!-- <%= link_to "Pricing", page_pricing_path %> -->
     </nav>
 
     <nav class="w25">
       <h4>Job Seekers</h4>
       <%= link_to "Post a Talent", jprofiles_path(:t=>'candidate')%>
       <%= link_to "Search Jobs", search_jobs_path %>
-      <%= link_to "Pricing", page_pricing_path(anchor: "job-seekers") %>
+      <!-- <%= link_to "Pricing", page_pricing_path(anchor: "job-seekers") %> -->
     </nav>
 
     <nav class="w25">
       <h4>Information</h4>
       <%= link_to "About Us", page_about_path %>
-      <%= link_to "Pricing", page_pricing_path, class: "occult" %>
+      <!-- <%= link_to "Pricing", page_pricing_path, class: "occult" %> -->
       <%= link_to "FAQs", faqs_path %>
       <%= link_to "Contact Us", new_enquiry_path %>
       <%= link_to "Subscribe Newsletter",  new_news_letter_path %>

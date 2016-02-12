@@ -91,6 +91,6 @@ class EprofilesController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def eprofile_params
-	  params.require(:eprofile).permit(:name,:company_name,:company_type,:industry_id,:address1,:address2,:city,:state_list_id,:country_list_id,:zip,:phone,:website,:overview,:products,:services,:employer_id, :logo, :fb_url, :twitter_url, :gplus_url, :linkedin_url,:fax, :publicviewing, :active)
+	  params.require(:eprofile).permit(:name,:company_name,:company_type,:industry_id,:address1,:address2,:city,:state_list_id,:country_list_id,:zip,:phone,:website,:overview,:products,:services,:employer_id, :logo, :fb_url, :twitter_url, :gplus_url, :linkedin_url,:fax, :publicviewing, :active, :delete)
 	end
 end

@@ -7,7 +7,14 @@
     <article class="result orange">
       <a href="<%= job_path(rest.id) %>" data-index="<%= ((params['page'].to_i-1)*PER_PAGE_COUNT) +(ind+1) %>">
         <div class="w25">
-          <%= image_tag "layout/employer.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
+			  
+			 <%if rest.employer.try(:eprofile).try(:logo_file_name) != nil%>
+          <%= image_tag Eprofile.find(rest.employer.try(:eprofile)).logo.url(:medium), title: "", alt: "", size: "94x94", class: "img-circle"  %>
+			 
+			 <%else%>
+			 <%= image_tag "layout/employer.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
+			 <%end%>
+			 
         </div>
         <div class="w75">
           <h2><%= rest.title %></h2>

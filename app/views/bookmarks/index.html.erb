@@ -21,7 +21,11 @@
             <div class="result blue">
               <a href="employer/talents?id=<%=bm.try(:jobseeker).try(:jprofile).id%>" target="_blank">
                 <div class="w25">
-                  <%= image_tag "layout/talent.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
+			 		  <%if bm.try(:jobseeker).try(:jprofile).try(:logo_file_name) != nil%>
+			 				<%= image_tag Jprofile.find(bm.try(:jobseeker).try(:jprofile)).logo.url(:medium), title: "", alt: "", size: "94x94", class: "img-circle"  %>
+					  <%else%>	  
+                 		<%= image_tag "layout/talent.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
+					  <%end%>
                 </div>
                 <div class="w75">
                   <h2><%= bm.try(:jobseeker).try(:jprofile).try(:title) %></h2>

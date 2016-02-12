@@ -110,7 +110,11 @@
               <article class="result orange">
                 <a href="<%= job_path(f.id) %>">
                   <div class="w25">
+				  		<%if f.employer.try(:eprofile).try(:logo_file_name) != nil%>
+				  			<%= image_tag Eprofile.find(f.employer.try(:eprofile)).logo.url(:medium), title: "", alt: "", size: "94x94", class: "img-circle"  %>
+				  		<%else%>
                     <%= image_tag "layout/employer.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
+						<%end%>
                   </div>
                   <div class="w75">
                     <h2><%= f.title %></h2>

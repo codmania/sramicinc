@@ -5,9 +5,16 @@
 
   <section class="stratum">
     <div class="margin">
-      <%= image_tag "layout/talent.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
-      <h1><%= @jprofile.try(:name) %></h1>         
-    </div>
+		
+		<%if @jprofile!= nil && @jprofile.try(:logo_file_name) != nil%>	 
+      	<%= image_tag Jprofile.find(@jprofile).logo.url(:medium), title: "", alt: "", size: "94x94", class: "img-circle"  %>
+      <%else%>
+			<%= image_tag "layout/talent.png", title: "", alt: "", size: "94x94", class: "img-circle"  %>
+		<%end%>
+		<h1><%= @jprofile.try(:name) %></h1>         
+    
+	 
+	 </div>
   </section>
 
   <section>

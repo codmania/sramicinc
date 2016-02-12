@@ -11,9 +11,9 @@
       </li>
     <% end %>
 
-    <%if current_user.role.id==2%>
+    <%if current_user.try(:role).try(:authority)=='employer'%>
       <li class="profile"><a rel="nofollow" data-method="get" href="<%= eprofiles_path %>">My Profile</a></li>
-    <% elsif current_user.role.id==3%>
+    <% elsif current_user.try(:role).try(:authority)=='jobseeker'%>
       <li class="profile"><a rel="nofollow" data-method="get" href="<%= jprofiles_path %>">My Profile</a></li>
     <% end %>
     <%if session[:staff_user].nil?%>

@@ -33,18 +33,18 @@
 
       <div class="profile">
         <button class="dropdown-toggle" type="button" id="dropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-           <%if current_user.role.id==2%>
+           <%if current_user.try(:role).try(:authority) == 'employer' || current_user.try(:role).try(:authority) == 'staff'%>
               <%= image_tag Eprofile.find(session['eprofile']).logo.url(:medium), title: "", alt: "", size: "64x64", class: "img-circle"  %>
-            <% elsif current_user.role.id==3%>
+            <% elsif current_user.try(:role).try(:authority) == 'jobseeker'%>
               <%= image_tag Jprofile.find(session['jprofile']).logo.url(:medium), title: "", alt: "", size: "64x64", class: "img-circle"  %>
-            <% elsif current_user.role.id==1%>
+            <% elsif current_user.try(:role).try(:authority) == 'admin'%>
               <%= image_tag "layout/sramic-user.png", title: "", alt: "", size: "64x64", class: "img-circle"  %>   
             <%end%>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownProfile">
-          <%if current_user.role.id==2%>
+          <%if current_user.try(:role).try(:authority) == 'employer' || current_user.try(:role).try(:authority) == 'staff'%>
             <li><a rel="nofollow" data-method="get" href="<%= eprofiles_path %>"><span class="icon icon_1"></span>My Profile</a></li>
-          <% elsif current_user.role.id==3%>
+          <% elsif current_user.try(:role).try(:authority) == 'jobseeker'%>
             <li><a rel="nofollow" data-method="get" href="<%= jprofiles_path %>"><span class="icon icon_1"></span>My Profile</a></li>
           <% end %>
           <%if session[:staff_user].nil?%>

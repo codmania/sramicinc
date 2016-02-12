@@ -1,0 +1,27 @@
+mysql: &mysql
+  adapter: mysql2
+  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
+  username: "<%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>"
+  password: "<%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>"
+  host:     <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+  port:     <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+
+defaults: &defaults
+  adapter: mysql2
+  database: SRAMIC
+  username: root
+  #password: admin
+  password:
+  host:     localhost
+  port:     3306
+
+development:
+  <<: *defaults
+
+test: &test
+  <<: *defaults
+  #database: newon_portal_test
+
+production:
+  <<: *mysql
+  #database: newon_portal_prod

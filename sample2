@@ -72,7 +72,7 @@
 
 </div>
 <%= link_to 'Edit', edit_eprofile_path(@eprofile) %> |
-<%if current_user.role.id==1%>
+<%if current_user.role.authority=='admin'%>
  <%= link_to 'Back', eprofiles_path %>
  <%else%>
  <%= link_to 'Back', home_index_path %>
